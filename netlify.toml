@@ -1,0 +1,30 @@
+# sayantannandi.com — Netlify configuration
+# Static site. No build step, no dependencies.
+
+[build]
+  publish = "."
+  command = ""
+
+[build.processing.html]
+  pretty_urls = true
+
+# Clean URLs: Netlify already serves /philosophy for philosophy.html.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Keep old links working if you ever move a page:
+# [[redirects]]
+#   from = "/old-path"
+#   to = "/new-path"
+#   status = 301

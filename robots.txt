@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sayantannandi.com/sitemap.xml
