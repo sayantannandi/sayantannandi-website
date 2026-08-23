@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Invisible Month Calculator</title>
+<meta name="description" content="Ninety seconds with your calendar open. Find out what percentage of last month's work is invisible to your organisation, and how you compare with other senior professionals.">
+<style>
+:root{--navy:#1B2A4A;--grey:#3A3F45;--lgrey:#8A9099;--green:#2E7D5B;--red:#8A4B3A;
+--lblue:#EAF1F8;--lbg:#F5F6F8;--rule:#C9D4E0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--grey);background:#fff;line-height:1.55;font-size:16px;}
+.wrap{max-width:720px;margin:0 auto;padding:40px 22px 80px;}
+.kicker{font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:var(--lgrey);margin-bottom:10px;}
+h1{color:var(--navy);font-size:30px;line-height:1.2;margin-bottom:12px;}
+.sub{font-style:italic;margin-bottom:24px;}
+.dyk{background:var(--lblue);border:1px solid var(--rule);padding:18px 20px;margin-bottom:26px;}
+.dyk b{color:var(--navy);}
+.step{background:var(--lbg);border:1px solid var(--rule);padding:20px;margin-bottom:18px;}
+.step h3{color:var(--navy);font-size:16px;margin-bottom:8px;}
+.step p{font-size:15px;margin-bottom:12px;}
+.numrow{display:flex;align-items:center;gap:16px;}
+input[type=number]{width:110px;padding:12px;border:1px solid var(--rule);font-family:inherit;font-size:20px;font-weight:bold;color:var(--navy);text-align:center;}
+input[type=text],input[type=email]{width:100%;padding:12px;border:1px solid var(--rule);font-family:inherit;font-size:16px;}
+label{display:block;font-size:13px;font-weight:bold;color:var(--navy);margin:14px 0 5px;}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:10px 0;font-size:15px;}
+.chk input{margin-top:4px;width:16px;height:16px;}
+.btn{display:inline-block;background:var(--navy);color:#fff;border:none;font-family:inherit;font-size:16px;font-weight:bold;padding:14px 28px;cursor:pointer;}
+.btn:hover{background:#24365C;}.btn.green{background:var(--green);}.btn.green:hover{background:#256A4D;}
+.hide{display:none;}
+.bignum{font-size:56px;font-weight:bold;color:var(--navy);line-height:1;}
+.bignum small{font-size:22px;color:var(--lgrey);font-weight:bold;}
+.meter{height:14px;background:var(--lbg);border:1px solid var(--rule);margin:16px 0 6px;position:relative;}
+.meter i{display:block;height:100%;background:var(--navy);width:0%;transition:width .6s;}
+.bench{font-size:13px;color:var(--lgrey);margin-bottom:16px;}
+.verdict{border:1px solid var(--rule);padding:18px 20px;margin:14px 0;background:var(--lbg);}
+.verdict b{color:var(--navy);}
+.gate{background:var(--lblue);border:1px solid var(--rule);padding:24px;margin-top:20px;}
+.gate h2{color:var(--navy);font-size:20px;margin-bottom:8px;}
+.tiny{font-size:12.5px;color:var(--lgrey);margin-top:12px;}
+.done{border:1px solid var(--rule);padding:24px;background:#EDF6F1;margin-top:20px;}
+.done h2{color:var(--green);font-size:20px;margin-bottom:6px;}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--lgrey);}
+@media(max-width:520px){h1{font-size:25px;}.bignum{font-size:44px;}.wrap{padding:28px 16px 60px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="kicker">A ninety-second calculator &middot; Sayantan Nandi</div>
+<h1>The Invisible Month Calculator</h1>
+<p class="sub">Open your calendar to last month before you start. Memory keeps the parts you are proud of and drops the parts nobody noticed, and this only works on the real month.</p>
+
+<div class="dyk"><b>Did you know?</b> When senior professionals run this exercise honestly, most find that between a third and half of a busy month cannot complete the sentence "somebody now does something differently because of this work." That work was real, often the hardest of the month, and it was invisible to the organisation by construction. This calculator tells you your number before your appraisal does.</div>
+
+<div id="calc">
+  <div class="step">
+    <h3>Step 1 &middot; Count the work</h3>
+    <p>From last month's calendar and sent items: how many pieces of work took <b>more than two days</b> of your life? Projects, decks, reviews, migrations, escalations, hiring rounds. Most Senior Managers and Directors land between 6 and 12.</p>
+    <div class="numrow"><input type="number" id="n" min="1" max="40" value=""> <span>items last month</span></div>
+  </div>
+
+  <div class="step">
+    <h3>Step 2 &middot; Run the sentence</h3>
+    <p>For each item, try to finish this out loud: <i>"Since we shipped [the thing], [a named team or person] now does [specific thing] instead of [old thing]."</i> A name, not "the business." A real change in their week, not your deliverable. How many items <b>complete the sentence</b>?</p>
+    <div class="numrow"><input type="number" id="m" min="0" max="40" value=""> <span>items complete it</span></div>
+  </div>
+
+  <div class="step">
+    <h3>Step 3 &middot; Three honesty checks</h3>
+    <div class="chk"><input type="checkbox" id="c1"><span>For my <b>biggest</b> item, a named person outside my team could confirm the change without me in the room.</span></div>
+    <div class="chk"><input type="checkbox" id="c2"><span>In the last quarter, my boss has <b>quoted one of my numbers back</b> in his own update or a forum I was not in.</span></div>
+    <div class="chk"><input type="checkbox" id="c3"><span>My last written update led with a <b>change</b>, not with effort, activity or a topic line.</span></div>
+  </div>
+
+  <button class="btn" onclick="calc()">Calculate my invisible percentage</button>
+  <p id="err" class="tiny" style="color:var(--red);"></p>
+</div>
+
+<div id="out" class="hide">
+  <div class="step" style="background:#fff;">
+    <div class="kicker">Your result</div>
+    <div class="bignum"><span id="pct">0</span><small>%</small></div>
+    <p style="font-weight:bold;color:var(--navy);margin-top:4px;">of last month was invisible to your organisation.</p>
+    <div class="meter"><i id="fill"></i></div>
+    <div class="bench">Benchmark: most senior professionals land between 33% and 50% on an honest first pass. Below 25% is rare. Above 60% is a career signal, not a work-ethic problem.</div>
+    <div class="verdict" id="vtext"></div>
+    <div class="verdict" style="background:#fff;"><b>The multiplier check:</b> <span id="mult"></span></div>
+  </div>
+
+  <div class="gate" id="gatebox">
+    <h2>Get the rewrite pack for your invisible items</h2>
+    <p style="font-size:15px;margin-bottom:4px;">Your emailed pack contains: the five-pair library (the same work written invisibly and visibly, from real Indian workplaces), the rewrite worksheet for your marked items, and the Changed For Log so next month's number is measured, not guessed.</p>
+    <form id="leadform">
+      <label for="name">First name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+      <p class="tiny">One results email, then the occasional essay on careers, money and optionality. Unsubscribe anytime.</p>
+      <div style="margin-top:16px;"><button class="btn green" type="submit">Email me the rewrite pack</button></div>
+    </form>
+  </div>
+
+  <div class="done hide" id="donebox">
+    <h2>On its way.</h2>
+    <p id="doneline" style="font-size:15px;"></p>
+  </div>
+</div>
+
+<footer>The Optional Career &middot; Sayantan Nandi &middot; First make your time valuable. Then make it yours.</footer>
+</div>
+
+<form name="invisible-month" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="name"><input name="email">
+  <input name="items"><input name="visible_items"><input name="invisible_pct"><input name="checks">
+</form>
+
+<script>
+let R={};
+function calc(){
+  const n=parseInt(document.getElementById('n').value,10);
+  const m=parseInt(document.getElementById('m').value,10);
+  const err=document.getElementById('err');err.textContent='';
+  if(!n||n<1){err.textContent='Step 1 needs a number. Open the calendar; the number exists.';return;}
+  if(isNaN(m)||m<0){err.textContent='Step 2 needs a number, even if it is zero. Especially if it is zero.';return;}
+  if(m>n){err.textContent='Step 2 cannot exceed Step 1. If it genuinely does, last month deserves a closer look.';return;}
+  const pct=Math.round((n-m)/n*100);
+  const checks=[document.getElementById('c1').checked,document.getElementById('c2').checked,document.getElementById('c3').checked];
+  const cn=checks.filter(Boolean).length;
+  R={n,m,pct,cn,checks};
+  document.getElementById('pct').textContent=pct;
+  document.getElementById('fill').style.width=pct+'%';
+  document.getElementById('fill').style.background=pct>=60?'#8A4B3A':(pct>=33?'#1B2A4A':'#2E7D5B');
+  let v;
+  if(pct<25)v='<b>Unusually visible.</b> Either you have already rebuilt how you report work, or the sentence was run generously. The honesty checks below your score are the tiebreaker: if fewer than two are ticked, rerun Step 2 with a harder hand, because a score this good with unticked checks usually means the sentence was finished with "the business" instead of a name.';
+  else if(pct<=50)v='<b>The normal zone, and the trap.</b> A third to half of your month worked hard and changed nobody\u2019s week that anyone can name. This is where most capable Senior Managers sit for years, being described as "reliable" in rooms they are not in. The work is not the problem. What leaves your desk about the work is, and that is a format problem, which is fixable.';
+  else v='<b>A career signal.</b> Most of your month is invisible by construction: real effort, no nameable change, nothing a manager can defend in a committee. Before anything else, know this is rarely a work-ethic problem and usually a portfolio problem: work that genuinely changes nothing arrives at senior desks constantly, and saying no to it is a skill nobody teaches. Your rewrite pack matters more than most.';
+  document.getElementById('vtext').innerHTML=v;
+  const multMap=['None of the three checks passed: even your visible work is travelling without a defender, so the effective number is worse than the meter shows.',
+  'One check passed: your visible work has a single thread of evidence holding it. One re-org or one manager change cuts it.',
+  'Two checks passed: your visible work mostly survives the journey. The invisible share is now the whole story.',
+  'All three passed: what is visible is genuinely defensible. Your entire opportunity sits in the invisible share above.'];
+  document.getElementById('mult').textContent=multMap[cn];
+  document.getElementById('out').classList.remove('hide');
+  document.getElementById('out').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('leadform').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const data={'form-name':'invisible-month',name,email,items:String(R.n),visible_items:String(R.m),
+    invisible_pct:R.pct+'%',checks:R.cn+' of 3 ('+R.checks.map((c,i)=>['confirmer','quoted','led-with-change'][i]+':'+(c?'Y':'N')).join(', ')+')'};
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&')}).catch(()=>{});
+  document.getElementById('gatebox').classList.add('hide');
+  const d=document.getElementById('donebox');d.classList.remove('hide');
+  document.getElementById('doneline').textContent='The rewrite pack is heading to '+email+'. One suggestion while you wait: mark the invisible items in your calendar now, before the feeling fades. Next month, the Changed For Log makes this number automatic.';
+});
+</script>
+</body>
+</html>

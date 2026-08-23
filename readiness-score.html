@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tech Leader to Business Leader Readiness Score</title>
+<meta name="description" content="Twelve real situations from Indian GCCs, IT services and product companies. Find out which senior-leadership skills you already run, and which two are holding your case back.">
+<style>
+:root{--navy:#1B2A4A;--grey:#3A3F45;--lgrey:#8A9099;--green:#2E7D5B;--red:#8A4B3A;
+--lblue:#EAF1F8;--lbg:#F5F6F8;--rule:#C9D4E0;--white:#FFFFFF;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--grey);background:var(--white);line-height:1.55;font-size:16px;}
+.wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px;}
+.kicker{font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:var(--lgrey);margin-bottom:10px;}
+h1{color:var(--navy);font-size:32px;line-height:1.2;margin-bottom:12px;}
+.sub{font-size:17px;color:var(--grey);font-style:italic;margin-bottom:26px;}
+.dyk{background:var(--lblue);border:1px solid var(--rule);padding:18px 20px;margin-bottom:26px;}
+.dyk b{color:var(--navy);}
+.meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:30px;font-size:14px;color:var(--lgrey);}
+.meta span b{color:var(--navy);}
+.btn{display:inline-block;background:var(--navy);color:#fff;border:none;font-family:inherit;font-size:16px;font-weight:bold;padding:14px 28px;cursor:pointer;}
+.btn:hover{background:#24365C;}
+.btn.green{background:var(--green);}
+.btn.green:hover{background:#256A4D;}
+.btn:disabled{background:var(--rule);cursor:not-allowed;}
+.progress{height:6px;background:var(--lbg);margin-bottom:8px;}
+.progress i{display:block;height:6px;background:var(--navy);width:0%;transition:width .3s;}
+.plabel{font-size:13px;color:var(--lgrey);margin-bottom:22px;}
+.plabel b{color:var(--navy);}
+.skill{font-size:12px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+.scenario{background:var(--lbg);border:1px solid var(--rule);padding:18px 20px;margin-bottom:18px;font-size:15.5px;}
+.qtext{font-weight:bold;color:var(--navy);font-size:17px;margin-bottom:16px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--rule);padding:14px 16px;margin-bottom:10px;font-family:inherit;font-size:15px;color:var(--grey);cursor:pointer;line-height:1.5;}
+.opt:hover{border-color:var(--navy);background:var(--lblue);}
+.opt.sel{border:2px solid var(--navy);background:var(--lblue);}
+.nav{display:flex;justify-content:space-between;margin-top:22px;}
+.ghost{background:none;border:none;color:var(--lgrey);font-family:inherit;font-size:15px;cursor:pointer;text-decoration:underline;}
+.hide{display:none;}
+.gate{background:var(--lblue);border:1px solid var(--rule);padding:26px 24px;}
+.gate h2{color:var(--navy);font-size:22px;margin-bottom:8px;}
+.gate p{margin-bottom:14px;}
+label{display:block;font-size:13px;font-weight:bold;color:var(--navy);margin-bottom:5px;margin-top:14px;}
+input[type=text],input[type=email]{width:100%;padding:12px;border:1px solid var(--rule);font-family:inherit;font-size:16px;}
+.tiny{font-size:12.5px;color:var(--lgrey);margin-top:12px;}
+.band{font-size:26px;color:var(--navy);font-weight:bold;margin:10px 0 6px;}
+.done{border:1px solid var(--rule);padding:26px 24px;background:var(--lbg);}
+.done h2{color:var(--green);font-size:22px;margin-bottom:10px;}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--lgrey);}
+@media(max-width:520px){h1{font-size:26px;}.wrap{padding:28px 16px 60px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="kicker">A twelve-situation diagnostic &middot; Sayantan Nandi</div>
+  <h1>The Tech Leader &rarr; Business Leader Readiness Score</h1>
+  <p class="sub">Twelve real situations from Indian GCCs, IT services and product companies. In each one, somebody senior is reading you. Pick what you would actually do, not what sounds right.</p>
+  <div class="dyk"><b>Did you know?</b> A calibration committee spends six to eight minutes discussing each person, represented by whatever one manager can say from memory. Your year is decided in less time than your last coffee break. This score measures the twelve behaviours that decide what gets said in those minutes.</div>
+  <div class="meta">
+    <span><b>12</b> situations</span>
+    <span><b>7&ndash;9</b> minutes</span>
+    <span>Difficulty <b>ramps up</b>. The last four are genuinely hard.</span>
+  </div>
+  <p style="margin-bottom:24px;">You will see your band immediately. Your full skill-by-skill breakdown, including the two skills most likely to be holding your promotion case back and what to do about each, arrives by email.</p>
+  <button class="btn" onclick="start()">Start the diagnostic</button>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="hide">
+  <div class="progress"><i id="bar"></i></div>
+  <div class="plabel" id="plabel"></div>
+  <div class="skill" id="skill"></div>
+  <div class="scenario" id="scenario"></div>
+  <div class="qtext" id="qtext"></div>
+  <div id="opts"></div>
+  <div class="nav">
+    <button class="ghost" id="back" onclick="prev()">Back</button>
+    <span></span>
+  </div>
+</div>
+
+<!-- EMAIL GATE -->
+<div id="gate" class="hide">
+  <div class="gate">
+    <h2>Done. Your answers are scored.</h2>
+    <p>Your band appears the moment you submit. The part most people actually use, the skill-by-skill breakdown with your two weakest skills and one concrete move for each, goes to your inbox, because it takes more than a screen to be useful.</p>
+    <form id="leadform">
+      <label for="name">First name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Work or personal email</label>
+      <input type="email" id="email" name="email" required>
+      <p class="tiny">One results email, then the occasional essay on careers, money and optionality. No spam, unsubscribe anytime.</p>
+      <div style="margin-top:18px;"><button class="btn green" type="submit">Show my band and email my breakdown</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="hide">
+  <div class="done">
+    <h2>Check your inbox in the next 24 hours.</h2>
+    <div class="kicker">Your band</div>
+    <div class="band" id="bandname"></div>
+    <p id="bandcopy" style="margin-bottom:14px;"></p>
+    <p id="scoreline" style="font-size:14px;color:var(--lgrey);"></p>
+  </div>
+  <p style="margin-top:22px;font-size:15px;">Your email will contain your score on each of the twelve skills, the two most likely to be limiting your case this cycle, and the specific behaviour that moves each one within 30 days.</p>
+</div>
+
+<footer>The Optional Career &middot; Sayantan Nandi &middot; First make your time valuable. Then make it yours.</footer>
+</div>
+
+<!-- Netlify static form registration (hidden) -->
+<form name="readiness-score" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="name"><input name="email">
+  <input name="total"><input name="band"><input name="skill_scores"><input name="weakest_two">
+</form>
+
+<script>
+const Q=[
+{s:"Outcome Translation",d:"Easy",sc:"You run data platforms at a consumer goods company in Mumbai. At the monthly business review you get one slide and four minutes in front of the CFO and eight category heads. Your team migrated 14 pipelines this quarter, held 99.4% uptime, and dashboard adoption is up 22%.",q:"What leads your slide?",o:[
+["\u201cData Platform: 14 pipelines migrated, 99.4% uptime, adoption +22% QoQ. Phase 2 begins next month.\u201d",0],
+["\u201cSales data used to reach category managers at 2pm. It now reaches them at 7am, so the weekly pricing call moved from Thursday to Tuesday. South zone used that window twice on the detergent promo.\u201d",2],
+["A short story about the team's effort this quarter, including the two weekend outages they fought through, to build empathy before the numbers.",0],
+["The 22% adoption number, enlarged, since it is the most impressive single metric and the CFO likes growth numbers.",1]]},
+
+{s:"Legibility",d:"Easy",sc:"You are a VP at a private bank, sending your Monday update to a COO with nine direct reports who reads email on her phone between meetings, and forwards anything important with just \u201cFYI\u201d on top.",q:"Which first line survives being forwarded to somebody with zero context?",o:[
+["\u201cWeekly update: transformation programme, week 34.\u201d",0],
+["\u201cAll workstreams progressing well; details below, happy to discuss.\u201d",0],
+["\u201cDecided this week: we go live in three Pune branches first, not all forty, because the vendor's test data was two months stale.\u201d",2],
+["\u201cPlease see the attached deck for this week's status across the eleven workstreams.\u201d",1]]},
+
+{s:"Decision Framework",d:"Easy",sc:"Senior Manager, Engineering, at a Bengaluru fintech. Your vendor just quoted 11 weeks for an integration the roadmap assumed at 4. The Q3 launch is at risk. You are writing to your Director on Tuesday morning.",q:"Which email do you send?",o:[
+["\u201cWanted to flag a timeline risk: vendor says 11 weeks vs our assumed 4. Options include building in-house, moving the date, or cutting scope. Keen to get your guidance.\u201d",0],
+["\u201cThe call is between moving launch to 15 Oct or cutting the loyalty module and holding September. I recommend cutting loyalty; it serves 6% of accounts. Wrong call if marketing has promised it to the anchor partners; I've asked Priya, will know Thursday. Need your answer by Friday, else I cut loyalty and tell the vendor Monday.\u201d",2],
+["Handle it yourself and inform her after the vendor is told, since decisiveness is what Directors are looking for.",0],
+["Book 30 minutes with her this week to walk through the situation together before either of you commits to a direction.",1]]},
+
+{s:"Reword Technical to Business",d:"Medium",sc:"Director of Engineering at a B2B software company. Third attempt in 18 months to get two quarters of capacity to break up the monolith. The audience is the CFO and CEO. Your competitors ship fortnightly; you ship every six weeks, two of which are regression testing.",q:"Your opening line?",o:[
+["\u201cThe monolith has accumulated significant technical debt; coupling means small changes require full regression. We propose phased decomposition over two quarters.\u201d",0],
+["\u201cEvery engineering leader you ask will tell you this rebuild is overdue; we're now years behind industry best practice on architecture.\u201d",0],
+["\u201cWe've lost two deals this year on feature timing, both against Ascend, both about 40 lakh a year, because two of our six release weeks go to regression testing. Two quarters of work gets us to fortnightly releases, and the number gets worse every quarter we wait.\u201d",2],
+["\u201cI'll keep this simple: our developer velocity is down 30% and morale is following it. This investment fixes both.\u201d",1]]},
+
+{s:"A Senior Leader's Narrative",d:"Medium",sc:"You lead technology for a retail group, addressing 400 people at the quarterly town hall. You genuinely have five funded priorities: platform modernisation, data quality, security, the new customer app, and team capability.",q:"What do you say about priorities?",o:[
+["List all five honestly. People deserve the full picture, and every one of them is real and funded.",0],
+["\u201cWe are moving from building whatever each business asks for, to a few things every business uses. Eleven store formats on forty engineers stopped working last year. This year that means one thing: the app runs on the shared platform, even though that costs it ten weeks.\u201d",2],
+["Pick the CEO's favourite of the five and present it as the top priority, since alignment upward matters most at a town hall.",0],
+["Present the five, but rank them clearly one to five so teams know the order to trade off against.",1]]},
+
+{s:"Reduce Uncertainty",d:"Medium",sc:"Director, Digital, at a consumer bank. Your 3.2 crore business case has sat with the Finance Director for two months. No objection, no approval. You have already sent three polite follow-ups. You learn informally that he was once burned defending a digital benefit number to the CFO.",q:"Your next move?",o:[
+["A fourth follow-up, now copying your boss and his, since two months of silence has earned a polite escalation.",0],
+["Get his own planning team to validate the benefit assumption, split the case so phase one is 90 lakh and self-funding, then tell him both things in one short note, asking for nothing else in that message.",2],
+["Request a meeting to walk him through the model line by line, so he can finally see the rigour behind the number.",1],
+["Resubmit the case with the benefit number reduced 30% to make it conservative enough to be safe for him.",0]]},
+
+{s:"Lateral Influence",d:"Medium",sc:"You run marketing technology at a consumer brand. You need customer service to tag complaints in 14 new categories. It costs their agents 20 minutes a day and gains service nothing. Their head is a peer who owes you nothing, and her scorecard is repeat-contact rate and handling time. Six months ago her team asked you twice for a repeat-contact report and never got it.",q:"How do you open the conversation?",o:[
+["With the business case: the analytics the tagging enables, the customer benefit, and a proposed start date, professionally documented.",0],
+["\u201cTwo things I owe you first: the repeat-contact report your team asked for lands every Monday from this week. And I'm not asking for 14 categories, just the 3 that predict repeat contacts, your number, not mine. If handling time slips, I'll say in the ops review that I asked for it. And let's stop after a quarter and check it did anything.\u201d",2],
+["Ask your VP to raise it with her VP, since cross-functional asks of this size are what the reporting lines are for.",0],
+["Offer a trade: her team does the tagging, your team takes one of her backlog items of similar size this quarter.",1]]},
+
+{s:"Non-threatening Disagreement",d:"Medium",sc:"One-to-one with your VP. She has committed your platform launch to March externally. You believe it is eight weeks optimistic: the vendor put eleven weeks in writing on the 3rd against the four in her plan. She built that plan.",q:"What do you say?",o:[
+["\u201cI have some concerns about March. It's aggressive given where we are on integrations. I'll do everything I can, but wanted to flag it might be tight.\u201d",0],
+["\u201cI think March is about eight weeks optimistic; my number is early May. That rests on the vendor's eleven weeks, in writing on the 3rd, against four in the plan. I'd change my mind if procurement can hold them to the original date contractually, which I haven't been able to check. Does that contract have a delivery clause? What am I missing?\u201d",2],
+["Say nothing yet; gather two more weeks of integration data so that when you raise it, the case is unarguable.",0],
+["\u201cMarch won't hold, and I think we both know it. Better to reset expectations externally now than slip publicly later.\u201d",1]]},
+
+{s:"Deliberate Elimination",d:"Hard",sc:"You run engineering at a logistics tech firm. In January you published a plan: four things this year, with a written not-doing list your boss endorsed. It is now June. A powerful business head, your boss's peer, asks your boss for a \u201csmall\u201d addition: a partner-facing portal, roughly six weeks of work. Your boss forwards it to you with \u201ccan we absorb this?\u201d",q:"Your reply?",o:[
+["\u201cWe'll find a way; the team can stretch for six weeks. Better to bank goodwill with his peer than fight over one small item.\u201d",0],
+["\u201cYes, if we move one thing out. The portal displaces the billing automation, which pushes finance close staying at day 5 into next year, and Ramesh's team keeps 40 hours a month of manual work. If you and he agree that trade, I'll start Monday. If not, it goes on the January revisit list.\u201d",2],
+["\u201cOur plan is locked and was agreed in January. Adding scope mid-year is exactly what we said we'd stop doing.\u201d",1],
+["Absorb it quietly but log it as unplanned work, so that at year-end review you have evidence for why other items slipped.",0]]},
+
+{s:"Taking Calls Under Ambiguity",d:"Hard",sc:"VP, Technology, at an insurer. Five months of vendor evaluation for a core system; the two finalists remain genuinely close. Your team is fatigued, both vendors have deprioritised you, and the March start is quietly dying. A sixth month of analysis is available if you want it.",q:"What do you do?",o:[
+["Run the sixth month. A core system is a ten-year decision; one more month of diligence is cheap insurance against a wrong call.",0],
+["Call it now: Vendor A, and say publicly you are at about 65%, because five months hasn't separated them and a sixth won't. Structure the contract in two phases with a break after discovery: if the team that arrives isn't the team you were shown, stop and go to B, costing about six weeks and 30 lakh.",2],
+["Escalate the choice to the CIO with a balanced comparison, since a decision this close should carry a more senior signature.",0],
+["Pick A but present it with full confidence; saying 65% out loud in a leadership forum invites challenge and weakens the decision.",1]]},
+
+{s:"AI Delegation",d:"Hard",sc:"Director of Strategy at an industrial group. A board paper on entering a new segment is due in four days, not the usual three weeks. An AI draft produced in an afternoon reads excellently: market sizing, three competitor profiles, a regulatory section, a recommendation. You have read it twice and tightened the language. You cannot personally verify two of the three regulatory points before the deadline.",q:"What ships?",o:[
+["The paper as is. You've read it twice, it is coherent, and a board paper with a gap looks worse than one with a small unverified section.",0],
+["The paper, with the regulatory section reworded to be more hedged: \u201cindications suggest\u201d, \u201cmay be subject to\u201d, so nothing is overclaimed.",0],
+["The paper with the regulatory section removed, a one-line note that regulatory review follows in two weeks, competitor revenues marked as traced by a named analyst against filings, and the recommendation marked as yours.",2],
+["Delay the board paper a week; a document you cannot fully verify should not carry your name regardless of the deadline.",1]]},
+
+{s:"Connecting the Dots",d:"Hard",sc:"Director, Technology, at a manufacturing group. This quarter you cleanly closed three unrelated escalations: a late vendor integration, a failed data migration, a security finding on an unmanaged system. Preparing the quarterly review, you notice all three began as systems bought under the 25 lakh procurement threshold without architecture review. You count eleven such systems this year; you knew about four. The threshold is owned by Finance.",q:"What goes in your quarterly review?",o:[
+["The three closures, each with root cause and fix, since that is what was asked and all three are genuinely well handled.",1],
+["The three closures, plus a recommendation that your team be given review authority over sub-25-lakh technology purchases, since you're the one absorbing the consequences.",0],
+["The three closures, plus: \u201cThese three are one thing. Eleven systems this year came in under the procurement threshold without review; we knew about four. The threshold sits with Finance, not me. I'm not asking to own it. I'm asking to give Ramesh the list.\u201d",2],
+["Raise the pattern verbally with your boss first and keep it out of the written review until Finance has been consulted, since naming another function's process in writing creates friction.",0]]}
+];
+
+const SKILLS=["Outcome Translation","Legibility","Decision Framework","Reword Technical to Business","A Senior Leader's Narrative","Reduce Uncertainty","Lateral Influence","Non-threatening Disagreement","Deliberate Elimination","Taking Calls Under Ambiguity","AI Delegation","Connecting the Dots"];
+let cur=0; const ans=new Array(Q.length).fill(null);
+
+function start(){document.getElementById('intro').classList.add('hide');document.getElementById('quiz').classList.remove('hide');render();window.scrollTo(0,0);}
+function render(){
+  const q=Q[cur];
+  document.getElementById('bar').style.width=((cur)/Q.length*100)+'%';
+  document.getElementById('plabel').innerHTML='Question <b>'+(cur+1)+' of '+Q.length+'</b> &middot; '+q.d;
+  document.getElementById('skill').textContent=q.s;
+  document.getElementById('scenario').textContent=q.sc;
+  document.getElementById('qtext').textContent=q.q;
+  const box=document.getElementById('opts');box.innerHTML='';
+  q.o.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='opt'+(ans[cur]===i?' sel':'');b.textContent=o[0];
+    b.onclick=()=>{ans[cur]=i;setTimeout(()=>{cur<Q.length-1?(cur++,render(),window.scrollTo(0,0)):gate();},180);render();};
+    box.appendChild(b);
+  });
+  document.getElementById('back').style.visibility=cur===0?'hidden':'visible';
+}
+function prev(){if(cur>0){cur--;render();}}
+function gate(){document.getElementById('quiz').classList.add('hide');document.getElementById('gate').classList.remove('hide');window.scrollTo(0,0);}
+
+function scoreAll(){
+  let total=0;const per=[];
+  Q.forEach((q,i)=>{const p=ans[i]===null?0:q.o[ans[i]][1];total+=p;per.push(p);});
+  const weak=per.map((p,i)=>[p,i]).sort((a,b)=>a[0]-b[0]).slice(0,2).map(x=>SKILLS[x[1]]);
+  let band,copy;
+  if(total<=9){band='The Executor';copy='Your instincts are the ones that earned your first decade: accuracy, thoroughness, escalation done politely. The rules changed without announcing themselves, and this score says the change has not fully reached your defaults yet. The good news: every one of these twelve is a learnable behaviour, not a personality.';}
+  else if(total<=15){band='The Reliable Operator';copy='You are the person nothing goes wrong under, and that is exactly how your organisation describes you, which is the problem. Several senior behaviours are already there; the ones missing are the ones that make work visible and decisions yours. Your case is probably stronger than what your manager can currently say about it.';}
+  else if(total<=20){band='Operating Near the Line';copy='Most of your defaults are already senior. What separates you from the next level now is consistency under pressure and the two or three hard behaviours: the public no, the 65% call, the pattern named across functions. Your emailed breakdown will show exactly which ones.';}
+  else{band='One Level Higher';copy='Your defaults are next-level defaults. If the title has not arrived, the gap is almost certainly evidence and packaging, not behaviour: what exists in committee-visible, checkable form. The breakdown in your email focuses there.';}
+  return {total,per,weak,band,copy};
+}
+
+document.getElementById('leadform').addEventListener('submit',function(e){
+  e.preventDefault();
+  const r=scoreAll();
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const data={'form-name':'readiness-score',name,email,total:String(r.total)+' / 24',band:r.band,
+    skill_scores:SKILLS.map((s,i)=>s+': '+r.per[i]+'/2').join(' | '),weakest_two:r.weak.join(' & ')};
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&')}).catch(()=>{});
+  document.getElementById('gate').classList.add('hide');
+  document.getElementById('result').classList.remove('hide');
+  document.getElementById('bandname').textContent=r.band;
+  document.getElementById('bandcopy').textContent=r.copy;
+  document.getElementById('scoreline').textContent='Score: '+r.total+' out of 24. Skill-by-skill breakdown on its way to '+email+'.';
+  window.scrollTo(0,0);
+});
+</script>
+</body>
+</html>
