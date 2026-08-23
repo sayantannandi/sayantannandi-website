@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Executive Hour | Sayantan Nandi</title>
+<meta name="description" content="Thirty minutes with a senior executive, twice a year. Preparation for the conversations that shape how senior people describe you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --ink:#1E2126;
+    --accent:#B45A2B;
+    --accent-soft:#F6EBE2;
+    --muted:#5A5F66;
+    --line:#E3E0DA;
+    --serif:'Playfair Display', Georgia, serif;
+    --sans:'Public Sans', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  .wide{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* Hero */
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:20px}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(40px,7vw,64px);line-height:1.05;margin-bottom:24px}
+  .hero p.lede{font-size:20px;color:var(--muted);max-width:34em}
+  .hero-rule{width:56px;height:2px;background:var(--accent);margin:28px 0}
+  .format-tag{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;margin-top:28px}
+
+  /* Sections */
+  section{padding:56px 0}
+  section + section{border-top:1px solid var(--line)}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,34px);line-height:1.2;margin-bottom:20px}
+  .section-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px}
+  p + p{margin-top:16px}
+  .muted{color:var(--muted)}
+
+  /* The number strip */
+  .numstrip{background:var(--ink);color:var(--bg);padding:48px 0}
+  .numstrip .wrap{display:flex;flex-wrap:wrap;gap:40px;align-items:baseline}
+  .bignum{font-family:var(--serif);font-size:72px;font-weight:700;line-height:1;color:#fff}
+  .numstrip p{max-width:26em;font-size:16px;color:#C9CDD3}
+
+  /* Inside list */
+  .inside{list-style:none}
+  .inside li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:20px}
+  .inside li:last-child{border-bottom:none}
+  .inside .part{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent);padding-top:4px}
+  .inside h3{font-size:18px;font-weight:600;margin-bottom:6px}
+  .inside p{font-size:15.5px;color:var(--muted)}
+
+  /* Persona card */
+  .persona{background:var(--accent-soft);border-left:3px solid var(--accent);padding:32px;margin-top:8px}
+  .persona .who{font-weight:700;margin-bottom:8px}
+  .persona p{font-size:16px}
+
+  /* Product image */
+  .product-shot{background:#F7F5F1;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
+  .product-shot img{display:block;width:100%;height:auto}
+  .product-shot .caption{text-align:center;font-size:14px;color:var(--muted);margin-top:20px}
+
+  /* Not for */
+  .notfor{background:#FAF9F6;border:1px solid var(--line);padding:32px}
+  .notfor h3{font-family:var(--serif);font-size:22px;margin-bottom:12px}
+
+  /* Buy box */
+  .buy{background:var(--ink);color:var(--bg);padding:64px 0}
+  .buy .wrap{text-align:center}
+  .buy h2{color:#fff}
+  .price{font-family:var(--serif);font-size:56px;font-weight:700;color:#fff;margin:8px 0 4px}
+  .price-note{color:#C9CDD3;font-size:15px;margin-bottom:32px}
+  .buy-list{list-style:none;margin:0 auto 32px;max-width:26em;text-align:left}
+  .buy-list li{padding:8px 0 8px 28px;position:relative;font-size:16px;color:#E4E1DA}
+  .buy-list li::before{content:"";position:absolute;left:0;top:15px;width:14px;height:2px;background:var(--accent);filter:brightness(1.8)}
+  .rzp-slot{max-width:320px;margin:0 auto}
+  /* ==== RAZORPAY BUTTON GOES HERE ====
+     Paste the <form> snippet from Razorpay Payment Button
+     inside the div below. Delete the placeholder <a>. */
+  .cta-placeholder{display:block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:18px 24px;text-align:center;letter-spacing:.02em;transition:filter .15s}
+  .cta-placeholder:hover{filter:brightness(1.15)}
+  .secure{font-size:13px;color:#9AA0A8;margin-top:14px}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--line);padding:4px 0}
+  summary{cursor:pointer;font-weight:600;font-size:17px;padding:16px 0;list-style:none;position:relative;padding-right:32px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;color:var(--accent);font-weight:400}
+  details[open] summary::after{content:"−"}
+  details p{padding:0 0 18px;color:var(--muted);font-size:16px}
+
+  /* Footer */
+  footer{padding:48px 0;text-align:center;font-size:14px;color:var(--muted)}
+  footer a{color:var(--accent);text-decoration:none;font-weight:600}
+
+  @media(max-width:600px){
+    .inside li{grid-template-columns:1fr;gap:6px}
+    .bignum{font-size:56px}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">A working kit for scarce access</div>
+    <h1>The Executive<br>Hour</h1>
+    <div class="hero-rule"></div>
+    <p class="lede">You get thirty minutes with a senior executive twice a year. Most people spend it giving a status update the executive forgets by lunch. This kit is preparation for the conversations that compound.</p>
+    <span class="format-tag">6-page workbook + scripts & templates</span>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="wrap">
+    <div class="bignum">2<span style="font-size:28px">×/year</span></div>
+    <p>How often most senior professionals get real time with the executives who shape their careers. Access this scarce either compounds, or it does not. There is no neutral outcome.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">The assumption</div>
+    <h2>"I'll see where the conversation goes."</h2>
+    <p>That is how most people walk into executive time, and it is why the meeting produces nothing. The executive hears a status update, asks a polite question, and forgets the conversation by lunch. The slot was spent; nothing compounded.</p>
+    <p>Senior people describe you to each other when you are not there. Those descriptions are built in exactly these conversations. Thirty prepared minutes can shape how you are talked about for a year.</p>
+    <p>This kit is the preparation. Written before the meeting, not improvised inside it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">What is inside</div>
+    <h2>Four sections. Thirty minutes that count.</h2>
+    <ul class="inside">
+      <li>
+        <span class="part">Section 1</span>
+        <div><h3>The three prepared sentences</h3><p>The one thing you want them to know, the one thing you want to learn, and the one thing you can offer. Written before the meeting, not improvised inside it.</p></div>
+      </li>
+      <li>
+        <span class="part">Section 2</span>
+        <div><h3>The first ninety seconds</h3><p>Opening by closing a worry the executive already has, instead of opening with your org chart. The difference decides the rest of the meeting.</p></div>
+      </li>
+      <li>
+        <span class="part">Section 3</span>
+        <div><h3>Disagreeing two levels up</h3><p>A structure for pushing back without status defence, with a worked example from a global call where the India team's estimate was overruled.</p></div>
+      </li>
+      <li>
+        <span class="part">Section 4</span>
+        <div><h3>The follow-up email</h3><p>Five lines, ending with "Nothing needs a reply." The best follow-up creates zero work for the reader, and that is exactly why it is remembered.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">The worked examples</div>
+    <h2>Written for access that crosses time zones</h2>
+    <p>Every section includes a filled-in example alongside the blank version, so you always see what good looks like before writing your own. The examples run through one recurring situation, chosen because it is the hardest and most common version of the problem:</p>
+    <div class="persona" style="margin-top:20px">
+      <p>A leader of an India-based team serving global stakeholders, whose executives sit in other time zones and other contexts, including a worked example from a call where the India team's estimate was overruled.</p>
+    </div>
+    <p style="margin-top:24px">If your executives sit on your own floor, everything still applies. Prepared sentences work at any distance.</p>
+    <p style="margin-top:16px" class="muted">One caution that is inside the kit and belongs here too: this is preparation for access you already have or can legitimately request. Manufactured access reads as exactly what it is. Senior people have seen every version of it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="notfor">
+      <h3>Who this is not for</h3>
+      <p class="muted">Anyone looking for networking hacks or ways to get noticed. This is for people who already get the meeting and keep wasting it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="product-shot">
+  <div class="wide">
+    <img src="assets/executive-hour-mockup.jpg"
+         alt="The Executive Hour shown as a printed workbook, on a laptop and on a phone, with an open spread of Section 1: The thirty minutes"
+         loading="lazy">
+    <p class="caption">The workbook, open at Section 1. Works on any device, or printed.</p>
+  </div>
+</div>
+
+<div class="buy" id="buy">
+  <div class="wrap">
+    <h2>Get the kit</h2>
+    <div class="price">₹999</div>
+    <p class="price-note">One-time payment. UPI, cards and netbanking.</p>
+    <ul class="buy-list">
+      <li>6-page workbook PDF</li>
+      <li>Sentence bank in Word, reusable per meeting</li>
+      <li>Follow-up email templates</li>
+      <li>Instant download. Works offline. No subscription.</li>
+    </ul>
+    <div class="rzp-slot">
+      <!-- ==== PASTE RAZORPAY PAYMENT BUTTON SNIPPET HERE ====
+           It looks like:
+           <form><script src="https://checkout.razorpay.com/v1/payment-button.js"
+             data-payment_button_id="pl_XXXXXXXXXXXX" async></script></form>
+           Then DELETE the placeholder link below. -->
+      <a class="cta-placeholder" href="#">Buy the kit — ₹999</a>
+    </div>
+    <p class="secure">Payments processed securely by Razorpay.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Questions</div>
+    <h2>Before you buy</h2>
+    <details>
+      <summary>Is this a course?</summary>
+      <p>No. There is no video and no login sequence. It is a short workbook plus a sentence bank and email templates you reuse before every executive meeting.</p>
+    </details>
+    <details>
+      <summary>How long does it take?</summary>
+      <p>About ninety minutes, done fresh before each executive meeting. The sentence bank gets reused.</p>
+    </details>
+    <details>
+      <summary>Who is this for?</summary>
+      <p>Professionals roughly 12 to 22 years into their careers, Senior Manager to Director or VP, mostly in technology, product, data, consulting and similar functions. The worked examples are Indian professionals in global companies.</p>
+    </details>
+    <details>
+      <summary>Is the advice specific to India?</summary>
+      <p>The structures work anywhere, but the examples, numbers and situations are written for Indian professionals in global organisations: development centres, GCCs, hub teams. That context is the point, not an accident.</p>
+    </details>
+    <details>
+      <summary>Can I share it with my team?</summary>
+      <p>The licence is for one person. If you lead a team and want copies for your directs, write to me and I will sort out a fair arrangement.</p>
+    </details>
+    <details>
+      <summary>Do you offer refunds?</summary>
+      <p>Digital downloads are not refundable once accessed. If something inside is unclear or broken, email me and I will fix it or make it right.</p>
+    </details>
+    <details>
+      <summary>Will you review my specific case?</summary>
+      <p>Not as part of this product. The kit is designed so you do not need me. If enough buyers ask for this, I may build something for it, and buyers hear about it first.</p>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <p>Part of a system: <a href="/promotion-case-builder">The Promotion Case Builder</a> · <a href="/review-room-kit">The Review Room Kit</a></p>
+  <p style="margin-top:12px">© Sayantan Nandi · The Optional Career</p>
+</footer>
+
+</body>
+</html>
