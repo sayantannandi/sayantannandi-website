@@ -28,3 +28,7 @@
 #   from = "/old-path"
 #   to = "/new-path"
 #   status = 301
+
+[functions]
+directory = "netlify/functions"
+node_bundler = "esbuild"
