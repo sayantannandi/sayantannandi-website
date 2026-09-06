@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Invisible Work Calculator · How much of your year can nobody see?</title>
+<meta name="description" content="Two minutes, three numbers from your last month, and one percentage most senior professionals have never calculated about themselves.">
+<style>
+  :root{
+    --navy:#1B2A4A; --grey:#3A3F45; --lgrey:#8A9099; --green:#2E7D5B;
+    --lblue:#EAF1F8; --lgrey-bg:#F5F6F8; --rule:#C9D4E0; --red:#8A4B3A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:Arial, Helvetica, sans-serif; color:var(--grey); background:#fff; line-height:1.55;}
+  .wrap{max-width:680px; margin:0 auto; padding:32px 20px 80px;}
+  .kicker{font-size:12px; font-weight:bold; letter-spacing:.08em; text-transform:uppercase; color:var(--lgrey); margin-bottom:8px;}
+  h1{color:var(--navy); font-size:32px; line-height:1.15; margin-bottom:12px;}
+  .sub{font-style:italic; font-size:16px; margin-bottom:22px;}
+  .box{background:var(--lblue); border:1px solid var(--rule); padding:16px 18px; margin:18px 0; border-radius:2px;}
+  .box b{color:var(--navy);}
+  .fact-num{color:var(--green); font-weight:bold;}
+  .step{background:var(--lgrey-bg); border:1px solid var(--rule); border-radius:2px; padding:18px; margin:16px 0;}
+  .step h3{color:var(--navy); font-size:16px; margin-bottom:6px;}
+  .step p{font-size:14px; margin-bottom:12px;}
+  .numrow{display:flex; align-items:center; gap:16px;}
+  input[type=range]{flex:1; accent-color:var(--green); height:30px;}
+  .val{min-width:56px; text-align:center; font-size:24px; font-weight:bold; color:var(--navy);
+       background:#fff; border:1px solid var(--rule); border-radius:2px; padding:6px 4px;}
+  .hint{font-size:12.5px; color:var(--lgrey); margin-top:8px;}
+  .btn{display:inline-block; background:var(--navy); color:#fff; border:none; font-family:inherit;
+       font-size:15px; font-weight:bold; padding:13px 26px; cursor:pointer; border-radius:2px; margin-top:8px;}
+  .btn:hover{background:#25396A;}
+  .btn:focus-visible{outline:3px solid var(--green); outline-offset:2px;}
+  .hidden{display:none;}
+  .bignum{font-size:64px; font-weight:bold; color:var(--navy); line-height:1;}
+  .bignum small{font-size:24px; color:var(--lgrey); font-weight:bold;}
+  .verdict{border:1px solid var(--rule); border-left:5px solid var(--green); background:var(--lgrey-bg);
+           padding:18px 20px; margin:18px 0;}
+  .verdict h3{color:var(--navy); font-size:19px; margin-bottom:6px;}
+  .bar2{height:22px; background:var(--lgrey-bg); border:1px solid var(--rule); border-radius:2px; overflow:hidden; display:flex; margin:14px 0 4px;}
+  .bar2 .seg-v{background:var(--green); height:100%;}
+  .bar2 .seg-p{background:#9DBBD6; height:100%;}
+  .bar2 .seg-i{background:#D9DDE3; height:100%;}
+  .legend{font-size:12.5px; color:var(--lgrey); margin-bottom:10px;}
+  .legend i{display:inline-block; width:11px; height:11px; border-radius:2px; margin:0 5px 0 12px; vertical-align:-1px;}
+  label{display:block; font-size:13px; font-weight:bold; color:var(--navy); margin:14px 0 4px;}
+  input[type=text], input[type=email]{width:100%; padding:12px; font-family:inherit; font-size:15px;
+       border:1px solid var(--rule); border-radius:2px; color:var(--grey);}
+  input[type=text]:focus-visible, input[type=email]:focus-visible{outline:3px solid var(--green); outline-offset:1px;}
+  .fine{font-size:12.5px; color:var(--lgrey); margin-top:10px;}
+  .footer{margin-top:56px; padding-top:14px; border-top:1px solid var(--rule); font-size:12.5px; color:var(--lgrey);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="intro">
+    <div class="kicker">A two-minute calculator · Free · Three numbers from your last month</div>
+    <h1>The Invisible Work Calculator</h1>
+    <p class="sub">How much of your working month can your organisation actually see? Most senior professionals have never run this number on themselves. It takes two minutes, and it stings.</p>
+
+    <div class="box">
+      <b>Did you know?</b> In annual calibration, most companies give each person <span class="fact-num">six to eight minutes</span> of discussion, argued by a manager working entirely from memory. Whatever he cannot repeat about your year does not exist in that room. This calculator measures how much of your month survives that filter.
+    </div>
+
+    <p style="margin-bottom:14px;">You will need one thing open in another tab: <b>your calendar for the last four weeks</b>. Not your memory. Memory keeps the parts you are proud of and drops the parts nobody noticed.</p>
+    <button class="btn" onclick="show('calc')">Open the calculator</button>
+  </div>
+
+  <div id="calc" class="hidden">
+    <div class="kicker">Three numbers · Be honest, nobody is watching</div>
+    <h1 style="font-size:26px;">Your last four weeks</h1>
+
+    <div class="step">
+      <h3>1 · The work</h3>
+      <p>Scanning your calendar and sent items: how many pieces of work took <b>more than two days</b> of your life in the last four weeks? Projects, decks, reviews, migrations, escalations, hiring rounds. Count them all.</p>
+      <div class="numrow">
+        <input type="range" id="rA" min="3" max="20" value="8" oninput="sync()" aria-label="Items of work over two days">
+        <div class="val" id="vA">8</div>
+      </div>
+      <p class="hint">Most Senior Managers and Directors land between 6 and 15.</p>
+    </div>
+
+    <div class="step">
+      <h3>2 · The visible work</h3>
+      <p>For how many of those can you complete this sentence, honestly, right now: <b>\u201CBecause of this, [a named person or team] now does [a specific thing] differently.\u201D</b> A name, not \u201Cthe business.\u201D A changed Tuesday, not an output delivered.</p>
+      <div class="numrow">
+        <input type="range" id="rB" min="0" max="20" value="4" oninput="sync()" aria-label="Items where a named person works differently">
+        <div class="val" id="vB">4</div>
+      </div>
+      <p class="hint">If you are stretching to make the sentence fit, it does not count. That stretch is the entire finding.</p>
+    </div>
+
+    <div class="step">
+      <h3>3 · The defensible work</h3>
+      <p>Of those, how many have a <b>before number and an after number</b> you could say out loud in a review without checking? \u201C2pm to 7am.\u201D \u201CSix days to 22 hours.\u201D \u201CNine Sev-1s to three.\u201D</p>
+      <div class="numrow">
+        <input type="range" id="rC" min="0" max="20" value="2" oninput="sync()" aria-label="Items with a before and after number">
+        <div class="val" id="vC">2</div>
+      </div>
+      <p class="hint">This is usually the smallest number, and it is the only one a calibration room can use.</p>
+    </div>
+
+    <button class="btn" onclick="calc()">Show me my number</button>
+  </div>
+
+  <div id="result" class="hidden">
+    <div class="kicker">Your last four weeks, as the organisation sees them</div>
+    <div class="bignum"><span id="pct">0</span><small>%</small></div>
+    <p style="font-size:17px; margin:6px 0 4px;"><b style="color:var(--navy);">of your month was invisible</b> to the people who decide what happens to your career.</p>
+    <p class="hint" style="margin-bottom:14px;">Invisible means: real effort, honestly spent, that completes no sentence anybody can carry into a room you are not in.</p>
+
+    <div class="bar2" id="stack" role="img" aria-label="Breakdown of visible, partially visible and invisible work"></div>
+    <div class="legend">
+      <i style="background:#2E7D5B;"></i>Defensible (name + numbers)
+      <i style="background:#9DBBD6;"></i>Visible (name, no numbers)
+      <i style="background:#D9DDE3;"></i>Invisible
+    </div>
+
+    <div class="verdict">
+      <h3 id="vTitle"></h3>
+      <p id="vLine"></p>
+    </div>
+
+    <p>Here is the part worth knowing: this is <b>not a working-style problem, it is a format problem</b>, and format problems are fixable in a month. I have a short personalised reading for your numbers: what your ratio typically means at Senior Manager and Director level, the one-sentence rewrite that converts invisible work into defensible work, and the 90-second Friday habit that stops the leak. I send it by email, because it includes a worksheet you will want to keep.</p>
+
+    <form name="invisible-work" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return sendForm(event)">
+      <input type="hidden" name="form-name" value="invisible-work">
+      <p class="hidden"><label>Do not fill this in: <input name="bot-field"></label></p>
+      <input type="hidden" name="items" id="f_items">
+      <input type="hidden" name="visible" id="f_visible">
+      <input type="hidden" name="defensible" id="f_defensible">
+      <input type="hidden" name="invisible_pct" id="f_pct">
+      <label for="nm">First name</label>
+      <input type="text" id="nm" name="name" required autocomplete="given-name" placeholder="What should the email call you?">
+      <label for="em">Email</label>
+      <input type="email" id="em" name="email" required autocomplete="email" placeholder="Where the reading should arrive">
+      <div style="margin-top:16px;"><button class="btn" type="submit">Email me my reading</button></div>
+      <p class="fine">One email with your reading and the worksheet, then the occasional piece on careers, money and the decisions that create more choices. Unsubscribe in one click.</p>
+    </form>
+  </div>
+
+  <div id="thanks" class="hidden">
+    <div class="kicker">On its way</div>
+    <h1 style="font-size:26px;">Check your inbox in the next few minutes.</h1>
+    <div class="box">
+      <b>If it lands in Promotions or Spam, drag it to Primary once.</b> That one drag teaches your inbox where I belong, and the worksheet in that email is the one people reopen the week before appraisals.
+    </div>
+    <p>While you wait: the deeper version of this diagnostic is the <a href="one-level-higher-scorecard.html" style="color:var(--green); font-weight:bold;">One Level Higher Scorecard</a>, twelve real situations across every senior behaviour, not just visibility. Eight minutes, and the hard four at the end are genuinely hard.</p>
+  </div>
+
+  <div class="footer">The Invisible Work Calculator · Sayantan Nandi · Operating One Level Higher · First make your time valuable. Then make it yours.</div>
+</div>
+
+<script>
+function show(id){
+  ['intro','calc','result','thanks'].forEach(x=>document.getElementById(x).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  window.scrollTo({top:0});
+}
+function sync(){
+  const A = +document.getElementById('rA').value;
+  let B = Math.min(+document.getElementById('rB').value, A);
+  let C = Math.min(+document.getElementById('rC').value, B);
+  document.getElementById('rB').max = A; document.getElementById('rB').value = B;
+  document.getElementById('rC').max = B; document.getElementById('rC').value = C;
+  document.getElementById('vA').textContent = A;
+  document.getElementById('vB').textContent = B;
+  document.getElementById('vC').textContent = C;
+}
+function calc(){
+  sync();
+  const A = +document.getElementById('rA').value,
+        B = +document.getElementById('rB').value,
+        C = +document.getElementById('rC').value;
+  const inv = Math.round((A-B)/A*100);
+  const def = Math.round(C/A*100), vis = Math.round((B-C)/A*100);
+  document.getElementById('pct').textContent = inv;
+  document.getElementById('stack').innerHTML =
+    '<div class="seg-v" style="width:'+def+'%"></div>' +
+    '<div class="seg-p" style="width:'+vis+'%"></div>' +
+    '<div class="seg-i" style="width:'+(100-def-vis)+'%"></div>';
+  let t, l;
+  if(inv >= 60){ t = 'The classic Trapped Earner pattern';
+    l = 'Well over half your month cannot be described by anyone but you. This is the profile behind \u201Cwe see you as safe\u201D and second consecutive Meets Expectations, and it has nothing to do with the quality of the work. The fix is a sentence, not a personality change.'; }
+  else if(inv >= 35){ t = 'The typical senior profile, with a leak';
+    l = 'Your visible work is real, and roughly a third to a half of your effort still evaporates before it reaches any room that matters. At your level that leak is usually 2 to 3 promotion-relevant proofs per year, quietly lost.'; }
+  else if(inv >= 15){ t = 'Better than most of your calibration pool';
+    l = 'Most of your month completes the sentence. Your remaining gap is usually the numbers: work people can name but nobody can defend, because there is no before and after attached. That is the cheapest fix on this page.'; }
+  else { t = 'The visibility is not your bottleneck';
+    l = 'Your month travels. For a profile like yours the constraint has usually moved one level up: decisions handed over, the no with a named cost, the pattern across functions. The scorecard linked in your email will find it.'; }
+  document.getElementById('vTitle').textContent = t;
+  document.getElementById('vLine').textContent = l;
+  document.getElementById('f_items').value = A;
+  document.getElementById('f_visible').value = B;
+  document.getElementById('f_defensible').value = C;
+  document.getElementById('f_pct').value = inv;
+  show('result');
+}
+function sendForm(e){
+  e.preventDefault();
+  const data = new FormData(e.target);
+  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(data).toString()})
+  .then(()=>{ show('thanks'); })
+  .catch(()=>{ alert('That did not go through. Please check your connection and try again.'); });
+  return false;
+}
+</script>
+</body>
+</html>

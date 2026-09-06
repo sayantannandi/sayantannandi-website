@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The One Level Higher Scorecard · Operating One Level Higher</title>
+<meta name="description" content="Twelve real situations from Indian GCCs, IT services and operations. Answer like the room is watching. Your skill-by-skill map arrives by email.">
+<style>
+  :root{
+    --navy:#1B2A4A; --grey:#3A3F45; --lgrey:#8A9099; --green:#2E7D5B;
+    --lblue:#EAF1F8; --lgrey-bg:#F5F6F8; --rule:#C9D4E0; --red:#8A4B3A; --lred:#F7EFEC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:Arial, Helvetica, sans-serif; color:var(--grey); background:#fff; line-height:1.55;}
+  .wrap{max-width:720px; margin:0 auto; padding:32px 20px 80px;}
+  .kicker{font-size:12px; font-weight:bold; letter-spacing:.08em; text-transform:uppercase; color:var(--lgrey); margin-bottom:8px;}
+  h1{color:var(--navy); font-size:34px; line-height:1.15; margin-bottom:12px;}
+  h2{color:var(--navy); font-size:20px; margin:26px 0 10px;}
+  .sub{font-style:italic; font-size:16px; color:var(--grey); margin-bottom:22px;}
+  .box{background:var(--lblue); border:1px solid var(--rule); padding:16px 18px; margin:18px 0; border-radius:2px;}
+  .box b{color:var(--navy);}
+  .fact-num{color:var(--green); font-weight:bold;}
+  .meta{display:flex; gap:18px; flex-wrap:wrap; margin:18px 0 26px; font-size:13.5px; color:var(--lgrey);}
+  .meta span b{color:var(--navy);}
+  .btn{display:inline-block; background:var(--navy); color:#fff; border:none; font-family:inherit;
+       font-size:15px; font-weight:bold; padding:13px 26px; cursor:pointer; border-radius:2px;}
+  .btn:hover{background:#25396A;}
+  .btn:focus-visible{outline:3px solid var(--green); outline-offset:2px;}
+  .btn.ghost{background:#fff; color:var(--navy); border:1px solid var(--rule); font-weight:normal;}
+  .hidden{display:none;}
+  /* quiz */
+  .progress{height:6px; background:var(--lgrey-bg); border-radius:3px; margin:6px 0 6px; overflow:hidden;}
+  .progress i{display:block; height:100%; background:var(--green); width:0%; transition:width .25s ease;}
+  @media (prefers-reduced-motion: reduce){ .progress i{transition:none;} }
+  .stage{font-size:12px; font-weight:bold; letter-spacing:.06em; text-transform:uppercase; color:var(--lgrey); margin-bottom:16px;}
+  .stage b{color:var(--green);}
+  .scen{background:var(--lgrey-bg); border:1px solid var(--rule); padding:16px 18px; margin:14px 0 16px; border-radius:2px; font-size:15px;}
+  .scen .role{font-weight:bold; color:var(--navy); display:block; margin-bottom:6px;}
+  .qtext{font-weight:bold; color:var(--navy); font-size:16px; margin:14px 0 12px;}
+  .opt{display:block; width:100%; text-align:left; background:#fff; border:1px solid var(--rule); border-radius:2px;
+       padding:13px 15px; margin:9px 0; font-family:inherit; font-size:14.5px; color:var(--grey); cursor:pointer; line-height:1.5;}
+  .opt:hover{border-color:var(--navy); background:var(--lblue);}
+  .opt:focus-visible{outline:3px solid var(--green); outline-offset:1px;}
+  .opt.sel{border:2px solid var(--navy); background:var(--lblue); padding:12px 14px;}
+  .nav{display:flex; justify-content:space-between; align-items:center; margin-top:18px;}
+  .locked{font-size:13px; color:var(--green); font-weight:bold; margin-top:10px; min-height:18px;}
+  /* result + form */
+  .band{border:1px solid var(--rule); border-left:5px solid var(--green); background:var(--lgrey-bg); padding:18px 20px; margin:18px 0;}
+  .band h3{color:var(--navy); font-size:22px; margin-bottom:6px;}
+  label{display:block; font-size:13px; font-weight:bold; color:var(--navy); margin:14px 0 4px;}
+  input[type=text], input[type=email]{width:100%; padding:12px; font-family:inherit; font-size:15px;
+       border:1px solid var(--rule); border-radius:2px; color:var(--grey);}
+  input:focus-visible{outline:3px solid var(--green); outline-offset:1px;}
+  .fine{font-size:12.5px; color:var(--lgrey); margin-top:10px;}
+  .footer{margin-top:56px; padding-top:14px; border-top:1px solid var(--rule); font-size:12.5px; color:var(--lgrey);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <div id="intro">
+    <div class="kicker">A twelve-situation diagnostic · Free · About 8 minutes</div>
+    <h1>The One Level Higher Scorecard</h1>
+    <p class="sub">Twelve real situations from Indian GCCs, IT services and operations floors. In each one, a capable senior person did something reasonable, and it quietly cost them. Answer like the room is watching.</p>
+
+    <div class="box">
+      <b>Did you know?</b> In a 1990 Stanford study, people tapping the rhythm of a well-known song predicted that <span class="fact-num">50%</span> of listeners would recognise it. The actual number was <span class="fact-num">2.5%</span>. The tapper hears the whole song. The listener hears knocking. Your work is the song. What leaves your desk is the knocking, and every situation below turns on that gap.
+    </div>
+
+    <div class="meta">
+      <span><b>12</b> situations</span>
+      <span><b>3</b> difficulty stages</span>
+      <span><b>0</b> right-sounding jargon answers</span>
+      <span>Your skill-by-skill map arrives <b>by email</b></span>
+    </div>
+
+    <p style="margin-bottom:8px;">Three ground rules, because this is a diagnostic and not a quiz:</p>
+    <p style="margin-bottom:6px;">1. Answer with what you would <b>actually do on a Tuesday</b>, not what a book would advise.</p>
+    <p style="margin-bottom:6px;">2. More than one option is defensible in every question. You are choosing what a senior room rewards, which is a narrower thing than what is correct.</p>
+    <p style="margin-bottom:18px;">3. The last four are genuinely hard. That is deliberate. They separate operating at your level from operating one level higher.</p>
+
+    <button class="btn" onclick="startQuiz()">Start the scorecard</button>
+  </div>
+
+  <!-- ============ QUIZ ============ -->
+  <div id="quiz" class="hidden">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="stage" id="stage"></div>
+    <div id="qhost"></div>
+    <div class="nav">
+      <button class="btn ghost" id="backBtn" onclick="goBack()">Back</button>
+      <span class="locked" id="lockmsg"></span>
+      <button class="btn" id="nextBtn" onclick="goNext()" disabled>Next</button>
+    </div>
+  </div>
+
+  <!-- ============ RESULT TEASER + CAPTURE ============ -->
+  <div id="capture" class="hidden">
+    <div class="kicker">Scorecard complete</div>
+    <h1 style="font-size:28px;">Your answers are locked in.</h1>
+    <div class="band">
+      <h3 id="bandName"></h3>
+      <p id="bandLine"></p>
+    </div>
+    <p>That is the headline. The part that is actually useful is the <b>skill-by-skill map</b>: which of the twelve senior behaviours you already run, which two are holding your next level hostage, and the specific move to run in the next 30 days for each gap. It is personalised to your answers, and it is the kind of thing worth reading twice, so I send it by email rather than flashing it on a screen.</p>
+
+    <form name="scorecard" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return sendForm(event, 'scorecard')">
+      <input type="hidden" name="form-name" value="scorecard">
+      <p class="hidden"><label>Do not fill this in: <input name="bot-field"></label></p>
+      <input type="hidden" name="answers" id="f_answers">
+      <input type="hidden" name="total" id="f_total">
+      <input type="hidden" name="band" id="f_band">
+      <label for="nm">First name</label>
+      <input type="text" id="nm" name="name" required autocomplete="given-name" placeholder="What should the email call you?">
+      <label for="em">Work or personal email</label>
+      <input type="email" id="em" name="email" required autocomplete="email" placeholder="Where the map should arrive">
+      <div style="margin-top:18px;"><button class="btn" type="submit">Email me my skill map</button></div>
+      <p class="fine">One email with your map, then the occasional piece on careers, money and the decisions that create more choices. No forwarding your address anywhere, ever. Unsubscribe in one click.</p>
+    </form>
+  </div>
+
+  <!-- ============ THANKS ============ -->
+  <div id="thanks" class="hidden">
+    <div class="kicker">On its way</div>
+    <h1 style="font-size:28px;">Check your inbox in the next few minutes.</h1>
+    <p>Your skill map is being prepared. Two small things while you wait, and both decide whether you actually receive it:</p>
+    <div class="box">
+      <b>1. Check Promotions or Spam once.</b> If the email landed there, drag it to your Primary inbox. That one drag teaches your inbox where I belong.<br><br>
+      <b>2. Star it.</b> The map references your answers by number, and people tell me they come back to it before appraisals. A star makes it findable in March, when you will want it.
+    </div>
+    <p>The hard five at the end trip up most Directors too. The map will show you exactly where, and what it costs.</p>
+  </div>
+
+  <div class="footer">The One Level Higher Scorecard · Sayantan Nandi · Operating One Level Higher · First make your time valuable. Then make it yours.</div>
+</div>
+
+<script>
+const QUESTIONS = [
+ // ---------- STAGE 1: THE WARM-UP (Q1-4) ----------
+ {stage:"Stage one · The warm-up · 1 of 12", skill:"Outcome Translation",
+  scen:"<span class='role'>Senior Director, Data &amp; Analytics · consumer goods, Mumbai</span> Your team of 58 just finished a brutal quarter: 14 legacy pipelines migrated to the new warehouse, 99.4% uptime, dashboard adoption up 22%. You get one slide and four minutes at the monthly business review, in front of the CFO and eight category heads.",
+  q:"Which opening line goes on the slide?",
+  opts:[
+   {t:"\u201CData Platform: migrated 14 legacy pipelines to the new warehouse. Uptime 99.4%. Dashboard adoption +22% QoQ.\u201D", p:0},
+   {t:"\u201CSales data used to reach category managers at 2pm. It now reaches them at 7am, so the weekly pricing call moved from Thursday to Tuesday.\u201D", p:2},
+   {t:"\u201CThe data platform transformation is complete: a modern, scalable foundation for the company\u2019s digital ambitions.\u201D", p:0},
+   {t:"\u201CDespite two P1 incidents, the team delivered the full migration on time. I want to recognise their weekend effort.\u201D", p:1}
+  ]},
+ {stage:"Stage one · The warm-up · 2 of 12", skill:"Legibility",
+  scen:"<span class='role'>VP, Digital Transformation · private bank</span> Your Monday update goes to a COO with nine direct reports. She reads it on her phone, in a lift, and if it matters she forwards it to someone with even less context, with \u201CFYI\u201D on top. This week: go-live decision made (three Pune branches first, not all forty), December date at risk, and you need one call made to a vendor VP.",
+  q:"What is the first line of the update?",
+  opts:[
+   {t:"\u201CWeekly update: transformation programme. Workstream summary below, risks flagged in section 3.\u201D", p:0},
+   {t:"\u201CQuick summary of a busy week across all workstreams, detail below for your reference.\u201D", p:0},
+   {t:"\u201CDecided this week: we go live in three Pune branches first, not all forty, because the vendor\u2019s test data was two months stale.\u201D", p:2},
+   {t:"\u201CFlagging a risk to the December date that needs your attention, along with progress on the pilot.\u201D", p:1}
+  ]},
+ {stage:"Stage one · The warm-up · 3 of 12", skill:"Reword Technical to Business",
+  scen:"<span class='role'>Director of Engineering · B2B software</span> Third attempt in eighteen months to get two quarters of capacity to break up the monolith. The audience is the CFO and CEO. The technical facts: releases every six weeks, of which two weeks are regression testing; competitors ship fortnightly; sales says two deals were lost this year on feature timing, both against the same rival, both worth about 40 lakh a year.",
+  q:"Which version of the ask do you lead with?",
+  opts:[
+   {t:"\u201CThe monolith has accumulated significant technical debt. Coupling means small changes require full regression. We propose phased decomposition over two quarters.\u201D", p:0},
+   {t:"\u201CTwo of every six release weeks go to regression testing, because any change can break anything. We\u2019ve lost two deals worth about 40 lakh a year each on feature timing. Two quarters of decomposition gets us to fortnightly releases, and the number gets worse every quarter we wait.\u201D", p:2},
+   {t:"\u201CModernising this platform is essential to our competitiveness and developer experience. I\u2019ve prepared a detailed architecture document for anyone who wants the specifics.\u201D", p:0},
+   {t:"\u201CEngineering velocity is down 30% year on year due to platform constraints. We need investment to reverse the trend.\u201D", p:1}
+  ]},
+ {stage:"Stage one · The warm-up · 4 of 12", skill:"Reduce Uncertainty",
+  scen:"<span class='role'>Director, Operations · GCC, Hyderabad</span> Your SVP in London is visiting for two days. Your 25-minute slot is at 4pm on day two, after eleven other presentations. In March he was personally named in two regulatory findings that your team has since closed, confirmed by compliance on Tuesday. You also need his decision on a vendor contract.",
+  q:"How do you open the meeting?",
+  opts:[
+   {t:"Walk him through the operations dashboard first so he has full context before any decisions.", p:0},
+   {t:"\u201CBefore anything else: the regulatory remediation you were named on is closed, all findings, confirmed Tuesday. The only open item in my area is the day-3 close through year-end peak. Can I use our time on the one decision I need from you?\u201D", p:2},
+   {t:"Ask about his trip and his impressions of the India centre so far, then move to your deck.", p:0},
+   {t:"Open with the vendor decision directly, since it is the thing you need and his time is short.", p:1}
+  ]},
+
+ // ---------- STAGE 2: THE MIDDLE RUNGS (Q5-8) ----------
+ {stage:"Stage two · The middle rungs · 5 of 12", skill:"Decision Framework",
+  scen:"<span class='role'>Senior Manager, Engineering · fintech, Bengaluru</span> Your main vendor just quoted 11 weeks for an integration the roadmap assumed would take 4. This threatens the Q3 launch. Options exist: push the launch, cut the loyalty module (used by ~6% of accounts), or build in-house. You email your Director on Tuesday morning.",
+  q:"Which email do you send?",
+  opts:[
+   {t:"\u201CWanted to flag a risk on the integration timeline. Vendor has quoted 11 weeks against our assumed 4. A few options to consider: build in-house, push the date, or reduce scope. Keen to get your guidance.\u201D", p:0},
+   {t:"\u201CFYI: vendor timeline has slipped to 11 weeks. I\u2019m working the problem and will revert with a recommendation once I\u2019ve explored all angles with the team.\u201D", p:1},
+   {t:"\u201CThe call is between pushing to 15 October or cutting loyalty and holding September. I recommend cutting loyalty: 11 weeks is real, I pushed twice, and loyalty serves ~6% of accounts. Wrong call if marketing has promised loyalty to the anchor partners \u2014 I\u2019ve asked Priya, answer Thursday. Need your answer by Friday, else I cut loyalty and tell the vendor Monday.\u201D", p:2},
+   {t:"Book 30 minutes with the Director for tomorrow so you can walk through the trade-offs live rather than over email.", p:0}
+  ]},
+ {stage:"Stage two · The middle rungs · 6 of 12", skill:"A Senior Leader's Narrative",
+  scen:"<span class='role'>VP, Technology · retail group, 9,000 people</span> Quarterly town hall, 400 people, most of whom will not speak to you again this quarter. Your funded priorities: platform modernisation, data quality, security, the new customer app, team capability. Last quarter, two teams fought over shared engineers because both believed theirs was the top priority.",
+  q:"What do you say about direction?",
+  opts:[
+   {t:"Name all five priorities honestly, since all five are real and funded, and commit to reporting progress on each.", p:0},
+   {t:"\u201CWe are moving from building whatever each business asks for, to a small number of things every business uses. Forcing it: eleven store formats on forty engineers. This year that means one thing: the new app runs on the shared platform, even though that makes it ten weeks slower.\u201D", p:2},
+   {t:"Share the vision: \u201Cto be the most customer-obsessed, data-driven technology organisation in Indian retail,\u201D then let each team leader present their own roadmap.", p:0},
+   {t:"Focus the town hall on celebrating last quarter\u2019s wins, and handle prioritisation in leadership meetings where the trade-offs can be debated properly.", p:1}
+  ]},
+ {stage:"Stage two · The middle rungs · 7 of 12", skill:"Lateral Influence",
+  scen:"<span class='role'>Director, Marketing Technology · consumer brand</span> You need customer service to tag complaints across 14 categories. It costs their agents ~20 minutes a day and gains them nothing directly. Their VP is a peer: she doesn\u2019t report to you, and she is measured on handling time and repeat contacts. Her team once asked yours twice for a repeat-contact report and never got it.",
+  q:"What is your move?",
+  opts:[
+   {t:"Write a rigorous note: the analytics the tagging enables, the customer benefit, the competitive context. Follow up in two weeks; escalate to both VPs if it stalls.", p:0},
+   {t:"Build the repeat-contact report they asked for and ship it Monday. Then ask for 3 tags, not 14 \u2014 the three that predict repeat contacts, her scorecard metric \u2014 with a one-quarter review, and say publicly that if handling time slips, that lands on you.", p:2},
+   {t:"Take it to your shared boss framed as a company-level data initiative, so the prioritisation call is made above both of you and nobody\u2019s relationship is strained.", p:0},
+   {t:"Offer her team two of your analysts for a quarter in exchange for the tagging effort, so the cost is visibly shared.", p:1}
+  ]},
+ {stage:"Stage two · The middle rungs · 8 of 12", skill:"AI Delegation",
+  scen:"<span class='role'>Director, Strategy · industrial group</span> A board paper on entering a new segment is due in four days instead of the usual three weeks. An AI draft produced in an afternoon reads extremely well: market sizing, three competitor profiles, a regulatory section, a recommendation. You cannot personally verify two of the three regulatory points in the time available.",
+  q:"What do you do with the regulatory section?",
+  opts:[
+   {t:"Read it twice carefully, tighten the language, and keep it \u2014 it reads consistently with what you know of the space, and the board expects completeness.", p:0},
+   {t:"Keep it with a caveat: \u201Cregulatory landscape evolving; positions to be validated with external counsel post-decision.\u201D", p:1},
+   {t:"Delete it. Ship the paper with a named gap: \u201Cregulatory assessment to follow by [date]\u201D \u2014 and put the verified market numbers into three buckets: traced by you, traced by a named colleague, and judgment that is yours.", p:2},
+   {t:"Push the deadline by a week so the section can be verified properly. A board paper is not the place to compromise.", p:1}
+  ]},
+
+ // ---------- STAGE 3: THE HARD FOUR (Q9-12) ----------
+ {stage:"Stage three · The hard four · 9 of 12", skill:"Deliberate Elimination",
+  scen:"<span class='role'>Director of Engineering · logistics tech</span> Annual planning. Eighteen initiatives across four teams, all requested by real stakeholders with real needs. You know, from last year, that eighteen means everything runs at sixty percent and the reckoning arrives in October as a series of individually surprised conversations. Your boss has already told you, twice, to \u201Cbe more strategic.\u201D",
+  q:"What does your plan look like?",
+  opts:[
+   {t:"All eighteen, sequenced across quarters with clear dependencies and six marked as stretch, reviewed quarterly so priorities can adapt as the year unfolds.", p:0},
+   {t:"Four things this year, and the not-doing list walked through in the meeting: \u201CWe are not rebuilding the partner portal, which means manual onboarding stays \u2014 about 40 hours a month for the commercial team, and Vinod knows. I am choosing this, and I\u2019ll revisit in January.\u201D", p:2},
+   {t:"Eight things: a disciplined cut from eighteen, with the dropped ten listed in an appendix as \u201Cdeprioritised pending capacity,\u201D so stakeholders can see the trade-offs transparently.", p:1},
+   {t:"Ask each of the four stakeholder groups to force-rank their asks, then build the plan from their top picks, so the prioritisation is owned by the business rather than imposed by engineering.", p:0}
+  ]},
+ {stage:"Stage three · The hard four · 10 of 12", skill:"Non-threatening Disagreements",
+  scen:"<span class='role'>Director, Technology · consumer bank</span> Your boss, a VP, has committed to a March launch date you believe is about eight weeks optimistic: the vendor put eleven weeks in writing on the 3rd against the four in the plan. You are alone in a one-to-one. He built this plan and has already announced March upward.",
+  q:"What do you say?",
+  opts:[
+   {t:"\u201CI have some concerns about March. It\u2019s aggressive given where we are on integrations. I\u2019ll do everything I can to make it work, but I wanted to flag that it might be tight.\u201D", p:0},
+   {t:"Say nothing yet. Work the vendor hard for two weeks first; raising a date problem you might still solve damages confidence for no reason.", p:0},
+   {t:"\u201CI think March is about eight weeks optimistic; my number is early May. That rests on the vendor\u2019s eleven weeks, in writing, on the 3rd. I\u2019d change my mind if procurement can hold them to four contractually \u2014 I couldn\u2019t check. Before we confirm March externally: does that contract have a delivery clause? What am I missing?\u201D", p:2},
+   {t:"\u201CMarch is not achievable and I think we both know it. I\u2019d rather we reset expectations now than miss publicly in Q4. I can have a realistic re-plan by Friday.\u201D", p:1}
+  ]},
+ {stage:"Stage three · The hard four · 11 of 12", skill:"Taking Calls Under Ambiguity",
+  scen:"<span class='role'>VP, Technology · insurance</span> Five months of vendor evaluation for a core system. The two finalists remain genuinely close; a third round of reference checks is proposed. Both vendors have quietly deprioritised the account, the internal team is drifting, and the March start date is already gone, though nobody has said so out loud.",
+  q:"What is your next move?",
+  opts:[
+   {t:"Run the third round. On a core system that will live for a decade, four more weeks of diligence is cheap insurance against an irreversible mistake.", p:0},
+   {t:"\u201CI\u2019m calling it: Vendor A, at about 65%, which won\u2019t improve \u2014 five months hasn\u2019t separated them and a sixth won\u2019t. A wins on the implementation team. Wrong if their lead architect leaves, so the contract is two-phase with a break after discovery: if the team that turns up isn\u2019t the team we were shown, we stop and go to B, costing six weeks and 30 lakh.\u201D", p:2},
+   {t:"Split the difference: award discovery phases to both vendors in parallel and decide on evidence. Costlier, but it converts opinion into data.", p:1},
+   {t:"Take both finalists to the steering committee with a balanced scorecard and let the committee decide, since a call this close should carry collective ownership.", p:0}
+  ]},
+ {stage:"Stage three · The hard four · 12 of 12", skill:"Connecting the Dots",
+  scen:"<span class='role'>Director, Technology · manufacturing group</span> Three escalations in one quarter: a late vendor integration, a failed data migration, a security finding on an unmanaged system. You handled each well. Digging in, you find all three began as systems bought under the 25-lakh procurement threshold without architecture review. You count eleven such systems this year; you knew about four. Procurement policy sits with Finance, under Ramesh.",
+  q:"Having closed all three incidents, what do you do with the pattern?",
+  opts:[
+   {t:"Document the root-cause link in each incident's closure report, so the pattern is on record for anyone reviewing them together.", p:0},
+   {t:"Propose a technology governance board, chaired by you, to review all technology purchases regardless of size \u2014 the gap is clearly an architecture-ownership problem.", p:0},
+   {t:"\u201CThese three are one thing. Not a vendor, migration or security problem: anything under 25 lakh gets bought without us seeing it. Eleven systems this year; we knew about four. The decider is the procurement threshold, which is Finance\u2019s, not mine. I\u2019m not asking to own it \u2014 I\u2019m asking to give Ramesh the eleven and let him judge the threshold.\u201D", p:2},
+   {t:"Raise the threshold pattern in the quarterly risk forum as an emerging theme, and recommend an internal-audit review to size the exposure properly before naming causes.", p:1}
+  ]}
+];
+
+let idx = 0;
+const picks = new Array(QUESTIONS.length).fill(null);
+
+function startQuiz(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  render();
+  window.scrollTo({top:0});
+}
+function render(){
+  const q = QUESTIONS[idx];
+  document.getElementById('stage').innerHTML = q.stage + ' &nbsp;·&nbsp; <b>' + q.skill + '</b>';
+  document.getElementById('bar').style.width = ((idx)/QUESTIONS.length*100) + '%';
+  let h = '<div class="scen">' + q.scen + '</div><div class="qtext">' + q.q + '</div>';
+  q.opts.forEach((o,i)=>{
+    h += '<button type="button" class="opt' + (picks[idx]===i?' sel':'') + '" onclick="pick(' + i + ')">' + o.t + '</button>';
+  });
+  document.getElementById('qhost').innerHTML = h;
+  document.getElementById('backBtn').style.visibility = idx===0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').disabled = picks[idx]===null;
+  document.getElementById('nextBtn').textContent = idx===QUESTIONS.length-1 ? 'Finish' : 'Next';
+  document.getElementById('lockmsg').textContent = '';
+}
+function pick(i){
+  picks[idx] = i;
+  render();
+  document.getElementById('lockmsg').textContent = 'Locked in. No second-guessing \u2014 Tuesday-you already answered.';
+}
+function goBack(){ if(idx>0){ idx--; render(); window.scrollTo({top:0}); } }
+function goNext(){
+  if(picks[idx]===null) return;
+  if(idx < QUESTIONS.length-1){ idx++; render(); window.scrollTo({top:0}); }
+  else finish();
+}
+const BANDS = [
+  {min:0,  name:"The Operator", line:"You are almost certainly excellent at the work itself, and the room almost certainly cannot see it. The word being used about you is \u201Csafe,\u201D and it is not the compliment it sounds like. Your map will show exactly where the gap sits."},
+  {min:9,  name:"The Senior Manager Ceiling", line:"You run several senior behaviours well, and two or three specific gaps are quietly capping you \u2014 usually around handing decisions upward and saying no with a named cost. Your map names your two."},
+  {min:15, name:"Operating One Level Higher, intermittently", line:"You already behave at the next level in places. The committee\u2019s question is consistency: which behaviours show up only when conditions are easy. Your map shows which ones, and the 30-day evidence move for each."},
+  {min:20, name:"Ready for the room", line:"Your instincts run one level up almost everywhere. Your remaining risk is evidence, not ability \u2014 behaviours the committee has never witnessed score zero in that room. Your map shows which proofs are missing."}
+];
+function finish(){
+  document.getElementById('bar').style.width = '100%';
+  const total = picks.reduce((s,p,i)=> s + QUESTIONS[i].opts[p].p, 0);
+  let band = BANDS[0];
+  BANDS.forEach(b=>{ if(total>=b.min) band=b; });
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('capture').classList.remove('hidden');
+  document.getElementById('bandName').textContent = band.name + '  ·  ' + total + ' / 24';
+  document.getElementById('bandLine').textContent = band.line;
+  document.getElementById('f_answers').value = picks.map((p,i)=> QUESTIONS[i].skill + ':' + 'ABCD'[p] + '(' + QUESTIONS[i].opts[p].p + ')').join('; ');
+  document.getElementById('f_total').value = total;
+  document.getElementById('f_band').value = band.name;
+  window.scrollTo({top:0});
+}
+function sendForm(e, formName){
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(data).toString()})
+  .then(()=>{ document.getElementById('capture').classList.add('hidden');
+              document.getElementById('thanks').classList.remove('hidden');
+              window.scrollTo({top:0}); })
+  .catch(()=>{ alert('That did not go through. Please check your connection and try again.'); });
+  return false;
+}
+</script>
+</body>
+</html>

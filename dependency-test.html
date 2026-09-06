@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dependency Test · Can you move people who don't owe you anything?</title>
+<meta name="description" content="Seven stuck situations from Indian workplaces. Everyone is polite. Nothing moves. In each one, three options are reasonable and one actually works. Six minutes.">
+<style>
+:root{--navy:#1B2A4A;--grey:#3A3F45;--lgrey:#8A9099;--green:#2E7D5B;--red:#8A4B3A;
+--lblue:#EAF1F8;--lbg:#F5F6F8;--rule:#C9D4E0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--grey);background:#fff;line-height:1.55;font-size:16px;}
+.wrap{max-width:720px;margin:0 auto;padding:36px 22px 80px;}
+.kicker{font-size:12px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:var(--lgrey);margin-bottom:10px;}
+h1{color:var(--navy);font-size:30px;line-height:1.2;margin-bottom:12px;}
+.sub{font-style:italic;margin-bottom:22px;}
+.dyk{background:var(--lblue);border:1px solid var(--rule);padding:18px 20px;margin-bottom:24px;}
+.dyk b{color:var(--navy);}
+.rules{background:var(--lbg);border:1px solid var(--rule);padding:16px 18px;margin-bottom:22px;font-size:15px;}
+.rules b{color:var(--navy);}
+.btn{display:inline-block;background:var(--navy);color:#fff;border:none;font-family:inherit;font-size:16px;font-weight:bold;padding:14px 28px;cursor:pointer;}
+.btn:hover{background:#24365C;}.btn.green{background:var(--green);}.btn.green:hover{background:#256A4D;}
+.hide{display:none;}
+.prog{font-size:12.5px;font-weight:bold;color:var(--lgrey);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.pbar{height:6px;background:var(--lbg);border:1px solid var(--rule);margin-bottom:20px;}
+.pbar i{display:block;height:100%;background:var(--green);width:0%;transition:width .3s;}
+.scene{background:var(--lbg);border:1px solid var(--rule);padding:18px 20px;margin-bottom:16px;font-size:15px;}
+.scene .who{font-size:12px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.qask{font-weight:bold;color:var(--navy);margin-bottom:12px;font-size:16px;}
+.opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--rule);padding:14px 16px;margin-bottom:10px;font-family:inherit;font-size:15px;color:var(--grey);cursor:pointer;line-height:1.5;}
+.opt:hover{background:var(--lblue);border-color:var(--navy);}
+.bignum{font-size:56px;font-weight:bold;color:var(--navy);line-height:1;}
+.bignum small{font-size:22px;color:var(--lgrey);font-weight:bold;}
+.meter{height:14px;background:var(--lbg);border:1px solid var(--rule);margin:16px 0 6px;}
+.meter i{display:block;height:100%;background:var(--navy);width:0%;transition:width .6s;}
+.bench{font-size:13px;color:var(--lgrey);margin-bottom:16px;}
+.verdict{border:1px solid var(--rule);padding:18px 20px;margin:14px 0;background:var(--lbg);}
+.verdict b{color:var(--navy);}
+.misslist{border:1px solid var(--rule);padding:16px 18px;margin:14px 0;background:#fff;font-size:14.5px;}
+.misslist b{color:var(--navy);}
+.gate{background:var(--lblue);border:1px solid var(--rule);padding:24px;margin-top:20px;}
+.gate h2{color:var(--navy);font-size:20px;margin-bottom:8px;}
+label{display:block;font-size:13px;font-weight:bold;color:var(--navy);margin:14px 0 5px;}
+input[type=text],input[type=email]{width:100%;padding:12px;border:1px solid var(--rule);font-family:inherit;font-size:16px;}
+.tiny{font-size:12.5px;color:var(--lgrey);margin-top:12px;}
+.done{border:1px solid var(--rule);padding:24px;background:#EDF6F1;margin-top:20px;}
+.done h2{color:var(--green);font-size:20px;margin-bottom:6px;}
+footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--lgrey);}
+@media(max-width:520px){h1{font-size:25px;}.bignum{font-size:44px;}.wrap{padding:26px 16px 60px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div id="intro">
+  <div class="kicker">A six-minute test · Answers at the end · Sayantan Nandi</div>
+  <h1>The Dependency Test</h1>
+  <p class="sub">Roughly seventy percent of what you now need comes from people who do not report to you and are measured on something completely different. This test measures whether you can move them.</p>
+
+  <div class="dyk"><b>Did you know?</b> A 2016 study in Nature Communications found that <b>not knowing whether something bad will happen is more stressful than knowing it will</b>. Stress peaked when the odds were fifty-fifty and dropped when the bad outcome became certain. The person sitting on your approval, your dependency, your unanswered case is usually not short of time. He is short of certainty. That is the currency this test is about, and it is the one currency you own outright.</div>
+
+  <div class="rules">
+    <b>The rules.</b> Seven situations, all real shapes from Indian workplaces: GCCs, IT services, banks, FMCG, e-commerce. In each one, something is stuck and everyone involved is being perfectly polite. Every option is professional and defensible. One of them moves the file. You will not be told which until the end, so do not read backwards from what sounds clever. Pick what you would actually do on a Tuesday.
+  </div>
+  <button class="btn" onclick="start()">Start the test</button>
+</div>
+
+<div id="quiz" class="hide">
+  <div class="prog" id="prog"></div>
+  <div class="pbar"><i id="pfill"></i></div>
+  <div id="qbox"></div>
+</div>
+
+<div id="out" class="hide">
+  <div class="kicker">Your result</div>
+  <div class="bignum"><span id="score">0</span><small>/7</small></div>
+  <p style="font-weight:bold;color:var(--navy);margin-top:4px;">situations where your move would actually have moved the file.</p>
+  <div class="meter"><i id="fill"></i></div>
+  <div class="bench">Benchmark: most Senior Managers and Directors score 3 or 4. The options are built from real messages, and the polite dead ends are polite precisely because everybody sends them. 6 or 7 means you already trade in certainty, which is rare enough to be a reputation.</div>
+  <div class="verdict" id="vtext"></div>
+  <div class="misslist" id="misses"></div>
+
+  <div class="gate" id="gatebox">
+    <h2>Get the full answer key by email</h2>
+    <p style="font-size:15px;margin-bottom:4px;">For each of the seven situations: which option moves the file, why the polite options fail even though nobody will ever tell you they failed, the exact sentence structure behind the working move, and the Worry Ledger worksheet, a half-page tool for the five people whose certainty you should be managing. Plus a short personalised reading of your score.</p>
+    <form id="leadform">
+      <label for="nm">First name</label>
+      <input type="text" id="nm" required autocomplete="given-name">
+      <label for="em">Email</label>
+      <input type="email" id="em" required autocomplete="email">
+      <p class="tiny">One results email with the answer key, then the occasional essay on careers, money and the decisions that create more choices. Unsubscribe anytime.</p>
+      <div style="margin-top:16px;"><button class="btn green" type="submit">Email me the answer key</button></div>
+    </form>
+  </div>
+
+  <div class="done hide" id="donebox">
+    <h2>On its way.</h2>
+    <p id="doneline" style="font-size:15px;"></p>
+    <p style="font-size:15px;margin-top:10px;">While you wait, the hardest test on this site is <a href="sixty-five-percent-test.html" style="color:var(--green);font-weight:bold;">The Sixty-Five Percent Test</a>: six decisions where the information is not coming. Every option is defensible, which is exactly what makes it hard.</p>
+  </div>
+</div>
+
+<footer>The Dependency Test · Sayantan Nandi · Tech Leader to Business Leader · First make your time valuable. Then make it yours.</footer>
+</div>
+
+<script>
+// ==== MAILERLITE WIRING (see README) ====
+var ML_ACCOUNT_ID = 'YOUR_ACCOUNT_ID';
+var ML_FORM_ID    = 'YOUR_FORM_ID';
+// Custom field keys expected in MailerLite: dt_score, dt_band, dt_missed
+// ========================================
+
+const Q=[
+{
+ who:"Director, Digital · consumer bank",
+ scene:"Your 3.2 crore business case has sat with the Finance Director for two months. No objection has been raised. You have followed up four times, each more polite than the last. He is a peer. He does not report to you, and you do not report to him.",
+ ask:"What do you send next?",
+ opts:[
+  {t:"A fifth follow-up, shorter and warmer: this is now on the critical path for Q3, happy to walk through the assumptions any time this week, whatever slot works for him.",k:"w",tag:"the fifth follow-up"},
+  {t:"Nothing to him. A note to your boss asking her to raise it with the CFO, since two months of silence on a critical-path item is now a delivery risk you are obliged to flag.",k:"w",tag:"the quiet escalation"},
+  {t:"Two things before he decides anything: his own planning team has confirmed your benefit assumption matches the retail plan, so the number is no longer your claim. And you have split the case: he only needs to approve the 90 lakh first phase, which self-funds in eleven months, before the rest is on the table.",k:"r",tag:"removing his risk"},
+  {t:"A tighter version of the case: executive summary up front, sensitivities table, three scenarios, and the two comparable approvals from last year as precedent.",k:"w",tag:"the better deck"}
+ ]
+},
+{
+ who:"Senior Manager, Supply Chain · FMCG",
+ scene:"You need the IT platform team to prioritise a change that is small for them and large for you. They report to a different VP. Your request has been 'in the backlog' for six weeks. Their lead is friendly, apologetic and completely unmoved.",
+ ask:"What is your move?",
+ opts:[
+  {t:"Build the company-level business case: the change unlocks 1.8 crore of working capital annually. Send it to their lead and copy both VPs, so the size of the prize is visible to everyone who owns the backlog.",k:"w",tag:"the company business case"},
+  {t:"Ask for the smallest version that proves anything, two days of one engineer, in exchange for something on their scorecard: your team runs the UAT they are short-staffed for this quarter. If the change breaks anything, it lands on you, and you say so out loud.",k:"r",tag:"the trade in their currency"},
+  {t:"Raise it in the monthly steering committee where both VPs sit, framed neutrally as a cross-functional prioritisation question that needs a forum decision.",k:"w",tag:"the steering committee"},
+  {t:"Invest in the relationship first: time with their lead to understand their roadmap and constraints properly, so your request can be positioned inside their plan rather than against it.",k:"w",tag:"the relationship route"}
+ ]
+},
+{
+ who:"Senior Manager, Engineering · SaaS company",
+ scene:"You asked your boss three weeks ago whether to build the integration in-house or buy the vendor tool. She has not decided. She is buried, and your team is now idling on the decision. You have 'gently bumped' the thread twice.",
+ ask:"What do you send?",
+ opts:[
+  {t:"The call is in-house versus vendor. You recommend the vendor, for one reason: it ships in six weeks against four months. It becomes the wrong call if usage crosses 50k transactions a day, and you have checked that it will not this year. You need her answer by Friday, and if you do not hear back you will proceed with the vendor.",k:"r",tag:"the handover with a default"},
+  {t:"A crisp one-pager: both options, costs, risks, timelines, a comparison matrix and your recommendation, ending with 'keen to align on direction at your convenience.'",k:"w",tag:"the one-pager"},
+  {t:"Book 15 minutes in her calendar titled 'Decision needed: integration', because a meeting forces the issue in a way email does not.",k:"w",tag:"the forced meeting"},
+  {t:"A note flagging the cost of the delay: the team has now been idling for three weeks, which is roughly nine person-weeks of capacity, and the number grows daily.",k:"w",tag:"the delay-cost flag"}
+ ]
+},
+{
+ who:"Director, Analytics · retail GCC, Bengaluru",
+ scene:"Your models need the marketing team's campaign data by the 3rd of every month. It arrives between the 9th and the 14th, after two reminders, in a different format each time. Their analyst is overloaded and your monthly reporting is late as a result, which your stakeholders have started noticing.",
+ ask:"What fixes this durably?",
+ opts:[
+  {t:"A standing trade with their Director, agreed out loud for two quarters: her analyst sends one fixed extract by the 3rd, and in return your team builds and maintains the campaign ROI dashboard her CMO keeps asking her for. Reviewed at quarter end, and it dies if either side stops paying.",k:"r",tag:"the standing trade"},
+  {t:"Document the dependency formally: an SLA note agreed between both teams, with the date, the format and an escalation path when it slips.",k:"w",tag:"the SLA"},
+  {t:"Stop depending on them: get a data engineer to pull the raw campaign data directly from the marketing platform, so the analyst is out of the loop entirely.",k:"w",tag:"the workaround"},
+  {t:"Tell your stakeholders the truth in each late report: reporting was delayed n days awaiting marketing inputs. Accountability will find its level.",k:"w",tag:"the honest footnote"}
+ ]
+},
+{
+ who:"Programme Director · insurance, core system replacement",
+ scene:"Your steering sponsor is a COO who has been burned by IT programmes before. A key milestone has slipped by three weeks. Your fortnightly update is due tomorrow. The programme is otherwise healthier than it has been in months: the data migration risk that dominated the last two steercos has been closed.",
+ ask:"How do you open the update?",
+ opts:[
+  {t:"The migration risk you have been carrying since March is closed: full dress rehearsal ran Saturday, 11 hours against a 14-hour window, zero reconciliation breaks. Still open: the vendor interface milestone, which has slipped three weeks, and you will know by the 21st whether it holds the go-live. Nothing is needed from her.",k:"r",tag:"closure first, no ask"},
+  {t:"Straight and honest, bad news first: the vendor interface milestone has slipped three weeks. Then the mitigation plan, then the good news on migration, then the RAG status across all workstreams.",k:"w",tag:"bad news first"},
+  {t:"A balanced scorecard: overall status Amber, key achievements this fortnight, key risks and issues, decisions required, and the updated plan, in the standard steerco format she signed off.",k:"w",tag:"the standard format"},
+  {t:"Lead with the ask: given the vendor slip, you need her to apply pressure on the vendor's account director, whom she knows personally. Then the status detail below.",k:"w",tag:"leading with the ask"}
+ ]
+},
+{
+ who:"VP Engineering · fintech",
+ scene:"You have decided you must escalate: the compliance team has blocked your release for five weeks over an interpretation you believe is wrong, dialogue has genuinely run out, and the release now threatens a regulatory deadline of its own. Their head is a peer you will need for years.",
+ ask:"How do you escalate?",
+ opts:[
+  {t:"Tell her first, to her face: you are taking it up on Thursday, here is exactly what you will say, and here is her own best argument, which you will present yourself, fairly, before making your case. Then do exactly that.",k:"r",tag:"the announced escalation"},
+  {t:"Keep it institutional, not personal: write a joint options paper with her team laying out both interpretations neutrally, and submit it upward for a ruling without advocacy from either side.",k:"w",tag:"the joint paper"},
+  {t:"Escalate through your own chain quietly: brief your boss thoroughly and let the two seniors resolve it between themselves, keeping the peer relationship out of the line of fire.",k:"w",tag:"the quiet chain"},
+  {t:"Do not escalate yet: five weeks is long, but a compliance fight you win on appeal costs more than the weeks. Offer a scoped-down release that sidesteps the contested interpretation entirely.",k:"w",tag:"the scoped retreat"}
+ ]
+},
+{
+ who:"Senior Director · pharma GCC",
+ scene:"You send a note to a global stakeholder who has been anxious about your workstream. Draft one reads: 'All issues from the last review are now resolved. The workstream is fully back on track and no risks remain open.' Every word is very nearly true.",
+ ask:"What is wrong with draft one?",
+ opts:[
+  {t:"Nothing, if it is accurate. Senior people are drowning in hedged updates, and a clean all-clear is a gift. Send it.",k:"w",tag:"the all-clear"},
+  {t:"A message that closes everything is not believed. The fix is to name what remains open, because the one honest open item, with a date, is what makes the closed items credible: 'Resolved: A, B, C. Still open: the D dependency, and I will know by the 12th.'",k:"r",tag:"the credible close"},
+  {t:"It lacks evidence. Attach the review tracker showing each item closed, with owners and dates, so the claim is verifiable.",k:"w",tag:"the evidence pack"},
+  {t:"The tone is too final. Soften it: 'substantially resolved' and 'largely back on track' leave room if something resurfaces, which something always does.",k:"w",tag:"the hedge"}
+ ]
+}
+];
+
+let idx=0,score=0,missed=[];
+function start(){document.getElementById('intro').classList.add('hide');document.getElementById('quiz').classList.remove('hide');render();}
+function render(){
+  const q=Q[idx];
+  document.getElementById('prog').textContent='Situation '+(idx+1)+' of '+Q.length;
+  document.getElementById('pfill').style.width=(idx/Q.length*100)+'%';
+  let h='<div class="scene"><div class="who">'+q.who+'</div>'+q.scene+'</div>';
+  h+='<div class="qask">'+q.ask+'</div>';
+  const order=q.opts.map((o,i)=>i).sort(()=>Math.random()-0.5);
+  order.forEach(i=>{h+='<button class="opt" onclick="pick('+i+')">'+q.opts[i].t+'</button>';});
+  document.getElementById('qbox').innerHTML=h;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function pick(i){
+  const q=Q[idx];
+  if(q.opts[i].k==='r')score++;else missed.push({n:idx+1,who:q.who,chose:q.opts[i].tag});
+  idx++;
+  if(idx<Q.length){render();return;}
+  finish();
+}
+function finish(){
+  document.getElementById('quiz').classList.add('hide');
+  document.getElementById('out').classList.remove('hide');
+  document.getElementById('score').textContent=score;
+  const pct=Math.round(score/Q.length*100);
+  const f=document.getElementById('fill');f.style.width=pct+'%';
+  f.style.background=score<=3?'#8A4B3A':(score<=5?'#1B2A4A':'#2E7D5B');
+  let v;
+  if(score<=3)v='<b>You are paying the politeness tax.</b> In most of these situations you chose a move that was professional, defensible and dead on arrival: the better deck, the fifth follow-up, the SLA. None of those are wrong. They are just aimed at the wrong problem, because the person blocking you is rarely confused and almost never lazy. He is carrying a risk you have not seen, and until somebody removes it, the file does not move. The good news is that this is the most learnable skill in this entire course of tests, because it is a small set of moves, not a personality.';
+  else if(score<=5)v='<b>You move some files and stall on others, and you probably cannot predict which.</b> That is the typical senior profile: strong instincts in situations you have personally been burned by, default politeness everywhere else. The situations you missed are the map of where your influence currently stops. Worth knowing: the moves you missed share one structure, and once you see it, you will not be able to unsee it in your own inbox.';
+  else v='<b>You trade in certainty, and it shows.</b> You consistently chose the move that removes the other person\u2019s risk instead of restating your own case, which is the entire skill. Two things to check honestly. First, whether you do this deliberately or by instinct, because instinct does not transfer to your team and deliberate does. Second, whether you spend this ability on the right dependencies, since the standing trades and worry ledgers of most strong operators are aimed one level too low.';
+  document.getElementById('vtext').innerHTML=v;
+  document.getElementById('misses').innerHTML= missed.length===0
+    ? '<b>You missed nothing.</b> The emailed answer key will still be worth reading, because knowing why the wrong options fail is what lets you teach this.'
+    : '<b>Where your move would not have moved the file:</b> '+missed.map(m=>'Situation '+m.n+' ('+m.who.split(' · ')[1]+'), where you chose '+m.chose).join('. ')+'. The answer key explains what each of those choices actually does to the file, which is not nothing, and not what you intended.';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('leadform').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('nm').value.trim();
+  const email=document.getElementById('em').value.trim();
+  const band=score<=3?'weak':(score<=5?'mid':'strong');
+  const body=new URLSearchParams();
+  body.append('fields[name]',name);
+  body.append('fields[email]',email);
+  body.append('fields[dt_score]',String(score));
+  body.append('fields[dt_band]',band);
+  body.append('fields[dt_missed]',missed.map(m=>m.n).join(',')||'none');
+  body.append('ml-submit','1');body.append('anticsrf','true');
+  fetch('https://assets.mailerlite.com/jsonp/'+ML_ACCOUNT_ID+'/forms/'+ML_FORM_ID+'/subscribe',
+    {method:'POST',body:body,mode:'no-cors'}).catch(()=>{});
+  document.getElementById('gatebox').classList.add('hide');
+  const d=document.getElementById('donebox');d.classList.remove('hide');
+  document.getElementById('doneline').textContent='The answer key is heading to '+email+'. If it lands in Promotions, drag it to Primary once. The Worry Ledger inside it is the tool people tell me they still use a year later.';
+});
+</script>
+</body>
+</html>
