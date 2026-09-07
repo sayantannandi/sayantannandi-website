@@ -100,9 +100,8 @@ footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--rule);font-si
 </div>
 
 <script>
-// ==== MAILERLITE WIRING (see README) ====
-var ML_ACCOUNT_ID = 'YOUR_ACCOUNT_ID';
-var ML_FORM_ID    = 'YOUR_FORM_ID';
+// Submissions go to the Netlify function /.netlify/functions/submission-created,
+// which writes the fields into MailerLite and adds the subscriber to the right lm- group.
 // Custom field keys expected in MailerLite: sf_score, sf_band, sf_answers
 // ========================================
 
@@ -216,14 +215,13 @@ document.getElementById('leadform').addEventListener('submit',function(e){
   const email=document.getElementById('em').value.trim();
   const band=score<=2?'weak':(score<=4?'mid':'strong');
   const body=new URLSearchParams();
-  body.append('fields[name]',name);
-  body.append('fields[email]',email);
-  body.append('fields[sf_score]',String(score));
-  body.append('fields[sf_band]',band);
-  body.append('fields[sf_answers]',answers.join(' '));
-  body.append('ml-submit','1');body.append('anticsrf','true');
-  fetch('https://assets.mailerlite.com/jsonp/'+ML_ACCOUNT_ID+'/forms/'+ML_FORM_ID+'/subscribe',
-    {method:'POST',body:body,mode:'no-cors'}).catch(()=>{});
+  body.append('form-name','sixty-five-percent-test');
+  body.append('name',name);
+  body.append('email',email);
+  body.append('sf_score',String(score));
+  body.append('sf_band',band);
+  body.append('sf_answers',answers.join(' '));
+  fetch('/.netlify/functions/submission-created',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()}).catch(()=>{});
   document.getElementById('gatebox').classList.add('hide');
   const d=document.getElementById('donebox');d.classList.remove('hide');
   document.getElementById('doneline').textContent='The reasoning for all six decisions is heading to '+email+'. If it lands in Promotions, drag it to Primary once. Read decision 4 last; it lands harder that way.';

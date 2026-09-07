@@ -104,9 +104,8 @@ footer{margin-top:60px;padding-top:16px;border-top:1px solid var(--rule);font-si
 </div>
 
 <script>
-// ==== MAILERLITE WIRING (see README) ====
-var ML_ACCOUNT_ID = 'YOUR_ACCOUNT_ID';
-var ML_FORM_ID    = 'YOUR_FORM_ID';
+// Submissions go to the Netlify function /.netlify/functions/submission-created,
+// which writes the fields into MailerLite and adds the subscriber to the right lm- group.
 // Custom field keys expected in MailerLite: dt_score, dt_band, dt_missed
 // ========================================
 
@@ -233,14 +232,13 @@ document.getElementById('leadform').addEventListener('submit',function(e){
   const email=document.getElementById('em').value.trim();
   const band=score<=3?'weak':(score<=5?'mid':'strong');
   const body=new URLSearchParams();
-  body.append('fields[name]',name);
-  body.append('fields[email]',email);
-  body.append('fields[dt_score]',String(score));
-  body.append('fields[dt_band]',band);
-  body.append('fields[dt_missed]',missed.map(m=>m.n).join(',')||'none');
-  body.append('ml-submit','1');body.append('anticsrf','true');
-  fetch('https://assets.mailerlite.com/jsonp/'+ML_ACCOUNT_ID+'/forms/'+ML_FORM_ID+'/subscribe',
-    {method:'POST',body:body,mode:'no-cors'}).catch(()=>{});
+  body.append('form-name','dependency-test');
+  body.append('name',name);
+  body.append('email',email);
+  body.append('dt_score',String(score));
+  body.append('dt_band',band);
+  body.append('dt_missed',missed.map(m=>m.n).join(',')||'none');
+  fetch('/.netlify/functions/submission-created',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body.toString()}).catch(()=>{});
   document.getElementById('gatebox').classList.add('hide');
   const d=document.getElementById('donebox');d.classList.remove('hide');
   document.getElementById('doneline').textContent='The answer key is heading to '+email+'. If it lands in Promotions, drag it to Primary once. The Worry Ledger inside it is the tool people tell me they still use a year later.';
