@@ -16,3 +16,13 @@
 /thanks-promotion-case-builder /thanks-promotion-case-builder.html 200
 /thanks-review-room-kit      /thanks-review-room-kit.html       200
 /thanks-executive-hour       /thanks-executive-hour.html        200
+# Course, cohort, writing
+/operating-one-level-higher  /operating-one-level-higher.html   200
+/dec2026cohort               /dec2026cohort.html                200
+/dec2026cohort-welcome       /dec2026cohort-welcome.html        200
+/decisions                   /decisions.html                    200
+/invisible-month-calculator  /invisible-month-calculator.html   200
+# Old paths that moved
+/tools                       /diagnostics                       301
+/tools/                      /diagnostics                       301
+/tools/earning-power-audit   /scorecard                         301
