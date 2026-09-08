@@ -1,152 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F7F8FA">
-<title>Tools — Sayantan Nandi</title>
-<meta name="description" content="Free diagnostics for the two columns: the Exit Power Score, the Earning Power Audit, the Concentration Map and the Runway Ladder.">
-<meta property="og:title" content="Tools — Sayantan Nandi">
-<meta property="og:description" content="Free diagnostics for the two columns: the Exit Power Score, the Earning Power Audit, the Concentration Map and the Runway Ladder.">
-<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools have moved. Sayantan Nandi</title>
+<meta name="description" content="The free diagnostics now live on Start here.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/site.css">
+
 </head>
 <body>
-
-<header class="masthead">
-  <div class="wrap masthead__inner">
-    <a class="wordmark" href="/" aria-label="Sayantan Nandi home">
-      <span class="wordmark__name">Sayantan Nandi</span>
-      <span class="wordmark__tag">Earning power · Exit power · Optionality</span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span></span><span></span>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <a href="/philosophy">Philosophy</a>
-      <a href="/writing">Writing</a>
-      <a href="/tools">Tools</a>
-      <a href="/book">Book</a>
-      <a href="/about">About</a>
-      <a class="nav__cta" href="/newsletter">Join the letter</a>
-    </nav>
+<header class="site-head">
+  <div class="page">
+    <a class="wordmark" href="/">Sayantan Nandi</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+    <nav class="site-nav" id="nav" aria-label="Site"><a href="/diagnostics" aria-current="page">Start here</a><a href="/operating-one-level-higher">The course</a><a href="/decisions">Decisions</a><a href="/writing">Essays</a><a href="/philosophy">Philosophy</a><a href="/about">About</a><a class="letter" href="/newsletter">The letter</a></nav>
   </div>
 </header>
-
 <main>
+<div class="page">
 
-  <section class="section">
-    <div class="wrap">
-      <span class="eyebrow">Diagnostics</span>
-      <h1 class="measure">Tools that tell you where you stand</h1>
-      <p class="lede measure" style="margin-top:1.5rem">Each one takes about five minutes. They run in your
-      browser, they are meant to be slightly uncomfortable, and none of them will tell you what to buy.</p>
-    </div>
-  </section>
+<section class="hero">
+  <h1>The tools have moved.</h1>
+  <p class="lede">Everything free now lives on <a href="/diagnostics">Start here</a>. The one Exit Power tool is still where it was: the <a href="/tools/exit-power-score">Exit Power Score</a>.</p>
+</section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div>
-          <p class="eyebrow eyebrow--exit">Live</p>
-          <h2 style="font-size:var(--step-2)">The Exit Power Score</h2>
-          <p class="muted">Runway, employer concentration, fixed commitments and outside market strength,
-          combined into one number out of ten. The first thing most people discover is that they have never
-          calculated any of it.</p>
-          <p style="margin-top:1.25rem"><a class="btn" href="/tools/exit-power-score">Take the score</a></p>
-        </div>
-        <div>
-          <p class="eyebrow eyebrow--earning">Live</p>
-          <h2 style="font-size:var(--step-2)">The Earning Power Audit</h2>
-          <p class="muted">Where you sit on the Leadership Value Ladder, and the specific behaviours that
-          separate you from the level above. Written for people who have been told to be more strategic and
-          were not told what that means.</p>
-          <p style="margin-top:1.25rem"><a class="btn" href="/tools/earning-power-audit">Take the audit</a></p>
-        </div>
-      </div>
-
-      <h2 style="margin-top:3.5rem">Worksheets</h2>
-      <p class="measure muted">Sent by email as a PDF. One email, then the weekly letter if you want it.</p>
-
-      <div class="panel" style="margin-top:1.5rem;max-width:46rem">
-        <form name="worksheets" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks">
-          <input type="hidden" name="form-name" value="worksheets">
-          <p class="hp"><label>Leave this empty <input name="company"></label></p>
-
-          <p class="field__label" style="margin-bottom:0.75rem">Which would you like?</p>
-          <div class="opts" style="margin-bottom:1.5rem">
-            <label class="opt"><input type="checkbox" name="worksheet" value="Concentration Map">
-              <span><strong>The Concentration Map.</strong> How much of your income, net worth, health cover,
-              network and identity trace back to one employer. Usually a shock when drawn.</span></label>
-            <label class="opt"><input type="checkbox" name="worksheet" value="Comp Deconstruction">
-              <span><strong>Comp Deconstruction.</strong> Break your package into what is yours, what is
-              conditional, what is deferred and what is illusory. Most senior packages are mostly not the
-              first one.</span></label>
-            <label class="opt"><input type="checkbox" name="worksheet" value="The Number">
-              <span><strong>The Number Worksheet.</strong> Not one number. Five levels of enough, each
-              buying a different kind of freedom.</span></label>
-            <label class="opt"><input type="checkbox" name="worksheet" value="AI Career Moat">
-              <span><strong>The AI Career Moat Audit.</strong> Sort your own work into what the tools make
-              cheap and what stays human. Then decide where your value should move.</span></label>
-          </div>
-
-          <label class="field">
-            <span class="field__label">Email</span>
-            <input type="email" name="email" required placeholder="you@work.com" autocomplete="email">
-          </label>
-          <label class="field">
-            <span class="field__label">First name (optional)</span>
-            <input type="text" name="name" autocomplete="given-name">
-          </label>
-          <button class="btn" type="submit">Send them over</button>
-          <p class="field__hint">You will also get The Optional Career each week. One click to leave, any time.</p>
-        </form>
-      </div>
-    </div>
-  </section>
+</div>
 </main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot__grid">
+<footer class="site-foot">
+  <div class="page">
+    <div class="cols">
       <div>
-        <p class="foot__head">Read</p>
-        <a href="/philosophy">The philosophy</a>
-        <a href="/writing">Essays</a>
-        <a href="/book">The Economics of Enough</a>
+        <p class="motto">First make your time valuable. Then make it yours.</p>
+        <p>Careers, money, and how they combine into choices. Written for senior professionals in India who are doing well on paper and want more say over what comes next.</p>
       </div>
       <div>
-        <p class="foot__head">Use</p>
-        <a href="/tools/exit-power-score">Exit Power Score</a>
-        <a href="/tools/earning-power-audit">Earning Power Audit</a>
-        <a href="/tools">All tools</a>
+        <h4>Work on it</h4>
+        <ul>
+          <li><a href="/diagnostics">Start here</a></li>
+          <li><a href="/operating-one-level-higher">Operating One Level Higher</a></li>
+          <li><a href="/promotion-kit">The Promotion Kit</a></li>
+          <li><a href="/dec2026cohort">December 2026 cohort</a></li>
+          <li><a href="/newsletter">The Optional Career</a></li>
+        </ul>
       </div>
       <div>
-        <p class="foot__head">Elsewhere</p>
-        <a href="https://www.linkedin.com/in/sayantannandi" rel="me noopener">LinkedIn</a>
-        <a href="/newsletter">Newsletter</a>
-        <a href="/contact">Contact</a>
-      </div>
-      <div>
-        <p class="foot__head">Fine print</p>
-        <a href="/about">About</a>
-        <a href="/privacy">Privacy</a>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/decisions">Decisions</a></li>
+          <li><a href="/writing">Essays</a></li>
+          <li><a href="/philosophy">Philosophy</a></li>
+          <li><a href="/book">Books</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/tools/exit-power-score">Exit Power Score</a></li>
+        </ul>
       </div>
     </div>
-    <p class="foot__legal">
-      I am not a SEBI-registered investment adviser and nothing on this site is investment advice. Every
-      number here is illustrative, drawn from my own life or from public research, and meant to show a way of
-      thinking rather than to tell you what to buy, sell or hold. Verify everything against your own
-      situation, and where it matters, consult a registered professional.
-      <br><br>
-      &copy; <span class="mono">2026</span> Sayantan Nandi
-    </p>
+    <div class="legal">
+      <span>Sayantan Nandi</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
   </div>
 </footer>
-
-<script src="/assets/site.js"></script>
 </body>
 </html>

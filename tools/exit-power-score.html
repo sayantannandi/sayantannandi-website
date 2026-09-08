@@ -1,58 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F7F8FA">
-<title>The Exit Power Score — Sayantan Nandi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Exit Power Score. Sayantan Nandi</title>
 <meta name="description" content="Five questions on runway, employer concentration, fixed commitments and outside market strength. One number out of ten.">
-<meta property="og:title" content="The Exit Power Score — Sayantan Nandi">
-<meta property="og:description" content="Five questions on runway, employer concentration, fixed commitments and outside market strength. One number out of ten.">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  .q{padding:1.25rem 0;border-bottom:1px solid var(--rule);max-width:40rem}
+  .q__prompt{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:0 0 .6rem;color:var(--ink)}
+  .opts{display:grid;gap:.35rem}
+  .opt{display:flex;gap:.6rem;align-items:flex-start;padding:.45rem .6rem;border-radius:4px;cursor:pointer}
+  .opt:hover{background:var(--paper-2)}
+  .opt input{margin-top:.3rem;accent-color:var(--green)}
+  .calc__out{display:flex;align-items:baseline;gap:.6rem}
+  .calc__num{font-family:var(--display);font-size:3rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums}
+  .calc__unit{color:var(--ink-3)}
+  .meter{display:flex;gap:4px;margin:.75rem 0;max-width:20rem}
+  .meter__seg{flex:1;height:10px;background:var(--rule-2);border-radius:2px}
+  .meter__seg.is-on{background:var(--green)}
+  .calc__read{max-width:34rem}
+  .hide{display:none}
+  .field{display:block;margin:1rem 0 .3rem} .field__label{display:block;font-family:var(--display);font-weight:600;font-size:var(--fs-s);margin-bottom:.3rem}
+</style>
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2574488');
+</script>
 </head>
 <body>
-
-<header class="masthead">
-  <div class="wrap masthead__inner">
-    <a class="wordmark" href="/" aria-label="Sayantan Nandi home">
-      <span class="wordmark__name">Sayantan Nandi</span>
-      <span class="wordmark__tag">Earning power · Exit power · Optionality</span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span></span><span></span>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <a href="/philosophy">Philosophy</a>
-      <a href="/writing">Writing</a>
-      <a href="/tools">Tools</a>
-      <a href="/book">Book</a>
-      <a href="/about">About</a>
-      <a class="nav__cta" href="/newsletter">Join the letter</a>
-    </nav>
+<header class="site-head">
+  <div class="page">
+    <a class="wordmark" href="/">Sayantan Nandi</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+    <nav class="site-nav" id="nav" aria-label="Site"><a href="/diagnostics">Start here</a><a href="/operating-one-level-higher">The course</a><a href="/decisions">Decisions</a><a href="/writing">Essays</a><a href="/philosophy">Philosophy</a><a href="/about">About</a><a class="letter" href="/newsletter">The letter</a></nav>
   </div>
 </header>
-
 <main>
-
-  <section class="section">
-    <div class="wrap wrap--narrow">
-      <span class="eyebrow eyebrow--exit">Column two · Five minutes</span>
-      <h1>The Exit Power Score</h1>
-      <p class="lede" style="margin-top:1.25rem">Exit power is how long you could decline income and still be
-      yourself, and how many acceptable options exist if the income stops. It is not net worth. It is the part
-      that is liquid, available and yours, measured against what your life actually costs.</p>
-      <p class="muted">Five questions. Nothing is sent anywhere until you choose to send it. If you do not know
-      an answer, that itself is information worth sitting with.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap wrap--narrow">
-      <div data-score data-score-max="20" data-score-tone="exit">
+<div class="page">
+<section class="hero">
+  <h1>The Exit Power Score</h1>
+  <p class="lede">Exit Power is how long you could decline income and still be yourself, and how many acceptable options exist if the income stops. It is not net worth. It is the part that is liquid, available and yours, measured against what your life actually costs.</p>
+  <p class="small">Five questions. Nothing is sent anywhere until you choose to send it. If you do not know an answer, that itself is information worth sitting with.</p>
+</section>
+<section>
+<div data-score data-score-max="20" data-score-tone="exit">
       <div class="q">
         <p class="q__prompt">If your salary stopped tomorrow, how long could your household run on what you can actually reach within a fortnight?</p>
         <div class="opts">
@@ -103,7 +100,7 @@
       </div>
 
         <div class="calc" style="margin-top:2.5rem">
-          <p class="eyebrow eyebrow--exit">Your reading</p>
+          <p class="small">Your reading</p>
           <div class="calc__out">
             <span class="calc__num" data-score-num>&mdash;</span>
             <span class="calc__unit">out of ten</span>
@@ -121,14 +118,14 @@
 
         </div>
 
-        <div class="panel panel--edge-exit hide" data-score-gate style="margin-top:2rem">
-          <h2 style="font-size:var(--step-2)">Want the long version?</h2>
-          <p class="muted">I will send the full worksheet: the Runway Ladder, the Concentration Map, and what
+        <div class="letter-box hide" data-score-gate style="margin-top:2rem">
+          <h2 >Want the long version?</h2>
+          <p >I will send the full worksheet: the Runway Ladder, the Concentration Map, and what
           each band of the score usually means in practice. Then one letter a week.</p>
           <form name="exit-power-score" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks">
             <input type="hidden" name="form-name" value="exit-power-score">
             <input type="hidden" name="score" value="">
-            <p class="hp"><label>Leave this empty <input name="company"></label></p>
+            <p class="hidden"><label>Leave this empty <input name="company"></label></p>
             <label class="field">
               <span class="field__label">Email</span>
               <input type="email" name="email" required placeholder="you@work.com" autocomplete="email">
@@ -138,56 +135,54 @@
               <textarea name="reaction" rows="3"></textarea>
             </label>
             <button class="btn" type="submit">Send me the worksheet</button>
-            <p class="field__hint">Your score is included so I can send the right notes. One click to leave, any time.</p>
+            <p class="fine">Your score is included so I can send the right notes. One click to leave, any time.</p>
           </form>
         </div>
-      </div>
-
-      <div class="flow-cta">
-        <a class="btn btn--ghost" href="/tools/earning-power-audit">Now do the other column</a>
-      </div>
-    </div>
-  </section>
+</section>
+<section class="divider">
+  <div class="prose">
+    <h2>The other half</h2>
+    <p>This score measures the half of the arithmetic most senior people never run. The half they do run, badly, is how the organisation sees their work. The <a href="/scorecard">One Level Higher Scorecard</a> measures that in eight minutes.</p>
+  </div>
+</section>
+</div>
 </main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot__grid">
+<script src="/assets/site.js" defer></script>
+<footer class="site-foot">
+  <div class="page">
+    <div class="cols">
       <div>
-        <p class="foot__head">Read</p>
-        <a href="/philosophy">The philosophy</a>
-        <a href="/writing">Essays</a>
-        <a href="/book">The Economics of Enough</a>
+        <p class="motto">First make your time valuable. Then make it yours.</p>
+        <p>Careers, money, and how they combine into choices. Written for senior professionals in India who are doing well on paper and want more say over what comes next.</p>
       </div>
       <div>
-        <p class="foot__head">Use</p>
-        <a href="/tools/exit-power-score">Exit Power Score</a>
-        <a href="/tools/earning-power-audit">Earning Power Audit</a>
-        <a href="/tools">All tools</a>
+        <h4>Work on it</h4>
+        <ul>
+          <li><a href="/diagnostics">Start here</a></li>
+          <li><a href="/operating-one-level-higher">Operating One Level Higher</a></li>
+          <li><a href="/promotion-kit">The Promotion Kit</a></li>
+          <li><a href="/dec2026cohort">December 2026 cohort</a></li>
+          <li><a href="/newsletter">The Optional Career</a></li>
+        </ul>
       </div>
       <div>
-        <p class="foot__head">Elsewhere</p>
-        <a href="https://www.linkedin.com/in/sayantannandi" rel="me noopener">LinkedIn</a>
-        <a href="/newsletter">Newsletter</a>
-        <a href="/contact">Contact</a>
-      </div>
-      <div>
-        <p class="foot__head">Fine print</p>
-        <a href="/about">About</a>
-        <a href="/privacy">Privacy</a>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/decisions">Decisions</a></li>
+          <li><a href="/writing">Essays</a></li>
+          <li><a href="/philosophy">Philosophy</a></li>
+          <li><a href="/book">Books</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/tools/exit-power-score">Exit Power Score</a></li>
+        </ul>
       </div>
     </div>
-    <p class="foot__legal">
-      I am not a SEBI-registered investment adviser and nothing on this site is investment advice. Every
-      number here is illustrative, drawn from my own life or from public research, and meant to show a way of
-      thinking rather than to tell you what to buy, sell or hold. Verify everything against your own
-      situation, and where it matters, consult a registered professional.
-      <br><br>
-      &copy; <span class="mono">2026</span> Sayantan Nandi
-    </p>
+    <div class="legal">
+      <span>Sayantan Nandi</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
   </div>
 </footer>
-
-<script src="/assets/site.js"></script>
 </body>
 </html>
