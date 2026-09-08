@@ -1,127 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F7F8FA">
-<title>Contact — Sayantan Nandi</title>
-<meta name="description" content="Write to me about a decision you are stuck on, a conversation, or a speaking request.">
-<meta property="og:title" content="Contact — Sayantan Nandi">
-<meta property="og:description" content="Write to me about a decision you are stuck on, a conversation, or a speaking request.">
-<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Sayantan Nandi</title>
+<meta name="description" content="Write to me about a decision you are stuck on, a conversation, the course, or a speaking request.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/site.css">
+
 </head>
 <body>
-
-<header class="masthead">
-  <div class="wrap masthead__inner">
-    <a class="wordmark" href="/" aria-label="Sayantan Nandi home">
-      <span class="wordmark__name">Sayantan Nandi</span>
-      <span class="wordmark__tag">Earning power · Exit power · Optionality</span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span></span><span></span>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <a href="/philosophy">Philosophy</a>
-      <a href="/writing">Writing</a>
-      <a href="/tools">Tools</a>
-      <a href="/book">Book</a>
-      <a href="/about">About</a>
-      <a class="nav__cta" href="/newsletter">Join the letter</a>
-    </nav>
+<header class="site-head">
+  <div class="page">
+    <a class="wordmark" href="/">Sayantan Nandi</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+    <nav class="site-nav" id="nav" aria-label="Site"><a href="/diagnostics">Start here</a><a href="/operating-one-level-higher">The course</a><a href="/decisions">Decisions</a><a href="/writing">Essays</a><a href="/philosophy">Philosophy</a><a href="/about">About</a><a class="letter" href="/newsletter">The letter</a></nav>
   </div>
 </header>
-
 <main>
+<div class="page">
 
-  <section class="section">
-    <div class="wrap wrap--narrow">
-      <span class="eyebrow">Contact</span>
-      <h1>Write to me</h1>
-      <p class="lede" style="margin-top:1.25rem">Especially if you are stuck on a decision with a career half
-      and a money half. Those are the conversations I find most useful, and a lot of what I write starts in
-      one of them.</p>
-    </div>
-  </section>
+<section class="hero">
+  <h1>Write to me</h1>
+  <p class="lede">Especially if you are stuck on a decision with a career half and a money half. Those are the conversations I find most useful, and a lot of what I write starts in one of them.</p>
+</section>
+<section>
+  <div class="letter-box">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hidden"><label>Leave this empty <input name="company"></label></p>
+      <label class="field" for="c-name">Name</label>
+      <input type="text" id="c-name" name="name" required autocomplete="name">
+      <label class="field" for="c-email">Email</label>
+      <input type="email" id="c-email" name="email" required autocomplete="email">
+      <label class="field" for="c-topic">What is this about?</label>
+      <select id="c-topic" name="topic" style="width:100%;font-family:inherit;font-size:1rem;padding:.7rem .85rem;border:1px solid var(--rule);border-radius:3px;background:#fff;color:var(--ink)">
+        <option>A decision I am stuck on</option>
+        <option>Comparing notes / a conversation</option>
+        <option>Something I read here</option>
+        <option>The course or a kit</option>
+        <option>Podcast or speaking</option>
+        <option>Something else</option>
+      </select>
+      <label class="field" for="c-msg">Message</label>
+      <textarea id="c-msg" name="message" rows="6" required></textarea>
+      <div class="btn-row"><button class="btn" type="submit">Send</button></div>
+      <p class="fine">I reply to most things, though not always quickly.</p>
+    </form>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="wrap wrap--narrow">
-      <div class="panel">
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="company" action="/thanks">
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hp"><label>Leave this empty <input name="company"></label></p>
-          <label class="field">
-            <span class="field__label">Name</span>
-            <input type="text" name="name" required autocomplete="name">
-          </label>
-          <label class="field">
-            <span class="field__label">Email</span>
-            <input type="email" name="email" required autocomplete="email">
-          </label>
-          <label class="field">
-            <span class="field__label">What is this about?</span>
-            <select name="topic">
-              <option>A decision I am stuck on</option>
-              <option>Comparing notes / a conversation</option>
-              <option>Something I read here</option>
-              <option>Podcast or speaking</option>
-              <option>Something else</option>
-            </select>
-          </label>
-          <label class="field">
-            <span class="field__label">Message</span>
-            <textarea name="message" rows="6" required></textarea>
-          </label>
-          <button class="btn" type="submit">Send</button>
-          <p class="field__hint">I reply to most things, though not always quickly.</p>
-        </form>
-      </div>
-    </div>
-  </section>
+</div>
 </main>
-
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot__grid">
+<footer class="site-foot">
+  <div class="page">
+    <div class="cols">
       <div>
-        <p class="foot__head">Read</p>
-        <a href="/philosophy">The philosophy</a>
-        <a href="/writing">Essays</a>
-        <a href="/book">The Economics of Enough</a>
+        <p class="motto">First make your time valuable. Then make it yours.</p>
+        <p>Careers, money, and how they combine into choices. Written for senior professionals in India who are doing well on paper and want more say over what comes next.</p>
       </div>
       <div>
-        <p class="foot__head">Use</p>
-        <a href="/tools/exit-power-score">Exit Power Score</a>
-        <a href="/tools/earning-power-audit">Earning Power Audit</a>
-        <a href="/tools">All tools</a>
+        <h4>Work on it</h4>
+        <ul>
+          <li><a href="/diagnostics">Start here</a></li>
+          <li><a href="/operating-one-level-higher">Operating One Level Higher</a></li>
+          <li><a href="/promotion-kit">The Promotion Kit</a></li>
+          <li><a href="/dec2026cohort">December 2026 cohort</a></li>
+          <li><a href="/newsletter">The Optional Career</a></li>
+        </ul>
       </div>
       <div>
-        <p class="foot__head">Elsewhere</p>
-        <a href="https://www.linkedin.com/in/sayantannandi" rel="me noopener">LinkedIn</a>
-        <a href="/newsletter">Newsletter</a>
-        <a href="/contact">Contact</a>
-      </div>
-      <div>
-        <p class="foot__head">Fine print</p>
-        <a href="/about">About</a>
-        <a href="/privacy">Privacy</a>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/decisions">Decisions</a></li>
+          <li><a href="/writing">Essays</a></li>
+          <li><a href="/philosophy">Philosophy</a></li>
+          <li><a href="/book">Books</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/tools/exit-power-score">Exit Power Score</a></li>
+        </ul>
       </div>
     </div>
-    <p class="foot__legal">
-      I am not a SEBI-registered investment adviser and nothing on this site is investment advice. Every
-      number here is illustrative, drawn from my own life or from public research, and meant to show a way of
-      thinking rather than to tell you what to buy, sell or hold. Verify everything against your own
-      situation, and where it matters, consult a registered professional.
-      <br><br>
-      &copy; <span class="mono">2026</span> Sayantan Nandi
-    </p>
+    <div class="legal">
+      <span>Sayantan Nandi</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
   </div>
 </footer>
-
-<script src="/assets/site.js"></script>
 </body>
 </html>

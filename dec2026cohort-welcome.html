@@ -55,12 +55,29 @@
   footer .in{max-width:var(--w);margin:0 auto}
   footer a{color:var(--muted)}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  :root{--navy:#14213D; --grey:#3B4560; --lgrey:#6B7385; --green:#1E6B4F; --lblue:#E6F0EA; --lgrey-bg:#F3F1EB; --rule:#D5D5D0; --red:#9A6B1F; --ink:#14213D; --paper:#FCFBF8; --accent:#1E6B4F; --blue:#1E6B4F; --amber:#9A6B1F; --bg:#FCFBF8; --muted:#6B7385; --line:#D5D5D0; --blue-soft:#E6F0EA; --green-soft:#E6F0EA; --orange:#9A6B1F; --orange-soft:#F6EEDD; --serif:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; --sans:"Literata", Georgia, serif;}
+  body{font-family:"Literata", Georgia, serif; background:#FCFBF8; color:#3B4560; line-height:1.62;}
+  h1,h2,h3,h4,.kicker,.btn,.bignum,.val,.score,.big,.num{font-family:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;}
+  h1,h2,h3{color:#14213D; letter-spacing:-.015em;}
+  .kicker,.eyebrow{text-transform:none; letter-spacing:0; font-size:14px; font-weight:500; color:#6B7385;}
+  .btn{border-radius:3px;}
+  .wrap{padding-top:2.5rem;}
+  .verdict{border-left-color:#1E6B4F;}
+</style>
 </head>
 <body>
+<header class="site-head">
+  <div class="page">
+    <a class="wordmark" href="/">Sayantan Nandi</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" onclick="var n=document.getElementById('nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+    <nav class="site-nav" id="nav" aria-label="Site"><a href="/diagnostics">Start here</a><a href="/operating-one-level-higher" aria-current="page">The course</a><a href="/decisions">Decisions</a><a href="/writing">Essays</a><a href="/philosophy">Philosophy</a><a href="/about">About</a><a class="letter" href="/newsletter">The letter</a></nav>
+  </div>
+</header>
 
-<nav class="nav" aria-label="Site">
-  <a class="brand" href="https://sayantannandi.com/"><strong>Sayantan Nandi</strong><span>Earning power · Exit power · Optionality</span></a>
-</nav>
 
 <main>
   <p class="green">Payment received.</p>
@@ -89,13 +106,41 @@
   </div>
 </main>
 
-<footer>
-  <div class="in">
-    <p><strong style="color:var(--navy)">Sayantan Nandi</strong> · First make your time valuable. Then make it yours.</p>
-    <p><a href="https://sayantannandi.com/">Home</a> · <a href="https://sayantannandi.com/contact">Contact</a> · <a href="https://sayantannandi.com/privacy">Privacy</a></p>
-    <p>© 2026 Sayantan Nandi</p>
+<footer class="site-foot">
+  <div class="page">
+    <div class="cols">
+      <div>
+        <p class="motto">First make your time valuable. Then make it yours.</p>
+        <p>Careers, money, and how they combine into choices. Written for senior professionals in India who are doing well on paper and want more say over what comes next.</p>
+      </div>
+      <div>
+        <h4>Work on it</h4>
+        <ul>
+          <li><a href="/diagnostics">Start here</a></li>
+          <li><a href="/operating-one-level-higher">Operating One Level Higher</a></li>
+          <li><a href="/promotion-kit">The Promotion Kit</a></li>
+          <li><a href="/dec2026cohort">December 2026 cohort</a></li>
+          <li><a href="/newsletter">The Optional Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/decisions">Decisions</a></li>
+          <li><a href="/writing">Essays</a></li>
+          <li><a href="/philosophy">Philosophy</a></li>
+          <li><a href="/book">Books</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/tools/exit-power-score">Exit Power Score</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Sayantan Nandi</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
   </div>
 </footer>
 
-</body>
 </html>
