@@ -156,9 +156,9 @@ section + section{margin-top:3.5rem}
 /* blocks */
 .note{background:var(--green-wash);border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.35rem;margin:1.5rem 0;max-width:var(--measure)}
 .note p:last-child{margin-bottom:0}
-.price-note{background:var(--ochre-wash);border-radius:8px;padding:1.1rem 1.35rem;margin:1.5rem 0;max-width:var(--measure)}
-.price-note p:last-child{margin-bottom:0}
-.price-note h4,.note h4{margin-top:0}
+.cost-note{background:var(--ochre-wash);border-radius:8px;padding:1.1rem 1.35rem;margin:1.5rem 0;max-width:var(--measure)}
+.cost-note p:last-child{margin-bottom:0}
+.cost-note h4,.note h4{margin-top:0}
 .aside{color:var(--ink-3);font-size:var(--fs-s);border-left:2px solid var(--rule);padding-left:1rem;margin:1.5rem 0;max-width:var(--measure)}
 
 /* the three-lens verdict */
@@ -208,3 +208,12 @@ h1,h2,h3,h4,.kicker,.eyebrow,.btn,.hero-facts b,.facts b,.bignum,.val,.score,.bi
 h1,h2,h3{color:var(--ink) !important}
 .kicker,.eyebrow{text-transform:none !important;letter-spacing:0 !important;font-size:.9rem !important;font-weight:500 !important;color:var(--ink-3) !important}
 .site-head,.site-foot{color:inherit}
+
+/* images */
+.hero-with-portrait{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:start}
+.hero-with-portrait > :not(.portrait){grid-column:1}
+.portrait{grid-column:2;grid-row:1 / span 3;margin:.5rem 0 0;width:clamp(150px,20vw,240px)}
+.portrait img{width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)}
+@media (max-width:700px){.hero-with-portrait{grid-template-columns:1fr}.portrait{grid-column:1;grid-row:auto;width:150px;margin:0 0 1rem}}
+.framework{margin:1.5rem 0 3rem}
+.framework img{width:100%;height:auto;border-radius:10px;border:1px solid var(--rule)}
