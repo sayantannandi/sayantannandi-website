@@ -37,7 +37,7 @@ if(brief) {
   document.querySelector('#download-brief').addEventListener('click', () => {
     const entries = [...brief.querySelectorAll('textarea')].map(input => `${input.dataset.heading}\n${input.value.trim() || '[Add your notes here]'}\n`);
     downloadText('My_One_Page_Leadership_Brief.txt', 'ONE-PAGE LEADERSHIP BRIEF\nThe Step Up to Senior Leadership | Sayantan Nandi\n\n' + entries.join('\n') + '\nPractice resource: https://sayantannandi.com/step-up/sample\n');
-    document.querySelector('#brief-status').textContent = 'Your brief has been downloaded. Keep the first draft and compare it with your next version.';
+    document.querySelector('#brief-status').textContent = 'Your download has started. If nothing saves, copy your notes from the fields above. Keep the first draft for comparison.';
   });
   document.querySelector('#print-brief').addEventListener('click', () => window.print());
 }

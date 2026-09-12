@@ -24,6 +24,10 @@ The new course and cohort are in **interest-list mode**. There are no new-editio
 
 The Skills Check is an educational reflection tool, not a validated assessment or promotion predictor. No aggregate score, percentiles or product recommendation based on a score. Visitors choose a practice priority. Answers and sample notes stay in tab memory; no local/session storage or answer analytics. Results and templates download without signup.
 
+## Verification
+
+Run `python3 scripts/validate_site.py` for static validation. For interaction tests, install the QA-only DOM dependency with `npm install --no-save --package-lock=false linkedom@0.18.12`, then run `node scripts/test_interactions.mjs`. This dependency is not used by the website. The tests mock transport and do not submit real forms. See `QA_RESULTS.md` for browser and hosted-route checks.
+
 ## Forms and email boundary
 
 Three statically detectable Netlify forms collect separate explicit consent:

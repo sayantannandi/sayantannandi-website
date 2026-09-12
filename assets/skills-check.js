@@ -1,5 +1,5 @@
 import {skills} from './skills-data.js';
-import {downloadText} from './step-up.js?v=1';
+import {downloadText} from './step-up.js?v=2';
 const root = document.querySelector('#skills-check');
 let current = 0;
 let answers = {};
@@ -22,7 +22,7 @@ function renderResults(){
  const chosen=skills.find(s=>s.id===priority);
  const notes=skills.map((s,i)=>{const a=s.options.find(o=>o.id===answers[s.id]);return `${i+1}. ${s.title}\nContext: ${s.context}\nSituation: ${s.situation}\nYour response: ${a.text}\nFeedback: ${a.feedback}\nStrongest response for these facts: ${s.options.find(o=>o.id===s.best).text}\nWhy this matters: ${s.principle}\nPractice: ${s.practice}\n`;}).join('\n');
  downloadText('My_Step_Up_Practice_Notes.txt',`STEP UP SKILLS CHECK: MY PRACTICE NOTES\nFictional teaching situations. This is not a validated assessment or promotion prediction.\n\nMy chosen priority: ${chosen?.title || 'Not selected yet'}\n${chosen?.practice || 'Choose a skill that matches a real situation in your work.'}\n\n${notes}\nFree practice: https://sayantannandi.com/step-up/sample\nCourse: https://sayantannandi.com/step-up\n`);
- root.querySelector('#download-status').textContent='Your practice notes have been downloaded.';
+ root.querySelector('#download-status').textContent='Your download has started. If nothing saves, your responses and explanations are available below.';
  });
  root.querySelector('#restart').addEventListener('click',()=>{answers={};priority='';current=0;reviewed.clear();renderQuestion();focusHeading();});
 }

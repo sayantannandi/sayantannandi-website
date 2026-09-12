@@ -12,7 +12,7 @@
 
 - [ ] Review the Netlify deploy preview on mobile and desktop.
 - [ ] Confirm the new-edition interest-list mode is the intended current availability.
-- [ ] Confirm Netlify detected the three new forms on the deploy preview. Live form delivery has not been tested by submitting personal data.
+- [x] Confirmed Netlify detected the three new forms with their fields and honeypots. Live submissions and email delivery remain untested.
 - [ ] Decide whether to connect the new MailerLite groups in phase 3 before launch, or monitor/export the new Netlify forms manually until then.
 - [ ] Keep old buyer access and emails available; communicate any learning-platform transition directly to affected customers.
 - [ ] Merge once after review. This branch does not authorize or perform a production merge.
