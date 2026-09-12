@@ -121,12 +121,10 @@ redirects={
 lines=['/scripts/*  /404.html  404!', '# Retired acquisition paths. Forced rules cover old files and preserve campaign query strings.']
 for old,new in redirects.items():
     for source in [old,old+'/',old+'.html']:lines.append(f'{source}  {new}  301!')
-lines+=['# Canonical new paths. Explicit rewrites avoid reliance on pretty-URL processing.']
+lines+=['# Canonical new paths. Netlify pretty URLs serve the matching HTML files.']
 for route,noindex in PAGES:
     if route in ['/','/404']:continue
     lines.append(f'{route}/  {route}  301!')
-    lines.append(f'{route}.html  {route}  301!')
-    lines.append(f'{route}  {route}.html  200')
 lines.append('/index.html  /  301!')
 write('_redirects','\n'.join(lines)+'\n')
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE+route}</loc></url>\n' for route,noindex in PAGES if not noindex)+'</urlset>\n')

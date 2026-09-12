@@ -16,7 +16,7 @@ Static Netlify website for **The Step Up to Senior Leadership**. Eight modules, 
 
 `/`, `/step-up`, `/step-up/check`, `/step-up/sample`, `/step-up/cohort`, `/newsletter`, `/essays`, three essays, `/about`, `/help`, `/privacy`. Existing purchase terms, refunds, cohort intake and kit delivery instructions remain accessible but are excluded from the sitemap and marked noindex.
 
-`_redirects` maps retired clean, `.html` and trailing-slash acquisition URLs directly to their closest replacement. Forced 301s prevent old files shadowing redirects. New clean URLs use explicit internal rewrites. Unknown routes get `404.html`.
+`_redirects` maps retired clean, `.html` and trailing-slash acquisition URLs directly to their closest replacement. Forced 301s prevent old files shadowing redirects. New clean URLs use Netlify’s existing pretty-URL handling; do not add forced HTML redirects together with clean-to-HTML rewrites, which creates a redirect loop. Unknown routes get `404.html`.
 
 ## Current launch state
 

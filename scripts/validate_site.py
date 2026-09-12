@@ -28,7 +28,9 @@ def resolve(url):
   assert path not in seen,('Redirect cycle',url,seen)
   seen.add(path);path,status=rules[path]
   if status==200:return ROOT/path.lstrip('/')
- return ROOT/('index.html' if path=='/' else path.lstrip('/'))
+ target=ROOT/('index.html' if path=='/' else path.lstrip('/'))
+ if not target.is_file() and target.with_suffix('.html').is_file():target=target.with_suffix('.html')
+ return target
 files=[p for p in ROOT.rglob('*.html') if 'scripts' not in p.parts]
 docs={p:Document(p.read_text()) for p in files}
 checked=0
