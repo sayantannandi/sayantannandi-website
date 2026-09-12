@@ -16,7 +16,7 @@ Static Netlify website for **The Step Up to Senior Leadership**. Eight modules, 
 
 `/`, `/step-up`, `/step-up/check`, `/step-up/sample`, `/step-up/cohort`, `/newsletter`, `/essays`, three essays, `/about`, `/help`, `/privacy`. Existing purchase terms, refunds, cohort intake and kit delivery instructions remain accessible but are excluded from the sitemap and marked noindex.
 
-`_redirects` maps retired clean, `.html` and trailing-slash acquisition URLs directly to their closest replacement. Forced 301s prevent old files shadowing redirects. New clean URLs use Netlify’s existing pretty-URL handling; do not add forced HTML redirects together with clean-to-HTML rewrites, which creates a redirect loop. Unknown routes get `404.html`.
+`_redirects` maps retired clean, `.html` and trailing-slash acquisition URLs directly to their closest replacement. Forced 301s prevent old files shadowing redirects. New clean URLs use Netlify’s existing pretty-URL handling; do not add explicit trailing-slash redirects or forced HTML redirects together with clean-to-HTML rewrites, which creates a redirect loop. Unknown routes get `404.html`.
 
 ## Current launch state
 
@@ -41,5 +41,7 @@ Netlify form detection must be enabled (confirmed enabled in the connected proje
 Existing Netlify functions, Razorpay webhook, environment variable names and legacy kit delivery remain unchanged. Do not reuse the old TagMango/Razorpay sales links for the new edition until checkout copy, materials and terms agree.
 
 ## Preview and release
+
+`/review` is a noindex layout-review tool with 390px, 768px and 1160px same-origin frames. It is not linked from the public navigation.
 
 Use a pull request deploy preview; do not push straight to main. See `DEPLOYMENT_CHECKLIST.md` and `scripts/validate_site.py`. Production forms use real services; QA must avoid live submissions or use explicit, controlled authorization. Nothing in this branch changes the production domain configuration.

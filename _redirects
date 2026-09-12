@@ -90,25 +90,3 @@
 /thanks  /request-received  301!
 /thanks/  /request-received  301!
 /thanks.html  /request-received  301!
-# Canonical new paths. Netlify pretty URLs serve the matching HTML files.
-/step-up/  /step-up  301!
-/step-up/cohort/  /step-up/cohort  301!
-/step-up/check/  /step-up/check  301!
-/step-up/sample/  /step-up/sample  301!
-/newsletter/  /newsletter  301!
-/essays/  /essays  301!
-/essays/capacity-is-not-cash/  /essays/capacity-is-not-cash  301!
-/essays/a-priority-needs-room/  /essays/a-priority-needs-room  301!
-/essays/two-numbers/  /essays/two-numbers  301!
-/about/  /about  301!
-/help/  /help  301!
-/request-received/  /request-received  301!
-/terms/  /terms  301!
-/refunds/  /refunds  301!
-/dec2026cohort-welcome/  /dec2026cohort-welcome  301!
-/thanks-promotion-kit/  /thanks-promotion-kit  301!
-/thanks-promotion-case-builder/  /thanks-promotion-case-builder  301!
-/thanks-review-room-kit/  /thanks-review-room-kit  301!
-/thanks-executive-hour/  /thanks-executive-hour  301!
-/privacy/  /privacy  301!
-/index.html  /  301!
