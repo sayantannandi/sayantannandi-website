@@ -1,0 +1,4 @@
+import {skills} from '../assets/skills-data.js';
+import {writeFileSync} from 'node:fs';
+const text='STEP UP SKILLS CHECK\nEight fictional situations. A reflection tool, not a leadership rating or promotion prediction.\nChoose a response before reading the explanations at the end.\n\n'+skills.map((s,i)=>`${i+1}. ${s.title}\n${s.context}\n${s.situation}\n${s.question}\n${s.options.map(o=>`${o.id.toUpperCase()}. ${o.text}`).join('\n')}\n`).join('\n')+'\n\nEXPLANATIONS\n\n'+skills.map((s,i)=>`${i+1}. ${s.title}\nStrongest response for these facts: ${s.best.toUpperCase()}\n${s.options.map(o=>`${o.id.toUpperCase()}: ${o.feedback}`).join('\n')}\nWhy it matters: ${s.principle}\nPractice: ${s.practice}\n`).join('\n')+'\nChoose one skill to practise in a real situation.\nLeadership brief: https://sayantannandi.com/step-up/sample\n';
+writeFileSync(new URL('../assets/downloads/Step_Up_Skills_Check.txt',import.meta.url),text);
