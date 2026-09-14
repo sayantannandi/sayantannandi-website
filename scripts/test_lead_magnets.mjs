@@ -49,7 +49,7 @@ function setup(test){
  vm.runInContext(ui,ctx);
  return {document,lead,requests,downloads,setValid:v=>{valid=v;},setResponse:v=>{response=v;},
  click(selector){const el=document.querySelector(selector);assert(el,selector);el.dispatchEvent(new window.Event('click',{bubbles:true,cancelable:true}));},
- submit(selector){const el=document.querySelector(selector);assert(el,selector);el.dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));},
+ submit(selector,choice){const el=document.querySelector(selector);assert(el,selector);const event=new window.Event('submit',{bubbles:true,cancelable:true});if(choice)Object.defineProperty(event,'submitter',{value:el.querySelector('[data-newsletter-choice="'+choice+'"]')});el.dispatchEvent(event);},
  choose(id){for(const el of document.querySelectorAll('[name=answer]')){el.checked=false;el.removeAttribute('checked');}const el=document.querySelector('[name=answer][value='+id+']');el.checked=true;el.setAttribute('checked','');el.dispatchEvent(new window.Event('change',{bubbles:true}));}};
 }
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
@@ -68,7 +68,7 @@ for(const test of Object.values(tests)){
  for(let i=0;i<6;i++)t.submit('#test-question');
  t.lead.querySelector('[name=name]').value='Example';
  t.lead.querySelector('[name=email]').value='example@example.com';
- t.lead.querySelector('[name=consent]').checked=true;
+ assert.equal(t.lead.querySelectorAll('[type=checkbox]').length,0);
  t.setValid(false);t.submit('[data-lead-capture]');await tick();assert.equal(t.requests.length,0);t.setValid(true);
  t.submit('[data-lead-capture]');t.submit('[data-lead-capture]');await tick();
  assert.equal(t.requests.length,1);assert.match(t.lead.querySelector('.form-status').textContent,/could not save/);
@@ -81,7 +81,7 @@ for(const test of Object.values(tests)){
  assert.equal(t.document.querySelectorAll('[data-report] .result-item').length,6);
  const payload=new URLSearchParams(t.requests.at(-1)[1].body);
  assert.equal(payload.get('form-name'),test.form);assert.equal(payload.get('test-id'),test.id);
- assert.equal(payload.get('newsletter-consent'),null);
+ assert.equal(payload.get('newsletter-consent'),'no');assert.equal(payload.get('consent'),'yes');assert.equal(payload.get('consent-version'),'step-up-tests-2026-09-v2-buttons');
  assert.equal(JSON.parse(payload.get('answers')).length,6);
  assert.equal(JSON.parse(payload.get('answers'))[0],test.questions[0].options.find(o=>o.points===0).id);
  assert(payload.get('report-text').includes('Feedback:'));
@@ -90,8 +90,8 @@ for(const test of Object.values(tests)){
  const opted=setup(test);opted.click('[data-test-start]');
  for(let i=0;i<6;i++){opted.choose(answers[i]);opted.submit('#test-question');}
  opted.lead.querySelector('[name=name]').value='Example';opted.lead.querySelector('[name=email]').value='example@example.com';
- opted.lead.querySelector('[name=consent]').checked=true;opted.lead.querySelector('[name=newsletter-consent]').checked=true;
- opted.setResponse({ok:true});opted.submit('[data-lead-capture]');await tick();
+ assert.equal(opted.lead.querySelectorAll('[type=checkbox]').length,0);
+ opted.setResponse({ok:true});opted.submit('[data-lead-capture]','yes');await tick();
  assert.equal(new URLSearchParams(opted.requests[0][1].body).get('newsletter-consent'),'yes');
 }
 console.log('PASS: both complete funnels, unanswered guard, navigation, edited answers, gate, invalid form, HTTP failure, timeout, retry, duplicate protection, consent payloads and downloads. No live requests.');

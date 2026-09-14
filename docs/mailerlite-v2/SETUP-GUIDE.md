@@ -72,7 +72,7 @@ The existing name and email fields capture the first name and email address. The
 ## 4. Connect the website inputs
 MailerLite sends the emails and controls their timing. It does not calculate the existing website tests or verify a Razorpay payment by itself. A small server-side website connection must pass those events into MailerLite.
 
-This is the one part that cannot be completed just by pasting email HTML. The current website already accepts the forms, but its new form names need mapping. The connection should use a MailerLite API token stored in the server environment, never in browser JavaScript. No new website integration has been deployed in this package.
+Website consent layout updated 14 September 2026: explicit button choices replace the earlier checkboxes. This is the one part that cannot be completed just by pasting email HTML. The current website already accepts the forms, but its new form names need mapping. The connection should use a MailerLite API token stored in the server environment, never in browser JavaScript. No new website integration has been deployed in this package.
 
 For the newsletter form, a MailerLite embedded form is the simplest alternative to a custom API connection. Associate it with su2-optin and use explicit consent wording. Leave su2_first_route blank for this route; the dispatcher treats a blank value as newsletter. An existing test subscriber's first route must not be overwritten by a later form submission.
 
@@ -84,7 +84,7 @@ For the existing test forms, use the server connection because the report data m
 | step-up-judgment-results | Validate answers against the versioned test; save a private report; write judgment fields; add su2-judgment-request last. If newsletter consent is separately true, record it and add su2-optin too. |
 | step-up-visibility-results | Follow the same sequence using visibility fields and su2-visibility-request. |
 
-Keep the existing separate newsletter checkbox. Suggested report consent: “Email me my test report.” Suggested newsletter checkbox: “Also send me The Optional Career, a weekly essay, and occasional emails about the course and cohort.” Neither checkbox should be preselected.
+The forms now use buttons instead of checkboxes. On the newsletter page, the Subscribe button and its adjacent notice record newsletter consent. The tests offer “Show my report and join the letter” (newsletter-consent=yes) and “Show my report only” (newsletter-consent=no). Both submit consent=yes for providing the requested report. Neither path silently subscribes someone who requested only their report.
 
 The report request grants permission for the requested report, not entry into the essays. An active MailerLite subscriber who has requested a report can receive that narrowly scoped automation. A person already unsubscribed or suppressed cannot be made deliverable by adding a group. Do not force their status to active. Keep the report available on the website and use MailerLite's explicit resubscription process if they choose to subscribe again. MailerLite remains a permission-based email platform: [anti-spam policy](https://www.mailerlite.com/legal/anti-spam-policy).
 

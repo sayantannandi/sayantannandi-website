@@ -32,7 +32,7 @@ assert.equal(q.blobs.length,1);const notes=await q.blobs[0].text();assert.match(
 q.click('#restart');assert.equal(q.document.querySelectorAll('.quiz-feedback').length,0);assert.equal(q.document.querySelectorAll('input[checked]').length,0);
 console.log('PASS Skills Check: unanswered guard, changed answer, eight mixed choices, per-answer feedback, back/next, priority, download, restart, zero network calls.');
 for(const file of ['newsletter.html']){
- const f=setup(file);const form=f.document.querySelector('form[data-capture]');const email=form.querySelector('[name=email]');email.value='example@example.com';form.querySelector('[name=consent]').checked=true;
+ const f=setup(file);const form=f.document.querySelector('form[data-capture]');const email=form.querySelector('[name=email]');email.value='example@example.com';assert.equal(form.querySelectorAll('[type=checkbox]').length,0);assert.equal(form.querySelector('[name=consent]').value,'yes');
  f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.match(form.querySelector('.form-status').textContent,/could not confirm/);assert.equal(email.value,'example@example.com');assert.equal(form.querySelector('button').disabled,false);
  f.setResponse(new Error('Timeout'));f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.equal(email.value,'example@example.com');assert.equal(form.querySelector('button').disabled,false);
  f.setResponse({ok:true});f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.match(form.querySelector('.form-status').className,/success/);assert.equal(form.querySelector('button').disabled,true);

@@ -24,7 +24,7 @@ def page(path,title,desc,body,active='',script='',noindex=False):
 def crumb(label):return f'<div class="wrap breadcrumb"><a href="/">Home</a> / {label}</div>'
 def hero(kicker,title,desc):return f'<section class="wrap page-hero"><span class="eyebrow">{kicker}</span><h1>{title}</h1><p class="lede">{desc}</p></section>'
 def capture(name,button,consent,success,extra=''):
-    return f'''<form name="{name}" method="POST" action="/request-received" data-netlify="true" netlify-honeypot="bot-field" data-capture data-success="{escape(success,quote=True)}"><input type="hidden" name="form-name" value="{name}"><input type="hidden" name="consent-version" value="step-up-2026-09-v1"><p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="field">First name<input name="name" required autocomplete="given-name" maxlength="100"></label><label class="field">Email address<input name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@example.com"></label>{extra}<label class="consent"><input type="checkbox" name="consent" value="yes" required><span>{consent} <a href="/privacy">Privacy details</a>.</span></label><button class="btn" type="submit">{button}</button><p class="form-status" role="status" aria-live="polite"></p></form>'''
+    return f'''<form name="{name}" method="POST" action="/request-received" data-netlify="true" netlify-honeypot="bot-field" data-capture data-success="{escape(success,quote=True)}"><input type="hidden" name="form-name" value="{name}"><input type="hidden" name="consent-version" value="step-up-2026-09-v2-button"><p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label class="field">First name<input name="name" required autocomplete="given-name" maxlength="100"></label><label class="field">Email address<input name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@example.com"></label>{extra}<input type="hidden" name="consent" value="yes"><p class="fine">By selecting Subscribe, you ask to receive The Optional Career and occasional course or cohort invitations at this email address. Unsubscribe at any time. <a href="/privacy">Privacy details</a>.</p><button class="btn" type="submit">{button}</button><p class="form-status" role="status" aria-live="polite"></p></form>'''
 def faq(items):return '<div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in items)+'</div>'
 
 # Sales and post-purchase bodies are maintained as HTML templates in scripts/content.
@@ -68,7 +68,7 @@ page('404.html','Page Not Found','Find the new course, Skills Check or customer 
 
 # Keep the purchase policy text and customer instructions intact; replace only their shared shell.
 # Archived input is committed separately to make future regeneration deterministic.
-for filename in ['terms.html','refunds.html','dec2026cohort-welcome.html','thanks-promotion-kit.html','thanks-promotion-case-builder.html','thanks-review-room-kit.html','thanks-executive-hour.html']:
+for filename in ['dec2026cohort-welcome.html','thanks-promotion-kit.html','thanks-promotion-case-builder.html','thanks-review-room-kit.html','thanks-executive-hour.html']:
     original=(ROOT/'scripts'/'legacy-content'/filename).read_text()
     main=re.search(r'<main[^>]*>(.*?)</main>',original,re.S).group(1)
     main=re.sub(r'<div class="page">','<div class="wrap narrow">',main)
@@ -81,6 +81,10 @@ for filename in ['terms.html','refunds.html','dec2026cohort-welcome.html','thank
     main=main.replace('Payment received.','For registered customers.').replace('<h1>You are in.</h1>','<h1>Your next steps.</h1>').replace('Thank you. Ten seats, and one of them is now yours.','If you have completed your registration, follow the steps below.')
     page(filename,title,'Access and support information for existing customers.',main,noindex=True)
 
+# Current policies share the same shell and footer as every other public page.
+for filename,title in [('terms.html','Terms'),('refunds.html','Refunds and Cancellations')]:
+    page(filename,title,'Purchase policies for The Step Up to Senior Leadership course, six-week cohort and digital kits.',(ROOT/'scripts'/'content'/filename).read_text(encoding='utf-8'))
+
 # Lead magnets and supporting pages.
 page("executive-hour.html","The Executive Hour","Replace an improvised status update with a considered executive conversation. A focused workbook for developing leadership judgment.",(ROOT/'scripts'/'content'/"executive-hour.html").read_text(encoding='utf-8'),active="",script="")
 page("exit-power.html","Exit Power | More Choice Beyond the Next Salary","Leadership skills can strengthen earning power. Exit power connects that income with more choice over your work and life.",(ROOT/'scripts'/'content'/"exit-power.html").read_text(encoding='utf-8'),active="/philosophy",script="")
@@ -89,8 +93,8 @@ page("promotion-case-builder.html","The Promotion Case Builder","Organise eviden
 page("promotion-kit.html","The Promotion Kit","Focused workbooks to explain your leadership contribution in promotion and review conversations. Part of the Step Up approach to greater earning power.",(ROOT/'scripts'/'content'/"promotion-kit.html").read_text(encoding='utf-8'),active="",script="")
 page("review-room-kit.html","The Review Room Kit","Explain the value of your contribution before your appraisal. A focused workbook for professionals developing towards leadership.",(ROOT/'scripts'/'content'/"review-room-kit.html").read_text(encoding='utf-8'),active="",script="")
 page("start-here.html","Start Here | The Step Up to Senior Leadership","Grow towards leadership and greater earning power. Find the skills and habits to work on with two free workplace tests.",(ROOT/'scripts'/'content'/"start-here.html").read_text(encoding='utf-8'),active="/start-here",script="")
-page("tests/leadership-visibility.html","Leadership Visibility Check","Practise explaining your leadership contribution. Six workplace situations with a personal report. Name and email requested at the end.",(ROOT/'scripts'/'content'/"tests-leadership-visibility.html").read_text(encoding='utf-8'),active="/start-here",script="<script type=\"module\" src=\"/assets/lead-magnets.js?v=1\"></script>")
-page("tests/senior-level-judgment.html","Senior-Level Judgment Check","Find leadership skills to practise for your next role. Six judgment situations with a personal report. Name and email requested at the end.",(ROOT/'scripts'/'content'/"tests-senior-level-judgment.html").read_text(encoding='utf-8'),active="/start-here",script="<script type=\"module\" src=\"/assets/lead-magnets.js?v=1\"></script>")
+page("tests/leadership-visibility.html","Leadership Visibility Check","Practise explaining your leadership contribution. Six workplace situations with a personal report. Name and email requested at the end.",(ROOT/'scripts'/'content'/"tests-leadership-visibility.html").read_text(encoding='utf-8'),active="/start-here",script="<script type=\"module\" src=\"/assets/lead-magnets.js?v=2\"></script>")
+page("tests/senior-level-judgment.html","Senior-Level Judgment Check","Find leadership skills to practise for your next role. Six judgment situations with a personal report. Name and email requested at the end.",(ROOT/'scripts'/'content'/"tests-senior-level-judgment.html").read_text(encoding='utf-8'),active="/start-here",script="<script type=\"module\" src=\"/assets/lead-magnets.js?v=2\"></script>")
 page("privacy.html","Privacy","How the free tests, practice resources and signup forms use your information.",(ROOT/'scripts'/'content'/"privacy.html").read_text(encoding='utf-8'),active="",script="")
 
 # Forced redirects retire legacy HTML files as well as their clean URL aliases.

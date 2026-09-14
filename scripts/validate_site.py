@@ -53,7 +53,8 @@ for p,d in docs.items():
    assert f.get('data-netlify')=='true' and f.get('method')=='POST' and f.get('netlify-honeypot')=='bot-field',f
    text=p.read_text()
    assert f'name="form-name" value="{f["name"]}"' in text
-   assert 'name="consent" value="yes" required' in text
+   assert 'type="hidden" name="consent" value="yes"' in text
+   assert 'type="checkbox"' not in text
    assert 'name="consent-version"' in text
 # All original public acquisition files have a direct migration or remain accessible.
 legacy=ROOT/'scripts'/'legacy-content'
@@ -99,7 +100,8 @@ for slug,form in [('senior-level-judgment','step-up-judgment-results'),('leaders
  assert 'name="name" required' in t and 'name="email" type="email" required' in t
  for field in ['test-id','test-version','answers','dimension-scores','practice-focus','report-text','consent-version']:
   assert f'name="{field}"' in t,(slug,field)
- assert 'name="newsletter-consent" value="yes"' in t
+ assert 'name="newsletter-consent" value="no"' in t
+ assert 'data-newsletter-choice="yes"' in t and 'data-newsletter-choice="no"' in t
  assert 'name="newsletter-consent" value="yes" required' not in t
  assert 'data-result-capture hidden' in t
 for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/executive-hour','/philosophy','/exit-power','/start-here']:
@@ -108,3 +110,11 @@ for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/ex
 nav=docs[ROOT/'index.html']
 assert '/start-here' in nav.links and '/philosophy' in nav.links and '/exit-power' in nav.links
 print('PASS: two report forms, optional newsletter consent, restored routes and funnel navigation.')
+
+# Public policies reflect current naming and duration without obsolete price anchors.
+for filename in ['terms.html','refunds.html']:
+ t=(ROOT/filename).read_text()
+ assert 'The Step Up to Senior Leadership' in t
+ assert not re.search(r'Operating One Level Higher|8,999|19,999|eight live sessions',t)
+ assert 'noindex' not in t
+assert 'six live sessions across six weeks' in (ROOT/'terms.html').read_text()

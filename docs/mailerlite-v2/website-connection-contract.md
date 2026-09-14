@@ -53,3 +53,6 @@ The browser thank-you page is a navigation destination. It must not assign buyer
 If verified provider automation is not yet available, use a manual daily reconciliation of confirmed purchases. Before any sales campaign, reconcile again and inspect the recipient exclusions. This creates a manual operating dependency; it does not provide immediate purchase suppression.
 
 If the report service is not built yet, retain on-screen results and do not advertise emailed reports as live. HTML templates alone do not make that connection operational.
+
+## Current form choice values
+The report forms have no checkboxes. consent=yes records the report request. newsletter-consent is yes only when the visitor selects “Show my report and join the letter”; “Show my report only” records no. The notice version is step-up-tests-2026-09-v2-buttons. The direct newsletter form uses step-up-2026-09-v2-button and consent=yes on explicit Subscribe submission. Reject unrecognised values; never interpret a missing newsletter choice as yes.

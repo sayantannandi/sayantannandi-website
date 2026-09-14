@@ -10,7 +10,7 @@ if (root) {
   const report = root.querySelector('[data-report]');
   const leadForm = capture.querySelector('form');
   const status = leadForm.querySelector('.form-status');
-  const submit = leadForm.querySelector('[type=submit]');
+  const submitButtons = [...leadForm.querySelectorAll('[type=submit]')];
   const answers = Array(test.questions.length).fill(null);
   let index = 0, sending = false, submitted = false, result;
   const esc = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -78,6 +78,9 @@ if (root) {
     if(sending||submitted||!leadForm.reportValidity())return;
     const name = leadForm.querySelector('[name=name]');
     if(!name.value.trim()){name.setCustomValidity('Enter your first name.');name.reportValidity();name.setCustomValidity('');return;}
+    const submit = event.submitter || leadForm.querySelector('[data-newsletter-choice="no"]');
+    const originalLabel = submit.textContent;
+    leadForm.querySelector('[name="newsletter-consent"]').value = submit.dataset.newsletterChoice === 'yes' ? 'yes' : 'no';
     result = evaluate(test,answers);
     const fields = {
       'test-id':test.id,'test-version':test.version,'answers':JSON.stringify(answers),
@@ -86,7 +89,7 @@ if (root) {
       'report-text':reportText(test,result)
     };
     for(const [key,value] of Object.entries(fields))leadForm.querySelector('[name="' + key + '"]').value=value;
-    sending=true;submit.disabled=true;submit.textContent='Saving…';status.textContent='';
+    sending=true;submitButtons.forEach(button => {button.disabled=true;});submit.textContent='Saving…';status.textContent='';
     capture.querySelector('[data-review-answers]').disabled=true;
     try {
       const response=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
@@ -96,7 +99,7 @@ if (root) {
       leadForm.reset();
     } catch(error) {
       status.textContent='We could not save your request. Your answers and details are still here. Please try again.';
-      submit.disabled=false;submit.textContent='Show my report';
+      submitButtons.forEach(button => {button.disabled=false;});submit.textContent=originalLabel;
       capture.querySelector('[data-review-answers]').disabled=false;
     } finally {sending=false;}
   });
