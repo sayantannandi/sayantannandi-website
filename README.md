@@ -53,3 +53,11 @@ Review the existing draft PR and Netlify deploy preview before approving a merge
 Requested Library artwork was located: `The Step Up to Senior Leadership(2).png` (course) and `The step up to senior leadership(3).png` (cohort). Image transfer into the repository is blocked by the unavailable execution workspace. The course image also contains “Eight modules”; correct that artwork before publishing it. No authenticated Library image URLs or broken image paths have been added to the public pages.
 
 See `QA_RESULTS.md` and `DEPLOYMENT_CHECKLIST.md`.
+
+## Start-here funnel update
+
+The primary acquisition routes are now /start-here and /newsletter. Two six-situation tests collect first name and email at the end, then show a downloadable report after Netlify accepts the request. Newsletter consent on test forms is separate and optional. Automated email delivery remains for the next phase.
+
+Question content: assets/lead-magnet-data.mjs. Editorial scoring and report text: assets/lead-magnet-engine.mjs. Interactive flow: assets/lead-magnets.js. Page templates: scripts/content/. After editing, regenerate HTML and run static validation plus scripts/test_lead_magnets.mjs and scripts/test_interactions.mjs with the existing QA-only linkedom dependency.
+
+The header includes Start here and Philosophy, with a green letter button. Promotion Kit pages and /exit-power are restored as public pages. See LEAD_MAGNETS.md for form fields and the MailerLite handoff. No provider or automation changes are included in this update.

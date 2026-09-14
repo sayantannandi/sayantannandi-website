@@ -49,7 +49,7 @@ for p,d in docs.items():
    assert unquote(u.fragment) in docs[target].ids,(p.name,url,'missing anchor')
   checked+=1
  for f in d.forms:
-  if 'data-capture' in f:
+  if 'data-capture' in f or 'data-lead-capture' in f:
    assert f.get('data-netlify')=='true' and f.get('method')=='POST' and f.get('netlify-honeypot')=='bot-field',f
    text=p.read_text()
    assert f'name="form-name" value="{f["name"]}"' in text
@@ -91,3 +91,20 @@ for name in ['course-thank-you','cohort-thank-you']:
 assert 'six live sessions' in (ROOT/'step-up/cohort.html').read_text()
 assert 'localStorage' not in (ROOT/'assets/skills-check.js').read_text()
 print(f'PASS: {len(files)} pages, {checked} local links/assets/anchors, {len(rules)} routes, form definitions, sitemap and legacy access.')
+
+# Two end-of-test report forms, separate from optional newsletter consent.
+for slug,form in [('senior-level-judgment','step-up-judgment-results'),('leadership-visibility','step-up-visibility-results')]:
+ t=(ROOT/f'tests/{slug}.html').read_text()
+ assert f'name="{form}"' in t
+ assert 'name="name" required' in t and 'name="email" type="email" required' in t
+ for field in ['test-id','test-version','answers','dimension-scores','practice-focus','report-text','consent-version']:
+  assert f'name="{field}"' in t,(slug,field)
+ assert 'name="newsletter-consent" value="yes"' in t
+ assert 'name="newsletter-consent" value="yes" required' not in t
+ assert 'data-result-capture hidden' in t
+for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/executive-hour','/philosophy','/exit-power','/start-here']:
+ assert route not in rules,('New page must not redirect away',route)
+ assert resolve(route).exists(),route
+nav=docs[ROOT/'index.html']
+assert '/start-here' in nav.links and '/philosophy' in nav.links and '/exit-power' in nav.links
+print('PASS: two report forms, optional newsletter consent, restored routes and funnel navigation.')

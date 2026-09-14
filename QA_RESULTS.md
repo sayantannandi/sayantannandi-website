@@ -1,26 +1,24 @@
-# Validation: six-week launch update
+# Validation: Start here and two lead magnets
 
-## Checks performed on 14 September 2026
+## Prepared-file checks
 
-The execution workspace failed to connect. Repository reads and changes were prepared through the GitHub connector. Python regeneration and browser interaction tests could not be run locally.
+- 34 HTML pages and 1,073 local links/assets/anchors checked against repository paths.
+- Every checked page has one H1 and one canonical URL, with no duplicate IDs.
+- All 8,192 possible answer combinations evaluated across the two tests; scores remain in range and tied focus areas are preserved.
+- New JavaScript syntax parsed successfully.
+- Sitemap and restored routes checked for missing pages and inappropriate redirects.
+- The newsletter button uses white text on the existing dark green (#235f4c).
 
-Static checks on the prepared files passed:
-- 25 HTML pages with one H1, a canonical URL and no duplicate IDs.
-- 581 internal links and linked assets checked against repository paths; fragment links resolve.
-- Sitemap routes exist and exclude noindex customer pages.
-- Course and cohort checkout links use the exact owner-supplied destinations.
-- New course and cohort thank-you pages are noindex and explicitly do not verify payment.
-- The course lists all twelve lessons across six weeks. The cohort uses six live sessions.
-- The six Saturday dates run from 5 December 2026 through 9 January 2027.
-- Revised Skills Check JavaScript parses after removing its import for the syntax check.
+## Automated checks included in GitHub CI
 
-The Python validator now checks launch links and the new customer pages. Interaction tests were updated for the remaining newsletter form; the eight-case check and sample download tests remain. A GitHub workflow regenerates the site, checks for source/output drift and runs static validation after push.
+The workflow regenerates the site and checks for source/output drift, then runs the Python route/form validator. The new DOM tests exercise both complete test flows, including unanswered questions, edited answers, the end-of-test gate, failed submissions, timeout/retry, duplicate protection, optional newsletter consent and report downloads. Existing practice-resource and newsletter tests also run.
 
-## Limits and outstanding review
+No live forms or payments are submitted by these tests. Network responses in interaction tests are mocked.
 
-- No live payment, intake or newsletter submission was made.
-- The supplied payment URLs were not inspectable through the available browser tool, so checkout content, price and success-redirect settings are unverified.
-- Provider success URLs must be configured separately after the new production routes are released.
-- The requested Library artwork was found, but its pixels were unavailable through Library read and the disconnected workspace prevented image transfer to GitHub. The course image's extracted text says “Eight modules”; it needs correction before publication.
-- The updated page layouts still need mobile and desktop review on the Netlify preview. Earlier branch QA is not treated as a visual test of this update.
-- Main must remain unchanged until the owner approves the preview.
+## Remaining review
+
+The execution workspace is unavailable locally, so the new layouts have not been visually checked in a browser in this session. Review the Netlify preview at mobile and desktop widths. Read the GitHub workflow result for executed CI checks.
+
+New forms intentionally do not connect to MailerLite yet. In the preview, results appear on the page after Netlify accepts a form submission. Email delivery is not promised as active. Newsletter nurture requires its own opt-in on the result form.
+
+Main and the production branch remain outside this update. The earlier course/cohort artwork transfer and payment-provider success URL configuration remain separate outstanding items.
