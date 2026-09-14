@@ -1,14 +1,19 @@
-# Deployment checklist
+# Preview review and release
 
-1. Extract the ZIP on your computer.
-2. Create or open the GitHub repository for the site.
-3. Upload the contents of this folder to the repository root. `index.html` must be visible at the top level of the repository.
-4. In Netlify, import the GitHub repository or link it to your existing Netlify project.
-5. No build command is required. The included `netlify.toml` publishes the repository root.
-6. Test the Netlify preview URL first.
-7. Confirm these pages: `/`, `/about`, `/philosophy`, `/writing`, `/tools`, `/newsletter`, `/book`, `/contact`.
-8. Confirm the homepage framework image and About portrait display correctly.
-9. Add or retain `sayantannandi.com` under Netlify Domain management.
-10. Test desktop and mobile navigation, the runway calculator, and both diagnostic tools.
+- [ ] Review /start-here and both six-situation tests on desktop and mobile.
+- [ ] Approve question wording and result exercises.
+- [ ] Confirm the required name/email step and separate optional newsletter consent.
+- [ ] Review the green letter button and seven-item responsive navigation.
+- [ ] Review Philosophy, Exit Power and the restored Promotion Kit pages.
+- [ ] Confirm the GitHub validation workflow passes.
+- [ ] Keep main unchanged until the owner approves the preview.
 
-Note: newsletter/contact form submissions currently use Netlify Forms markup. Connect the newsletter form to MailerLite separately if you want subscribers added directly to your MailerLite audience.
+## Email phase, after website approval
+
+Connect the new report forms and the direct newsletter form to MailerLite using the field contract in LEAD_MAGNETS.md. Send the requested report first. Nurture follows only the relevant subscription consent. The current preview states that email delivery is not enabled.
+
+The existing server functions are unchanged and ignore the new report-form names. No email automation is activated by this update.
+
+## Earlier outstanding items
+
+Transfer the requested course and cohort artwork when the execution workspace is available; correct “Eight modules” in the course image. Configure the course and cohort post-payment redirect URLs in the relevant provider only after production includes the thank-you pages.

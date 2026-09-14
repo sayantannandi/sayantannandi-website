@@ -1,26 +1,69 @@
 # sayantannandi.com
 
-Static site on Netlify. No build step. Publish directory is the repo root.
+Static Netlify website for The Step Up to Senior Leadership. The course has twelve lessons arranged into six weeks. The December 2026 cohort follows the same sequence with six weekly live sessions.
 
-## Structure
+## Editing and running
 
-- `assets/site.css` is the only stylesheet. Every page loads it. Bricolage Grotesque for headings, navigation, figures and buttons; Literata for text. Both load from Google Fonts.
-- `assets/site.js` is only used by `tools/exit-power-score.html` (score tally and mobile nav).
-- Pages built from scratch in the shared shell: index, diagnostics-index, decisions, writing, essays/two-numbers, philosophy, book, about, newsletter, contact, privacy, thanks, the four `thanks-*` payment pages, tools/index, tools/earning-power-audit, tools/exit-power-score.
-- Pages that keep their own inline layout and got the shared header, footer, fonts and palette on top: the seven diagnostics, the four kit pages, the course page, the two cohort pages, invisible-month-calculator. Their forms, field names and submit code are unchanged.
+- Generated HTML is checked in. Netlify publishes the repository root without a build step.
+- Edit the homepage, sales pages and payment thank-you bodies in `scripts/content/`.
+- Edit the shared shell and remaining page content in `scripts/build_site.py`.
+- Run `python3 scripts/build_site.py`, then `python3 scripts/validate_site.py`. Commit source and generated output together.
+- Interactive cases live in `assets/skills-data.js`; behavior lives in `assets/skills-check.js`. The eight-case check samples course topics and links to the corresponding lessons.
+- Run `node scripts/build_downloads.mjs` only when changing the cases.
+- Shared styling and navigation/form/sample behavior live in `assets/step-up.css` and `assets/step-up.js`.
+- `scripts/legacy-content/` retains policy and delivery inputs for deterministic regeneration. The December 2026 instructions now reflect the six-week schedule. `/scripts/*` remains blocked.
+- The GitHub validation workflow checks regeneration, routes, checkout links, customer pages and JavaScript syntax. Interaction tests use the existing QA-only dependency: `npm install --no-save --package-lock=false linkedom@0.18.12`, then `node scripts/test_interactions.mjs`.
 
-## Redesign, September 2026
+## Offers and checkout destinations
 
-Navigation on every page: Start here, The course, Decisions, Essays, Philosophy, About, and The letter.
+Both offers are open for enrolment, as directed by the course owner.
 
-New page: `/decisions`. Moved: `/tools` and `/tools/` now 301 to `/diagnostics`; `/tools/earning-power-audit` 301s to `/scorecard`. `/tools/exit-power-score` stays, reachable from the footer.
+| Offer | Sales route | Checkout |
+| --- | --- | --- |
+| Independent course | /step-up | https://tagmango.app/68942f6867 |
+| December 2026 cohort | /step-up/cohort | https://rzp.io/rzp/TSUTSLDec2026 |
 
-Nothing that MailerLite depends on changed. Form names, hidden fields and the `submission-created` function are as they were. Three forms that were never mapped to MailerLite were dropped (`essay-signup`, `worksheets`, `earning-power-audit`).
+The cohort has six Saturday sessions at 11 AM IST, from 5 December 2026 to 9 January 2027. Existing session length remains 90 minutes. Current fees and purchase details are left to the supplied checkouts; no price, discount or seat count is invented.
 
-The four `thanks-*` pages no longer contain placeholder links. They tell the buyer the download link is in the Razorpay confirmation email.
+## Post-payment pages
 
-## Deploying
+| Provider | Success destination after the production merge |
+| --- | --- |
+| TagMango course | https://sayantannandi.com/step-up/course-thank-you |
+| Razorpay cohort | https://sayantannandi.com/step-up/cohort-thank-you |
 
-Push to a branch first and check the deploy preview. Merge to main once. Each production deploy costs 15 Netlify credits; branch deploys cost none.
+These are public, noindex instruction pages, excluded from the sitemap. They do not verify payment or grant paid access. Configure the success/redirect URL in each provider separately; HTML links cannot change a provider setting. During review, inspect the same paths on the Netlify deploy preview. Do not point live checkout to production paths before those pages have been released.
 
-Form submissions on a deploy preview run the real function with the real environment variables. Test with a throwaway address, or scope the `ML_*` variables to the production context while the preview exists.
+## Public routes and migration
+
+The homepage, course, cohort, free check, worked sample, newsletter, essays, about, help and privacy routes remain canonical. The sitemap contains public pages and updated modification dates. Policies, intake, purchase instructions and thank-you pages remain accessible with noindex and outside the sitemap.
+
+Existing forced redirects are retained. Do not combine forced HTML redirects with clean-to-HTML rewrites, which can create a Netlify Pretty URL loop. Unknown routes use `404.html`.
+
+## Forms and access
+
+Course and cohort interest forms have been replaced with direct checkout links. The newsletter form remains independent, with explicit consent and a honeypot. The existing submission function does not map this form into MailerLite; until separately configured, monitor submissions in Netlify. Form acceptance does not prove email delivery.
+
+No subscribers, email automations, provider settings, webhook behavior or environment variables are changed. Existing purchase commitments remain in place. The free check is a teaching resource, not a validated assessment or promotion predictor. Answers and sample notes stay in the browser tab.
+
+## Preview and pending artwork
+
+Review the existing draft PR and Netlify deploy preview before approving a merge. Main and production are outside this update.
+
+Requested Library artwork was located: `The Step Up to Senior Leadership(2).png` (course) and `The step up to senior leadership(3).png` (cohort). Image transfer into the repository is blocked by the unavailable execution workspace. The course image also contains “Eight modules”; correct that artwork before publishing it. No authenticated Library image URLs or broken image paths have been added to the public pages.
+
+See `QA_RESULTS.md` and `DEPLOYMENT_CHECKLIST.md`.
+
+## Start-here funnel update
+
+The primary acquisition routes are now /start-here and /newsletter. Two six-situation tests collect first name and email at the end, then show a downloadable report after Netlify accepts the request. Newsletter consent on test forms is separate and optional. Automated email delivery remains for the next phase.
+
+Question content: assets/lead-magnet-data.mjs. Editorial scoring and report text: assets/lead-magnet-engine.mjs. Interactive flow: assets/lead-magnets.js. Page templates: scripts/content/. After editing, regenerate HTML and run static validation plus scripts/test_lead_magnets.mjs and scripts/test_interactions.mjs with the existing QA-only linkedom dependency.
+
+The header includes Start here and Philosophy, with a green letter button. Essays are linked in the footer. Quick Hacks is a dedicated footer column for the Promotion Kit products; Exit power sits under Stay connected. See LEAD_MAGNETS.md for form fields and the MailerLite handoff. No provider or automation changes are included in this update.
+
+## Earning-power positioning
+
+Public copy connects leadership upskilling and changed working habits to greater earning power. Tests identify a practice focus; the independent course and live cohort provide the development structure. Course content and fees are not inferred from this positioning, and no promotion or income guarantee is made.
+
+The philosophy page uses the existing, visually verified assets/images/home-framework.webp, matching the supplied banner. It is 80,946 bytes (about 81 KB) at 1672 × 941. Responsive dimensions, lazy loading and asynchronous decoding avoid introducing a large PNG download. The original artwork is not regenerated or cropped.
