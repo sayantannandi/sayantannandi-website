@@ -31,13 +31,13 @@ q.change('input[name=priority][value=ownership]');assert.match(q.document.queryS
 assert.equal(q.blobs.length,1);const notes=await q.blobs[0].text();assert.match(notes,/My chosen priority: Delegate with clear ownership/);assert.match(notes,/Your response: Report 12 hours/);assert.match(notes,/Strongest response for these facts/);
 q.click('#restart');assert.equal(q.document.querySelectorAll('.quiz-feedback').length,0);assert.equal(q.document.querySelectorAll('input[checked]').length,0);
 console.log('PASS Skills Check: unanswered guard, changed answer, eight mixed choices, per-answer feedback, back/next, priority, download, restart, zero network calls.');
-for(const file of ['step-up.html','step-up/cohort.html','newsletter.html']){
+for(const file of ['newsletter.html']){
  const f=setup(file);const form=f.document.querySelector('form[data-capture]');const email=form.querySelector('[name=email]');email.value='example@example.com';form.querySelector('[name=consent]').checked=true;
  f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.match(form.querySelector('.form-status').textContent,/could not confirm/);assert.equal(email.value,'example@example.com');assert.equal(form.querySelector('button').disabled,false);
  f.setResponse(new Error('Timeout'));f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.equal(email.value,'example@example.com');assert.equal(form.querySelector('button').disabled,false);
  f.setResponse({ok:true});f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.match(form.querySelector('.form-status').className,/success/);assert.equal(form.querySelector('button').disabled,true);
  f.submit('form[data-capture]');await new Promise(resolve=>setImmediate(resolve));assert.equal(f.requests.length,3);assert(f.requests.every(([url])=>url==='/'));assert.match(f.requests[0][1].body,/consent=yes/);
 }
-console.log('PASS three signup forms: HTTP rejection, timeout, preserved input, retry, confirmed acceptance, duplicate prevention and separate consent payloads. Transport mocked; no live submission.');
+console.log('PASS newsletter signup: HTTP rejection, timeout, preserved input, retry, confirmed acceptance, duplicate prevention and explicit consent payload. Transport mocked; no live submission.');
 const b=setup('step-up/sample.html');b.document.querySelector('textarea').value='Approve a bounded trial <test> & review';b.click('#download-brief');const brief=await b.blobs[0].text();assert.match(brief,/Approve a bounded trial <test> & review/);assert.match(brief,/8. The review/);assert.equal(b.requests.length,0);
 console.log('PASS editable brief: entered text, eight prompts, blank placeholders and download; zero network calls.');

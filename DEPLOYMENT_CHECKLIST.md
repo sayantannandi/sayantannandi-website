@@ -1,30 +1,33 @@
-# Step Up rebuild: rollout checklist
+# Step Up preview and release
 
-## Included in this branch
+## Included in this update
 
-- New homepage, eight-module course, Skills Check, sample/brief, live cohort, newsletter, three essays, about, customer help and privacy.
-- Cohort and course interest lists; newsletter consent separate from both.
-- Immediate answer-specific explanations, chosen practice priority and local text downloads; no email gate.
-- Legacy clean, HTML and trailing-slash redirects; updated canonical URLs, sitemap, social metadata and a real 404.
-- Existing purchase terms, kit delivery, December 2026 customer instructions and both server functions preserved.
+- Six-week, twelve-lesson course curriculum and six-week December 2026 cohort.
+- Homepage and sales copy updated from interest lists to enrolment.
+- The owner-supplied TagMango and Razorpay payment links.
+- Separate course and cohort thank-you pages with access instructions.
+- Updated cohort customer instructions and related course links across the site.
+- Updated sitemap dates; customer and thank-you pages remain noindex.
+- Reproducible HTML templates and a GitHub validation workflow.
 
-## Before merging the website
+## Preview review
 
-- [ ] Review the Netlify deploy preview on mobile and desktop.
-- [ ] Confirm the new-edition interest-list mode is the intended current availability.
-- [x] Confirmed Netlify detected the three new forms with their fields and honeypots. Live submissions and email delivery remain untested.
-- [ ] Decide whether to connect the new MailerLite groups in phase 3 before launch, or monitor/export the new Netlify forms manually until then.
-- [ ] Keep old buyer access and emails available; communicate any learning-platform transition directly to affected customers.
-- [ ] Merge once after review. This branch does not authorize or perform a production merge.
+- [ ] Review mobile and desktop layouts on the existing Netlify PR preview.
+- [ ] Review the six-week dates: Saturdays, 5 December 2026 through 9 January 2027, 11 AM IST.
+- [ ] Complete the image transfer when the execution workspace is available. Correct “Eight modules” in the course artwork to the new structure.
+- [ ] Inspect each payment destination and confirm its displayed offer matches the six-week edition. The supplied URLs were added exactly, but their page contents could not be inspected in this session.
+- [ ] Check course and cohort access from the provider confirmation instructions.
+- [ ] Obtain the owner's approval before merging to main.
 
-## Before opening payment for the new edition
+## Provider success URLs
 
-- [ ] Upload the final customer-facing material and recorded lessons; verify actual access.
-- [ ] Confirm new-edition fees, cohort dates, capacity, time commitment, access duration, refunds and course-buyer credit.
-- [ ] Confirm weekly submission deadline, feedback turnaround, one-response scope and revision treatment.
-- [ ] Align checkout, purchase terms and delivery emails to the eight-module product.
-- [ ] Add only the verified new-edition checkout URLs; do not send new buyers through old-offer payment links.
+After production includes the new pages, configure:
 
-## Email implementation boundary (phase 3)
+- TagMango: https://sayantannandi.com/step-up/course-thank-you
+- Razorpay: https://sayantannandi.com/step-up/cohort-thank-you
 
-Netlify captures the three new form names. The existing submission function deliberately ignores them, so no new lead is dropped into the retired diagnostic automations. Create the new MailerLite groups, map the forms, configure the consent-specific welcome/nurture journeys, and verify opt-out and purchase suppression before promising automated delivery. Skills Check results remain available without email throughout.
+The corresponding paths already exist in the branch for preview. Provider configuration has not been changed by this code update. Thank-you pages are instructions, not payment verification.
+
+## Existing services
+
+Newsletter consent and Netlify capture remain in place. Email automation work is separate; monitor Netlify submissions until the newsletter is mapped. Existing purchase commitments and server functions remain unchanged. No payment or live form submission is required to review this preview.

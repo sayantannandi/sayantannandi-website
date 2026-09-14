@@ -1,27 +1,26 @@
-# Rebuild verification
+# Validation: six-week launch update
 
-Checked 12 September 2026 against the Netlify deploy preview for PR #2.
+## Checks performed on 14 September 2026
 
-## Passed
+The execution workspace failed to connect. Repository reads and changes were prepared through the GitHub connector. Python regeneration and browser interaction tests could not be run locally.
 
-- 23 HTML pages (22 public/customer pages plus the noindex review tool), 544 internal links/assets/anchors and 91 routing rules validated.
-- Browser completion of all eight Skills Check situations with mixed responses, changed first answer, individual explanations and an independently chosen practice priority.
-- Native unanswered-question validation in the browser; focus moves to the required response.
-- Automated DOM tests of all eight situations, unanswered guard, answer changes, back/next state, profile, selected practice, text generation and restart.
-- Automated DOM tests of all three forms: rejected HTTP response, timeout, retained input, retry, accepted response and duplicate prevention. Requests were mocked; no live signup was submitted.
-- Brief text generation retains entered text and all eight prompts, without network requests.
-- Desktop homepage visually inspected. Homepage mobile layout and menu open/Escape close inspected at a 390px frame. Sample inspected at tablet width. `/review` provides 390px, 768px and 1160px frames for review.
-- Netlify detected all three new form names, their consent fields and honeypots. No test subscribers were created.
-- Hosted course, Skills Check, sample, cohort and review routes return 200.
-- Old course, old HTML diagnostic URL (including its UTM query) and old cohort slash URL redirect once to the corresponding new page and return 200.
-- Existing kit thank-you and December cohort customer instructions return 200.
-- Unknown paths and `/scripts/*` return 404.
-- Netlify redirect and header checks passed. A real redirect loop caused by explicit canonical rules conflicting with Pretty URLs was found and corrected; new paths now use Netlify's existing URL handling.
+Static checks on the prepared files passed:
+- 25 HTML pages with one H1, a canonical URL and no duplicate IDs.
+- 581 internal links and linked assets checked against repository paths; fragment links resolve.
+- Sitemap routes exist and exclude noindex customer pages.
+- Course and cohort checkout links use the exact owner-supplied destinations.
+- New course and cohort thank-you pages are noindex and explicitly do not verify payment.
+- The course lists all twelve lessons across six weeks. The cohort uses six live sessions.
+- The six Saturday dates run from 5 December 2026 through 9 January 2027.
+- Revised Skills Check JavaScript parses after removing its import for the syntax check.
 
-## Limits and rollout dependencies
+The Python validator now checks launch links and the new customer pages. Interaction tests were updated for the remaining newsletter form; the eight-case check and sample download tests remain. A GitHub workflow regenerates the site, checks for source/output drift and runs static validation after push.
 
-- The browser ran the download handler and the automated tests verified the generated Blob text. The cloud browser did not expose a completed download event, so capture of a saved file was not verified there. Pages retain the full answers/entered notes and describe a started download rather than claiming a saved file.
-- The browser checks use desktop Chrome and fixed-width same-origin frames, not physical mobile devices.
-- Form acceptance, real email delivery and payment fulfilment were not tested with live submissions. Phase 3 must map the new Netlify form names to new MailerLite groups and install the consent-specific email journeys, or new leads must be processed from Netlify manually.
-- New-edition checkout is closed. Recorded lessons and final new cohort registration details remain prerequisites to opening payment. Existing purchase obligations continue to apply.
-- Main and the production domain have not been changed by this PR.
+## Limits and outstanding review
+
+- No live payment, intake or newsletter submission was made.
+- The supplied payment URLs were not inspectable through the available browser tool, so checkout content, price and success-redirect settings are unverified.
+- Provider success URLs must be configured separately after the new production routes are released.
+- The requested Library artwork was found, but its pixels were unavailable through Library read and the disconnected workspace prevented image transfer to GitHub. The course image's extracted text says “Eight modules”; it needs correction before publication.
+- The updated page layouts still need mobile and desktop review on the Netlify preview. Earlier branch QA is not treated as a visual test of this update.
+- Main must remain unchanged until the owner approves the preview.

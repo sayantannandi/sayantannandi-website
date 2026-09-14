@@ -1,0 +1,26 @@
+name: Validate static site
+on:
+  push:
+    branches: [codex/step-up-funnel-rebuild]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate static pages
+        run: python3 scripts/build_site.py
+      - name: Check generated files match their sources
+        run: git diff --exit-code
+      - name: Validate routes, checkout links and customer pages
+        run: python3 scripts/validate_site.py
+      - name: Check interactive JavaScript syntax
+        run: |
+          node --input-type=module --check < assets/skills-check.js
+          node --input-type=module --check < assets/step-up.js

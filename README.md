@@ -1,51 +1,55 @@
 # sayantannandi.com
 
-Static Netlify website for **The Step Up to Senior Leadership**. Eight modules, one free Skills Check, one worked sample, two learning formats. The Optional Career remains the newsletter; earning power × exit power = optionality remains the wider philosophy.
+Static Netlify website for The Step Up to Senior Leadership. The course has twelve lessons arranged into six weeks. The December 2026 cohort follows the same sequence with six weekly live sessions.
 
 ## Editing and running
 
-- Generated HTML is checked in; Netlify publishes the repository root with no build dependencies.
-- Edit page content and the shared shell in `scripts/build_site.py`, then run `python3 scripts/build_site.py`.
-- Interactive cases and all answer-specific feedback live in `assets/skills-data.js`. Interaction lives in `assets/skills-check.js`.
+- Generated HTML is checked in. Netlify publishes the repository root without a build step.
+- Edit the homepage, sales pages and payment thank-you bodies in `scripts/content/`.
+- Edit the shared shell and remaining page content in `scripts/build_site.py`.
+- Run `python3 scripts/build_site.py`, then `python3 scripts/validate_site.py`. Commit source and generated output together.
+- Interactive cases live in `assets/skills-data.js`; behavior lives in `assets/skills-check.js`. The eight-case check samples course topics and links to the corresponding lessons.
+- Run `node scripts/build_downloads.mjs` only when changing the cases.
 - Shared styling and navigation/form/sample behavior live in `assets/step-up.css` and `assets/step-up.js`.
-- Run `node scripts/build_downloads.mjs` after changing the cases.
-- `scripts/legacy-content/` retains the source of existing purchase policies and delivery instructions for deterministic regeneration. `/scripts/*` is blocked by an explicit 404 rule.
-- Shared shell changes require regenerating all pages. Check in both source and generated output.
+- `scripts/legacy-content/` retains policy and delivery inputs for deterministic regeneration. The December 2026 instructions now reflect the six-week schedule. `/scripts/*` remains blocked.
+- The GitHub validation workflow checks regeneration, routes, checkout links, customer pages and JavaScript syntax. Interaction tests use the existing QA-only dependency: `npm install --no-save --package-lock=false linkedom@0.18.12`, then `node scripts/test_interactions.mjs`.
 
-## Public routes
+## Offers and checkout destinations
 
-`/`, `/step-up`, `/step-up/check`, `/step-up/sample`, `/step-up/cohort`, `/newsletter`, `/essays`, three essays, `/about`, `/help`, `/privacy`. Existing purchase terms, refunds, cohort intake and kit delivery instructions remain accessible but are excluded from the sitemap and marked noindex.
+Both offers are open for enrolment, as directed by the course owner.
 
-`_redirects` maps retired clean, `.html` and trailing-slash acquisition URLs directly to their closest replacement. Forced 301s prevent old files shadowing redirects. New clean URLs use Netlify’s existing pretty-URL handling; do not add explicit trailing-slash redirects or forced HTML redirects together with clean-to-HTML rewrites, which creates a redirect loop. Unknown routes get `404.html`.
-
-## Current launch state
-
-The new course and cohort are in **interest-list mode**. There are no new-edition payment links. Workbooks and reference material exist; completed recorded video lessons were not supplied. The new cohort date, fee and final operational terms must be agreed before opening registration. Existing paid customer commitments continue to apply.
-
-The Skills Check is an educational reflection tool, not a validated assessment or promotion predictor. No aggregate score, percentiles or product recommendation based on a score. Visitors choose a practice priority. Answers and sample notes stay in tab memory; no local/session storage or answer analytics. Results and templates download without signup.
-
-## Verification
-
-Run `python3 scripts/validate_site.py` for static validation. For interaction tests, install the QA-only DOM dependency with `npm install --no-save --package-lock=false linkedom@0.18.12`, then run `node scripts/test_interactions.mjs`. This dependency is not used by the website. The tests mock transport and do not submit real forms. See `QA_RESULTS.md` for browser and hosted-route checks.
-
-## Forms and email boundary
-
-Three statically detectable Netlify forms collect separate explicit consent:
-
-| Form | Purpose | Fields beyond email/name |
+| Offer | Sales route | Checkout |
 | --- | --- | --- |
-| `step-up-course-interest` | New course availability and enrolment updates | `consent`, `consent-version` |
-| `step-up-cohort-interest` | Cohort dates, format and registration | `practice-goal` (optional), `consent`, `consent-version` |
-| `step-up-newsletter` | The Optional Career and occasional offers | `consent`, `consent-version` |
+| Independent course | /step-up | https://tagmango.app/68942f6867 |
+| December 2026 cohort | /step-up/cohort | https://rzp.io/rzp/TSUTSLDec2026 |
 
-Netlify form detection must be enabled (confirmed enabled in the connected project during implementation). Form success means HTTP acceptance, not email delivery. Failed or timed-out submissions retain the input and permit retry. Successful submissions stay disabled to avoid duplicates. Native no-JavaScript submissions go to `/request-received`.
+The cohort has six Saturday sessions at 11 AM IST, from 5 December 2026 to 9 January 2027. Existing session length remains 90 minutes. Current fees and purchase details are left to the supplied checkouts; no price, discount or seat count is invented.
 
-**Phase 3 must connect these new forms to separate MailerLite groups and install the new email journeys.** The existing `submission-created.js` intentionally does not route these names into the old diagnostic automations. Until that connection is made, submissions remain in Netlify Forms and need export/processing there. Do not advertise an immediate welcome or emailed Skills Check result. No subscriber records, campaigns or automation state were changed by this branch.
+## Post-payment pages
 
-Existing Netlify functions, Razorpay webhook, environment variable names and legacy kit delivery remain unchanged. Do not reuse the old TagMango/Razorpay sales links for the new edition until checkout copy, materials and terms agree.
+| Provider | Success destination after the production merge |
+| --- | --- |
+| TagMango course | https://sayantannandi.com/step-up/course-thank-you |
+| Razorpay cohort | https://sayantannandi.com/step-up/cohort-thank-you |
 
-## Preview and release
+These are public, noindex instruction pages, excluded from the sitemap. They do not verify payment or grant paid access. Configure the success/redirect URL in each provider separately; HTML links cannot change a provider setting. During review, inspect the same paths on the Netlify deploy preview. Do not point live checkout to production paths before those pages have been released.
 
-`/review` is a noindex layout-review tool with 390px, 768px and 1160px same-origin frames. It is not linked from the public navigation.
+## Public routes and migration
 
-Use a pull request deploy preview; do not push straight to main. See `DEPLOYMENT_CHECKLIST.md` and `scripts/validate_site.py`. Production forms use real services; QA must avoid live submissions or use explicit, controlled authorization. Nothing in this branch changes the production domain configuration.
+The homepage, course, cohort, free check, worked sample, newsletter, essays, about, help and privacy routes remain canonical. The sitemap contains public pages and updated modification dates. Policies, intake, purchase instructions and thank-you pages remain accessible with noindex and outside the sitemap.
+
+Existing forced redirects are retained. Do not combine forced HTML redirects with clean-to-HTML rewrites, which can create a Netlify Pretty URL loop. Unknown routes use `404.html`.
+
+## Forms and access
+
+Course and cohort interest forms have been replaced with direct checkout links. The newsletter form remains independent, with explicit consent and a honeypot. The existing submission function does not map this form into MailerLite; until separately configured, monitor submissions in Netlify. Form acceptance does not prove email delivery.
+
+No subscribers, email automations, provider settings, webhook behavior or environment variables are changed. Existing purchase commitments remain in place. The free check is a teaching resource, not a validated assessment or promotion predictor. Answers and sample notes stay in the browser tab.
+
+## Preview and pending artwork
+
+Review the existing draft PR and Netlify deploy preview before approving a merge. Main and production are outside this update.
+
+Requested Library artwork was located: `The Step Up to Senior Leadership(2).png` (course) and `The step up to senior leadership(3).png` (cohort). Image transfer into the repository is blocked by the unavailable execution workspace. The course image also contains “Eight modules”; correct that artwork before publishing it. No authenticated Library image URLs or broken image paths have been added to the public pages.
+
+See `QA_RESULTS.md` and `DEPLOYMENT_CHECKLIST.md`.

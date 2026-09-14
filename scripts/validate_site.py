@@ -69,6 +69,25 @@ for el in ET.parse(ROOT/'sitemap.xml').iter('{http://www.sitemaps.org/schemas/si
 for p in ['index.html','step-up.html','step-up/check.html','step-up/sample.html','step-up/cohort.html','newsletter.html']:
  t=(ROOT/p).read_text()
  assert 'Operating One Level Higher' not in t,p
- assert 'tagmango.app/' not in t and 'rzp.io/' not in t,p
+
+# Sales pages use the approved checkout for each format, with no interest form.
+expected_checkouts={
+ 'step-up.html':'https://tagmango.app/68942f6867',
+ 'step-up/cohort.html':'https://rzp.io/rzp/TSUTSLDec2026'}
+for filename,url in expected_checkouts.items():
+ t=(ROOT/filename).read_text()
+ assert f'href="{url}"' in t,(filename,'missing checkout')
+ assert '<form ' not in t,filename
+ assert not re.search(r'eight[- ](?:module|week|session)|videos are next|register interest',t,re.I),filename
+for lesson in range(1,13):
+ assert f'id="lesson-{lesson}"' in (ROOT/'step-up.html').read_text(),lesson
+for week in range(1,7):
+ assert f'id="week-{week}"' in (ROOT/'step-up.html').read_text(),week
+for name in ['course-thank-you','cohort-thank-you']:
+ t=(ROOT/f'step-up/{name}.html').read_text()
+ assert 'noindex, follow' in t,name
+ assert f'/step-up/{name}</loc>' not in (ROOT/'sitemap.xml').read_text(),name
+ assert 'does not verify payment' in t,name
+assert 'six live sessions' in (ROOT/'step-up/cohort.html').read_text()
 assert 'localStorage' not in (ROOT/'assets/skills-check.js').read_text()
 print(f'PASS: {len(files)} pages, {checked} local links/assets/anchors, {len(rules)} routes, form definitions, sitemap and legacy access.')
