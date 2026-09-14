@@ -1,0 +1,467 @@
+{
+  "checkedDate": "2026-09-14",
+  "emailStructure": [
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/01-promotion-politics.html",
+      "size": 14253
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/01-promotion-politics.html",
+      "size": 13601
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/02-ai-and-your-role.html",
+      "size": 14400
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/02-ai-and-your-role.html",
+      "size": 13762
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/03-equally-qualified.html",
+      "size": 14686
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/03-equally-qualified.html",
+      "size": 14040
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/04-working-less.html",
+      "size": 15003
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/04-working-less.html",
+      "size": 14367
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/05-too-good-to-move.html",
+      "size": 14902
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/05-too-good-to-move.html",
+      "size": 14256
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/06-good-work-should-speak.html",
+      "size": 15208
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/06-good-work-should-speak.html",
+      "size": 14549
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/07-always-saying-yes.html",
+      "size": 14806
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/07-always-saying-yes.html",
+      "size": 14138
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/08-waiting-for-certainty.html",
+      "size": 15097
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/08-waiting-for-certainty.html",
+      "size": 14424
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/09-being-right.html",
+      "size": 15068
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/09-being-right.html",
+      "size": 14433
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/10-manager-keeps-checking.html",
+      "size": 14809
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/10-manager-keeps-checking.html",
+      "size": 14129
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/11-be-more-strategic.html",
+      "size": 15343
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/11-be-more-strategic.html",
+      "size": 14694
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/prospects/12-promotion-without-more-hours.html",
+      "size": 15151
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "newsletters/customers/12-promotion-without-more-hours.html",
+      "size": 14480
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/A01-newsletter-welcome.html",
+      "size": 4038
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/R01-judgment-results.html",
+      "size": 3695
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/R02-visibility-results.html",
+      "size": 3671
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/A02-judgment-introduction.html",
+      "size": 4054
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/A03-visibility-introduction.html",
+      "size": 4127
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/C01-course-invitation.html",
+      "size": 4016
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/C02-cohort-announcement.html",
+      "size": 3735
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/C03-cohort-format.html",
+      "size": 3832
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/C04-cohort-for-course-buyers.html",
+      "size": 3727
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/B01-course-onboarding.html",
+      "size": 3524
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/B02-cohort-onboarding.html",
+      "size": 3504
+    },
+    {
+      "hasLocalImages": false,
+      "hasPostalMarker": true,
+      "hasScript": false,
+      "hasUnsubscribe": true,
+      "hasViewport": true,
+      "path": "automation-emails/B03-course-first-week.html",
+      "size": 3651
+    }
+  ],
+  "essayChecks": [
+    {
+      "bannedMatches": [],
+      "id": "01-promotion-politics",
+      "longParagraph": 64,
+      "questionInOpening": false,
+      "words": 1017
+    },
+    {
+      "bannedMatches": [],
+      "id": "02-ai-and-your-role",
+      "longParagraph": 90,
+      "questionInOpening": false,
+      "words": 1028
+    },
+    {
+      "bannedMatches": [],
+      "id": "03-equally-qualified",
+      "longParagraph": 72,
+      "questionInOpening": false,
+      "words": 1015
+    },
+    {
+      "bannedMatches": [],
+      "id": "04-working-less",
+      "longParagraph": 82,
+      "questionInOpening": false,
+      "words": 1062
+    },
+    {
+      "bannedMatches": [],
+      "id": "05-too-good-to-move",
+      "longParagraph": 68,
+      "questionInOpening": false,
+      "words": 1060
+    },
+    {
+      "bannedMatches": [],
+      "id": "06-good-work-should-speak",
+      "longParagraph": 74,
+      "questionInOpening": false,
+      "words": 1058
+    },
+    {
+      "bannedMatches": [],
+      "id": "07-always-saying-yes",
+      "longParagraph": 73,
+      "questionInOpening": false,
+      "words": 1033
+    },
+    {
+      "bannedMatches": [],
+      "id": "08-waiting-for-certainty",
+      "longParagraph": 104,
+      "questionInOpening": false,
+      "words": 1022
+    },
+    {
+      "bannedMatches": [],
+      "id": "09-being-right",
+      "longParagraph": 75,
+      "questionInOpening": false,
+      "words": 1043
+    },
+    {
+      "bannedMatches": [],
+      "id": "10-manager-keeps-checking",
+      "longParagraph": 74,
+      "questionInOpening": false,
+      "words": 1034
+    },
+    {
+      "bannedMatches": [],
+      "id": "11-be-more-strategic",
+      "longParagraph": 75,
+      "questionInOpening": false,
+      "words": 1052
+    },
+    {
+      "bannedMatches": [],
+      "id": "12-promotion-without-more-hours",
+      "longParagraph": 76,
+      "questionInOpening": false,
+      "words": 1063
+    }
+  ],
+  "images": "12 exact SVG diagrams plus email-native HTML comparison panels. Optional PNG export in browser gallery.",
+  "renderedInboxTest": "Not available; MailerLite previews and controlled subscriber tests required.",
+  "supportFlags": [
+    {
+      "id": "A01-newsletter-welcome",
+      "matches": []
+    },
+    {
+      "id": "R01-judgment-results",
+      "matches": []
+    },
+    {
+      "id": "R02-visibility-results",
+      "matches": []
+    },
+    {
+      "id": "A02-judgment-introduction",
+      "matches": []
+    },
+    {
+      "id": "A03-visibility-introduction",
+      "matches": []
+    },
+    {
+      "id": "C01-course-invitation",
+      "matches": []
+    },
+    {
+      "id": "C02-cohort-announcement",
+      "matches": []
+    },
+    {
+      "id": "C03-cohort-format",
+      "matches": []
+    },
+    {
+      "id": "C04-cohort-for-course-buyers",
+      "matches": []
+    },
+    {
+      "id": "B01-course-onboarding",
+      "matches": []
+    },
+    {
+      "id": "B02-cohort-onboarding",
+      "matches": []
+    },
+    {
+      "id": "B03-course-first-week",
+      "matches": []
+    }
+  ]
+}
