@@ -1,24 +1,11 @@
-# Validation: Start here and two lead magnets
+# Validation: earning-power language and philosophy layout
 
-## Prepared-file checks
+Prepared-file checks passed for 34 HTML pages and 1044 local links/assets/anchors. All pages have one H1 and one canonical URL, with no duplicate IDs.
 
-- 34 HTML pages and 1,073 local links/assets/anchors checked against repository paths.
-- Every checked page has one H1 and one canonical URL, with no duplicate IDs.
-- All 8,192 possible answer combinations evaluated across the two tests; scores remain in range and tied focus areas are preserved.
-- New JavaScript syntax parsed successfully.
-- Sitemap and restored routes checked for missing pages and inappropriate redirects.
-- The newsletter button uses white text on the existing dark green (#235f4c).
+The shared header no longer includes Essays. The footer has the brand and requested subtitle, Build the skills, Quick Hacks, and Stay connected. Kit links appear under Quick Hacks; Exit power appears under Stay connected. The former lower resource strip is removed.
 
-## Automated checks included in GitHub CI
+The philosophy artwork was read from the existing repository and visually matched to the supplied image. The WebP is 80,946 bytes at 1672 × 941. It is displayed proportionally with explicit dimensions, lazy loading and asynchronous decoding. No image edit or oversized PNG transfer is needed.
 
-The workflow regenerates the site and checks for source/output drift, then runs the Python route/form validator. The new DOM tests exercise both complete test flows, including unanswered questions, edited answers, the end-of-test gate, failed submissions, timeout/retry, duplicate protection, optional newsletter consent and report downloads. Existing practice-resource and newsletter tests also run.
+Revised test-interface and report-text JavaScript parses. Question content and scoring are unchanged. The existing CI workflow checks generated-file consistency, routes, both lead-magnet flows and the earlier practice/newsletter interactions. Consult the workflow result for executed checks.
 
-No live forms or payments are submitted by these tests. Network responses in interaction tests are mocked.
-
-## Remaining review
-
-The execution workspace is unavailable locally, so the new layouts have not been visually checked in a browser in this session. Review the Netlify preview at mobile and desktop widths. Read the GitHub workflow result for executed CI checks.
-
-New forms intentionally do not connect to MailerLite yet. In the preview, results appear on the page after Netlify accepts a form submission. Email delivery is not promised as active. Newsletter nurture requires its own opt-in on the result form.
-
-Main and the production branch remain outside this update. The earlier course/cohort artwork transfer and payment-provider success URL configuration remain separate outstanding items.
+The execution workspace remains unavailable, so mobile and desktop screenshots have not been produced for this update. Visual page review remains in the Netlify preview. No live form submission, payment, MailerLite change or production merge is part of this work.

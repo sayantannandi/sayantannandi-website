@@ -30,7 +30,8 @@ export function reportText(test, result) {
     'Your working exercise', ...(result.allStrong ? result.dimensions : result.focus).flatMap(d => [
       d.title, ...d.exercise.map((s,i) => (i+1) + '. ' + s),
       'Related course lesson: https://sayantannandi.com/step-up#lesson-' + d.lesson, ''
-    ]), 'Independent course: https://sayantannandi.com/step-up',
+    ]), 'Build the leadership skills behind your next stage of earning power. The course offers structured practice; the cohort adds discussion and feedback.',
+    'Independent course: https://sayantannandi.com/step-up',
     'Live cohort: https://sayantannandi.com/step-up/cohort',
     'Contact: hello@sayantannandi.com'
   ].join('\n');

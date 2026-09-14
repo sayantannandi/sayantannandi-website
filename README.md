@@ -60,4 +60,10 @@ The primary acquisition routes are now /start-here and /newsletter. Two six-situ
 
 Question content: assets/lead-magnet-data.mjs. Editorial scoring and report text: assets/lead-magnet-engine.mjs. Interactive flow: assets/lead-magnets.js. Page templates: scripts/content/. After editing, regenerate HTML and run static validation plus scripts/test_lead_magnets.mjs and scripts/test_interactions.mjs with the existing QA-only linkedom dependency.
 
-The header includes Start here and Philosophy, with a green letter button. Promotion Kit pages and /exit-power are restored as public pages. See LEAD_MAGNETS.md for form fields and the MailerLite handoff. No provider or automation changes are included in this update.
+The header includes Start here and Philosophy, with a green letter button. Essays are linked in the footer. Quick Hacks is a dedicated footer column for the Promotion Kit products; Exit power sits under Stay connected. See LEAD_MAGNETS.md for form fields and the MailerLite handoff. No provider or automation changes are included in this update.
+
+## Earning-power positioning
+
+Public copy connects leadership upskilling and changed working habits to greater earning power. Tests identify a practice focus; the independent course and live cohort provide the development structure. Course content and fees are not inferred from this positioning, and no promotion or income guarantee is made.
+
+The philosophy page uses the existing, visually verified assets/images/home-framework.webp, matching the supplied banner. It is 80,946 bytes (about 81 KB) at 1672 × 941. Responsive dimensions, lazy loading and asynchronous decoding avoid introducing a large PNG download. The original artwork is not regenerated or cropped.

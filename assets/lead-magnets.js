@@ -62,7 +62,7 @@ if (root) {
         '</span><h3>' + esc(r.question.title) + '</h3><p>' + esc(r.question.situation) + '</p><p><strong>Your choice:</strong> ' +
         esc(r.selected.text) + '</p><p>' + esc(r.selected.feedback) + '</p>' + (r.selected.points===2?'':'<p><strong>A stronger response for these facts:</strong> ' +
         esc(r.strongest.text) + '</p><p>' + esc(r.strongest.feedback) + '</p>') + '</article>').join('') +
-      '<div class="callout"><h3>Continue with the course material.</h3><p>The independent course provides twelve lessons and worked practice. The six-week live cohort adds discussion and feedback on your application. Either format covers the same curriculum.</p><div class="actions"><a class="btn" href="/step-up">Explore the course</a><a class="text-link" href="/step-up/cohort">See the live cohort</a></div></div>' +
+      '<div class="callout"><h3>Build the skills behind your next role.</h3><p>Use this report as a starting point for growing into leadership and strengthening your earning power. The course develops the skills and working habits behind broader responsibility. The six-week live cohort adds discussion and feedback as you apply them.</p><div class="actions"><a class="btn" href="/step-up">Explore the course</a><a class="text-link" href="/step-up/cohort">See the live cohort</a></div></div>' +
       '<p class="fine">Contact: <a href="mailto:hello@sayantannandi.com">hello@sayantannandi.com</a>.</p>';
     report.querySelector('#save-test-report').addEventListener('click', () => {
       downloadText(test.slug + '-report.txt', reportText(test,result));

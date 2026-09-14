@@ -1,5 +1,9 @@
 # Step Up: two free tests and the acquisition funnel
 
+## Positioning
+
+Grow earning power by developing towards leadership. The tests identify leadership skills to practise and habits to replace; the course provides structured upskilling, and the cohort adds discussion and feedback. This is the career path the offer develops, not a claim that management is the only way to earn well. Avoid income or promotion guarantees.
+
 ## The recommended pair
 
 | Test | Reader's immediate concern | Course connection |
@@ -66,8 +70,8 @@ Both tests lead naturally to the same six-week curriculum. The course offers ind
 
 ## Website structure
 
-Header: Start here, The course, Cohort, Philosophy, Essays, About, The letter. The letter has a solid green treatment.
+Header: Start here, The course, Cohort, Philosophy, About, The letter. The letter has a solid green treatment. Essays remain linked in the footer.
 
-The footer includes the Promotion Kit bundle and its three individual product pages, plus Exit Power. Restored kit pages use their existing main-branch checkout destinations, without republishing price claims. Old diagnostic URLs go directly to Start here. The earlier eight-situation Skills Check remains an unpromoted practice resource for existing users.
+The footer places the Promotion Kit bundle and its individual products under Quick Hacks, between Build the skills and Stay connected. Exit Power is under Stay connected. The brand subtitle reads: First make your time valuable, then make it yours. Restored kit pages use their existing main-branch checkout destinations, without republishing price claims. Old diagnostic URLs go directly to Start here. The earlier eight-situation Skills Check remains an unpromoted practice resource for existing users.
 
 All code remains on codex/step-up-funnel-rebuild pending approval.
