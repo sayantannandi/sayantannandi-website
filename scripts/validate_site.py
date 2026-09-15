@@ -104,11 +104,11 @@ for slug,form in [('senior-level-judgment','step-up-judgment-results'),('leaders
  assert 'data-newsletter-choice="yes"' in t and 'data-newsletter-choice="no"' in t
  assert 'name="newsletter-consent" value="yes" required' not in t
  assert 'data-result-capture hidden' in t
-for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/executive-hour','/philosophy','/exit-power','/start-here']:
+for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/executive-hour','/philosophy','/exit-power','/earning-power']:
  assert route not in rules,('New page must not redirect away',route)
  assert resolve(route).exists(),route
 nav=docs[ROOT/'index.html']
-assert '/start-here' in nav.links and '/philosophy' in nav.links and '/exit-power' in nav.links
+assert '/' in nav.links and '/earning-power' in nav.links and '/philosophy' in nav.links and '/exit-power' in nav.links
 print('PASS: two report forms, optional newsletter consent, restored routes and funnel navigation.')
 
 # Public policies reflect current naming and duration without obsolete price anchors.
@@ -118,3 +118,11 @@ for filename in ['terms.html','refunds.html']:
  assert not re.search(r'Operating One Level Higher|8,999|19,999|eight live sessions',t)
  assert 'noindex' not in t
 assert 'six live sessions across six weeks' in (ROOT/'terms.html').read_text()
+
+assert rules['/start-here']==('/',301)
+assert resolve('/start-here')==ROOT/'index.html'
+assert '/start-here</loc>' not in (ROOT/'sitemap.xml').read_text()
+assert '/earning-power</loc>' in (ROOT/'sitemap.xml').read_text()
+assert 'Senior-Level Judgment Check' in (ROOT/'index.html').read_text()
+assert 'href="/" aria-current="page"' in (ROOT/'index.html').read_text()
+print('PASS: Start Here is the homepage, old URL redirects, Earning Power is indexed and linked.')
