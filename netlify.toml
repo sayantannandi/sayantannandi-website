@@ -1,9 +1,12 @@
 # sayantannandi.com — Netlify configuration
-# Static site. No build step, no dependencies.
+# Static pages with server functions for newsletter and purchase routing.
 
 [build]
-  publish = "."
-  command = ""
+  publish = "public"
+  command = "python3 scripts/build_site.py && python3 scripts/prepare_publish.py"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [build.processing.html]
   pretty_urls = true
