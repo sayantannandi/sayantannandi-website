@@ -6,7 +6,7 @@ export const tests = {
     "title": "Senior-Level Judgment Check",
     "hook": "Move from reporting the problem to making a call.",
     "minutes": "5–7",
-    "form": "step-up-judgment-results",
+    "form": "sn-judgment",
     "version": "2026-09-v1",
     "dimensions": [
       {
@@ -253,7 +253,7 @@ export const tests = {
     "title": "Leadership Visibility Check",
     "hook": "Make your contribution easier to understand and use.",
     "minutes": "5–7",
-    "form": "step-up-visibility-results",
+    "form": "sn-visibility",
     "version": "2026-09-v1",
     "dimensions": [
       {

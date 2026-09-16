@@ -81,7 +81,7 @@ for(const test of Object.values(tests)){
  assert.equal(t.document.querySelectorAll('[data-report] .result-item').length,6);
  const payload=new URLSearchParams(t.requests.at(-1)[1].body);
  assert.equal(payload.get('form-name'),test.form);assert.equal(payload.get('test-id'),test.id);
- assert.equal(payload.get('newsletter-consent'),'no');assert.equal(payload.get('consent'),'yes');assert.equal(payload.get('consent-version'),'step-up-tests-2026-09-v2-buttons');
+ assert.equal(payload.get('newsletter-consent'),'no');assert.equal(payload.get('consent'),'yes');assert.equal(payload.get('consent-version'),'sn-2026-09-button');
  assert.equal(JSON.parse(payload.get('answers')).length,6);
  assert.equal(JSON.parse(payload.get('answers'))[0],test.questions[0].options.find(o=>o.points===0).id);
  assert(payload.get('report-text').includes('Feedback:'));

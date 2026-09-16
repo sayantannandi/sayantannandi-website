@@ -31,7 +31,7 @@ def resolve(url):
  target=ROOT/('index.html' if path=='/' else path.lstrip('/'))
  if not target.is_file() and target.with_suffix('.html').is_file():target=target.with_suffix('.html')
  return target
-files=[p for p in ROOT.rglob('*.html') if 'scripts' not in p.parts]
+files=[p for p in ROOT.rglob('*.html') if not {'scripts','node_modules','.netlify','public'}.intersection(p.parts)]
 docs={p:Document(p.read_text()) for p in files}
 checked=0
 for p,d in docs.items():
@@ -94,7 +94,7 @@ assert 'localStorage' not in (ROOT/'assets/skills-check.js').read_text()
 print(f'PASS: {len(files)} pages, {checked} local links/assets/anchors, {len(rules)} routes, form definitions, sitemap and legacy access.')
 
 # Two end-of-test report forms, separate from optional newsletter consent.
-for slug,form in [('senior-level-judgment','step-up-judgment-results'),('leadership-visibility','step-up-visibility-results')]:
+for slug,form in [('senior-level-judgment','sn-judgment'),('leadership-visibility','sn-visibility')]:
  t=(ROOT/f'tests/{slug}.html').read_text()
  assert f'name="{form}"' in t
  assert 'name="name" required' in t and 'name="email" type="email" required' in t

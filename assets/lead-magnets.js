@@ -1,6 +1,6 @@
 import {tests} from './lead-magnet-data.mjs?v=1';
 import {evaluate, reportText} from './lead-magnet-engine.mjs?v=1';
-import {downloadText} from './step-up.js?v=2';
+import {downloadText} from './step-up.js?v=3';
 const root = document.querySelector('[data-lead-test]');
 if (root) {
   const test = tests[root.dataset.leadTest];
@@ -50,7 +50,7 @@ if (root) {
     report.innerHTML = '<span class="eyebrow">Your practice report</span><h2 tabindex="-1">' + esc(heading) + '</h2>' +
       '<p>' + (result.allStrong ? 'You chose the strongest response for each of these six situations. Applying the same reasoning to your own work is a separate challenge.' :
         'This focus comes from the choices you made in these situations. ' + (result.focus.length>1?'Several areas tied, so each is shown below.':'It gives you a concrete place to practise.')) + '</p>' +
-      '<p class="fine">This is a teaching exercise, not a validated assessment or a prediction of promotion. Email delivery is not enabled in this preview; your report is available here.</p>' +
+      '<p class="fine">This is a teaching exercise, not a validated assessment or a prediction of promotion. Your report is available here. Keep a downloaded copy while your email request is processed.</p>' +
       '<div class="actions"><button type="button" class="btn" id="save-test-report">Download my report</button><button type="button" class="text-link" id="print-test-report">Print report</button></div>' +
       '<p class="fine" id="report-download-status" role="status"></p><div class="grid-2 test-dimensions">' +
       result.dimensions.map(d => '<article class="card"><h3>' + esc(d.title) + '</h3><p>' + esc(d.summary) + '</p><p class="fine">' +
