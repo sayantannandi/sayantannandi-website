@@ -65,8 +65,10 @@ page('request-received.html','Request Received','Your request has been received.
 page('404.html','Page Not Found','Find the new course, Skills Check or customer support.',hero('Page not found','Let’s find your next step.','This address does not lead to an available page. The new course, free practice resources and customer help are below.')+'<div class="wrap section"><div class="actions"><a class="btn" href="/step-up">Explore the course</a><a class="text-link" href="/">Choose a free test</a><a class="text-link" href="/help">Existing customer help</a></div></div>',noindex=True)
 
 # Keep the purchase policy text and customer instructions intact; replace only their shared shell.
+page("dec2026cohort-welcome.html","December 2026 Cohort | Access and Preparation","Access, intake and first-week preparation for registered December 2026 cohort customers.",(ROOT/'scripts'/'content'/"cohort-welcome.html").read_text(encoding='utf-8'),active="/step-up/cohort",noindex=True)
+
 # Archived input is committed separately to make future regeneration deterministic.
-for filename in ['dec2026cohort-welcome.html','thanks-promotion-kit.html','thanks-promotion-case-builder.html','thanks-review-room-kit.html','thanks-executive-hour.html']:
+for filename in ['thanks-promotion-kit.html','thanks-promotion-case-builder.html','thanks-review-room-kit.html','thanks-executive-hour.html']:
     original=(ROOT/'scripts'/'legacy-content'/filename).read_text()
     main=re.search(r'<main[^>]*>(.*?)</main>',original,re.S).group(1)
     main=re.sub(r'<div class="page">','<div class="wrap narrow">',main)
