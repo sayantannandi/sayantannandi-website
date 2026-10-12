@@ -4,13 +4,15 @@ Offer content lives here. Netlify serves the generated HTML without a build step
 from pathlib import Path
 from html import escape
 import re
+import json
+from book_page import render_book
 ROOT=Path(__file__).resolve().parents[1]
 SITE='https://sayantannandi.com'
-NAV=[["/","Start here"],["/earning-power","Earning power"],["/step-up","The course"],["/step-up/cohort","Cohort"],["/philosophy","Philosophy"],["/about","About"],["/newsletter","The letter"]]
+NAV=[["/","Start here"],["/earning-power","Earning power"],["/step-up","The course"],["/step-up/cohort","Cohort"],["/book","The book"],["/philosophy","Philosophy"],["/about","About"],["/newsletter","The letter"]]
 PAGES=[]
 def write(path,text):
     p=ROOT/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text,encoding='utf-8')
-def page(path,title,desc,body,active='',script='',noindex=False):
+def page(path,title,desc,body,active='',script='',noindex=False,social_image='/assets/images/step-up-social.png'):
     route='/' if path=='index.html' else '/'+path.removesuffix('.html')
     PAGES.append((route,noindex))
     nav=''.join(f'<a href="{url}"'+(' aria-current="page"' if active==url else '')+(' class="nav-letter"' if url=='/newsletter' else '')+f'>{label}</a>' for url,label in NAV)
@@ -18,10 +20,10 @@ def page(path,title,desc,body,active='',script='',noindex=False):
         script += '<script type="module" src="/assets/story-sliders.js?v=1"></script>'
     robots='<meta name="robots" content="noindex, follow">' if noindex else ''
     markup=f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{SITE+route}">{robots}<meta name="theme-color" content="#143e33"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{SITE+route}"><meta property="og:image" content="{SITE}/assets/images/step-up-social.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/step-up.css?v=5"><script type="module" src="/assets/step-up.js?v=4"></script>{script}</head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{SITE+route}">{robots}<meta name="theme-color" content="#143e33"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{SITE+route}"><meta property="og:image" content="{SITE}{social_image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/step-up.css?v=5"><script type="module" src="/assets/step-up.js?v=4"></script>{script}</head>
 <body><a href="#main" class="skip">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/">Sayantan Nandi<small>Leadership. Earning power. Optionality.</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button><nav class="nav" id="site-nav" aria-label="Main navigation">{nav}</nav></div></header>
 <main id="main">{body}</main>
-<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div><h2>Sayantan Nandi</h2><p>First make your time valuable,<br>then make it yours.</p></div><div><h3>Build the skills</h3><a href="/earning-power">Earning power</a><a href="/step-up">The six-week course</a><a href="/">Free workplace tests</a><a href="/step-up/sample">Free sample &amp; leadership brief</a><a href="/step-up/cohort">Live cohort</a></div><div><h3>Quick Hacks</h3><a href="/promotion-kit">The Promotion Kit</a><a href="/promotion-case-builder">Promotion Case Builder</a><a href="/review-room-kit">Review Room Kit</a><a href="/executive-hour">The Executive Hour</a></div><div><h3>Stay connected</h3><a href="/newsletter">The Optional Career</a><a href="/essays">Read the essays</a><a href="/exit-power">Exit power</a><a href="/about">About Sayantan</a><a href="/help">Existing customers &amp; contact</a></div></div><div class="footer-bottom"><span>© 2026 Sayantan Nandi</span><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refunds">Refunds</a><a href="mailto:hello@sayantannandi.com">Email Sayantan</a></div></div></div></footer></body></html>'''
+<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div><h2>Sayantan Nandi</h2><p>First make your time valuable,<br>then make it yours.</p></div><div><h3>Build the skills</h3><a href="/earning-power">Earning power</a><a href="/step-up">The six-week course</a><a href="/">Free workplace tests</a><a href="/step-up/sample">Free sample &amp; leadership brief</a><a href="/step-up/cohort">Live cohort</a></div><div><h3>Quick Hacks</h3><a href="/promotion-kit">The Promotion Kit</a><a href="/promotion-case-builder">Promotion Case Builder</a><a href="/review-room-kit">Review Room Kit</a><a href="/executive-hour">The Executive Hour</a></div><div><h3>Stay connected</h3><a href="/newsletter">The Optional Career</a><a href="/book">Earning Power × Exit Power: the book</a><a href="/essays">Read the essays</a><a href="/exit-power">Exit power</a><a href="/about">About Sayantan</a><a href="/help">Existing customers &amp; contact</a></div></div><div class="footer-bottom"><span>© 2026 Sayantan Nandi</span><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/refunds">Refunds</a><a href="mailto:hello@sayantannandi.com">Email Sayantan</a></div></div></div></footer></body></html>'''
     write(path,markup)
 def crumb(label):return f'<div class="wrap breadcrumb"><a href="/">Home</a> / {label}</div>'
 def hero(kicker,title,desc):return f'<section class="wrap page-hero"><span class="eyebrow">{kicker}</span><h1>{title}</h1><p class="lede">{desc}</p></section>'
@@ -30,7 +32,7 @@ def capture(name,button,consent,success,extra=''):
 def faq(items):return '<div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in items)+'</div>'
 
 # Sales and post-purchase bodies are maintained as HTML templates in scripts/content.
-page("index.html","Start Here | Leadership, Earning Power and Choice","For managers in GCCs, IT services and multinational companies: build the skills for senior and global leadership, larger portfolios and greater earning power.",(ROOT/'scripts'/'content'/"start-here.html").read_text(encoding='utf-8'),active="/")
+page("index.html","Start Here | Leadership, Earning Power and Choice","For managers in GCCs, IT services and multinational companies: build the skills for senior and global leadership, larger portfolios and greater earning power.",(ROOT/'scripts'/'content'/"start-here.html").read_text(encoding='utf-8'),active="/",script='<link rel="stylesheet" href="/assets/book.css?v=1">')
 page("step-up.html","The Step Up to Senior Leadership Course","A six-week, twelve-lesson course for managers pursuing senior and global leadership. Practice business judgment, communication, influence and delegation.",(ROOT/'scripts'/'content'/"course.html").read_text(encoding='utf-8'),active="/step-up")
 page("step-up/cohort-thank-you.html","Thank You | December 2026 Cohort","Intake and access instructions after booking the six-week December 2026 Step Up live cohort.",(ROOT/'scripts'/'content'/"cohort-thank-you.html").read_text(encoding='utf-8'),active="/step-up/cohort",noindex=True)
 page("step-up/cohort.html","December 2026 Step Up to Senior Leadership Cohort","Practice senior leadership skills with live discussion and feedback. Six Saturday sessions for managers in GCCs, IT services and multinational companies.",(ROOT/'scripts'/'content'/"cohort.html").read_text(encoding='utf-8'),active="/step-up/cohort")
@@ -101,19 +103,26 @@ page("privacy.html","Privacy","How the free tests, practice resources and signup
 
 page("conversation.html","Book a Conversation","Book a 20-minute conversation with Sayantan Nandi about your next role and whether the Step Up course or cohort suits your needs.",(ROOT/'scripts'/'content'/"conversation.html").read_text(encoding='utf-8'))
 
+# Book preorder details are explicit owner-supplied settings, never inferred prices.
+book_config=json.loads((ROOT/'scripts/content/book-order.json').read_text())
+book_body=render_book((ROOT/'scripts/content/book.html').read_text(),book_config)
+book_schema={"@context":"https://schema.org","@type":"Book","name":"Earning Power x Exit Power = Optionality","author":{"@type":"Person","name":"Sayantan Nandi"},"inLanguage":"en","url":SITE+"/book","image":SITE+"/assets/images/book-front.png"}
+page('book.html','Earning Power x Exit Power = Optionality | The Book','A book by Sayantan Nandi about growing your earning power and building the household financial room to choose what comes next.',book_body,active='/book',script='<link rel="stylesheet" href="/assets/book.css?v=1"><script type="module" src="/assets/book.js?v=1"></script><script type="application/ld+json">'+json.dumps(book_schema)+'</script>',social_image='/assets/images/book-front.png')
+page('book/updates-received.html','Book Announcement Request Received','Your request for the book preorder announcement has been received.',hero('The book','Your request has been received.','Thank you for your interest in Earning Power x Exit Power = Optionality. You have asked for the preorder announcement. No order has been placed and no payment has been taken.')+'<section class="wrap section"><p>This page does not verify a purchase. For questions, email <a href="mailto:hello@sayantannandi.com">hello@sayantannandi.com</a>.</p><div class="actions"><a class="btn" href="/book">Back to the book</a><a class="text-link" href="/philosophy">Explore the philosophy</a></div></section>',active='/book',noindex=True)
+
 # Forced redirects retire legacy HTML files as well as their clean URL aliases.
 redirects={
 '/start-here':'/',
 '/operating-one-level-higher':'/step-up','/dec2026cohort':'/step-up/cohort',
 '/diagnostics' :'/','/diagnostics-index' :'/','/scorecard' :'/','/one-level-higher-scorecard' :'/','/calibration' :'/','/calibration-room-test' :'/','/readiness' :'/','/readiness-score' :'/','/translation-test' :'/','/dependency-test' :'/','/sixty-five-percent-test' :'/','/invisible-work-calculator' :'/','/invisible-month-calculator' :'/','/tools' :'/','/tools/index' :'/','/tools/earning-power-audit' :'/','/tools/exit-power-score':'/exit-power',
 
-'/writing':'/essays','/book':'/essays','/decisions':'/essays','/contact':'/help','/thanks':'/request-received'}
+'/writing':'/essays','/decisions':'/essays','/contact':'/help','/thanks':'/request-received'}
 lines=['/scripts/*  /404.html  404!', '# Retired acquisition paths. Forced rules cover old files and preserve campaign query strings.']
 for old,new in redirects.items():
     for source in [old,old+'/',old+'.html']:lines.append(f'{source}  {new}  301!')
 # Let Netlify serve and normalize new clean URLs; explicit slash rules conflict with Pretty URLs.
 write('_redirects','\n'.join(lines)+'\n')
-write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE+route}</loc><lastmod>2026-09-15</lastmod></url>\n' for route,noindex in PAGES if not noindex)+'</urlset>\n')
+write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE+route}</loc><lastmod>{"2026-10-12" if route in ["/", "/book", "/privacy"] else "2026-09-15"}</lastmod></url>\n' for route,noindex in PAGES if not noindex)+'</urlset>\n')
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: https://sayantannandi.com/sitemap.xml\n')
 write('assets/downloads/One_Page_Leadership_Brief.txt','ONE-PAGE LEADERSHIP BRIEF\nThe Step Up to Senior Leadership | Sayantan Nandi\n\nUse a bounded decision. Write a few sentences under each prompt.\n\n'+ '\n\n'.join(['1. The decision and recommendation\nWhat do you recommend, and what decision or approval do you need?','2. The business outcome\nWhat should change for the business, customer or team?','3. Evidence and uncertainty\nWhat do you know, and what remains an assumption?','4. Credible options\nWhat other approaches deserve consideration?','5. The trade-off\nWhat moves, stops or receives fewer resources?','6. Other teams’ constraints\nWho is affected and what limits must the proposal respect?','7. Ownership and authority\nWho owns the outcome, and what can they decide?','8. The review\nWhen will you review, using which evidence, to make what decision?'])+'\n\nWorked sample: https://sayantannandi.com/step-up/sample\n')
 print(f'Generated {len(PAGES)} pages, {len(lines)} redirect lines and the blank sample template.')

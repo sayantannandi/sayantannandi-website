@@ -67,3 +67,7 @@ The header includes Start here and Philosophy, with a green letter button. Essay
 Public copy connects leadership upskilling and changed working habits to greater earning power. Tests identify a practice focus; the independent course and live cohort provide the development structure. Course content and fees are not inferred from this positioning, and no promotion or income guarantee is made.
 
 The philosophy page uses the existing, visually verified assets/images/home-framework.webp, matching the supplied banner. It is 80,946 bytes (about 81 KB) at 1672 × 941. Responsive dimensions, lazy loading and asynchronous decoding avoid introducing a large PNG download. The original artwork is not regenerated or cropped.
+
+## Book page
+
+`/book` introduces Earning Power x Exit Power = Optionality and uses the supplied front cover. Purchase settings live in `scripts/content/book-order.json`. The default state collects book-announcement requests, not paid orders. See `docs/BOOK_PREORDER_SETUP.md` for checkout activation, delivery terms and the separate Netlify form.
