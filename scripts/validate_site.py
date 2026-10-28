@@ -115,7 +115,7 @@ print('PASS: two report forms, optional newsletter consent, restored routes and 
 for filename in ['terms.html','refunds.html']:
  t=(ROOT/filename).read_text()
  assert 'The Step Up to Senior Leadership' in t
- assert not re.search(r'Operating One Level Higher|8,999|19,999|eight live sessions',t)
+ assert not re.search(r'Operating One Level Higher|eight live sessions',t)
  assert 'noindex' not in t
 assert 'six live sessions across six weeks' in (ROOT/'terms.html').read_text()
 

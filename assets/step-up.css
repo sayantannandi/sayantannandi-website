@@ -37,3 +37,9 @@
 @media(min-width:801px){.story-slider.is-enhanced .story-slide{min-height:390px}}
 @media(max-width:800px){.story-slide{grid-template-columns:1fr;gap:24px}.story-image{max-width:600px}.story-controls{margin-left:0;max-width:100%;justify-content:space-between}.story-copy h3{font-size:29px}.story-slider{padding-top:16px}.story-copy .eyebrow{margin-bottom:12px}.story-copy .story-skill{margin-top:18px}.purchase-action{width:100%}}
 @media print{.story-slide[hidden]{display:grid!important}.story-controls{display:none!important}.story-slide{break-inside:avoid}.story-image{max-width:300px}}
+
+/* Consistent booking action, including small screens. */
+.header-inner{flex-wrap:wrap;gap:16px}.header-call{order:3;white-space:nowrap;font-size:13px;padding:10px 16px;min-height:44px}.nav{gap:18px;margin-left:auto}.nav a{white-space:nowrap}.newsletter-strip{border-top:1px solid var(--line)}.sample-report{margin-bottom:24px}.credibility{max-width:760px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+@media(max-width:1100px){.header-inner{padding-top:16px;padding-bottom:16px}.nav{order:4;width:100%;justify-content:center}.header-call{margin-left:auto;order:2}.menu-toggle{order:3}}
+@media(max-width:760px){.header-inner{gap:12px}.brand{font-size:20px}.brand small{font-size:8px;letter-spacing:1px}.header-call{font-size:12px;padding:9px 12px}.nav{justify-content:flex-start}.grid-3{grid-template-columns:1fr}.newsletter-strip h2{font-size:32px}}
+@media(max-width:420px){.header-inner .brand{width:100%}.header-call{margin-left:0}.menu-toggle{margin-left:auto}}

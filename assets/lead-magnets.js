@@ -56,13 +56,13 @@ if (root) {
       result.dimensions.map(d => '<article class="card"><h3>' + esc(d.title) + '</h3><p>' + esc(d.summary) + '</p><p class="fine">' +
         (d.points===d.maximum?'Both choices used the strongest approach for the stated facts.':d.points===0?'Both choices missed a central requirement in these situations.':'At least one choice left something useful unresolved.') +
         '</p><a href="/step-up#lesson-' + d.lesson + '">Related lesson →</a></article>').join('') +
-      '</div><h2>Your working exercise.</h2>' + (result.allStrong?result.dimensions:result.focus).map(d =>
+      '</div><h2>Your working exercise.</h2>' + (result.allStrong?result.dimensions:result.focus).slice(0,1).map(d =>
         '<article class="example-block"><h3>' + esc(d.title) + '</h3><ol>' + d.exercise.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol></article>').join('') +
       '<h2>Your choices, explained.</h2>' + result.responses.map((r,i)=>'<article class="result-item"><span class="number">SITUATION ' + (i+1) +
         '</span><h3>' + esc(r.question.title) + '</h3><p>' + esc(r.question.situation) + '</p><p><strong>Your choice:</strong> ' +
         esc(r.selected.text) + '</p><p>' + esc(r.selected.feedback) + '</p>' + (r.selected.points===2?'':'<p><strong>A stronger response for these facts:</strong> ' +
         esc(r.strongest.text) + '</p><p>' + esc(r.strongest.feedback) + '</p>') + '</article>').join('') +
-      '<div class="callout"><h3>Build the skills behind your next role.</h3><p>Use this report as a starting point for growing into leadership and strengthening your earning power. The course develops the skills and working habits behind broader responsibility. The six-week live cohort adds discussion and feedback as you apply them.</p><div class="actions"><a class="btn" href="/step-up">Explore the course</a><a class="text-link" href="/step-up/cohort">See the live cohort</a></div></div>' +
+      '<div class="callout"><h3>Build the skills behind your next role.</h3><p>Use this report as a starting point for growing into leadership and strengthening your earning power. The course develops the skills and working habits behind broader responsibility. The six-week live cohort adds discussion and feedback as you apply them.</p><div class="actions"><a class="btn" href="/conversation">Book a free call</a><a class="text-link" href="/conversation">Discuss your practice focus with Sayantan</a></div></div>' +
       '<p class="fine">Contact: <a href="mailto:hello@sayantannandi.com">hello@sayantannandi.com</a>.</p>';
     report.querySelector('#save-test-report').addEventListener('click', () => {
       downloadText(test.slug + '-report.txt', reportText(test,result));
