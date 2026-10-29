@@ -156,3 +156,6 @@ print(f'Generated {len(PAGES)} pages, {len(lines)} redirect lines and the blank 
 
 # Review-only cohort redesign; it does not replace the current sales page.
 write("review/cohort-blue.html", (ROOT/"scripts/content/cohort-blue-preview.html").read_text(encoding="utf-8"))
+
+# Self-paced course redesign remains a review page until accepted.
+write("review/course-blue.html", (ROOT/"scripts/content/course-blue-preview.html").read_text(encoding="utf-8"))

@@ -9,6 +9,11 @@ The shared blue theme is loaded last by `scripts/build_site.py` on every generat
 - `assets/lib/asset-manifest.json`: asset paths and sizes.
 - `assets/images/cohort/`: compressed workshop, instructor, logos and workbook assets.
 - `scripts/content/cohort-blue-preview.html`: review page source, generated to `review/cohort-blue.html`. This page is marked noindex and is not in navigation or the sitemap.
+- `assets/lib/course-blue.css`, `assets/lib/course-blue.js` and `scripts/content/course-blue-preview.html`: matching self-paced course demo, generated to `review/course-blue.html`. The existing `/step-up` course sales page is not replaced.
+
+The course demo keeps the ₹8,999 self-paced offer, links to the existing TagMango course and uses the existing seven-day refund policy, conditional on completing no more than the first two lessons. The hero has an interactive before-and-after example, with an illustrative lesson view. It does not promise the cohort's personal feedback, private coaching or 90-day guarantee with the self-paced course.
+
+The latest workshop illustration is `assets/images/cohort/live-online-workshop-v7.webp`. It shows the instructor's hands resting on the table and a before-and-after update exercise. Earlier image versions are retained for stable historical references.
 
 ## Build
 
