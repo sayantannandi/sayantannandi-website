@@ -1,0 +1,48 @@
+{
+  "version": 6,
+  "assets": {
+    "live-online-workshop.webp": {
+      "path": "/assets/images/cohort/live-online-workshop.webp",
+      "bytes": 63570,
+      "description": "Illustrative online leadership session led by Sayantan in a gray suit, with experienced professionals joining remotely"
+    },
+    "sayantan-portrait.webp": {
+      "path": "/assets/images/cohort/sayantan-portrait.webp",
+      "bytes": 44454,
+      "description": "Sayantan Nandi, cohort instructor"
+    },
+    "schneider-electric.svg": {
+      "path": "/assets/images/cohort/schneider-electric.svg",
+      "bytes": 11924,
+      "description": "Schneider Electric logo"
+    },
+    "novartis.svg": {
+      "path": "/assets/images/cohort/novartis.svg",
+      "bytes": 2388,
+      "description": "Novartis logo"
+    },
+    "isb.svg": {
+      "path": "/assets/images/cohort/isb.svg",
+      "bytes": 4113,
+      "description": "Indian School of Business logo"
+    },
+    "promotion-case-builder.webp": {
+      "path": "/assets/images/cohort/promotion-case-builder.webp",
+      "bytes": 42474,
+      "description": "The Promotion Case Builder digital workbook mockup"
+    },
+    "review-room-kit.webp": {
+      "path": "/assets/images/cohort/review-room-kit.webp",
+      "bytes": 38048,
+      "description": "The Review Room Kit digital workbook mockup"
+    },
+    "executive-hour.webp": {
+      "path": "/assets/images/cohort/executive-hour.webp",
+      "bytes": 38836,
+      "description": "The Executive Hour digital workbook mockup"
+    }
+  },
+  "theme": "/assets/lib/blue-theme.css",
+  "cohortStyles": "/assets/lib/cohort-blue.css",
+  "cohortScript": "/assets/lib/cohort-blue.js"
+}
