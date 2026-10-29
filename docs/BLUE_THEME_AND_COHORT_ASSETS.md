@@ -69,3 +69,13 @@ The cohort retains its schedule, early-bird pricing, weekly coaching feedback, p
 The cohort comparison heading is centered. Each review page gives its own offer a slightly raised top edge, stronger blue border and shadow, plus a more prominent button. Card bottoms and actions stay aligned; the mobile cards retain normal spacing. The company-payment section is the final section of the cohort page. These are visual updates to the review pages only.
 
 The visible product name is now “Workshop Cohort” across both review pages and dynamic price labels. Route paths, selectors and checkout integrations retain their existing identifiers.
+
+## Latest review update: five slides and booking copy
+
+Both review carousels contain five screens at the existing two-second interval. The fifth screen is a native HTML/CSS preview of the study guide, practice book and personal Changed For Log workbook. It is labeled as an illustrative layout. The Workshop Cohort fourth screen restores the previously approved group workshop image. The course fourth screen uses the more natural webcam conversation at `assets/images/cohort/sayantan-coaching-call-v5.webp`; scene labels remain as plain text without a colored box.
+
+Both comparison headings are centered and fit one line on desktop; text wraps naturally on mobile. Card footer descriptions and the paragraph below the comparison are removed. Flipkart joins the existing credential row, with four equal cells on desktop and two columns on mobile. Logo source: https://commons.wikimedia.org/wiki/File:Flipkart_Logo_as_of_2025.png .
+
+The course hero fact strip is removed. The Workshop Cohort comparison action reads “Book Your Seat”; its hero, checkout and mobile actions read “Book Your Seat Now”. The 90-day badge wraps DAY GUARANTEE inside its circle. The main guarantee panel omits ratings cards and fine print, and says the full fee is refunded after attending all sessions when the average rating has not increased. The FAQ and draft policy now consistently require all six sessions, live or recorded; the other exercise, ratings and claim-date conditions remain there. Production refund terms are unchanged because these are still review pages.
+
+Built-in image editing preserved the two people in the call and used this brief: “More natural, uneven webcam lighting and skin texture; an experienced professional explaining her concern while Sayantan listens with a pen and notebook; ordinary separate rooms, mild compression, no text or UI.”
