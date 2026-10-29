@@ -159,3 +159,7 @@ write("review/cohort-blue.html", (ROOT/"scripts/content/cohort-blue-preview.html
 
 # Self-paced course redesign remains a review page until accepted.
 write("review/course-blue.html", (ROOT/"scripts/content/course-blue-preview.html").read_text(encoding="utf-8"))
+
+# Connected site redesign, kept on review routes until approved.
+from site_demo import build_demo
+build_demo(write)
