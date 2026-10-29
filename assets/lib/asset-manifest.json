@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "assets": {
     "live-online-workshop.webp": {
       "path": "/assets/images/cohort/live-online-workshop.webp",
@@ -45,6 +45,11 @@
       "path": "/assets/images/cohort/live-online-workshop-v7.webp",
       "bytes": 62662,
       "description": "Illustrative remote cohort with hands resting and before-and-after exercise"
+    },
+    "sayantan-video-lesson-v2.webp": {
+      "path": "/assets/images/cohort/sayantan-video-lesson-v2.webp",
+      "bytes": 54270,
+      "description": "Illustrative speaking-to-camera lesson scene with Sayantan in a gray suit"
     }
   },
   "theme": "/assets/lib/blue-theme.css",
