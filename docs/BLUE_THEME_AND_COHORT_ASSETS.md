@@ -87,3 +87,9 @@ The fifth screen on both review pages now shows actual workbook pages instead of
 The Workshop Cohort carousel now has six screens. Its new Q&A gallery shows six equal-sized participant tiles, including Sayantan listening while participants contribute. This generated illustration is labeled as illustrative. Its compressed asset is `assets/images/cohort/workshop-qa-gallery-v6.webp`. The carousel retains the two-second interval and manual controls.
 
 The Course review now promises a 100% refund if the learner does not see value after Module 1. The guarantee panel, checkout summary and FAQ agree. The paragraph contrasting the Workshop Cohort and Course policies is removed. The review links to its own refund FAQ, rather than the production seven-day policy. Production sales pages, checkout and refund terms are unchanged.
+
+## Q&A realism and caption alignment
+
+The Q&A slide now separates its image and caption into grid rows. The kicker, heading and supporting sentence share a left edge below the image, with no overlap on desktop or mobile. The updated gallery asset uses distinct ordinary rooms, varied camera angles, lighting and webcam quality. It remains labeled as an illustrative session. Built-in image editing preserved Sayantan’s identity from his portrait and the six-person gallery composition. Prompt: ordinary laptop webcams, believable lived-in rooms, natural skin texture, differing exposures and mild compression; no text or UI.
+
+Updated image: `assets/images/cohort/workshop-qa-gallery-v7.webp`.

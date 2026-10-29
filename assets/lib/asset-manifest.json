@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "assets": {
     "live-online-workshop.webp": {
       "path": "/assets/images/cohort/live-online-workshop.webp",
@@ -80,6 +80,11 @@
       "path": "/assets/images/cohort/practice-workbook-page-v6.webp",
       "bytes": 135994,
       "description": "Actual Step Up Practice Book page 4, showing Changed For Log"
+    },
+    "workshop-qa-gallery-v7.webp": {
+      "path": "/assets/images/cohort/workshop-qa-gallery-v7.webp",
+      "bytes": 72706,
+      "description": "Illustrative Q&A gallery with natural rooms, lighting and varied webcam detail"
     }
   },
   "theme": "/assets/lib/blue-theme.css",
