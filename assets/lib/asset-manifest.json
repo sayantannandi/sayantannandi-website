@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "assets": {
     "live-online-workshop.webp": {
       "path": "/assets/images/cohort/live-online-workshop.webp",
@@ -50,11 +50,18 @@
       "path": "/assets/images/cohort/sayantan-video-lesson-v2.webp",
       "bytes": 54270,
       "description": "Illustrative speaking-to-camera lesson scene with Sayantan in a gray suit"
+    },
+    "sayantan-coaching-call-v3.webp": {
+      "path": "/assets/images/cohort/sayantan-coaching-call-v3.webp",
+      "bytes": 69088,
+      "description": "Illustrative one-to-one call: Sayantan listens as a professional describes her challenge"
     }
   },
   "theme": "/assets/lib/blue-theme.css",
   "cohortStyles": "/assets/lib/cohort-blue.css",
   "cohortScript": "/assets/lib/cohort-blue.js",
   "courseStyles": "/assets/lib/course-blue.css",
-  "courseScript": "/assets/lib/course-blue.js"
+  "courseScript": "/assets/lib/course-blue.js",
+  "reviewStyles": "/assets/lib/leadership-review.css",
+  "carouselScript": "/assets/lib/review-carousel.js"
 }
