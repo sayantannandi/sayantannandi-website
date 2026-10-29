@@ -1,0 +1,28 @@
+/* Shared site palette. Load after the page-specific stylesheets.
+   --green is retained as a compatibility alias for existing templates. */
+:root {
+  --ink:#10243b;
+  --muted:#52647a;
+  --blue:#2453d4;
+  --green:var(--blue);
+  --deep:#102c50;
+  --paper:#ffffff;
+  --soft:#f2f6fd;
+  --line:#d8e2f0;
+  --gold:#70d8e7;
+  --focus:#a82430;
+}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
+select:focus-visible,summary:focus-visible{outline-color:var(--focus)}
+.card.soft,.form-box,.callout,.quote-panel,.email-template{background:var(--soft)}
+.email-template{border-color:var(--line)}
+.course-cover{background:var(--deep);box-shadow:15px 15px 0 #e8efff}
+.stairs span{background:linear-gradient(180deg,#3763a0,transparent);border-color:#a8c8ef}
+.course-cover .eyebrow,.course-cover .cover-note,.cover-footer{color:#e1ebfa}
+.cover-footer{border-color:#6988b1}
+.grid-cell.is-selected,.quiz-option.is-selected{background:#e8efff}
+.book-page{--book-ink:var(--ink);--book-muted:var(--muted);--clay:var(--blue);--book-line:var(--line)}
+.book-page .btn{background:var(--blue);border-color:var(--blue)}
+.book-page .btn:hover{background:var(--deep);border-color:var(--deep)}
+.book-cta,.book-promise{background:var(--soft);border-color:var(--line)}
+@media print{.card.soft,.form-box,.callout,.quote-panel{background:white}}
