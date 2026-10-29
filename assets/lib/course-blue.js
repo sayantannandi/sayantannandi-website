@@ -6,10 +6,10 @@
   const count = document.getElementById('carousel-count');
   const status = document.getElementById('carousel-status');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let index = 0, paused = motion.matches, hovered = false, visible = true, timer;
+  let index = 0, paused = motion.matches, hovered = false, visible = true, resumeRequested = false, timer;
   function schedule() {
     clearTimeout(timer);
-    if (!paused && !hovered && visible && !document.hidden && !carousel.contains(document.activeElement)) {
+    if (!paused && visible && !document.hidden && (resumeRequested || (!hovered && !carousel.contains(document.activeElement)))) {
       timer = setTimeout(() => show(index + 1), 8000);
     }
   }
@@ -30,10 +30,10 @@
   dots.forEach((dot, i) => dot.addEventListener('click', () => show(i, true)));
   document.getElementById('carousel-prev').addEventListener('click', () => show(index - 1, true));
   document.getElementById('carousel-next').addEventListener('click', () => show(index + 1, true));
-  pause.addEventListener('click', () => { paused = !paused; updatePause(); });
-  carousel.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+  pause.addEventListener('click', () => { paused = !paused; resumeRequested = !paused; updatePause(); });
+  carousel.addEventListener('mouseenter', () => { hovered = true; resumeRequested = false; schedule(); });
   carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
-  carousel.addEventListener('focusin', schedule);
+  carousel.addEventListener('focusin', () => { resumeRequested = false; schedule(); });
   carousel.addEventListener('focusout', () => { queueMicrotask(schedule); });
   carousel.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
