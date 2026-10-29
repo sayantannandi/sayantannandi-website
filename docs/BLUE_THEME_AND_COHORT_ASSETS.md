@@ -63,3 +63,9 @@ The fourth screen is a private coaching conversation, with a professional explai
 The workbook inclusion line is larger and centered on both pages. The extra resource-summary rows are removed, as is the course's process section. Both pages follow the same main order: hero, workplace feedback, curriculum, instructor, workbooks, format comparison, guarantee, and FAQ with enrollment. The cohort's sponsor-email section appears before its final FAQ. Its books-and-workshops explanation remains available as a collapsed FAQ answer.
 
 The cohort retains its schedule, early-bird pricing, weekly coaching feedback, private 60-minute session, 90-day recording access and ratings-based guarantee. The course retains its self-paced offer and conditional seven-day refund policy. Only review pages change; production sales pages, checkout, forms and policy pages remain as before.
+
+## Offer emphasis update
+
+The cohort comparison heading is centered. Each review page gives its own offer a slightly raised top edge, stronger blue border and shadow, plus a more prominent button. Card bottoms and actions stay aligned; the mobile cards retain normal spacing. The company-payment section is the final section of the cohort page. These are visual updates to the review pages only.
+
+The visible product name is now “Workshop Cohort” across both review pages and dynamic price labels. Route paths, selectors and checkout integrations retain their existing identifiers.
