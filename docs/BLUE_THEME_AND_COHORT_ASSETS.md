@@ -50,7 +50,7 @@ The logos identify the instructor's professional experience and education. They 
 
 ## Course review revision 2
 
-The course hero uses the requested senior-leadership headline and a single purchase action with the free-module link underneath. The fact strip is removed. Workplace feedback is the focal copy, the instructor and logos use aligned cards, the course offer is light blue, and the course-use section was removed in revision 3. The red wax seal reads “100% refund guarantee”; the seven-day period and two-lesson progress limit remain visible. Production course and refund pages are unchanged.
+The course hero uses the requested senior-leadership headline and a single purchase action with the free-module link underneath. The fact strip is removed. Workplace feedback is the focal copy, the instructor and logos use aligned cards, the course offer is light blue, and the course-use section was removed in revision 3. The red wax seal reads “100% refund guarantee”; the original seven-day period and two-lesson progress limit were replaced in the latest review update below. Production course and refund pages are unchanged.
 
 The new speaking illustration is `assets/images/cohort/sayantan-video-lesson-v2.webp`. Built-in image generation used the existing headshot as an identity reference, with the prompt: “Photorealistic 16:9 still of Sayantan teaching to camera in a gray suit, in a natural home office, preserving his identity; no text or player UI.”
 
@@ -62,7 +62,7 @@ The fourth screen is a private coaching conversation, with a professional explai
 
 The workbook inclusion line is larger and centered on both pages. The extra resource-summary rows are removed, as is the course's process section. Both pages follow the same main order: hero, workplace feedback, curriculum, instructor, workbooks, format comparison, guarantee, and FAQ with enrollment. The cohort's sponsor-email section appears before its final FAQ. Its books-and-workshops explanation remains available as a collapsed FAQ answer.
 
-The cohort retains its schedule, early-bird pricing, weekly coaching feedback, private 60-minute session, 90-day recording access and ratings-based guarantee. The course retains its self-paced offer and conditional seven-day refund policy. Only review pages change; production sales pages, checkout, forms and policy pages remain as before.
+The cohort retains its schedule, early-bird pricing, weekly coaching feedback, private 60-minute session, 90-day recording access and ratings-based guarantee. The course retains its self-paced offer; the latest review guarantee is described below. Only review pages change; production sales pages, checkout, forms and policy pages remain as before.
 
 ## Offer emphasis update
 
@@ -79,3 +79,11 @@ Both comparison headings are centered and fit one line on desktop; text wraps na
 The course hero fact strip is removed. The Workshop Cohort comparison action reads “Book Your Seat”; its hero, checkout and mobile actions read “Book Your Seat Now”. The 90-day badge wraps DAY GUARANTEE inside its circle. The main guarantee panel omits ratings cards and fine print, and says the full fee is refunded after attending all sessions when the average rating has not increased. The FAQ and draft policy now consistently require all six sessions, live or recorded; the other exercise, ratings and claim-date conditions remain there. Production refund terms are unchanged because these are still review pages.
 
 Built-in image editing preserved the two people in the call and used this brief: “More natural, uneven webcam lighting and skin texture; an experienced professional explaining her concern while Sayantan listens with a pen and notebook; ordinary separate rooms, mild compression, no text or UI.”
+
+## Actual workbook screenshots and Q&A gallery
+
+The fifth screen on both review pages now shows actual workbook pages instead of a fabricated materials layout: page 3 of The Promotion Case Builder and page 4 of The Step Up Practice Book Simplified (the Changed For Log exercise). The sources are unchanged. Pages were rendered to compressed WebP images, and each screenshot opens at full size when clicked.
+
+The Workshop Cohort carousel now has six screens. Its new Q&A gallery shows six equal-sized participant tiles, including Sayantan listening while participants contribute. This generated illustration is labeled as illustrative. Its compressed asset is `assets/images/cohort/workshop-qa-gallery-v6.webp`. The carousel retains the two-second interval and manual controls.
+
+The Course review now promises a 100% refund if the learner does not see value after Module 1. The guarantee panel, checkout summary and FAQ agree. The paragraph contrasting the Workshop Cohort and Course policies is removed. The review links to its own refund FAQ, rather than the production seven-day policy. Production sales pages, checkout and refund terms are unchanged.
