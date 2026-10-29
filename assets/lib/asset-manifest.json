@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "assets": {
     "live-online-workshop.webp": {
       "path": "/assets/images/cohort/live-online-workshop.webp",
@@ -55,6 +55,16 @@
       "path": "/assets/images/cohort/sayantan-coaching-call-v3.webp",
       "bytes": 69088,
       "description": "Illustrative one-to-one call: Sayantan listens as a professional describes her challenge"
+    },
+    "sayantan-coaching-call-v5.webp": {
+      "path": "/assets/images/cohort/sayantan-coaching-call-v5.webp",
+      "bytes": 64042,
+      "description": "Illustrative natural webcam coaching conversation"
+    },
+    "flipkart.png": {
+      "path": "/assets/images/cohort/flipkart.png",
+      "bytes": 18082,
+      "description": "Flipkart logo, professional experience"
     }
   },
   "theme": "/assets/lib/blue-theme.css",

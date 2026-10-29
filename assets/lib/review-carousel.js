@@ -17,8 +17,8 @@
     index = (next + slides.length) % slides.length;
     slides.forEach((slide, i) => { slide.hidden = i !== index; });
     dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === index)));
-    count.textContent = String(index + 1).padStart(2, '0') + ' / 04';
-    if (manual) status.textContent = 'Screen ' + (index + 1) + ' of 4';
+    count.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+    if (manual) status.textContent = 'Screen ' + (index + 1) + ' of ' + slides.length;
     schedule();
   }
   function updatePause() {
