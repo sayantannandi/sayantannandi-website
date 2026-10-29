@@ -19,6 +19,7 @@ for(const form of document.querySelectorAll('form[data-capture]')) {
       status.className = 'form-status success';
       status.textContent = form.dataset.success || 'Thank you. Your request has been received.';
       form.reset(); button.textContent = 'Request received';
+      if(form.dataset.redirect) window.location.assign(form.dataset.redirect);
       // Keep the accepted form disabled to prevent accidental duplicate submissions.
     } catch(error) {
       status.className = 'form-status error';

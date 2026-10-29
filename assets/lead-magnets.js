@@ -1,6 +1,6 @@
 import {tests} from './lead-magnet-data.mjs?v=1';
 import {evaluate, reportText} from './lead-magnet-engine.mjs?v=1';
-import {downloadText} from './step-up.js?v=3';
+import {downloadText} from './step-up.js?v=5';
 const root = document.querySelector('[data-lead-test]');
 if (root) {
   const test = tests[root.dataset.leadTest];
@@ -62,7 +62,7 @@ if (root) {
         '</span><h3>' + esc(r.question.title) + '</h3><p>' + esc(r.question.situation) + '</p><p><strong>Your choice:</strong> ' +
         esc(r.selected.text) + '</p><p>' + esc(r.selected.feedback) + '</p>' + (r.selected.points===2?'':'<p><strong>A stronger response for these facts:</strong> ' +
         esc(r.strongest.text) + '</p><p>' + esc(r.strongest.feedback) + '</p>') + '</article>').join('') +
-      '<div class="callout"><h3>Build the skills behind your next role.</h3><p>Use this report as a starting point for growing into leadership and strengthening your earning power. The course develops the skills and working habits behind broader responsibility. The six-week live cohort adds discussion and feedback as you apply them.</p><div class="actions"><a class="btn" href="/conversation">Book a free call</a><a class="text-link" href="/conversation">Discuss your practice focus with Sayantan</a></div></div>' +
+      '<div class="callout"><h3>Build the skills behind your next role.</h3><p>Use this report as a starting point for growing into leadership and strengthening your earning power. The course develops the skills and working habits behind broader responsibility. The six-week live cohort adds discussion and feedback as you apply them.</p><div class="actions"><a class="btn" href="/step-up/cohort">Join the January cohort</a><a class="text-link" href="/conversation">Discuss your practice focus with Sayantan</a></div></div>' +
       '<p class="fine">Contact: <a href="mailto:hello@sayantannandi.com">hello@sayantannandi.com</a>.</p>';
     report.querySelector('#save-test-report').addEventListener('click', () => {
       downloadText(test.slug + '-report.txt', reportText(test,result));

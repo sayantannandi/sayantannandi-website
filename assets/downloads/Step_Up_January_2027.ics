@@ -1,0 +1,66 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sayantan Nandi//Step Up January 2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:stepup-jan2027-week1@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270109T053000Z
+DTEND:20270109T070000Z
+SUMMARY:The Step Up - Week 1
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:stepup-jan2027-week2@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270116T053000Z
+DTEND:20270116T070000Z
+SUMMARY:The Step Up - Week 2
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:stepup-jan2027-week3@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270123T053000Z
+DTEND:20270123T070000Z
+SUMMARY:The Step Up - Week 3
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:stepup-jan2027-week4@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270130T053000Z
+DTEND:20270130T070000Z
+SUMMARY:The Step Up - Week 4
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:stepup-jan2027-week5@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270206T053000Z
+DTEND:20270206T070000Z
+SUMMARY:The Step Up - Week 5
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:stepup-jan2027-week6@sayantannandi.com
+DTSTAMP:20261029T000000Z
+DTSTART:20270213T053000Z
+DTEND:20270213T070000Z
+SUMMARY:The Step Up - Week 6
+DESCRIPTION:Google Meet joining details are emailed to registered participants. Contact hello@sayantannandi.com for access.
+URL:https://sayantannandi.com/step-up/cohort
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

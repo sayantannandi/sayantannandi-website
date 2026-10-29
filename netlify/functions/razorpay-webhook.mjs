@@ -8,7 +8,7 @@ export default async req => {
   if(raw.length>100000) return new Response('Too large',{status:413});
   if(!verifiedRazorpay(raw,req.headers.get('x-razorpay-signature'),env.SN_RAZORPAY_WEBHOOK_SECRET)) return new Response('Invalid signature',{status:401});
   let job;
-  try {job=paymentJob(JSON.parse(raw),JSON.parse(env.SN_RAZORPAY_PRODUCT_MAP || '{}'));}
+  try {job=paymentJob(JSON.parse(raw),{...JSON.parse(env.SN_RAZORPAY_PRODUCT_MAP || '{}'),'pl_TtOf7C8Q0AvKDh':'cohort_jan2027'});}
   catch(error){console.error('payment_rejected',error.message);return new Response('Payment needs review: '+error.message,{status:422});}
   if(!job) return new Response('Event ignored');
   await enqueue(store,job);

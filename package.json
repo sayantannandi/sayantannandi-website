@@ -1,7 +1,7 @@
 {
   "name": "sayantan-website",
   "version": "1.0.0",
-  "description": "Static Netlify website for The Step Up to Senior Leadership. The course has twelve lessons arranged into six weeks. The December 2026 cohort follows the same sequence with six weekly live sessions.",
+  "description": "Static Netlify website for The Step Up to Senior Leadership. The course has twelve lessons arranged into six weeks. The January 2027 cohort follows the same sequence with six weekly live sessions.",
   "main": "index.js",
   "directories": {
     "doc": "docs",

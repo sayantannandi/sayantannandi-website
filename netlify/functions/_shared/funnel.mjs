@@ -1,9 +1,12 @@
 import {createHash, randomBytes, createHmac, timingSafeEqual} from 'node:crypto';
+import {evaluateStarting,startingReport} from '../../../assets/starting-point-engine.mjs';
+import {VERSION as STARTING_VERSION} from '../../../assets/starting-point-data.mjs';
 import {tests} from '../../../assets/lead-magnet-data.mjs';
 import {evaluate, reportText} from '../../../assets/lead-magnet-engine.mjs';
 
-export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility'};
-export const PRODUCTS = ['course','cohort','kit_pcb','kit_rrk','kit_eh','kit_bundle'];
+export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility','sn-free-chapter':'free_chapter','sn-worksheets':'worksheets','sn-starting-point':'starting_point','sn-next-cohort':'next_cohort'};
+export const PRODUCTS = ['course','cohort','kit_pcb','kit_rrk','kit_eh','kit_bundle','cohort_jan2027'];
+export const NEW_SOURCES = ['free_chapter','worksheets','starting_point','next_cohort'];
 export const hash = value => createHash('sha256').update(value).digest('hex');
 export const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function validEmail(value) {
@@ -19,8 +22,15 @@ export function formJob(data, now = Date.now()) {
   if(!name || name.length > 100) throw new Error('invalid_name');
   const consent = source === 'letter' ? data.consent === 'yes' : data['newsletter-consent'] === 'yes';
   if(source === 'letter' && !consent) throw new Error('missing_consent');
-  const job = {kind:'form', source, email, name, consent, created:now, consentVersion:'sn-2026-09-button'};
-  if(source !== 'letter') {
+  const job = {kind:'form', source, email, name, consent, created:now, consentVersion:NEW_SOURCES.includes(source)?'sn-2026-10-29':'sn-2026-09-button'};
+  if(NEW_SOURCES.includes(source) && data.consent!=='yes') throw new Error('missing_consent');
+  if(source === 'starting_point') {
+    if(data['test-version']!==STARTING_VERSION) throw new Error('invalid_test_version');
+    const answers=JSON.parse(data.answers || 'null');
+    evaluateStarting(answers);
+    job.answers=answers;
+  }
+  if(tests[source]) {
     const test = tests[source];
     if(data['test-id'] !== source || data['test-version'] !== test.version) throw new Error('invalid_test_version');
     const answers = JSON.parse(data.answers || 'null');
@@ -51,6 +61,8 @@ export function paymentJob(body, mapping, now = Date.now()) {
     purchaseId:payment.id, id:hash('razorpay:'+payment.id), created:now};
 }
 export function canProcess(job,env) {
+  if(NEW_SOURCES.includes(job.source) && env.SN_RESOURCE_FUNNELS_READY!=='true') return false;
+  if(job.product==='cohort_jan2027' && env.SN_JANUARY_FUNNEL_READY!=='true') return false;
   return ['live','capture'].includes(env.SN_FUNNEL_MODE) || (env.SN_FUNNEL_MODE === 'qa' && job.email === 'hello@sayantannandi.com');
 }
 export function mailerClient(token,fetcher=fetch) {
@@ -90,7 +102,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
     let fields={...(job.name ? {name:job.name} : {})};
     if(job.kind==='form') fields.sn_source=job.source;
     if(job.consent) Object.assign(fields,{sn_consent_at:new Date(job.created).toISOString(),sn_consent_version:job.consentVersion});
-    if(job.kind==='form' && job.source!=='letter') {
+    if(job.kind==='form' && tests[job.source]) {
       const test=tests[job.source], result=evaluate(test,job.answers);
       const ownerKey='report-owner/'+hash(job.email+':'+job.source);
       await store.setJSON(ownerKey,{token:randomBytes(24).toString('hex')},{onlyIfNew:true});
@@ -100,6 +112,19 @@ export async function processJob(store,job,env,api,now=Date.now()) {
       fields['sn_'+job.source+'_url']='https://sayantannandi.com/api/report?t='+token;
       fields['sn_'+job.source+'_focus']=result.allStrong ? 'Applying the reasoning to your own work' : result.focus.map(d=>d.title).join(' / ');
     }
+    if(job.kind==='form' && job.source==='starting_point') {
+      const result=evaluateStarting(job.answers);
+      const ownerKey='report-owner/'+hash(job.email+':starting_point');
+      await store.setJSON(ownerKey,{token:randomBytes(24).toString('hex')},{onlyIfNew:true});
+      const {token}=await store.get(ownerKey,{type:'json'});
+      await store.setJSON('reports/'+token,{title:'Starting Point Check',text:startingReport(result),updated:now,expires:now+180*86400000});
+      Object.assign(fields,{sn_starting_point_url:'https://sayantannandi.com/api/report?t='+token,
+        sn_starting_point_box:result.box.label,sn_starting_point_skill:result.skill.title,
+        sn_starting_point_runway:result.band.label,sn_starting_point_decision:result.decision,
+        sn_starting_point_cta:'https://sayantannandi.com'+result.action.url});
+    }
+    if(job.source==='free_chapter') fields.sn_resource_url='https://sayantannandi.com/assets/downloads/Earning_Power_Exit_Power_First_Chapter.pdf';
+    if(job.source==='worksheets') fields.sn_resource_url='https://sayantannandi.com/assets/downloads/Earning_Power_Exit_Power_Worksheets.pdf';
     if(job.kind==='purchase') fields.sn_purchase_id=job.purchaseId;
     // Never set status: an unsubscribed or bounced contact must not be reactivated by a purchase or a test.
     subscriber=await api('subscribers','POST',{email:job.email,fields});
