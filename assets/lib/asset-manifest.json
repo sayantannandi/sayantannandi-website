@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "assets": {
     "live-online-workshop.webp": {
       "path": "/assets/images/cohort/live-online-workshop.webp",
@@ -65,6 +65,21 @@
       "path": "/assets/images/cohort/flipkart.png",
       "bytes": 18082,
       "description": "Flipkart logo, professional experience"
+    },
+    "workshop-qa-gallery-v6.webp": {
+      "path": "/assets/images/cohort/workshop-qa-gallery-v6.webp",
+      "bytes": 74750,
+      "description": "Illustrative equal-tile workshop Q&A gallery with Sayantan as a participant"
+    },
+    "promotion-example-page-v6.webp": {
+      "path": "/assets/images/cohort/promotion-example-page-v6.webp",
+      "bytes": 154044,
+      "description": "Actual Promotion Case Builder PDF page 3"
+    },
+    "practice-workbook-page-v6.webp": {
+      "path": "/assets/images/cohort/practice-workbook-page-v6.webp",
+      "bytes": 135994,
+      "description": "Actual Step Up Practice Book page 4, showing Changed For Log"
     }
   },
   "theme": "/assets/lib/blue-theme.css",
