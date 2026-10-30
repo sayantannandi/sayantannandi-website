@@ -27,7 +27,7 @@ def publish_approved(write):
         s=s.replace('site-demo.css?v=2','site-demo.css?v=3').replace('site-demo.js?v=2','site-live.js?v=1')
         s=re.sub(r'<dialog id="(?:review|review-notes|course-review)".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<dialog id="action".*?</dialog>','',s,flags=re.S)
-        s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Workshop Cohort","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free Fit Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
+        s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Workshop Cohort","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
         s=re.sub(r'<p[^>]*>Preview only\. This demo does not take payments\.</p>', '', s)
         s=s.replace('Review demo: no confirmation email has been sent.','No confirmation email has been sent.')
         s=s.replace('Demo mode: entries and newsletter preferences are saved for review. No automated emails are sent.','Your request and newsletter preference will be saved. No automated email is sent from this form yet.')

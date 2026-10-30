@@ -43,7 +43,7 @@ export function evaluateStarting(answers) {
 export function startingReport(result) {
  return ['STARTING POINT CHECK','Sayantan Nandi','',result.box.label+(result.provisional?' (provisional: runway unknown)':''),result.box.line,
  'Earning Power reflection: '+result.earning+'/18','Exit Power context: '+result.exit+'/12',
- 'These are provisional teaching thresholds, not validated measures of earning capacity, financial safety or promotion readiness. The two paths ask different questions; scores are not comparable across people or paths.',
+ 'This is a teaching tool, and it is not validated. It can’t predict a promotion or tell you if you’re financially safe. It only reflects the answers you gave.',
  '', 'Practice first: '+result.skill.title+' (cohort week '+result.skill.week+')',result.skill.line,result.skill.exercise,
  '', 'Reported runway: '+result.band.label,result.band.line,'The range is your estimate, not a calculated or verified balance.',
  '', 'Your current decision: '+result.decision,result.decisionLine,

@@ -30,7 +30,7 @@ def page(path,title,desc,body,active='',script='',noindex=False,social_image='/a
     if editorial:
         body += '<section class="wrap section newsletter-strip"><div class="grid-2"><div><span class="eyebrow">The Optional Career</span><h2>Careers, money and the decisions that create more choices.</h2><p>A weekly letter with a practical situation to think through. <a href="/newsletter">Read before you subscribe</a>.</p></div><div>' + capture('sn-letter','Subscribe to The Optional Career','','Thank you. You have subscribed to The Optional Career.') + '</div></div></section>'
     if path in ['about.html','step-up/sample.html','earning-power.html','exit-power.html','newsletter.html','book.html']:
-        body += '<section class="wrap section"><div class="callout"><h2>Talk through your next step.</h2><p>Bring one situation from work. We will discuss whether the course or cohort fits what you need.</p><div class="actions"><a class="btn" href="/conversation">Book a free call</a><a class="text-link" href="/conversation">What to expect in 20 minutes</a></div></div></section>'
+        body += '<section class="wrap section"><div class="callout"><h2>Talk through your next step.</h2><p>Bring one situation from work. We’ll work out what is really in the way, and what would help.</p><div class="actions"><a class="btn" href="/conversation">Book a free call</a><a class="text-link" href="/conversation">What to expect in 20 minutes</a></div></div></section>'
     if path.startswith('essays/'):
         body = body.replace('<article', '<article', 1)
         body = body.replace('</h1>', '</h1><p class="fine">Updated <time datetime="2026-10-29">28 October 2026</time></p>', 1)
