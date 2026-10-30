@@ -23,7 +23,7 @@ def cohort_human_block():
     return f'''<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get from me</span><h2>What a chatbot, an HR program<br>or a mentor can’t give you.</h2><p>A chatbot can explain “be more strategic”. An HR program teaches everyone the same thing. A mentor gives you an hour when they can. None of them reads your work the way a review panel does.</p></div>
 <div class="oc-grid">{cards('oc')}</div>
 <p class="oc-note">Stuck on something else this week? Bring any leadership challenge to the live session, your weekly assignment or your 1:1.</p>
-<div class="oc-promise"><article><span>What I don’t promise</span><p>A promotion. That depends on the roles your company has open, and on decisions I don’t make.</p></article><article class="is-do"><span>What I do promise</span><p>Personal feedback every week, a 60-minute rehearsal with me, and your one-page Readiness Note. If your manager’s rating of your work hasn’t gone up 90 days after the cohort, you get your fee back.</p></article><article><span>What we’re aiming for</span><p>That the leaders around you start to see you differently. I can’t control how they judge you. I can make sure they have something new to judge.</p></article></div></section>
+<div class="oc-promise"><article><span>What I don’t promise</span><p>A promotion. That depends on the roles your company has open, and on decisions I don’t make.</p></article><article class="is-do"><span>What I do promise</span><p>Personal feedback every week, a 60-minute rehearsal with me, and your one-page Readiness Note. Within 90 days, the people you work for should rate your work higher. If they don’t, you get your money back.</p></article><article><span>What we’re aiming for</span><p>That the leaders around you start to see you differently. I can’t control how they judge you. I can make sure they have something new to judge.</p></article></div><p class="oc-confidential"><b>Complete confidentiality.</b> Everything you share with me stays between us. You never need to share your company’s real data or documents. Change names and numbers, or describe the situation. That is enough for me to help.</p></section>
 '''
 
 
@@ -88,7 +88,8 @@ def compare_section(current, cohort_href='/step-up/cohort', wrap='section wrap')
 def promise(dont, do, aim):
     return (f'<div class="oc-promise"><article><span>What I don’t promise</span><p>{dont}</p></article>'
             f'<article class="is-do"><span>What I do promise</span><p>{do}</p></article>'
-            f'<article><span>What we’re aiming for</span><p>{aim}</p></article></div>')
+            f'<article><span>What we’re aiming for</span><p>{aim}</p></article></div>'
+            f'<p class="oc-confidential"><b>Complete confidentiality.</b> Everything you share with me stays between us. You never need to share your company’s real data or documents. Change names and numbers, or describe the situation. That is enough for me to help.</p>')
 
 
 NO_PROMOTION = 'A promotion. That depends on the roles your company has open, and on decisions I don’t make.'
@@ -121,7 +122,7 @@ def coaching_get_block():
     return (f'<section class="d-wrap d-section oc-human" id="what-you-get"><div class="oc-head"><span class="d-kicker">What you get from me</span><h2>The most of my time<br>and judgment.</h2>'
             f'<p>Six private 60-minute sessions, built around your real situations. We agree the scope on the free call, before you pay anything.</p></div>'
             f'<div class="oc-grid">{grid}</div>'
-            + promise(NO_PROMOTION, 'Six private sessions on your real situations, preparation for every high-stakes conversation, and everything in the Workshop Cohort. The cohort’s 90-day guarantee applies.', AIM)
+            + promise(NO_PROMOTION, 'Six private sessions on your real situations, preparation for every high-stakes conversation, and everything in the Workshop Cohort. Within 90 days, the people you work for should rate your work higher. If they don’t, you get your money back.', AIM)
             + '</section>')
 
 

@@ -95,3 +95,5 @@
 .ox-qa summary::after{content:'+';float:right;color:var(--d-blue);font-family:system-ui,sans-serif}
 .ox-qa details[open] summary::after{content:'–'}
 .ox-qa p{margin:10px 0 0;color:var(--d-muted);font-size:16px;line-height:1.6;max-width:720px}
+.oc-confidential{margin:18px 0 0;padding:16px 20px 16px 52px;position:relative;background:#fff;border:1px solid var(--d-line);border-radius:10px;font-size:15px;line-height:1.55;color:var(--d-ink)}
+.oc-confidential::before{content:'';position:absolute;left:18px;top:17px;width:20px;height:20px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232854df' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E")}
