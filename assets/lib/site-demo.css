@@ -35,3 +35,39 @@
 @media screen and (max-width:800px){.d-verdicts .d-problem-grid{grid-template-columns:1fr}}
 @media screen and (min-width:801px){.d-call-hero{align-items:start}.d-call-hero>div:first-child{padding-top:40px}}@media screen{.d-verdicts p.d-verdict-close{margin-top:32px}}
 .d-coach-price{margin-top:12px;font-size:15px;color:var(--d-ink);font-weight:600}
+/* Offer clarity: what you get from a person (cohort and course pages) */
+.oc-human{padding-top:64px}
+.oc-head{max-width:760px;margin-bottom:30px}
+.oc-head h2{margin:10px 0 12px}
+.oc-head p{color:var(--d-muted);font-size:17px;line-height:1.6}
+.oc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.oc-card{background:#fff;border:1px solid var(--d-line);border-radius:10px;padding:24px}
+.oc-ico,.hv-help-ico{width:48px;height:48px;border-radius:50%;background:var(--d-pale);display:grid;place-items:center;margin-bottom:14px}
+.oc-ico svg,.hv-help-ico svg{width:24px;height:24px;fill:none;stroke:var(--d-blue);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.oc-card h3{font-size:19px;line-height:1.3;margin:0 0 8px}
+.oc-card p{color:var(--d-muted);font-size:15px;line-height:1.55;margin:0}
+.oc-note{margin:22px 0 0;font-size:16px;color:var(--d-ink)}
+.oc-promise{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.oc-promise article{border-radius:10px;padding:22px;background:var(--d-pale)}
+.oc-promise article.is-do{background:var(--d-ink)}
+.oc-promise span{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--d-blue);margin-bottom:10px}
+.oc-promise .is-do span{color:var(--d-cyan)}
+.oc-promise p{margin:0;font-size:16px;line-height:1.55;color:var(--d-ink)}
+.oc-promise .is-do p{color:#fff}
+.oc-example{background:var(--d-pale)}
+.oc-doc{display:grid;grid-template-columns:1fr .8fr 1fr;gap:18px;align-items:start}
+.oc-col{background:#fff;border:1px solid var(--d-line);border-radius:10px;padding:24px}
+.oc-after{border-color:var(--d-blue);box-shadow:0 10px 24px rgba(40,84,223,.10)}
+.oc-tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--d-muted)}
+.oc-after .oc-tag{color:var(--d-blue)}
+.oc-col blockquote{margin:12px 0 16px;font-family:Georgia,serif;font-size:19px;line-height:1.5;color:var(--d-ink)}
+.oc-col mark{background:rgba(172,40,55,.12);color:inherit;padding:0 2px;border-radius:2px}
+.oc-col sup{color:var(--d-red);font-weight:700;font-family:system-ui,sans-serif;font-size:12px;margin-left:2px}
+.oc-verdict{margin:0;font-size:15px;color:var(--d-muted);border-top:1px solid var(--d-line);padding-top:12px}
+.oc-notes{margin:0;padding:0;list-style:none;counter-reset:n}
+.oc-notes li{counter-increment:n;position:relative;padding:14px 16px 14px 46px;margin-bottom:10px;background:#fff;border-radius:8px;border-left:3px solid var(--d-red);font-size:15px;line-height:1.5}
+.oc-notes li::before{content:counter(n);position:absolute;left:14px;top:14px;width:22px;height:22px;border-radius:50%;background:var(--d-red);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.oc-upsell{margin-top:14px;font-size:15px;color:var(--d-muted)}
+.oc-upsell a{color:var(--d-blue);font-weight:600}
+@media (max-width:980px){.oc-grid{grid-template-columns:1fr 1fr}.oc-doc{grid-template-columns:1fr}}
+@media (max-width:640px){.oc-grid,.oc-promise{grid-template-columns:1fr}}

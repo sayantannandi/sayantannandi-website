@@ -27,7 +27,7 @@ def publish_approved(write):
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         s=re.sub(r'<link rel="canonical"[^>]*>','',s)
         s=s.replace('</head>',f'<link rel="canonical" href="https://sayantannandi.com{new}"></head>')
-        s=s.replace('site-demo.css?v=2','site-demo.css?v=4').replace('site-demo.js?v=2','site-live.js?v=2')
+        s=s.replace('site-demo.css?v=2','site-demo.css?v=5').replace('site-demo.js?v=2','site-live.js?v=2')
         s=re.sub(r'<dialog id="(?:review|review-notes|course-review)".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<dialog id="action".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Workshop Cohort","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
@@ -68,7 +68,7 @@ def publish_approved(write):
         if '<header class="site-header">' not in s:continue
         s=re.sub(r'<header class="site-header">.*?</header>',live_header,s,count=1,flags=re.S)
         s=re.sub(r'<footer class="site-footer">.*?</footer>',live_footer,s,count=1,flags=re.S)
-        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=4"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
+        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=5"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
         write(rel,s)
     # Keep existing acquisition links pointing to the single approved book gate.
     extra=[]
