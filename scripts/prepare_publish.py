@@ -4,7 +4,7 @@ import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'public'
-EXCLUDE = {'.git', '.github', '.netlify', 'node_modules', 'netlify', 'scripts', 'public', 'docs', '__pycache__'}
+EXCLUDE = {'.git', '.github', '.netlify', 'node_modules', 'netlify', 'scripts', 'public', 'docs', 'output', '__pycache__'}
 EXTENSIONS = {'.html', '.css', '.js', '.mjs', '.json', '.png', '.jpg', '.jpeg', '.svg', '.webp', '.gif', '.pdf', '.zip', '.txt', '.xml', '.ico', '.woff', '.woff2', '.ics'}
 
 if OUT.exists():
