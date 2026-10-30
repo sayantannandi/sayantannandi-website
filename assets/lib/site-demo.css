@@ -31,3 +31,6 @@
 @media(max-width:760px){.d-idea-icon{width:64px;height:64px;margin-bottom:22px}.d-idea-icon svg{width:39px;height:39px}.d-visual-links img{width:105px}.d-visual-links b{font-size:18px}.d-visual-links p{font-size:15px}.d-room-cards strong{font-size:36px}.new-demo .d-choice-chips button{font-size:15px}.new-demo .d-test-card>p{font-size:17px}.d-book-art{padding:24px}.d-visual-links a{gap:14px}}
 
 @media screen{.d-result-focus p{color:#d1dff1;font-size:15px;line-height:1.55}.d-result-focus .d-btn{margin-top:8px}}
+@media screen{.d-verdicts .d-problem-grid{grid-template-columns:repeat(3,1fr)}.d-verdicts .d-problem h3{font-size:22px;line-height:1.35}.d-verdict-close{margin-top:28px;font-size:17px}.d-call-form{margin-top:18px;padding:0;border:0;box-shadow:none;background:transparent}.d-call-form label{display:block;margin-bottom:14px}.d-call-form textarea,.d-call-form select{width:100%}}
+@media screen and (max-width:800px){.d-verdicts .d-problem-grid{grid-template-columns:1fr}}
+@media screen and (min-width:801px){.d-call-hero{align-items:start}.d-call-hero>div:first-child{padding-top:40px}}@media screen{.d-verdicts p.d-verdict-close{margin-top:32px}}

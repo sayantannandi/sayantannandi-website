@@ -11,7 +11,8 @@ ROUTES={
 '/review/cohort-blue':'/step-up/cohort','/review/received-blue':'/registration-received',
 '/review/tests/senior-level-judgment':'/tests/senior-level-judgment',
 '/review/tests/leadership-visibility':'/tests/leadership-visibility',
-'/review/tests/exit-power':'/tests/exit-power'}
+'/review/tests/exit-power':'/tests/exit-power',
+'/review/tests/business-leadership':'/tests/business-leadership'}
 def routes(text):
     for old,new in sorted(ROUTES.items(),key=lambda x:-len(x[0])):text=text.replace(old,new)
     return text
