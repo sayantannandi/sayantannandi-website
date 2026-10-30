@@ -27,10 +27,10 @@ def publish_approved(write):
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         s=re.sub(r'<link rel="canonical"[^>]*>','',s)
         s=s.replace('</head>',f'<link rel="canonical" href="https://sayantannandi.com{new}"></head>')
-        s=s.replace('site-demo.css?v=2','site-demo.css?v=9').replace('site-demo.js?v=2','site-live.js?v=2')
+        s=s.replace('site-demo.css?v=2','site-demo.css?v=10').replace('site-demo.js?v=2','site-live.js?v=2')
         s=re.sub(r'<dialog id="(?:review|review-notes|course-review)".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<dialog id="action".*?</dialog>','',s,flags=re.S)
-        s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Live Leadership Classroom","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
+        s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Live Classroom","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
         s=re.sub(r'<p[^>]*>Preview only\. This demo does not take payments\.</p>', '', s)
         s=s.replace('Review demo: no confirmation email has been sent.','No confirmation email has been sent.')
         s=s.replace('Demo mode: entries and newsletter preferences are saved for review. No automated emails are sent.','Your request and newsletter preference will be saved. No automated email is sent from this form yet.')
@@ -39,8 +39,8 @@ def publish_approved(write):
         s=s.replace('By invitation · Proposed package','By invitation')
         s=s.replace('₹49,999 <span class="proposed">Proposed</span>','₹49,999')
         s=s.replace('Read the draft refund policy','Read the refund policy')
-        s=s.replace('Draft /refunds · January 2027 Live Leadership Classroom','January 2027 Live Leadership Classroom')
-        s=s.replace('Draft for review. This proposed policy applies to new January Live Leadership Classroom purchases after adoption. Existing purchases retain their original terms. Other products keep their existing refund policies.','Applies to new purchases from 30 October 2026. Existing purchases retain their original terms.')
+        s=s.replace('Draft /refunds · January 2027 Live Classroom','January 2027 Live Classroom')
+        s=s.replace('Draft for review. This proposed policy applies to new January Live Classroom purchases after adoption. Existing purchases retain their original terms. Other products keep their existing refund policies.','Applies to new purchases from 30 October 2026. Existing purchases retain their original terms.')
         if new=='/step-up/cohort':
             s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=3')
         if new=='/registration-received':s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>')
@@ -67,7 +67,7 @@ def publish_approved(write):
         if '<header class="site-header">' not in s:continue
         s=re.sub(r'<header class="site-header">.*?</header>',live_header,s,count=1,flags=re.S)
         s=re.sub(r'<footer class="site-footer">.*?</footer>',live_footer,s,count=1,flags=re.S)
-        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=9"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
+        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=10"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
         write(rel,s)
     # Keep existing acquisition links pointing to the single approved book gate.
     extra=[]

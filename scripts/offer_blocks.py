@@ -11,7 +11,7 @@ CARDS = [
     ('read', 'I read your work the way a panel would.', 'Personal written feedback on every weekly assignment: what a panel would conclude, and the line that changes it.'),
     ('vp', 'I play the sceptical VP.', 'A private 60-minute session with me. We rehearse your readiness conversation before you take it to your manager.'),
     ('loop', 'Support before the big moments.', 'Personal help for the executive meeting or talent review coming up: what to say, what to bring, what they will ask.'),
-    ('peers', 'Connections beyond the program.', 'Practice with up to 20 managers facing the same jump, and build a network of like-minded, successful peers that lasts.'),
+    ('peers', 'A peer network that lasts.', 'Practice with up to 20 managers facing the same jump. Afterwards you join The Step Up Circle, a private WhatsApp community of every graduate, with me in it.'),
 ]
 
 
@@ -58,6 +58,7 @@ def compare_table(current=None, cohort_href='/step-up/cohort'):
         ('Rehearsal with me as the sceptical VP', no, 'One 60-minute 1:1', 'Every session'),
         ('Support before executive meetings and talent reviews', no, tick, tick),
         ('People at your level to practice with', no, 'Up to 20', tick),
+        ('The Step Up Circle: alumni community and roundtable', no, tick, tick),
         ('Refund policy', 'Refund after Module 1', 'Full refund before the second live session', 'Full refund before the second live session'),
     ]
     cols = ['course', 'cohort', 'coaching']
@@ -71,9 +72,9 @@ def compare_table(current=None, cohort_href='/step-up/cohort'):
         'cohort': f'<a class="{"d-btn" if current in (None, "cohort") else "d-text-link"}" href="{cohort_href}">{"Book your seat" if current in (None, "cohort") else "See the cohort"} ↗</a>',
         'coaching': f'<a class="{"d-btn" if current == "coaching" else "d-text-link"}" href="{"#fit" if current == "coaching" else "/get-coached"}">Find out if we’re a fit ↗</a>',
     }
-    head = (f'<th scope="col"{cls("course")}>{badge["course"]}<b>The course</b><span>₹8,999 · the lessons, at your own pace</span></th>'
-            f'<th scope="col"{cls("cohort")}>{badge["cohort"]}<b>Live Leadership Classroom</b><span>₹17,499 early-bird · 6 live Saturdays</span></th>'
-            f'<th scope="col"{cls("coaching")}>{badge["coaching"]}<b>Personal coaching</b><span>₹49,999 · six 1:1 sessions, plus the cohort</span></th>')
+    head = (f'<th scope="col"{cls("course")}>{badge["course"]}<small class="ox-prog">The Step Up</small><b>Self-paced</b><span>₹8,999 · the lessons, at your own pace</span></th>'
+            f'<th scope="col"{cls("cohort")}>{badge["cohort"]}<small class="ox-prog">The Step Up</small><b>Live Classroom</b><span>₹17,499 early-bird · 6 live Saturdays</span></th>'
+            f'<th scope="col"{cls("coaching")}>{badge["coaching"]}<small class="ox-prog">The Step Up</small><b>1:1 Coaching</b><span>₹49,999 · six 1:1 sessions, plus the Live Classroom</span></th>')
     foot = '<tr class="ox-cta-row"><th scope="row"></th>' + ''.join(f'<td{cls(c)}>{cta[c]}</td>' for c in cols) + '</tr>'
     return (f'<div class="ox-table-wrap"><table class="ox-compare"><thead><tr><th scope="col"><span class="ox-kicker">Three ways to work with me</span></th>{head}</tr></thead>'
             f'<tbody>{body}{foot}</tbody></table></div>')
@@ -105,7 +106,7 @@ def course_get_block():
     ]
     grid = ''.join(f'<article class="oc-card"><div class="oc-ico">{ICONS[k]}</div><h3>{t}</h3><p>{d}</p></article>' for k, t, d in items)
     return (f'<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get</span><h2>The lessons, done properly.<br>At your own pace.</h2>'
-            f'<p>Everything you need to learn what the panel looks for and practice it on your own. What it doesn’t include is me reading your work. That’s the Live Leadership Classroom.</p></div>'
+            f'<p>Everything you need to learn what the panel looks for and practice it on your own. What it doesn’t include is me reading your work. That’s the Live Classroom.</p></div>'
             f'<div class="oc-grid">{grid}</div>'
             + promise(NO_PROMOTION, 'Go through Module 1. If you don’t see the value, I refund 100% of your fee. Just email me from your purchase address.', AIM)
             + '</section>')
@@ -116,13 +117,13 @@ def coaching_get_block():
         ('read', 'Your situation, not a curriculum.', 'Each session starts with what is in front of you: the role, the decision, the person who is hard to work with.'),
         ('vp', 'Rehearsal before it counts.', 'We run the hard conversation first, with me as the sceptical VP, until you’re ready for the real one.'),
         ('loop', 'You try it, then we look back.', 'Between sessions you act on one thing. Next time we look at what happened and adjust.'),
-        ('peers', 'Plus the full Live Leadership Classroom.', 'The lessons, the six live Saturdays and the people at your level are included.'),
+        ('peers', 'Plus the full Live Classroom.', 'The lessons, the six live Saturdays and the people at your level are included.'),
     ]
     grid = ''.join(f'<article class="oc-card"><div class="oc-ico">{ICONS[k]}</div><h3>{t}</h3><p>{d}</p></article>' for k, t, d in items)
     return (f'<section class="d-wrap d-section oc-human" id="what-you-get"><div class="oc-head"><span class="d-kicker">What you get from me</span><h2>The most of my time<br>and judgment.</h2>'
             f'<p>Six private 60-minute sessions, built around your real situations. We agree the scope on the free call, before you pay anything.</p></div>'
             f'<div class="oc-grid">{grid}</div>'
-            + promise(NO_PROMOTION, 'Six private sessions on your real situations, rehearsal for the conversations we select together, and everything in the Live Leadership Classroom. Full refund if requested before the second live session.', AIM)
+            + promise(NO_PROMOTION, 'Six private sessions on your real situations, rehearsal for the conversations we select together, and everything in the Live Classroom. Full refund if requested before the second live session.', AIM)
             + '</section>')
 
 
@@ -157,4 +158,4 @@ def social_links():
 
 
 def coaching_plan():
-    return '''<section class="d-section d-tint"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">Your six-session plan</span><h2>One real challenge.<br>A plan you can use.</h2></div><p>We choose the focus together. The sessions follow what happens when you put the work into practice.</p></div><div class="d-process"><article><span>01 · Understand</span><h3>Make the problem clear.</h3><p>Use the first session to separate facts from assumptions, define a useful outcome and agree what evidence would show progress.</p></article><article><span>02 · Prepare & practice</span><h3>Work on the next decision.</h3><p>Use the middle sessions to examine options, review your drafts and rehearse the conversations you select. Try one agreed action between sessions.</p></article><article><span>03 · Review & continue</span><h3>Leave with your next moves.</h3><p>Review what changed, the evidence you have built and what still needs work. Finish with a plan for your next review or leadership challenge.</p></article></div><div class="sn-coaching-scope"><h3>Agree the boundaries before you pay.</h3><p>Your written coaching plan specifies the six session dates and completion window, rescheduling arrangements, any draft reviews between sessions, the contact channel and response time. Preparation happens within that agreed scope. This is scheduled coaching, rather than unlimited on-call access.</p><p>The ₹49,999 package includes six private 60-minute sessions in total, plus the Live Leadership Classroom. The cohort’s single private session is included within those six. We confirm the included cohort dates before payment. You can use private sessions to prepare for a live situation while waiting for the group program to start.</p></div></div></section>'''
+    return '''<section class="d-section d-tint"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">Your six-session plan</span><h2>One real challenge.<br>A plan you can use.</h2></div><p>We choose the focus together. The sessions follow what happens when you put the work into practice.</p></div><div class="d-process"><article><span>01 · Understand</span><h3>Make the problem clear.</h3><p>Use the first session to separate facts from assumptions, define a useful outcome and agree what evidence would show progress.</p></article><article><span>02 · Prepare & practice</span><h3>Work on the next decision.</h3><p>Use the middle sessions to examine options, review your drafts and rehearse the conversations you select. Try one agreed action between sessions.</p></article><article><span>03 · Review & continue</span><h3>Leave with your next moves.</h3><p>Review what changed, the evidence you have built and what still needs work. Finish with a plan for your next review or leadership challenge.</p></article></div><div class="sn-coaching-scope"><h3>Agree the boundaries before you pay.</h3><p>Your written coaching plan specifies the six session dates and completion window, rescheduling arrangements, any draft reviews between sessions, the contact channel and response time. Preparation happens within that agreed scope. This is scheduled coaching, rather than unlimited on-call access.</p><p>The ₹49,999 package includes six private 60-minute sessions in total, plus the Live Classroom. The cohort’s single private session is included within those six. We confirm the included cohort dates before payment. You can use private sessions to prepare for a live situation while waiting for the group program to start.</p></div></div></section>'''

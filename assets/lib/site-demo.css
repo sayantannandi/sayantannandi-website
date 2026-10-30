@@ -100,3 +100,14 @@
 
 /* Offer clarity and social profiles */
 .sn-social{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.sn-social a{display:inline-flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #cbd8ee;border-radius:6px;text-decoration:none;color:inherit;font:600 15px/1.2 Arial,sans-serif}.sn-social a:hover{background:#edf3ff;color:#102c50}.sn-social a:focus-visible{outline:3px solid #2854df;outline-offset:3px}.sn-social svg{width:22px;height:22px;flex-shrink:0}.sn-first-win{padding:16px 18px;margin:18px 0;border-left:3px solid #2854df;background:#f0f5ff;color:#102c50}.sn-first-win strong{font-size:18px}.sn-first-win p{font-size:16px;line-height:1.5;margin:7px 0 0}.sn-coaching-scope{margin-top:30px;padding:26px;background:white;border:1px solid #d6e1f2;border-radius:8px}.sn-coaching-scope p{font-size:18px;line-height:1.6}.sn-checkout-note{font-size:15px!important;line-height:1.5!important;color:#923b2c;background:#fff2ed;padding:12px;border-radius:5px;margin:14px 0}.d-navy .sn-social a{border-color:#6d86a6}@media(max-width:600px){.sn-social{gap:8px}.sn-social a{padding:9px;font-size:14px}.sn-coaching-scope{padding:18px}}
+.ox-compare thead .ox-prog{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--d-blue);margin-bottom:2px}
+.oc-circle{padding-top:56px;padding-bottom:56px}
+.oc-circle-grid{display:grid;grid-template-columns:.9fr 1.6fr;gap:40px;align-items:start;background:var(--d-ink);color:#fff;border-radius:14px;padding:40px}
+.oc-circle .eyebrow{color:var(--d-cyan)}
+.oc-circle h2{color:#fff;margin:10px 0 12px}
+.oc-circle-grid>div>p{color:#c9d7ec;font-size:17px;line-height:1.6}
+.oc-circle-items{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.oc-circle-items article{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:20px}
+.oc-circle-items b{display:block;color:#fff;font-size:16px;margin-bottom:8px}
+.oc-circle-items p{color:#c9d7ec;font-size:14.5px;line-height:1.55;margin:0}
+@media (max-width:980px){.oc-circle-grid{grid-template-columns:1fr}.oc-circle-items{grid-template-columns:1fr}}

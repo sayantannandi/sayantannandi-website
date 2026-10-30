@@ -3,9 +3,9 @@ from pathlib import Path
 import re
 ROOT=Path(__file__).resolve().parents[1]
 def names(text):
-    text=re.sub(r'(?<![/\w])(?:workshop cohort|live cohort|cohort)\b','Live Leadership Classroom',text,flags=re.I)
-    text=re.sub(r'\blive(?: online)?\s+(Live Leadership Classroom)\b',r'\1',text,flags=re.I)
-    return re.sub(r'(?<![/\w])cohorts\b','Live Leadership Classrooms',text,flags=re.I)
+    text=re.sub(r'(?<![/\w])(?:workshop cohort|live cohort|cohort)\b','Live Classroom',text,flags=re.I)
+    text=re.sub(r'\blive(?: online)?\s+(Live Classroom)\b',r'\1',text,flags=re.I)
+    return re.sub(r'(?<![/\w])cohorts\b','Live Classrooms',text,flags=re.I)
 def brand_classroom(write):
     for p in ROOT.rglob('*.html'):
         rel=str(p.relative_to(ROOT))
