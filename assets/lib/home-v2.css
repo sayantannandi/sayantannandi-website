@@ -234,3 +234,18 @@
 .hv-verdict-top{margin-bottom:10px}
 .hv-verdict-foot{margin-top:16px;padding-top:14px}
 @media (max-width:860px){.hv-quote{min-height:120px}}
+
+/* Editorial destinations: atmospheric photography, generous type, quiet framing. */
+.hv-destinations-editorial{gap:24px;margin-top:36px}
+.hv-destinations-editorial article{position:relative;isolation:isolate;min-height:470px;padding:0;border:0;border-radius:16px;overflow:hidden;background:#183b59;box-shadow:0 16px 42px #020d1b30;display:flex;align-items:flex-end}
+.hv-destination-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transition:transform .65s ease;z-index:-2}
+.hv-destination-slow-down .hv-destination-photo{object-position:43% 50%}
+.hv-destinations-editorial article:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,#071c3426 44%,#071c34bd 69%,#071c34f5 100%);z-index:-1}
+.hv-destination-copy{padding:30px 28px;width:100%}
+.new-demo .hv-destinations-editorial h3{padding:0;margin:0 0 12px;font-size:42px;line-height:1.06;letter-spacing:-.02em;text-shadow:0 2px 20px #0003}
+.new-demo .hv-destinations-editorial p{padding:0;margin:0;color:#f0f5ff;font-size:18px;line-height:1.55;max-width:30ch;min-height:84px}
+@media(hover:hover){.hv-destinations-editorial article:hover .hv-destination-photo{transform:scale(1.035)}}
+@media(max-width:1000px) and (min-width:861px){.hv-destinations-editorial{gap:18px}.hv-destination-copy{padding:24px 20px}.new-demo .hv-destinations-editorial h3{font-size:36px}.new-demo .hv-destinations-editorial p{font-size:17px}}
+@media(max-width:860px){.hv-destinations-editorial{grid-template-columns:1fr;gap:22px}.hv-destinations-editorial article{min-height:460px}.hv-destination-photo{object-position:50% 40%}.hv-destination-slow-down .hv-destination-photo{object-position:43% 50%}.hv-destination-copy{padding:30px}.new-demo .hv-destinations-editorial p{min-height:0;max-width:32ch}}
+@media(prefers-reduced-motion:reduce){.hv-destination-photo{transition:none}.hv-destinations-editorial article:hover .hv-destination-photo{transform:none}}
+.new-demo .hv-destinations-editorial .hv-destination-photo{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
