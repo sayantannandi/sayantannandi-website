@@ -9,9 +9,9 @@ ICONS = {
 
 CARDS = [
     ('read', 'I read your work the way a panel would.', 'Personal written feedback on every weekly assignment: what a panel would conclude, and the line that changes it.'),
-    ('vp', 'I play the sceptical VP.', 'A private 60-minute session with me. We rehearse your readiness conversation before you have it for real.'),
-    ('loop', 'You report back every week.', 'Bring what you actually sent at work. We look at what happened, and what to try next.'),
-    ('peers', 'You practice with people at your level.', 'Up to 20 managers facing the same jump, across companies and functions.'),
+    ('vp', 'I play the sceptical VP.', 'A private 60-minute session with me. We rehearse your readiness conversation before you take it to your manager.'),
+    ('loop', 'Support before the big moments.', 'Personal help for the executive meeting or talent review coming up: what to say, what to bring, what they will ask.'),
+    ('peers', 'A network of peers for life.', 'Practice with up to 20 managers facing the same jump, and build a network of like-minded, successful peers that lasts.'),
 ]
 
 
@@ -20,7 +20,7 @@ def cards(prefix):
 
 
 def cohort_human_block():
-    return f'''<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get from me, not a chatbot</span><h2>The lessons are the easy part.<br>The practice is why you’re here.</h2><p>Any tool can explain “be more strategic”. It can’t read your work the way a review panel does, or tell you what to change before your next review.</p></div>
+    return f'''<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get from me</span><h2>What a chatbot, an HR program<br>or a mentor can’t give you.</h2><p>A chatbot can explain “be more strategic”. An HR program teaches everyone the same thing. A mentor gives you an hour when they can. None of them reads your work the way a review panel does.</p></div>
 <div class="oc-grid">{cards('oc')}</div>
 <p class="oc-note">Stuck on something else this week? Bring any leadership challenge to the live session, your weekly assignment or your 1:1.</p>
 <div class="oc-promise"><article><span>What I don’t promise</span><p>A promotion. That depends on the roles your company has open, and on decisions I don’t make.</p></article><article class="is-do"><span>What I do promise</span><p>Personal feedback every week, a 60-minute rehearsal with me, and your one-page Readiness Note. If your manager’s rating of your work hasn’t gone up 90 days after the cohort, you get your fee back.</p></article><article><span>What we’re aiming for</span><p>That the leaders around you start to see you differently. I can’t control how they judge you. I can make sure they have something new to judge.</p></article></div></section>
@@ -38,7 +38,7 @@ def feedback_example():
 
 
 def home_help_block():
-    return f'''<section class="d-section hv-help" id="how-i-help"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">How I help</span><h2>What you get from a person,<br><em>not a chatbot.</em></h2></div><p>Any tool can explain what “be more strategic” means. These four things need someone who has sat on the panel.</p></div>
+    return f'''<section class="d-section hv-help" id="how-i-help"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">How I help</span><h2>What you get from me,<br><em>that a chatbot, an HR program or a mentor can’t give you.</em></h2></div><p>A chatbot can explain “be more strategic”. An HR program teaches everyone the same thing. These four things need someone who has sat on the panel.</p></div>
 <div class="hv-help-grid">{cards('hv-help')}</div>
 {compare_table()}</div></section>
 '''
@@ -56,7 +56,7 @@ def compare_table(current=None, cohort_href='/step-up/cohort'):
         ('The 12 lessons and 3 workbooks', tick, tick, tick),
         ('My feedback on your real work', no, 'Every week', 'Every session'),
         ('Rehearsal with me as the sceptical VP', no, 'One 60-minute 1:1', 'Every session'),
-        ('A weekly check on what you tried', no, tick, tick),
+        ('Support before executive meetings and talent reviews', no, tick, tick),
         ('People at your level to practice with', no, 'Up to 20', tick),
         ('Guarantee', 'Refund after Module 1', '90-day manager rating', '90-day manager rating'),
     ]
