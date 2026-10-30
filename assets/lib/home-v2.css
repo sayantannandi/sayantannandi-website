@@ -165,3 +165,36 @@
 .hv-next-grid .hv-has-pic{grid-template-columns:1fr!important;align-items:start}
 .new-demo .hv-book{width:100%;height:300px;object-fit:contain;background:var(--d-pale);padding:22px;border-radius:10px;box-shadow:none;box-sizing:border-box;filter:drop-shadow(0 10px 14px rgba(16,44,80,.25))}
 .new-demo .hv-letter{height:300px;object-fit:cover;object-position:top}
+/* round 3 */
+.hv-signs li{font-size:20px;line-height:1.45}
+.hv-hero .d-lede b{color:var(--d-ink);font-weight:600;background:linear-gradient(transparent 62%,rgba(40,84,223,.18) 0)}
+.hv-ladder{align-items:stretch}
+.hv-rungs{position:static;align-items:flex-end;padding-top:0}
+.hv-stall{position:relative;left:auto;top:auto;bottom:auto;flex:0 0 2px;align-self:stretch;border-left:2px dashed var(--d-red);margin:0 6px}
+.hv-stall span{position:absolute;top:0;left:10px}
+.hv-rung-card{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:30px}
+.hv-rung-card p{font-size:21px;line-height:1.45}
+.hv-rung-card .d-btn{align-self:flex-start;margin-top:16px}
+.hv-quote-mark{top:-28px;bottom:auto;right:30px}
+.hv-count{margin-right:10px}
+.hv-check{transition:transform .2s ease,box-shadow .2s ease,border-color .2s}
+.hv-check:hover,.hv-check:focus-visible{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 36px rgba(16,44,80,.16);border-color:var(--d-blue)}
+.hv-destinations article{padding:0;overflow:hidden}
+.hv-destinations h3,.hv-destinations p{padding:0 22px}
+.hv-destinations h3{margin-top:18px}
+.hv-destinations p{padding-bottom:22px}
+.hv-scene svg{display:block;width:100%;height:auto}
+.hv-next-grid .hv-has-pic{grid-template-columns:auto 1fr!important;align-items:center;gap:26px}
+.new-demo .hv-book{width:110px;height:auto;padding:0;background:none;filter:drop-shadow(0 8px 12px rgba(16,44,80,.25))}
+.new-demo .hv-letter{width:170px;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 8px 18px rgba(16,44,80,.14)}
+@media (max-width:860px){
+  .hv-signs li{font-size:17px}
+  .hv-stall{flex:none;margin:6px 0;border-left:0;border-top:2px dashed var(--d-red)}
+  .hv-stall span{position:static}
+  .hv-next-grid .hv-has-pic{grid-template-columns:1fr!important}
+  .hv-check:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.hv-check{transition:none}.hv-check:hover{transform:none}}
+.hv-hero .d-lede{max-width:780px}
+.new-demo .hv-letter{width:210px}
+@media (max-width:860px){.new-demo .hv-letter{width:100%}}

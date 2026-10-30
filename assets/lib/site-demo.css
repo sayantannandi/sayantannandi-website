@@ -34,3 +34,4 @@
 @media screen{.d-verdicts .d-problem-grid{grid-template-columns:repeat(3,1fr)}.d-verdicts .d-problem h3{font-size:22px;line-height:1.35}.d-verdict-close{margin-top:28px;font-size:17px}.d-call-form{margin-top:18px;padding:0;border:0;box-shadow:none;background:transparent}.d-call-form label{display:block;margin-bottom:14px}.d-call-form textarea,.d-call-form select{width:100%}}
 @media screen and (max-width:800px){.d-verdicts .d-problem-grid{grid-template-columns:1fr}}
 @media screen and (min-width:801px){.d-call-hero{align-items:start}.d-call-hero>div:first-child{padding-top:40px}}@media screen{.d-verdicts p.d-verdict-close{margin-top:32px}}
+.d-coach-price{margin-top:12px;font-size:15px;color:var(--d-ink);font-weight:600}
