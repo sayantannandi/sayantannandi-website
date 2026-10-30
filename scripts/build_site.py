@@ -163,3 +163,7 @@ write("review/course-blue.html", (ROOT/"scripts/content/course-blue-preview.html
 # Connected site redesign, kept on review routes until approved.
 from site_demo import build_demo
 build_demo(write)
+
+# Approved for production on 30 October 2026.
+from publish_approved import publish_approved
+publish_approved(write)
