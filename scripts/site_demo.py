@@ -85,10 +85,10 @@ def quiz(key,title,subtitle):
 def build_demo(write):
     pages=[('start-here-blue','Start Here',start(),'start'),('get-coached-blue','Personal Leadership Coaching',coaching(),'coaching'),('philosophy-blue','The Book & Philosophy',philosophy(),'philosophy'),('book-a-call-blue','Book a Free 20-Minute Call',call(),'call'),('newsletter-blue','The Optional Career',newsletter(),'letter')]
     for slug,title,body,active in pages:write('review/'+slug+'.html',shell(title,body,active))
-    for key,slug,title,sub in [('judgment','senior-level-judgment','Senior-Level<br><em>Judgment Check.</em>','Move from reporting the problem to making a call.'),('visibility','leadership-visibility','Leadership<br><em>Visibility Check.</em>','Make the contribution behind your work easier to see.'),('exit','exit-power','The <em>Exit Power</em><br>Check.','Understand the room you have to make a different choice.')]:
+    for key,slug,title,sub in [('judgment','senior-level-judgment','Senior-Level<br><em>Judgment Check.</em>','Move from reporting the problem to making a call.'),('visibility','leadership-visibility','Leadership<br><em>Visibility Check.</em>','Make the contribution behind your work easier to see.'),('exit','exit-power','The <em>Exit Power</em><br>Check.','Understand the room you have to make a different choice.'),('leadership','business-leadership','Business<br><em>Leadership Check.</em>','Own the business outcome, not just the work.')]:
         write('review/tests/'+slug+'.html',shell(re.sub('<[^>]+>','',title.replace('<br>',' ')),quiz(key,title,sub),'start'))
     from home_v2 import home_v2
-    write('review/home-v2.html',shell('Start Here (proposed)',home_v2(),'start',extra='<link rel="stylesheet" href="/assets/lib/home-v2.css?v=3"><script type="module" src="/assets/lib/home-v2.js?v=1"></script>'))
+    write('review/home-v2.html',shell('Start Here (proposed)',home_v2(),'start',extra='<link rel="stylesheet" href="/assets/lib/home-v2.css?v=7"><script type="module" src="/assets/lib/home-v2.js?v=2"></script>'))
     write('review/received-blue.html',shell('Request saved','<section class="d-wrap d-section d-center"><span class="d-kicker">Thank you</span><h1>Your request is saved.</h1><p class="d-lede">This is a review demo. No automated email has been sent.</p><a class="d-btn" href="/review/start-here-blue">Back to Start here ↗</a></section>'))
     # Integrate approved sales demos with the same four-link navigation and footer.
     for kind in ['course','cohort']:

@@ -61,3 +61,22 @@ function updateLab() {
 }
 $$('#hv-earn,#hv-exit').forEach((i) => i.addEventListener('input', updateLab));
 updateLab();
+
+// Review-room quotes: click through, or let them rotate (paused on hover/focus, off for reduced motion).
+const quotes = $$('.hv-quote');
+let qi = 0;
+function showQuote(n) {
+  qi = (n + quotes.length) % quotes.length;
+  quotes.forEach((q, i) => { q.hidden = i !== qi; });
+  $$('.hv-dot').forEach((d, i) => d.setAttribute('aria-pressed', String(i === qi)));
+  const c = $('#hv-quote-n'); if (c) c.textContent = qi + 1;
+}
+$$('.hv-dot').forEach((d) => d.addEventListener('click', () => { showQuote(+d.dataset.go); stop(); }));
+$('[data-next]')?.addEventListener('click', () => { showQuote(qi + 1); stop(); });
+let timer = null;
+const box = $('.hv-verdicts');
+function start() { if (!timer && quotes.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => showQuote(qi + 1), 7000); }
+function stop() { clearInterval(timer); timer = null; }
+box?.addEventListener('mouseenter', stop); box?.addEventListener('mouseleave', start);
+box?.addEventListener('focusin', stop);
+start();
