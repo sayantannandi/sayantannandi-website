@@ -42,3 +42,9 @@ Answers are held in memory until submission, then stored with the request and pr
 - Align live course/cohort policies and checkout with their approved review copy before promoting those sales pages.
 
 Implementation: `scripts/site_demo.py`, `assets/lib/site-demo.css`, `assets/lib/site-demo.js`, `assets/lib/site-demo-quiz.mjs`. Run the normal site build and publish preparation. Book cover is an optimized version of the existing supplied cover.
+
+## Manuscript visual revision, 30 October 2026
+- Replaced Start Here's orbit graphic with the author's blue Time Equation; retained quiz recommendation chips and sample interaction.
+- Philosophy uses manuscript definitions, the full loop and three destinations. Removed slider scenarios and scattered supporting microcopy.
+- Preorder interest requires name/email. Sample delivery choice is stored as download/email; download URL is added only after successful capture. The full manuscript is never published.
+- Email-copy requests are captured for fulfillment. MailerLite returned UNAUTHORIZED during verification, so automatic email delivery remains pending reauthentication. UI states this explicitly.
