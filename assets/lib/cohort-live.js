@@ -7,7 +7,7 @@ function previewPrice(mode){renderPrice(mode==='early'?Date.parse('2026-11-01T12
 renderPrice();setInterval(()=>renderPrice(),60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderPrice()});
 function openDialog(id){document.getElementById(id).showModal()}
 function action(title,text){document.getElementById('actionTitle').textContent=title;document.getElementById('actionText').textContent=text;openDialog('action')}
-function enroll(){if(Date.now()<CLOSE)location.href='mailto:hello@sayantannandi.com?subject=January%202027%20Workshop%20Cohort%20seat%20request'}
+function enroll(){if(Date.now()<CLOSE)location.href='https://rzp.io/rzp/Jan27TSUTSL'}
 function callDemo(){action('A free 20-minute conversation','The approved page will open your existing booking flow. No booking is made from this demo.')}
 
 async function copyEmail(){const text=document.getElementById('company-email').textContent;try{await navigator.clipboard.writeText(text);document.getElementById('copy-status').textContent='Email copied. Paste it into your email app and personalize it.'}catch(e){const range=document.createRange();range.selectNodeContents(document.getElementById('company-email'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);let copied=false;try{copied=document.execCommand('copy')}catch(ignore){}document.getElementById('copy-status').textContent=copied?'Email copied. Paste it into your email app and personalize it.':'Select and copy the highlighted email with Ctrl+C or Command+C.'}}

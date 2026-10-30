@@ -17,7 +17,7 @@ assert.equal(book.querySelector('a[href*=".pdf"]'),null);
 assert.equal(book.querySelector('[name=newsletter-consent]').hasAttribute('checked'),false);
 assert.equal(book.querySelectorAll('[name=sample-delivery] option').length,2);
 const cohortJs=fs.readFileSync('assets/lib/cohort-live.js','utf8');
-assert.ok(cohortJs.includes("if(Date.now()<CLOSE)location.href='mailto:hello@sayantannandi.com?subject=January%202027%20Workshop%20Cohort%20seat%20request'"));
+assert.ok(cohortJs.includes("if(Date.now()<CLOSE)location.href='https://rzp.io/rzp/Jan27TSUTSL'"));
 const {document:letter}=parseHTML(fs.readFileSync('newsletter.html','utf8'));
 assert.ok(letter.querySelector('form[name=sn-letter] [name=consent][value=yes]'));
 assert.ok(fs.readFileSync('_redirects','utf8').includes('/book/first-chapter /philosophy#preorder 301!'));

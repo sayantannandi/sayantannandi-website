@@ -27,7 +27,7 @@ def publish_approved(write):
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         s=re.sub(r'<link rel="canonical"[^>]*>','',s)
         s=s.replace('</head>',f'<link rel="canonical" href="https://sayantannandi.com{new}"></head>')
-        s=s.replace('site-demo.css?v=2','site-demo.css?v=7').replace('site-demo.js?v=2','site-live.js?v=2')
+        s=s.replace('site-demo.css?v=2','site-demo.css?v=8').replace('site-demo.js?v=2','site-live.js?v=2')
         s=re.sub(r'<dialog id="(?:review|review-notes|course-review)".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<dialog id="action".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Workshop Cohort","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
@@ -42,8 +42,9 @@ def publish_approved(write):
         s=s.replace('Draft /refunds · January 2027 Workshop Cohort','January 2027 Workshop Cohort')
         s=s.replace('Draft for review. This proposed policy applies to new January Workshop Cohort purchases after adoption. Existing purchases retain their original terms. Other products keep their existing refund policies.','Applies to new purchases from 30 October 2026. Existing purchases retain their original terms.')
         if new=='/step-up/cohort':
-            s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=1')
-            s=s.replace('<div class="deadline">','<p>Request your seat by email while online checkout is updated. Your seat is confirmed after payment.</p><div class="deadline">')
+            s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=2')
+            s=s.replace('<div class="deadline">','<p class="sn-checkout-note">Before paying, confirm the ₹17,499 early-bird fee and 90-day guarantee with Sayantan. The linked payment page currently lists ₹17,999 and different refund terms.</p><div class="deadline">')
+            s=s.replace('<div class="actions">','<p class="sn-checkout-note">The payment page currently lists ₹17,999 and different refund terms. Please confirm the offer with Sayantan before paying.</p><div class="actions">',1)
         if new=='/registration-received':s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>')
         if new=='/newsletter':
             s=s.replace('sn-review-newsletter','sn-letter').replace('<input type="hidden" name="newsletter-consent" value="yes">','<input type="hidden" name="newsletter-consent" value="yes"><input type="hidden" name="consent" value="yes">')
@@ -55,7 +56,7 @@ def publish_approved(write):
     js=routes((ROOT/'assets/lib/site-demo.js').read_text())
     write('assets/lib/site-live.js',js)
     cohort=(ROOT/'assets/lib/cohort-blue.js').read_text()
-    cohort=re.sub(r"function enroll\(\)\{.*?\}","function enroll(){if(Date.now()<CLOSE)location.href='mailto:hello@sayantannandi.com?subject=January%202027%20Workshop%20Cohort%20seat%20request'}",cohort)
+    cohort=re.sub(r"function enroll\(\)\{.*?\}","function enroll(){if(Date.now()<CLOSE)location.href='https://rzp.io/rzp/Jan27TSUTSL'}",cohort)
     write('assets/lib/cohort-live.js',cohort)
     # Carry the approved navigation through the existing supporting pages.
     live_header=routes(re.sub(r'<div class="demo-banner">.*?</div>','',header(),flags=re.S))
@@ -68,7 +69,7 @@ def publish_approved(write):
         if '<header class="site-header">' not in s:continue
         s=re.sub(r'<header class="site-header">.*?</header>',live_header,s,count=1,flags=re.S)
         s=re.sub(r'<footer class="site-footer">.*?</footer>',live_footer,s,count=1,flags=re.S)
-        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=7"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
+        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=8"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
         write(rel,s)
     # Keep existing acquisition links pointing to the single approved book gate.
     extra=[]

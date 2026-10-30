@@ -11,7 +11,7 @@ CARDS = [
     ('read', 'I read your work the way a panel would.', 'Personal written feedback on every weekly assignment: what a panel would conclude, and the line that changes it.'),
     ('vp', 'I play the sceptical VP.', 'A private 60-minute session with me. We rehearse your readiness conversation before you take it to your manager.'),
     ('loop', 'Support before the big moments.', 'Personal help for the executive meeting or talent review coming up: what to say, what to bring, what they will ask.'),
-    ('peers', 'A network of peers for life.', 'Practice with up to 20 managers facing the same jump, and build a network of like-minded, successful peers that lasts.'),
+    ('peers', 'Connections beyond the program.', 'Practice with up to 20 managers facing the same jump, and build a network of like-minded, successful peers that lasts.'),
 ]
 
 
@@ -20,10 +20,10 @@ def cards(prefix):
 
 
 def cohort_human_block():
-    return f'''<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get from me</span><h2>What a chatbot, an HR program<br>or a mentor can’t give you.</h2><p>A chatbot can explain “be more strategic”. An HR program teaches everyone the same thing. A mentor gives you an hour when they can. None of them reads your work the way a review panel does.</p></div>
+    return f'''<section class="section wrap oc-human" id="what-you-get"><div class="oc-head"><span class="eyebrow">What you get from me</span><h2>What a chatbot or a generic leadership program won’t get you.</h2><p>The difference is in the work we do together: I read your actual submission, explain what a senior decision maker may conclude, and help you improve it before the conversation that matters.</p></div>
 <div class="oc-grid">{cards('oc')}</div>
 <p class="oc-note">Stuck on something else this week? Bring any leadership challenge to the live session, your weekly assignment or your 1:1.</p>
-<div class="oc-promise"><article><span>What I don’t promise</span><p>A promotion. That depends on the roles your company has open, and on decisions I don’t make.</p></article><article class="is-do"><span>What I do promise</span><p>Personal feedback every week, a 60-minute rehearsal with me, and your one-page Readiness Note. Within 90 days, the people you work for should rate your work higher. If they don’t, you get your money back.</p></article><article><span>What we’re aiming for</span><p>That the leaders around you start to see you differently. I can’t control how they judge you. I can make sure they have something new to judge.</p></article></div><p class="oc-confidential"><b>Complete confidentiality.</b> Everything you share with me stays between us. You never need to share your company’s real data or documents. Change names and numbers, or describe the situation. That is enough for me to help.</p></section>
+<div class="oc-promise"><article><span>What I don’t promise</span><p>A promotion. That depends on the roles your company has open, and on decisions I don’t make.</p></article><article class="is-do"><span>What I do promise</span><p>Personal feedback every week, a 60-minute rehearsal with me, and your one-page Readiness Note. Ninety days after your included Workshop Cohort ends, ask the same senior reviewer to rate your work again. If the average has not improved, the 90-day guarantee applies. See the FAQ for participation and claim requirements.</p></article><article><span>What we’re aiming for</span><p>That the leaders around you start to see you differently. I can’t control how they judge you. I can make sure they have something new to judge.</p></article></div><p class="oc-confidential"><b>Keep sensitive work private.</b> Use anonymized examples rather than confidential company documents. Private coaching and group sessions have different boundaries; the FAQ explains recordings, privacy and what to share.</p></section>
 '''
 
 
@@ -38,7 +38,7 @@ def feedback_example():
 
 
 def home_help_block():
-    return f'''<section class="d-section hv-help" id="how-i-help"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">How I help</span><h2>What you get from me,<br><em>that a chatbot, an HR program or a mentor can’t give you.</em></h2></div><p>A chatbot can explain “be more strategic”. An HR program teaches everyone the same thing. These four things need someone who has sat on the panel.</p></div>
+    return f'''<section class="d-section hv-help" id="how-i-help"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">How I help</span><h2>What a chatbot or a generic<br><em>leadership program won’t get you.</em></h2></div><p>Personal feedback on your actual work, rehearsal before the important conversation, and practice with experienced peers. Choose the level of support that fits your situation.</p></div>
 <div class="hv-help-grid">{cards('hv-help')}</div>
 {compare_table()}</div></section>
 '''
@@ -89,7 +89,7 @@ def promise(dont, do, aim):
     return (f'<div class="oc-promise"><article><span>What I don’t promise</span><p>{dont}</p></article>'
             f'<article class="is-do"><span>What I do promise</span><p>{do}</p></article>'
             f'<article><span>What we’re aiming for</span><p>{aim}</p></article></div>'
-            f'<p class="oc-confidential"><b>Complete confidentiality.</b> Everything you share with me stays between us. You never need to share your company’s real data or documents. Change names and numbers, or describe the situation. That is enough for me to help.</p>')
+            f'<p class="oc-confidential"><b>Keep sensitive work private.</b> Use anonymized examples rather than confidential company documents. Private coaching and group sessions have different boundaries; the FAQ explains recordings, privacy and what to share.</p>')
 
 
 NO_PROMOTION = 'A promotion. That depends on the roles your company has open, and on decisions I don’t make.'
@@ -122,7 +122,7 @@ def coaching_get_block():
     return (f'<section class="d-wrap d-section oc-human" id="what-you-get"><div class="oc-head"><span class="d-kicker">What you get from me</span><h2>The most of my time<br>and judgment.</h2>'
             f'<p>Six private 60-minute sessions, built around your real situations. We agree the scope on the free call, before you pay anything.</p></div>'
             f'<div class="oc-grid">{grid}</div>'
-            + promise(NO_PROMOTION, 'Six private sessions on your real situations, preparation for every high-stakes conversation, and everything in the Workshop Cohort. Within 90 days, the people you work for should rate your work higher. If they don’t, you get your money back.', AIM)
+            + promise(NO_PROMOTION, 'Six private sessions on your real situations, rehearsal for the conversations we select together, and everything in the Workshop Cohort. Ninety days after your included Workshop Cohort ends, ask the same senior reviewer to rate your work again. If the average has not improved, the 90-day guarantee applies. See the FAQ for participation and claim requirements.', AIM)
             + '</section>')
 
 
@@ -130,13 +130,13 @@ OBJECTIONS = {
     'cohort': [
         ('I barely have time.', 'About three hours a week, for six weeks. The assignments use work you are already doing: the update, the meeting, the decision.'),
         ('Why pay if I might leave anyway?', 'Leaving is when these skills are tested hardest. Interviews for the next level look for exactly this. And the cohort helps you decide whether to leave at all.'),
-        ('I don’t want anyone at work to know.', 'Use your personal email. Nothing is shared with your employer, and nobody is tagged anywhere. What you bring stays in the room.'),
+        ('I don’t want anyone at work to know.', 'Use your personal email. I do not contact your employer or tag you publicly without your permission. Group sessions are recorded for members, so bring anonymized examples. The FAQ explains the group privacy boundaries.'),
         ('At my level, I shouldn’t need this.', 'The higher you go, the less honest feedback you get. People stop telling you the truth just when it matters most.'),
         ('It’s politics. Training can’t fix that.', 'Some of it is. A lot of it is being readable to people who can’t check your work. That part is a skill, and it can be practised.'),
     ],
     'coaching': [
         ('How is this different from the cohort?', 'The cohort works on the common skills, with me reading your work every week. Coaching works on your specific situation, every session, and includes the cohort.'),
-        ('Can I bring something sensitive?', 'Yes. Anonymise names and company details, and we agree boundaries before we start. Nothing reaches your employer.'),
+        ('Can I bring something sensitive?', 'Yes. Use anonymized names and company details. I do not contact your employer or publish your story without your permission. Private sessions and recorded group sessions have different boundaries, explained in the FAQ.'),
         ('Is this only about promotion?', 'No. People bring a bigger role, a hard decision, a difficult boss, or whether to stay at all. If it is a leadership decision, it belongs here.'),
     ],
 }
@@ -146,3 +146,15 @@ def objections(kind, wrap='section wrap'):
     qa = ''.join(f'<details><summary>“{q}”</summary><p>{a}</p></details>' for q, a in OBJECTIONS[kind])
     return (f'<section class="{wrap} ox-objections"><div class="oc-head"><span class="eyebrow d-kicker">What people ask before joining</span>'
             f'<h2>Fair questions,<br>straight answers.</h2></div><div class="ox-qa">{qa}</div></section>')
+
+
+def social_links():
+    brands = [
+        ('YouTube','https://www.youtube.com/@sayantannandi','<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z"/>'),
+        ('LinkedIn','https://www.linkedin.com/in/sayantannandi/','<path d="M20.45 0H3.55A3.55 3.55 0 0 0 0 3.55v16.9A3.55 3.55 0 0 0 3.55 24h16.9A3.55 3.55 0 0 0 24 20.45V3.55A3.55 3.55 0 0 0 20.45 0ZM7.1 20H3.7V9h3.4ZM5.4 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4ZM20.3 20h-3.4v-5.35c0-1.27-.03-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V20H9.7V9h3.25v1.5H13a3.56 3.56 0 0 1 3.2-1.76c3.43 0 4.07 2.26 4.07 5.2Z"/>'),
+        ('Instagram','https://www.instagram.com/sayantannandi_','<rect x="2" y="2" width="20" height="20" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1.2"/>')]
+    return '<nav class="sn-social" aria-label="Sayantan on social media">'+''.join(f'<a href="{url}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">{path}</svg><span>{name}</span></a>' for name,url,path in brands)+'</nav>'
+
+
+def coaching_plan():
+    return '''<section class="d-section d-tint"><div class="d-wrap"><div class="d-section-head"><div><span class="d-kicker">Your six-session plan</span><h2>One real challenge.<br>A plan you can use.</h2></div><p>We choose the focus together. The sessions follow what happens when you put the work into practice.</p></div><div class="d-process"><article><span>01 · Understand</span><h3>Make the problem clear.</h3><p>Use the first session to separate facts from assumptions, define a useful outcome and agree what evidence would show progress.</p></article><article><span>02 · Prepare & practice</span><h3>Work on the next decision.</h3><p>Use the middle sessions to examine options, review your drafts and rehearse the conversations you select. Try one agreed action between sessions.</p></article><article><span>03 · Review & continue</span><h3>Leave with your next moves.</h3><p>Review what changed, the evidence you have built and what still needs work. Finish with a plan for your next review or leadership challenge.</p></article></div><div class="sn-coaching-scope"><h3>Agree the boundaries before you pay.</h3><p>Your written coaching plan specifies the six session dates and completion window, rescheduling arrangements, any draft reviews between sessions, the contact channel and response time. Preparation happens within that agreed scope. This is scheduled coaching, rather than unlimited on-call access.</p><p>The ₹49,999 package includes six private 60-minute sessions in total, plus the Workshop Cohort. The cohort’s single private session is included within those six. We confirm the included cohort dates before payment. You can use private sessions to prepare for a live situation while waiting for the group program to start.</p></div></div></section>'''
