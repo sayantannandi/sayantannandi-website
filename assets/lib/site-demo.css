@@ -111,3 +111,12 @@
 .oc-circle-items b{display:block;color:#fff;font-size:16px;margin-bottom:8px}
 .oc-circle-items p{color:#c9d7ec;font-size:14.5px;line-height:1.55;margin:0}
 @media (max-width:980px){.oc-circle-grid{grid-template-columns:1fr}.oc-circle-items{grid-template-columns:1fr}}
+/* Program name at the top of each offer page */
+.prog-name{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:0 0 18px}
+.prog-title{font-family:Georgia,serif;font-size:24px;line-height:1.2;color:var(--d-ink);font-weight:400;letter-spacing:0;text-transform:none}
+.prog-format{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--d-blue);color:#fff;border-radius:20px;padding:6px 12px;line-height:1}
+.prog-name::after{content:'';flex-basis:100%;height:2px;max-width:64px;background:var(--d-blue);opacity:.35;margin-top:2px}
+@media (max-width:640px){.prog-title{font-size:20px}}
+.prog-name::after{display:none}
+.prog-title{font-size:27px}
+@media (max-width:640px){.prog-title{font-size:21px}}
