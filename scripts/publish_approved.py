@@ -12,7 +12,9 @@ ROUTES={
 '/review/tests/senior-level-judgment':'/tests/senior-level-judgment',
 '/review/tests/leadership-visibility':'/tests/leadership-visibility',
 '/review/tests/exit-power':'/tests/exit-power',
-'/review/tests/business-leadership':'/tests/business-leadership'}
+'/review/tests/business-leadership':'/tests/business-leadership',
+# The new homepage is written last, so it replaces the old start page at /.
+'/review/home-v2':'/'}
 def routes(text):
     for old,new in sorted(ROUTES.items(),key=lambda x:-len(x[0])):text=text.replace(old,new)
     return text
