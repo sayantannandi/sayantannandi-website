@@ -1,3 +1,12 @@
+/book /philosophy#preorder 301!
+/book/ /philosophy#preorder 301!
+/book.html /philosophy#preorder 301!
+/book/first-chapter /philosophy#preorder 301!
+/book/first-chapter/ /philosophy#preorder 301!
+/book/first-chapter.html /philosophy#preorder 301!
+/book/first-chapter/received /philosophy#preorder 301!
+/book/first-chapter/received/ /philosophy#preorder 301!
+/book/first-chapter/received.html /philosophy#preorder 301!
 /scripts/*  /404.html  404!
 # Retired acquisition paths. Forced rules cover old files and preserve campaign query strings.
 /start-here  /  301!
