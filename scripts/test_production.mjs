@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {parseHTML} from 'linkedom';
-const pages=['index.html','philosophy.html','get-coached.html','conversation.html','newsletter.html','step-up.html','step-up/cohort.html','tests/senior-level-judgment.html','tests/leadership-visibility.html','tests/exit-power.html'];
+const pages=['index.html','philosophy.html','get-coached.html','conversation.html','newsletter.html','step-up.html','step-up/cohort.html','tests/senior-level-judgment.html','tests/leadership-visibility.html','tests/exit-power.html','tests/business-leadership.html'];
 for(const path of pages){
  const {document:d}=parseHTML(fs.readFileSync(path,'utf8'));
  assert.equal(d.querySelector('.demo-banner'),null,path);
