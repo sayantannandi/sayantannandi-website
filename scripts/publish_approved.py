@@ -40,7 +40,7 @@ def publish_approved(write):
         s=s.replace('Draft for review. This proposed policy applies to new January Workshop Cohort purchases after adoption. Existing purchases retain their original terms. Other products keep their existing refund policies.','Applies to new purchases from 30 October 2026. Existing purchases retain their original terms.')
         if new=='/step-up/cohort':
             s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=1')
-            s=s.replace('<p class="deadline">','<p>Request your seat by email while online checkout is updated. Your seat is confirmed after payment.</p><p class="deadline">')
+            s=s.replace('<div class="deadline">','<p>Request your seat by email while online checkout is updated. Your seat is confirmed after payment.</p><div class="deadline">')
         if new=='/registration-received':s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>')
         if new=='/newsletter':
             s=s.replace('sn-review-newsletter','sn-letter').replace('<input type="hidden" name="newsletter-consent" value="yes">','<input type="hidden" name="newsletter-consent" value="yes"><input type="hidden" name="consent" value="yes">')
