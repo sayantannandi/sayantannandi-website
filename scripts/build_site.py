@@ -171,3 +171,6 @@ publish_approved(write)
 # Six printable guide landing pages and the resource hub.
 from free_guides import build_free_guides
 build_free_guides(write)
+
+from classroom_branding import brand_classroom
+brand_classroom(write)
