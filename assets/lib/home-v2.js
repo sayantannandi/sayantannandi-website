@@ -8,6 +8,12 @@ $$('.hv-rung').forEach((b) => b.addEventListener('click', () => {
   $('#hv-rung-kicker').textContent = `Rung ${+b.dataset.rung + 1} · ${$('b', b).textContent}`;
   $('#hv-rung-does').textContent = b.dataset.does;
   $('#hv-rung-asks').textContent = b.dataset.asks;
+  const n = +b.dataset.rung, link = $('#hv-rung-link');
+  const checks = ['/tests/senior-level-judgment', '/tests/leadership-visibility', '/tests/business-leadership'];
+  if (link) {
+    if (n >= 3) { link.href = checks[n - 3]; link.textContent = `Take the Rung ${n + 1} check ↗`; }
+    else { link.href = '#checks'; link.textContent = 'The checks start at Rung 4 ↓'; }
+  }
 }));
 
 // Circle: the half in view lights up; tapping a node explains it.
