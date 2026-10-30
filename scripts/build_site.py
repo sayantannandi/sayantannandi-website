@@ -167,3 +167,7 @@ build_demo(write)
 # Approved for production on 30 October 2026.
 from publish_approved import publish_approved
 publish_approved(write)
+
+# Six printable guide landing pages and the resource hub.
+from free_guides import build_free_guides
+build_free_guides(write)

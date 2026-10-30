@@ -88,3 +88,13 @@ test('report HTML escapes submitted content and API errors never leak provider b
   assert.equal(escapeHTML('<img src=x onerror="bad">'),'&lt;img src=x onerror=&quot;bad&quot;&gt;');
   const api=mailerClient('test',async()=>new Response('sensitive response',{status:401}));await assert.rejects(api('subscribers'),/^Error: mailerlite_401$/);
 });
+test('free guide captures remain private unless newsletter consent is explicit',async()=>{
+ const d={'form-name':'sn-guide-the-update-your-vp-can-act-on','guide-id':'the-update-your-vp-can-act-on',name:'Asha',email:'asha@example.com','newsletter-consent':'no'};
+ assert.equal(formJob(d),null);
+ const job=formJob({...d,'newsletter-consent':'yes'});
+ assert.equal(job.guide,d['guide-id']);assert.equal(job.consentVersion,'free-guides-2026-10-30');
+ const s=new Store(),a=apiFixture();await processJob(s,job,env,a.api);
+ assert.deepEqual(a.person().groups,[{id:'letter'}]);
+ assert.equal(a.person().fields.sn_source,'free_guide:the-update-your-vp-can-act-on');
+ assert.throws(()=>formJob({...d,'guide-id':'forged','newsletter-consent':'yes'}),/invalid_guide/);
+});

@@ -5,6 +5,8 @@ import {tests} from '../../../assets/lead-magnet-data.mjs';
 import {evaluate, reportText} from '../../../assets/lead-magnet-engine.mjs';
 
 export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility','sn-free-chapter':'free_chapter','sn-worksheets':'worksheets','sn-starting-point':'starting_point','sn-next-cohort':'next_cohort'};
+export const GUIDE_IDS = ['the-update-your-vp-can-act-on','be-more-strategic','months-of-choice','passed-over-what-to-ask','say-no-without-losing-trust','capture-your-review-evidence'];
+for(const id of GUIDE_IDS) FORMS['sn-guide-'+id]='free_guide';
 export const PRODUCTS = ['course','cohort','kit_pcb','kit_rrk','kit_eh','kit_bundle','cohort_jan2027'];
 export const NEW_SOURCES = ['free_chapter','worksheets','starting_point','next_cohort'];
 export const hash = value => createHash('sha256').update(value).digest('hex');
@@ -24,6 +26,14 @@ export function formJob(data, now = Date.now()) {
   if(source === 'letter' && !consent) throw new Error('missing_consent');
   const job = {kind:'form', source, email, name, consent, created:now, consentVersion:NEW_SOURCES.includes(source)?'sn-2026-10-29':'sn-2026-09-button'};
   if(NEW_SOURCES.includes(source) && data.consent!=='yes') throw new Error('missing_consent');
+  if(source === 'free_guide') {
+    const guide = String(data['guide-id'] || '');
+    if(!GUIDE_IDS.includes(guide) || data['form-name'] !== 'sn-guide-'+guide) throw new Error('invalid_guide');
+    // The download request is retained by Netlify. Only explicit opt-ins enter email marketing.
+    if(!consent) return null;
+    job.guide = guide;
+    job.consentVersion = 'free-guides-2026-10-30';
+  }
   if(source === 'starting_point') {
     if(data['test-version']!==STARTING_VERSION) throw new Error('invalid_test_version');
     const answers=JSON.parse(data.answers || 'null');
@@ -37,7 +47,7 @@ export function formJob(data, now = Date.now()) {
     evaluate(test, answers); // Reject unknown options and recompute all scores on the server.
     job.answers = answers;
   }
-  job.id = hash(JSON.stringify([source,email,consent,job.answers,Math.floor(now/86400000)]));
+  job.id = hash(JSON.stringify([source,email,consent,job.guide,job.answers,Math.floor(now/86400000)]));
   return job;
 }
 export function verifiedRazorpay(raw, signature, secret) {
@@ -100,7 +110,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
     let subscriber=await api('subscribers/'+encodeURIComponent(job.email));
     const suppressed=subscriber && subscriber.status !== 'active';
     let fields={...(job.name ? {name:job.name} : {})};
-    if(job.kind==='form') fields.sn_source=job.source;
+    if(job.kind==='form') fields.sn_source=job.source==='free_guide' ? 'free_guide:'+job.guide : job.source;
     if(job.consent) Object.assign(fields,{sn_consent_at:new Date(job.created).toISOString(),sn_consent_version:job.consentVersion});
     if(job.kind==='form' && tests[job.source]) {
       const test=tests[job.source], result=evaluate(test,job.answers);
@@ -143,7 +153,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
       await api('subscribers/'+subscriber.id,'PUT',{fields:{['sn_'+job.product+'_access']:access}});
       if(!suppressed) await join(job.product);
     } else if(!suppressed) {
-      if(job.source!=='letter') await join(job.source);
+      if(job.source!=='letter' && job.source!=='free_guide') await join(job.source);
       if(job.consent) await join('letter');
     }
     if(suppressed) await store.setJSON('attention/'+job.id,{reason:'subscriber_not_active',email:job.email,kind:job.kind,product:job.product || '',created:now});

@@ -81,3 +81,7 @@
 /thanks  /request-received  301!
 /thanks/  /request-received  301!
 /thanks.html  /request-received  301!
+
+/free-guides /worksheets 301!
+/free-guides/ /worksheets 301!
+/free-guides.html /worksheets 301!
