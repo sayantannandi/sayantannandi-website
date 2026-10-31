@@ -20,7 +20,8 @@ export function validEmail(value) {
   return email;
 }
 export function formJob(data, now = Date.now()) {
-  const source = FORMS[data['sn-form'] || data['form-name']];
+  const formName=data['sn-form'] || data['form-name'];
+  const source = FORMS[formName];
   if(!source || data['bot-field']) return null;
   const email = validEmail(data.email);
   const name = String(data.name || '').trim();
@@ -33,7 +34,7 @@ export function formJob(data, now = Date.now()) {
   if(source==='book_interest') job.sampleDelivery=data['sample-delivery']==='email'?'email':'download';
   if(source === 'free_guide') {
     const guide = String(data['guide-id'] || '');
-    if(!GUIDE_IDS.includes(guide) || data['form-name'] !== 'sn-guide-'+guide) throw new Error('invalid_guide');
+    if(!GUIDE_IDS.includes(guide) || formName !== 'sn-guide-'+guide) throw new Error('invalid_guide');
     // Requested delivery is separate from permission to send newsletters.
     job.guide = guide;
     job.consentVersion = 'free-guides-2026-10-30';
@@ -44,7 +45,7 @@ export function formJob(data, now = Date.now()) {
     evaluateStarting(answers);
     job.answers=answers;
   }
-  if(String(data['form-name']).startsWith('sn-review-quiz-')) {
+  if(String(formName).startsWith('sn-review-quiz-')) {
     const test=reviewTests[source];
     if(data['test-id']!==source || data['test-version'] && data['test-version']!==test.version) throw new Error('invalid_test_version');
     job.answers=JSON.parse(data.answers || 'null');
@@ -111,6 +112,7 @@ async function lock(store,email,now) {
 export async function processJob(store,job,env,api,now=Date.now()) {
   if(!canProcess(job,env)) return 'paused';
   if(env.SN_FUNNEL_MODE==='capture' && await store.get('captured/'+job.id)) return 'paused';
+  const released=env.SN_DELIVERY_RELEASED===undefined?DELIVERY_RELEASED:env.SN_DELIVERY_RELEASED==='true';
   const groups={...GROUP_IDS,...JSON.parse(env.SN_GROUP_IDS || '{}')};
   const group = name => {if(!groups[name]) throw new Error('missing_group_'+name); return String(groups[name]);};
   const lockKey=await lock(store,job.email,now);
@@ -165,7 +167,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
       if(!access || !/^https:\/\//.test(access)) throw new Error('missing_access_'+job.product);
       await api('subscribers/'+subscriber.id,'PUT',{fields:{['sn_'+job.product+'_access']:access}});
       if(!suppressed) {
-        if(job.product==='kit_rrk' && !DELIVERY_RELEASED) {await join(job.product);await store.setJSON('staged/'+job.id,{at:now});return 'paused';}
+        if(job.product==='kit_rrk' && !released) {await join(job.product);await store.setJSON('staged/'+job.id,{at:now});return 'paused';}
         if(job.product==='kit_rrk' && await store.get('staged/'+job.id) && memberships.has(group(job.product))) {
           await api('subscribers/'+subscriber.id+'/groups/'+group(job.product),'DELETE');memberships.delete(group(job.product));
         }
@@ -176,12 +178,12 @@ export async function processJob(store,job,env,api,now=Date.now()) {
       const stagedKey='staged/'+job.id;
       const deliveryKey='delivered/'+hash(job.email+':'+key);
       // On release, rejoin a previously staged inactive group exactly once to start its approved workflow.
-      if(staged && DELIVERY_RELEASED && !await store.get(deliveryKey) && await store.get(stagedKey) && memberships.has(group(key))) {
+      if(staged && released && !await store.get(deliveryKey) && await store.get(stagedKey) && memberships.has(group(key))) {
         await api('subscribers/'+subscriber.id+'/groups/'+group(key),'DELETE');memberships.delete(group(key));
       }
       if(job.source!=='letter') await join(key);
       if(job.consent) await join('letter');
-      if(staged && !DELIVERY_RELEASED) {await store.setJSON(stagedKey,{at:now});return 'paused';}
+      if(staged && !released) {await store.setJSON(stagedKey,{at:now});return 'paused';}
       if(staged) await store.setJSON(deliveryKey,{at:now});
       await store.delete(stagedKey);
     }
@@ -193,6 +195,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
   } finally {await store.delete(lockKey);}
 }
 export async function drain(store,env,api,limit=10) {
+  const released=env.SN_DELIVERY_RELEASED===undefined?DELIVERY_RELEASED:env.SN_DELIVERY_RELEASED==='true';
   const {blobs}=await store.list({prefix:'pending/'});
   const counts={complete:0,paused:0,failed:0,busy:0,suppressed:0,duplicate:0};
   const deadline=Date.now()+22000;
@@ -201,7 +204,7 @@ export async function drain(store,env,api,limit=10) {
     if(Date.now()>deadline || processed>=limit) break;
     const job=await store.get(key,{type:'json'});
     if(!job) continue;
-    if(!DELIVERY_RELEASED && (STAGED_SOURCES.has(job.source) || job.product==='kit_rrk') && await store.get('staged/'+job.id)) continue;
+    if(!released && (STAGED_SOURCES.has(job.source) || job.product==='kit_rrk') && await store.get('staged/'+job.id)) continue;
     if(!canProcess(job,env) || env.SN_FUNNEL_MODE==='capture' && await store.get('captured/'+job.id)) continue;
     processed++;
     try {counts[await processJob(store,job,env,api)]++;}

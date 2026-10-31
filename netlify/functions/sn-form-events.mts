@@ -10,7 +10,7 @@ export default {
     if(!job) return;
     await enqueue(store,job);
     if(!env.MAILERLITE_API_KEY) return; // Captured requests remain queued during setup.
-    try {await processJob(store,job,env,mailerClient(env.MAILERLITE_API_KEY));}
+    try {console.log('form_dispatch',job.source,await processJob(store,job,env,mailerClient(env.MAILERLITE_API_KEY)));}
     catch(error){console.error('form_queued',job.id,error.message);}
   }
 };

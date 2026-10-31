@@ -23,7 +23,7 @@ function apiFixture(status='active'){
   };return {api,calls,person:()=>person};
 }
 const ids=Object.fromEntries(['letter','judgment','visibility','customer','course','cohort'].map(x=>[x,x]));
-const env={SN_FUNNEL_MODE:'live',SN_GROUP_IDS:JSON.stringify(ids),SN_COURSE_ACCESS_URL:'https://example.com/access'};
+const env={SN_FUNNEL_MODE:'live',SN_DELIVERY_RELEASED:'false',SN_GROUP_IDS:JSON.stringify(ids),SN_COURSE_ACCESS_URL:'https://example.com/access'};
 function form(source='judgment',consent='no') {return {'form-name':'sn-'+source,name:'Asha',email:'asha@example.com','newsletter-consent':consent,consent:'yes','test-id':source,'test-version':tests[source]?.version,answers:JSON.stringify(tests[source]?.questions.map(q=>q.options[0].id))};}
 test('server rejects forged test data and ignores client scores',()=>{
   const d=form();d['dimension-scores']='{"recommendation":999}';assert.equal(formJob(d).source,'judgment');
@@ -122,4 +122,21 @@ test('book, coaching, call and intake requests do not imply newsletter or custom
   assert.equal(a.person().groups.length,1);assert(!a.person().groups.some(g=>['letter','customer','course','cohort'].includes(g.id)));
   assert(!Object.keys(a.person().fields).some(k=>k.includes('problem')));
  }
+});
+test('released requests complete and repeated events do not restart delivery',async()=>{
+ const j=formJob({'form-name':'sn-guide-be-more-strategic','guide-id':'be-more-strategic',name:'Asha',email:'asha@example.com','newsletter-consent':'no'});
+ const s=new Store(),a=apiFixture();await enqueue(s,j);
+ assert.equal(await processJob(s,j,{...env,SN_DELIVERY_RELEASED:'true'},a.api),'complete');
+ assert.equal(await s.get('pending/'+j.id),null);
+ const count=a.person().groups.length;
+ assert.equal(await processJob(s,j,{...env,SN_DELIVERY_RELEASED:'true'},a.api),'duplicate');
+ assert.equal(a.person().groups.length,count);assert(!a.person().groups.some(g=>g.id==='letter'));
+});
+test('verified Netlify payloads route without the stripped form-name transport field',async()=>{
+ const {reviewTests}=await import('../assets/lib/site-demo-quiz.mjs');
+ for(const source of Object.keys(reviewTests)) {
+  const t=reviewTests[source];const j=formJob({'sn-form':'sn-review-quiz-'+source,name:'Asha',email:'asha@example.com','test-id':source,'test-version':t.version,answers:JSON.stringify(t.questions.map(q=>q.options[0].id))});
+  assert.equal(j.variant,'current');assert.equal(j.source,source);
+ }
+ const g=formJob({'sn-form':'sn-guide-be-more-strategic','guide-id':'be-more-strategic',name:'Asha',email:'asha@example.com'});assert.equal(g.source,'free_guide');
 });
