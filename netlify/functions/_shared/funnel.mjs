@@ -4,7 +4,7 @@ import {VERSION as STARTING_VERSION} from '../../../assets/starting-point-data.m
 import {tests} from '../../../assets/lead-magnet-data.mjs';
 import {evaluate, reportText} from '../../../assets/lead-magnet-engine.mjs';
 import {reviewTests,evaluateReview,reviewReport} from '../../../assets/lib/site-demo-quiz.mjs';
-import {GROUP_IDS,DELIVERY_RELEASED,STAGED_SOURCES,requestGroup} from './delivery-config.mjs';
+import {GROUP_IDS,STAGED_SOURCES,requestGroup} from './delivery-config.mjs';
 
 export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility','sn-free-chapter':'free_chapter','sn-worksheets':'worksheets','sn-starting-point':'starting_point','sn-next-cohort':'next_cohort'};
 Object.assign(FORMS, {'sn-review-quiz-judgment':'judgment','sn-review-quiz-visibility':'visibility','sn-review-quiz-exit':'exit','sn-review-quiz-leadership':'leadership','sn-review-book-interest':'book_interest','sn-book-interest':'book_interest','sn-review-coaching':'coaching','sn-review-call':'call','sn-cohort-intake':'cohort_intake'});
@@ -112,7 +112,7 @@ async function lock(store,email,now) {
 export async function processJob(store,job,env,api,now=Date.now()) {
   if(!canProcess(job,env)) return 'paused';
   if(env.SN_FUNNEL_MODE==='capture' && await store.get('captured/'+job.id)) return 'paused';
-  const released=env.SN_DELIVERY_RELEASED===undefined?DELIVERY_RELEASED:env.SN_DELIVERY_RELEASED==='true';
+  const released=env.SN_DELIVERY_RELEASED!=='false';
   const groups={...GROUP_IDS,...JSON.parse(env.SN_GROUP_IDS || '{}')};
   const group = name => {if(!groups[name]) throw new Error('missing_group_'+name); return String(groups[name]);};
   const lockKey=await lock(store,job.email,now);
@@ -195,7 +195,7 @@ export async function processJob(store,job,env,api,now=Date.now()) {
   } finally {await store.delete(lockKey);}
 }
 export async function drain(store,env,api,limit=10) {
-  const released=env.SN_DELIVERY_RELEASED===undefined?DELIVERY_RELEASED:env.SN_DELIVERY_RELEASED==='true';
+  const released=env.SN_DELIVERY_RELEASED!=='false';
   const {blobs}=await store.list({prefix:'pending/'});
   const counts={complete:0,paused:0,failed:0,busy:0,suppressed:0,duplicate:0};
   const deadline=Date.now()+22000;
