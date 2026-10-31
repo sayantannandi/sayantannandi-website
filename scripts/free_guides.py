@@ -3,15 +3,20 @@ import json,re
 from pathlib import Path
 from html import escape as e
 from site_demo import shell, identity, optin, author
-from publish_approved import routes
+from publish_approved import routes, SITE_CSS, SITE_JS
 ROOT=Path(__file__).resolve().parents[1]
 DATA=json.loads((ROOT/'scripts/content/free-guides.json').read_text())
+def next_step(g):
+    if g['category']=='Exit Power':
+        return '<div class="g-next"><a class="d-btn" href="/runway">Count your runway in months ↗</a><a class="d-text-link" href="/philosophy#preorder">Read the first chapter free ↗</a></div>'
+    return '<div class="g-next"><a class="d-btn" href="/conversation">Book a free 20-minute call ↗</a><a class="d-text-link" href="/step-up/cohort">See The Step Up · Live Classroom ↗</a></div>'
+
 def page(title,description,body,path):
     s=routes(shell(title,body,extra='<link rel="stylesheet" href="/assets/lib/free-guides.css?v=1"><script type="module" src="/assets/lib/free-guides.js?v=1"></script>',cls='guides-page'))
     s=re.sub(r'<div class="demo-banner">.*?</div>','',s,flags=re.S)
     s=re.sub(r'<meta name="robots"[^>]*>','',s)
     s=re.sub(r'<meta name="description"[^>]*>',f'<meta name="description" content="{e(description,quote=True)}">',s)
-    s=s.replace('site-demo.css?v=2','site-demo.css?v=3').replace('site-demo.js?v=2','site-live.js?v=1')
+    s=s.replace('site-demo.css?v=2',SITE_CSS).replace('site-demo.js?v=2',SITE_JS)
     return s.replace('</head>',f'<link rel="canonical" href="https://sayantannandi.com{path}"></head>')
 def card(g,i):
     return f'''<article class="g-card g-{g['accent']}" data-guide-category="{'exit' if g['category']=='Exit Power' else 'leadership'}"><a class="g-card-art" href="/free-guides/{g['slug']}" tabindex="-1" aria-hidden="true"><span class="g-card-number">0{i}</span><img src="/assets/images/guides/{g['slug']}.webp" alt="" width="596" height="842" loading="lazy"></a><div class="g-card-copy"><span class="g-category">{e(g['category'])}</span><h2><a href="/free-guides/{g['slug']}">{e(g['title'])}</a></h2><p>{e(g['promise'])}</p><a class="d-text-link" href="/free-guides/{g['slug']}">Get the free guide <span aria-hidden="true">↗</span></a></div></article>'''
@@ -28,7 +33,7 @@ def build_free_guides(write):
         body=f'''<section class="d-wrap g-hero g-{g['accent']}"><div class="g-intro"><a class="d-text-link" href="/worksheets">← All free guides</a><span class="d-kicker">{e(g['category'])} · Free printable guide</span><h1>{e(g['title'])}</h1><p class="d-lede">{e(g['promise'])}</p><div class="g-facts"><span>5 pages</span><span>{g['minutes']} minutes to begin</span><span>Print & use</span></div></div><div class="d-form-card g-capture"><div data-guide-content><span class="d-kicker">Yours, at no charge</span><h2>Make it useful<br>this week.</h2>{form}</div><div class="d-success" data-guide-success hidden tabindex="-1"><span class="d-success-icon">✓</span><h2>Your guide is ready.</h2><p>Download it now. Print the worksheet on page 4 and start with one real situation.</p><a class="d-btn d-full" data-guide-download download>Download my PDF ↓</a><p class="g-subscription-status"></p><a class="d-text-link" href="/worksheets">Explore another guide ↗</a></div></div></section>
 <section class="d-section g-inside"><div class="d-wrap g-inside-grid"><figure class="g-sheet-preview"><img src="/assets/images/guides/{slug}.webp" alt="First page of {e(g['title'],quote=True)}" width="596" height="842" loading="lazy"></figure><div><span class="d-kicker">Inside your guide</span><h2>{e(g['short'])}</h2><ul class="g-includes">{''.join('<li>'+e(x)+'</li>' for x in g['inside'])}</ul><p>{e(g['intro'])}</p><a class="d-text-link" href="#guide-form">Get the free PDF ↑</a></div></div></section>
 <section class="d-wrap d-section g-taste"><div><span class="d-kicker">Start with this</span><h2>{e(g['hook'])}</h2></div><div><p>{e(g['quick'])}</p><div class="g-step-list">{''.join('<span><b>0'+str(j)+'</b>'+e(s)+'</span>' for j,s in enumerate(g['steps'],1))}</div></div></section>
-<section class="d-wrap g-author-section">{author()}<div><p>Practical ideas for doing work people value, building room to choose and making your next move with more clarity.</p><a class="d-text-link" href="/philosophy">Explore the philosophy ↗</a></div></section>'''
+<section class="d-wrap g-author-section">{author()}<div><p>Practical ideas for doing work people value, building room to choose and making your next move with more clarity.</p>{next_step(g)}</div></section>'''
         body=body.replace('class="d-form-card g-capture"','class="d-form-card g-capture" id="guide-form"')
         write('free-guides/'+slug+'.html',page(g['title'],g['promise']+' Download the free five-page printable guide.',body,'/free-guides/'+slug))
     p=ROOT/'sitemap.xml';s=p.read_text()

@@ -120,3 +120,15 @@
 .prog-name::after{display:none}
 .prog-title{font-size:27px}
 @media (max-width:640px){.prog-title{font-size:21px}}
+/* Funnel paths: book date, next steps, readers move on */
+.d-book-date{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--d-blue);border-radius:20px;padding:7px 14px}
+.d-next-step{margin-top:20px;padding-top:18px;border-top:1px solid var(--d-line)}
+.d-next-step p{margin:6px 0 10px;font-size:15px;color:var(--d-ink)}
+.d-move-on{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;background:var(--d-pale);border-radius:14px;padding:44px}
+.d-move-on h2{margin:10px 0 12px}
+.d-move-on p{color:var(--d-muted);font-size:17px;line-height:1.6;margin:0}
+.d-move-on-actions{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.g-next{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:14px}
+@media (max-width:860px){.d-move-on{grid-template-columns:1fr;padding:28px}}
+.new-demo .d-book-date,p.d-book-date{color:#fff!important;font-size:13px!important}
+#runway-calculator .btn+.text-link{margin-left:16px;display:inline-block;margin-top:8px}
