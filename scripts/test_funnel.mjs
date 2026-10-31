@@ -88,13 +88,38 @@ test('report HTML escapes submitted content and API errors never leak provider b
   assert.equal(escapeHTML('<img src=x onerror="bad">'),'&lt;img src=x onerror=&quot;bad&quot;&gt;');
   const api=mailerClient('test',async()=>new Response('sensitive response',{status:401}));await assert.rejects(api('subscribers'),/^Error: mailerlite_401$/);
 });
-test('free guide captures remain private unless newsletter consent is explicit',async()=>{
+test('guide requests sync to their own group, with newsletters only on explicit opt-in',async()=>{
  const d={'form-name':'sn-guide-the-update-your-vp-can-act-on','guide-id':'the-update-your-vp-can-act-on',name:'Asha',email:'asha@example.com','newsletter-consent':'no'};
- assert.equal(formJob(d),null);
- const job=formJob({...d,'newsletter-consent':'yes'});
- assert.equal(job.guide,d['guide-id']);assert.equal(job.consentVersion,'free-guides-2026-10-30');
- const s=new Store(),a=apiFixture();await processJob(s,job,env,a.api);
- assert.deepEqual(a.person().groups,[{id:'letter'}]);
- assert.equal(a.person().fields.sn_source,'free_guide:the-update-your-vp-can-act-on');
- assert.throws(()=>formJob({...d,'guide-id':'forged','newsletter-consent':'yes'}),/invalid_guide/);
+ for(const consent of ['no','yes']){
+  const job=formJob({...d,'newsletter-consent':consent});
+  assert.equal(job.consent,consent==='yes');
+  const s=new Store(),a=apiFixture();await enqueue(s,job);
+  assert.equal(await processJob(s,job,env,a.api),'paused');
+  assert.equal(a.person().groups.some(g=>g.id==='letter'),consent==='yes');
+  assert.equal(a.person().groups.length,consent==='yes'?2:1);
+  assert(await s.get('pending/'+job.id));
+ }
+ assert.throws(()=>formJob({...d,'guide-id':'forged'}),/invalid_guide/);
+});
+
+test('every current quiz form computes the matching server report without newsletter enrollment',async()=>{
+ const {reviewTests,reviewReport,evaluateReview}=await import('../assets/lib/site-demo-quiz.mjs');
+ for(const source of Object.keys(reviewTests)) {
+  const t=reviewTests[source],answers=t.questions.map(q=>q.options[0].id);
+  const d={'form-name':'sn-review-quiz-'+source,name:'Asha',email:'asha@example.com','newsletter-consent':'no','test-id':source,'test-version':t.version,answers:JSON.stringify(answers)};
+  const job=formJob(d);assert.equal(job.variant,'current');
+  const s=new Store(),a=apiFixture();await enqueue(s,job);await processJob(s,job,env,a.api);
+  assert(!a.person().groups.some(g=>g.id==='letter'));
+  const token=a.person().fields['sn_'+source+'_url'].split('?t=')[1];
+  assert.equal((await s.get('reports/'+token)).text,reviewReport(source,evaluateReview(source,answers)).replaceAll('https://sayantannandi.com/review/start-here-blue','https://sayantannandi.com/'));
+  assert.throws(()=>formJob({...d,answers:'["invented"]'}));
+ }
+});
+test('book, coaching, call and intake requests do not imply newsletter or customer status',async()=>{
+ for(const form of ['sn-review-book-interest','sn-book-interest','sn-review-coaching','sn-review-call','sn-cohort-intake']) {
+  const j=formJob({'form-name':form,name:'Asha',email:'asha@example.com','newsletter-consent':'no'});
+  const s=new Store(),a=apiFixture();await enqueue(s,j);await processJob(s,j,env,a.api);
+  assert.equal(a.person().groups.length,1);assert(!a.person().groups.some(g=>['letter','customer','course','cohort'].includes(g.id)));
+  assert(!Object.keys(a.person().fields).some(k=>k.includes('problem')));
+ }
 });
