@@ -1,4 +1,4 @@
-import {saveReviewForm} from './site-live.js?v=2';
+import {saveReviewForm} from './site-live.js?v=4';
 const files={worksheets:'/assets/downloads/Earning_Power_Exit_Power_Worksheets.pdf',chapter:'/assets/downloads/Earning_Power_Exit_Power_First_Chapter.pdf'};
 for(const form of document.querySelectorAll('[data-resource-form]')) {
  let sending=false;

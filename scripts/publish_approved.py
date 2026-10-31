@@ -4,6 +4,9 @@ import re
 from html import escape
 from site_demo import header, footer
 ROOT=Path(__file__).resolve().parents[1]
+# Current asset versions, shared with other page builders. Bump these when the files change.
+SITE_CSS='site-demo.css?v=12'
+SITE_JS='site-live.js?v=4'
 ROUTES={
 '/review/start-here-blue':'/', '/review/philosophy-blue':'/philosophy',
 '/review/get-coached-blue':'/get-coached','/review/book-a-call-blue':'/conversation',
@@ -27,7 +30,7 @@ def publish_approved(write):
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         s=re.sub(r'<link rel="canonical"[^>]*>','',s)
         s=s.replace('</head>',f'<link rel="canonical" href="https://sayantannandi.com{new}"></head>')
-        s=s.replace('site-demo.css?v=2','site-demo.css?v=11').replace('site-demo.js?v=2','site-live.js?v=2')
+        s=s.replace('site-demo.css?v=2','site-demo.css?v=12').replace('site-demo.js?v=2','site-live.js?v=4')
         s=re.sub(r'<dialog id="(?:review|review-notes|course-review)".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<dialog id="action".*?</dialog>','',s,flags=re.S)
         s=re.sub(r'<title>.*?</title>',f'<title>{escape({"/":"Start Here","/philosophy":"The Book & Philosophy","/step-up":"The Step Up to Senior Leadership","/step-up/cohort":"January Live Classroom","/get-coached":"Personal Leadership Coaching","/conversation":"Book a Free 20-Minute Call","/newsletter":"The Optional Career"}.get(new,"Your next step"))} | Sayantan Nandi</title>',s,count=1)
@@ -45,7 +48,7 @@ def publish_approved(write):
         s=s.replace('Your email-copy request is saved. Automatic delivery is awaiting activation.','Your sample request is saved. Watch your inbox for your copy.')
         s=s.replace('<p class="d-fine">No confirmation email has been sent.</p>','')
         if new.startswith('/tests/'):
-            s=s.replace('site-live.js?v=2','site-live.js?v=3')
+            s=s.replace('site-live.js?v=2','site-live.js?v=4').replace('site-live.js?v=3','site-live.js?v=4')
         if new=='/step-up/cohort':
             s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=3')
         if new=='/registration-received':s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>')
@@ -72,7 +75,7 @@ def publish_approved(write):
         if '<header class="site-header">' not in s:continue
         s=re.sub(r'<header class="site-header">.*?</header>',live_header,s,count=1,flags=re.S)
         s=re.sub(r'<footer class="site-footer">.*?</footer>',live_footer,s,count=1,flags=re.S)
-        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=11"><script type="module" src="/assets/lib/site-live.js?v=2"></script></head>')
+        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=12"><script type="module" src="/assets/lib/site-live.js?v=4"></script></head>')
         write(rel,s)
     # Keep existing acquisition links pointing to the single approved book gate.
     extra=[]
