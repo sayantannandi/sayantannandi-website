@@ -41,6 +41,8 @@ def publish_approved(write):
         s=s.replace('Read the draft refund policy','Read the refund policy')
         s=s.replace('Draft /refunds · January 2027 Live Classroom','January 2027 Live Classroom')
         s=s.replace('Draft for review. This proposed policy applies to new January Live Classroom purchases after adoption. Existing purchases retain their original terms. Other products keep their existing refund policies.','Applies to new purchases from 30 October 2026. Existing purchases retain their original terms.')
+        if new.startswith('/tests/'):
+            s=s.replace('site-live.js?v=2','site-live.js?v=3')
         if new=='/step-up/cohort':
             s=s.replace('cohort-blue.js?v=9','cohort-live.js?v=3')
         if new=='/registration-received':s=s.replace('</head>','<meta name="robots" content="noindex,follow"></head>')

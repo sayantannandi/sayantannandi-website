@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-31",
+  "released": false,
+  "groups": {
+    "cohort": "198739501348030306",
+    "course": "198739501335447381",
+    "customer": "198739501322864448",
+    "judgment": "198739501299795747",
+    "kit_bundle": "198739501395216282",
+    "kit_eh": "198739501384730502",
+    "kit_pcb": "198739501359564653",
+    "kit_rrk": "198739501372147577",
+    "letter": "198739501235832554",
+    "live": "198739501281969937",
+    "nurture": "198739501258901242",
+    "pitch": "198739501271484168",
+    "qa": "198739501406750632",
+    "visibility": "198739501311330104",
+    "weekly": "198739501247366897",
+    "exit": "202806821893703094",
+    "leadership": "202806830571718533",
+    "starting_point": "202806839291675768",
+    "book_interest": "202806848857835334",
+    "free_chapter": "202806858662020431",
+    "worksheets": "202806867429164787",
+    "coaching": "202806876455306844",
+    "call": "202806885177361455",
+    "cohort_intake": "202806893849085388",
+    "next_cohort": "202806902996862787",
+    "cohort_jan2027": "202806912527369620",
+    "guide_the-update-your-vp-can-act-on": "202806921478014940",
+    "guide_be-more-strategic": "202806930505204893",
+    "guide_months-of-choice": "202806937455166552",
+    "guide_passed-over-what-to-ask": "202806946700461218",
+    "guide_say-no-without-losing-trust": "202806956687099623",
+    "guide_capture-your-review-evidence": "202806965875770724",
+    "qa_delivery_20261031": "202806974751966642"
+  },
+  "automations": {
+    "exit": {
+      "id": "202807485902358315",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "leadership": {
+      "id": "202807508022069143",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "starting_point": {
+      "id": "202807528834204753",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "guide_the-update-your-vp-can-act-on": {
+      "id": "202807550878418874",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "guide_be-more-strategic": {
+      "id": "202807606242182295",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "guide_months-of-choice": {
+      "id": "202807661281937362",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "guide_passed-over-what-to-ask": {
+      "id": "202807717039965362",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "guide_say-no-without-losing-trust": {
+      "id": "202807772848325690",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "guide_capture-your-review-evidence": {
+      "id": "202807829992572418",
+      "emailDone": [
+        0,
+        1,
+        2
+      ],
+      "conditionDone": true,
+      "complete": true
+    },
+    "book_interest": {
+      "id": "202807885901596557",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "free_chapter": {
+      "id": "202807906968536987",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "worksheets": {
+      "id": "202807928165500360",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "coaching": {
+      "id": "202807949995804079",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "call": {
+      "id": "202807970952643620",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "cohort_intake": {
+      "id": "202807991852860546",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "next_cohort": {
+      "id": "202808013216548614",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "cohort_jan2027": {
+      "id": "202808027796998038",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    },
+    "kit_rrk": {
+      "id": "202808049779344428",
+      "emailDone": [
+        0
+      ],
+      "complete": true
+    }
+  }
+}
