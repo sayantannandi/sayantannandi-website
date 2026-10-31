@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {evaluateStarting,calculateRunway,runwayBand,startingReport} from '../assets/starting-point-engine.mjs';
 import {VERSION} from '../assets/starting-point-data.mjs';
-import {formJob,processJob} from '../netlify/functions/_shared/funnel.mjs';
+import {formJob,processJob,canProcess} from '../netlify/functions/_shared/funnel.mjs';
 const all=(path='A',score='3',runway='12to50')=>[path,...Array(6).fill(score),runway,...Array(3).fill(score),'0'];
 test('all four reflection boxes and both paths produce a concrete exercise',()=>{
  assert.equal(evaluateStarting(all()).box.label,'Real options');
@@ -38,10 +38,10 @@ test('calculator handles zero reserves, continuing income, boundaries and invali
  for(const [n,id] of [[2.999,'under3'],[3,'3to6'],[6,'6to12'],[12,'12to50'],[50,'50to200'],[200,'50to200'],[200.01,'over200']])assert.equal(runwayBand(n).id,id);
  for(const values of [[1,0,0],[-1,1,0],[1,1,-1],[NaN,1,0],[1,Infinity,0]])assert.throws(()=>calculateRunway(...values));
 });
-test('new email routes remain queued until deliberately enabled and never start existing workflows',async()=>{
+test('resource capture is processable while January purchases remain gated',async()=>{
  for(const source of ['sn-free-chapter','sn-worksheets','sn-next-cohort']){
   const j=formJob({'form-name':source,name:'Asha',email:'asha@example.com',consent:'yes'});
-  assert(j);assert.equal(await processJob({},j,{SN_FUNNEL_MODE:'live'},()=>{throw new Error('must not call MailerLite');}),'paused');
+  assert(j);assert.equal(canProcess(j,{SN_FUNNEL_MODE:'live'}),true);
  }
  assert.equal(await processJob({},{kind:'purchase',product:'cohort_jan2027'},{SN_FUNNEL_MODE:'live'},()=>{throw new Error('must not call MailerLite');}),'paused');
 });

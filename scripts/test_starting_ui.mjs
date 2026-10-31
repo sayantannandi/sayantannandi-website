@@ -10,8 +10,7 @@ for(let i=0;i<12;i++){
 const selector=i===0?`[value=${path}]`:i===7?'[value=unknown]':'[value="0"]';
 const input=document.querySelector('#starting-question '+selector);assert(input,'missing question '+i);input.checked=true;input.setAttribute('checked','');document.querySelector('#starting-question').dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));
 }
-assert.equal(document.querySelector('#starting-result').hidden,false);click('#starting-download');assert(downloads.length);assert.equal(calls,0);
-assert.match(document.querySelector('#starting-result').textContent,/provisional/);
+assert.equal(document.querySelector('#starting-result').hidden,true);assert.equal(document.querySelector('#starting-email').hidden,false);assert.equal(calls,0);
 assert.equal(document.querySelector('#starting-email input[type=checkbox]').checked,undefined);
-console.log('PASS UI path '+path+': twelve questions, unknown runway, result, optional email and report download; no network.');
+console.log('PASS UI path '+path+': twelve questions, unknown runway, required email gate before results; no network until submission.');
 }
