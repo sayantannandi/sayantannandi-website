@@ -181,8 +181,8 @@ export async function processJob(store,job,env,api,now=Date.now()) {
       if(staged && released && !await store.get(deliveryKey) && await store.get(stagedKey) && memberships.has(group(key))) {
         await api('subscribers/'+subscriber.id+'/groups/'+group(key),'DELETE');memberships.delete(group(key));
       }
-      if(job.source!=='letter') await join(key);
       if(job.consent) await join('letter');
+      if(job.source!=='letter') await join(key);
       if(staged && !released) {await store.setJSON(stagedKey,{at:now});return 'paused';}
       if(staged) await store.setJSON(deliveryKey,{at:now});
       await store.delete(stagedKey);
