@@ -12,8 +12,12 @@ import re
 
 # Every Netlify form gets hidden source fields; every page gets the attribution script.
 # Google Analytics loads only when GA_MEASUREMENT_ID is set in Netlify and the visitor allows it.
-GA_ID = os.environ.get('GA_MEASUREMENT_ID', '').strip()
+# Public measurement ID for sayantannandi.com. GA_MEASUREMENT_ID in Netlify overrides it.
+GA_ID = os.environ.get('GA_MEASUREMENT_ID', '').strip() or 'G-1EP57JV0XW'
 if not re.fullmatch(r'G-[A-Z0-9]{4,}', GA_ID):
+    GA_ID = ''
+# Count the live site only. Netlify sets CONTEXT to deploy-preview or branch-deploy for previews.
+if os.environ.get('CONTEXT') not in (None, 'production'):
     GA_ID = ''
 HIDDEN = ''.join(f'<input type="hidden" name="{n}">' for n in ['utm_source', 'utm_medium', 'utm_campaign', 'landing_page', 'referrer'])
 SCRIPT = (f'<script>window.SN_GA_ID="{GA_ID}";</script>' if GA_ID else '') + '<script src="/assets/lib/attribution.js?v=1" defer></script>'
