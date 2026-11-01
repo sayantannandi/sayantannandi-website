@@ -140,3 +140,13 @@ test('verified Netlify payloads route without the stripped form-name transport f
  }
  const g=formJob({'sn-form':'sn-guide-be-more-strategic','guide-id':'be-more-strategic',name:'Asha',email:'asha@example.com'});assert.equal(g.source,'free_guide');
 });
+
+test('source fields are cleaned, kept out of the job id, and sent only when MailerLite is ready',async()=>{
+  const plain=formJob(form('judgment','yes'));
+  const tagged=formJob({...form('judgment','yes'),utm_source:'linkedin',utm_medium:'post',utm_campaign:'nov04-safe<script>',landing_page:'/tests/senior-level-judgment',referrer:''});
+  assert.equal(tagged.id,plain.id);
+  assert.deepEqual(tagged.attribution,{utm_source:'linkedin',utm_medium:'post',utm_campaign:'nov04-safescript',landing_page:'/tests/senior-level-judgment'});
+  const off=apiFixture();await processJob(new Store(),tagged,env,off.api);assert.equal(off.person().fields.sn_utm_source,undefined);
+  const on=apiFixture();await processJob(new Store(),tagged,{...env,SN_UTM_FIELDS_READY:'true'},on.api);
+  assert.equal(on.person().fields.sn_utm_source,'linkedin');assert.equal(on.person().fields.sn_utm_campaign,'nov04-safescript');
+});

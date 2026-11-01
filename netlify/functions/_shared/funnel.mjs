@@ -58,8 +58,20 @@ export function formJob(data, now = Date.now()) {
     evaluate(test, answers); // Reject unknown options and recompute all scores on the server.
     job.answers = answers;
   }
+  // Where the person came from (saved by /assets/lib/attribution.js). Not part of the job id.
+  const attribution = sourceFields(data);
+  if(Object.keys(attribution).length) job.attribution = attribution;
   job.id = hash(JSON.stringify([source,email,consent,job.guide,job.variant,job.answers,Math.floor(now/86400000)]));
   return job;
+}
+const SOURCE_FIELDS = {utm_source:'sn_utm_source',utm_medium:'sn_utm_medium',utm_campaign:'sn_utm_campaign',landing_page:'sn_landing_page'};
+export function sourceFields(data) {
+  const out = {};
+  for(const key of Object.keys(SOURCE_FIELDS)) {
+    const value = String(data[key] || '').trim().replace(/[^\w\-.~:/@+ ]/g,'').slice(0, key==='landing_page' ? 200 : 100);
+    if(value) out[key] = value;
+  }
+  return out;
 }
 export function verifiedRazorpay(raw, signature, secret) {
   if(!secret || secret.length < 24 || !/^[a-f0-9]{64}$/i.test(signature || '')) return false;
@@ -124,6 +136,9 @@ export async function processJob(store,job,env,api,now=Date.now()) {
     let fields={...(job.name ? {name:job.name} : {})};
     if(job.kind==='form') Object.assign(fields,{sn_source:job.source==='free_guide' ? 'free_guide:'+job.guide : job.source,sn_request_at:new Date(job.created).toISOString()});
     if(job.consent) Object.assign(fields,{sn_consent_at:new Date(job.created).toISOString(),sn_consent_version:job.consentVersion});
+    // Source fields go to MailerLite only after they exist there (Subscribers > Fields).
+    if(job.attribution && env.SN_UTM_FIELDS_READY==='true')
+      for(const [key,value] of Object.entries(job.attribution)) fields[SOURCE_FIELDS[key]]=value;
     if(job.kind==='form' && (tests[job.source] || job.variant==='current')) {
       const current=job.variant==='current';
       const test=current?reviewTests[job.source]:tests[job.source], result=current?evaluateReview(job.source,job.answers):evaluate(test,job.answers);
