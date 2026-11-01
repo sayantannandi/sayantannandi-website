@@ -147,6 +147,12 @@ redirects={
 lines=['/scripts/*  /404.html  404!', '# Retired acquisition paths. Forced rules cover old files and preserve campaign query strings.']
 for old,new in redirects.items():
     for source in [old,old+'/',old+'.html']:lines.append(f'{source}  {new}  301!')
+# Short links printed on LinkedIn. Each tags the visit so it shows in Google Analytics and on form submissions.
+# 302, so the target can change later without browsers caching the old one.
+SHORT_LINKS={'/judgment':('/tests/senior-level-judgment','banner')}
+lines.append('# Short links for LinkedIn.')
+for short,(target,medium) in SHORT_LINKS.items():
+    for source in [short,short+'/']:lines.append(f'{source}  {target}?utm_source=linkedin&utm_medium={medium}  302!')
 # Let Netlify serve and normalize new clean URLs; explicit slash rules conflict with Pretty URLs.
 write('_redirects','\n'.join(lines)+'\n')
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE+route}</loc><lastmod>{"2026-10-29"}</lastmod></url>\n' for route,noindex in PAGES if not noindex)+'</urlset>\n')

@@ -81,6 +81,9 @@
 /thanks  /request-received  301!
 /thanks/  /request-received  301!
 /thanks.html  /request-received  301!
+# Short links for LinkedIn.
+/judgment  /tests/senior-level-judgment?utm_source=linkedin&utm_medium=banner  302!
+/judgment/  /tests/senior-level-judgment?utm_source=linkedin&utm_medium=banner  302!
 
 /free-guides /worksheets 301!
 /free-guides/ /worksheets 301!
