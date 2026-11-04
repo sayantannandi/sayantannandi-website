@@ -180,3 +180,6 @@ build_free_guides(write)
 
 from classroom_branding import brand_classroom
 brand_classroom(write)
+
+from b2b_workshops import build_b2b_workshops
+build_b2b_workshops(write)

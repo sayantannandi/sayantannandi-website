@@ -150,3 +150,15 @@ test('source fields are cleaned, kept out of the job id, and sent only when Mail
   const on=apiFixture();await processJob(new Store(),tagged,{...env,SN_UTM_FIELDS_READY:'true'},on.api);
   assert.equal(on.person().fields.sn_utm_source,'linkedin');assert.equal(on.person().fields.sn_utm_campaign,'nov04-safescript');
 });
+
+test('workshop inquiries route separately, preserve newsletter choice and keep the brief private',async()=>{
+  for(const consent of ['no','yes']) {
+    const j=formJob({'sn-form':'sn-b2b-inquiry',name:'Asha',email:'asha@example.com','newsletter-consent':consent,'consent-version':'workshop-inquiry-2026-11-04',organization:'Example',challenge:'Confidential business brief'});
+    assert.equal(j.source,'b2b');assert.equal(j.consent,consent==='yes');
+    assert(!JSON.stringify(j).includes('Confidential'));
+    const s=new Store(),a=apiFixture();
+    await processJob(s,j,{...env,SN_GROUP_IDS:JSON.stringify({...ids,b2b:'b2b'})},a.api);
+    assert.deepEqual(a.person().groups,consent==='yes'?[{id:'letter'},{id:'b2b'}]:[{id:'b2b'}]);
+    assert(!a.calls.some(c=>JSON.stringify(c.body || {}).includes('Confidential')));
+  }
+});

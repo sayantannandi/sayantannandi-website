@@ -1,0 +1,172 @@
+
+#sn-b2b-workshops{--bw-ink:#102c50;--bw-blue:#2854df;--bw-muted:#526780;--bw-pale:#f0f5ff;--bw-line:#d6e1f2;--bw-white:#fff;--bw-cyan:#a7edf5;background:var(--bw-white);color:var(--bw-ink);font:16px/1.6 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+#sn-b2b-workshops *{box-sizing:border-box}
+#sn-b2b-workshops [hidden]{display:none!important}
+#sn-b2b-workshops a{color:inherit;text-underline-offset:4px}
+#sn-b2b-workshops h1,#sn-b2b-workshops h2,#sn-b2b-workshops h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.035em;line-height:1.12;margin:0;color:var(--bw-ink)}
+#sn-b2b-workshops h1{font-size:clamp(38px,5.4vw,60px)}
+#sn-b2b-workshops h2{font-size:clamp(30px,3.6vw,42px)}
+#sn-b2b-workshops h3{font-size:26px}
+#sn-b2b-workshops p{margin:0;color:var(--bw-ink)}
+#sn-b2b-workshops button,#sn-b2b-workshops input,#sn-b2b-workshops select,#sn-b2b-workshops textarea{font:inherit}
+#sn-b2b-workshops :is(a,button,summary,input,select,textarea):focus-visible{outline:3px solid var(--bw-blue);outline-offset:4px}
+#sn-b2b-workshops .bw-wrap{width:calc(100% - 80px);max-width:1180px;margin:0 auto}
+#sn-b2b-workshops .bw-section{padding:68px 0}
+#sn-b2b-workshops .bw-eyebrow{display:block;margin-bottom:16px;color:var(--bw-blue);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+#sn-b2b-workshops .bw-lede{color:var(--bw-muted);font-size:18px;line-height:1.6}
+#sn-b2b-workshops .bw-accent{color:var(--bw-blue)}
+#sn-b2b-workshops .bw-action{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:15px 21px;border:1px solid var(--bw-blue);border-radius:5px;background:var(--bw-blue);color:var(--bw-white)!important;text-decoration:none;font-size:14px;line-height:1.4;font-weight:700;min-height:50px;cursor:inherit}
+#sn-b2b-workshops .bw-action :is(span,strong,b){color:var(--bw-white)!important}
+#sn-b2b-workshops .bw-action:hover{background:#193fb8}
+#sn-b2b-workshops .bw-link{color:var(--bw-blue);font-weight:700;font-size:14px}
+#sn-b2b-workshops .bw-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:26px}
+#sn-b2b-workshops .bw-header{border-bottom:1px solid var(--bw-line);padding:24px 0}
+#sn-b2b-workshops .bw-nav{display:flex;justify-content:space-between;align-items:center;gap:24px}
+#sn-b2b-workshops .bw-brand{font:25px/1.05 Georgia,serif;text-decoration:none;letter-spacing:-.025em}
+#sn-b2b-workshops .bw-brand span{display:block;font:10px/1.5 Arial,sans-serif;letter-spacing:.18em;margin-top:6px}
+#sn-b2b-workshops .bw-nav-links{display:flex;gap:24px;align-items:center;font-size:13px}
+#sn-b2b-workshops .bw-nav-links>a{text-decoration:none}
+#sn-b2b-workshops .bw-nav-links details{position:relative}
+#sn-b2b-workshops .bw-nav-links summary{list-style:none;cursor:inherit}
+#sn-b2b-workshops .bw-dropdown{position:absolute;top:30px;right:0;width:235px;padding:10px;background:var(--bw-white);border:1px solid var(--bw-line);border-radius:7px;z-index:5;box-shadow:0 12px 24px #102c501a}
+#sn-b2b-workshops .bw-dropdown a{display:block;padding:10px;text-decoration:none}
+#sn-b2b-workshops .bw-dropdown a:hover{background:var(--bw-pale)}
+#sn-b2b-workshops .bw-hero{padding:58px 0 44px}
+#sn-b2b-workshops .bw-breadcrumb{color:var(--bw-muted);font-size:13px;margin-bottom:28px}
+#sn-b2b-workshops .bw-hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:38px;align-items:center}
+#sn-b2b-workshops .bw-hero h1{margin-bottom:23px}
+#sn-b2b-workshops .bw-hero .bw-lede{margin-bottom:14px}
+#sn-b2b-workshops .bw-scene{margin:0;min-width:0}
+#sn-b2b-workshops .bw-scene img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:9px 9px 0 0;background:var(--bw-pale)}
+#sn-b2b-workshops .bw-scene figcaption{padding:20px 23px;background:var(--bw-ink);color:var(--bw-white);border-radius:0 0 9px 9px;font-family:Georgia,serif;font-size:25px;line-height:1.2}
+#sn-b2b-workshops .bw-scene figcaption :is(strong,b){color:var(--bw-white)}
+#sn-b2b-workshops .bw-scene figcaption span{display:block;margin-top:9px;font:12px/1.5 Arial,sans-serif;color:#d1dff1}
+#sn-b2b-workshops .bw-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;border-top:1px solid var(--bw-line);padding-top:26px;margin-top:38px}
+#sn-b2b-workshops .bw-facts strong{display:block;font-size:17px;margin-bottom:3px}
+#sn-b2b-workshops .bw-facts span{font-size:14px;color:var(--bw-muted)}
+#sn-b2b-workshops .bw-tint{background:var(--bw-pale)}
+#sn-b2b-workshops .bw-section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:30px}
+#sn-b2b-workshops .bw-section-head>p{max-width:345px;color:var(--bw-muted)}
+#sn-b2b-workshops .bw-questions{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}
+#sn-b2b-workshops .bw-question{padding:6px 0 8px 22px;border-left:3px solid var(--bw-blue)}
+#sn-b2b-workshops .bw-question h3{font-size:29px;margin-bottom:12px;color:var(--bw-blue)}
+#sn-b2b-workshops .bw-question p{color:var(--bw-muted);max-width:40ch}
+#sn-b2b-workshops .bw-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:30px}
+#sn-b2b-workshops .bw-skill{border:1px solid var(--bw-line);border-radius:6px;padding:18px 10px;background:var(--bw-white);color:var(--bw-ink);text-align:left;cursor:inherit}
+#sn-b2b-workshops .bw-skill b{display:block;font:40px/1 Georgia,serif;margin-bottom:8px;color:inherit}
+#sn-b2b-workshops .bw-skill span{font-size:14px;font-weight:700;color:inherit}
+#sn-b2b-workshops .bw-skill[aria-selected=true]{background:var(--bw-blue);border-color:var(--bw-blue);color:var(--bw-white)}
+#sn-b2b-workshops .bw-skill[aria-selected=true] :is(b,span){color:var(--bw-white)!important}
+#sn-b2b-workshops .bw-skill-panel{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;padding:34px;background:var(--bw-pale);margin-top:14px;border-radius:7px}
+#sn-b2b-workshops .bw-skill-panel h3{margin-bottom:14px;font-size:29px}
+#sn-b2b-workshops .bw-skill-panel p{color:var(--bw-muted)}
+#sn-b2b-workshops .bw-exercise{margin-top:22px;font-size:14px}
+#sn-b2b-workshops .bw-example{display:grid;gap:12px}
+#sn-b2b-workshops .bw-example article{padding:18px 20px;background:var(--bw-white);border:1px solid var(--bw-line);border-radius:4px}
+#sn-b2b-workshops .bw-example article:last-child{border-left:4px solid var(--bw-blue)}
+#sn-b2b-workshops .bw-example span{display:block;font-size:12px;font-weight:700;color:var(--bw-blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+#sn-b2b-workshops .bw-example p{font-family:Georgia,serif;color:var(--bw-ink);font-size:21px;line-height:1.35}
+#sn-b2b-workshops .bw-takeaway{grid-column:1/-1;border-top:1px solid var(--bw-line);padding-top:18px;color:var(--bw-ink)!important}
+#sn-b2b-workshops .bw-takeaway strong{color:var(--bw-blue)}
+#sn-b2b-workshops .bw-method{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:32px;padding:0;list-style:none}
+#sn-b2b-workshops .bw-method li{border-top:2px solid var(--bw-blue);padding-top:14px}
+#sn-b2b-workshops .bw-method b{display:block;font:29px Georgia,serif;color:var(--bw-blue);margin-bottom:6px}
+#sn-b2b-workshops .bw-method span{font-size:15px}
+#sn-b2b-workshops .bw-photo-row{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+#sn-b2b-workshops .bw-photo-row figure{margin:0}
+#sn-b2b-workshops .bw-photo-row img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:8px;display:block}
+#sn-b2b-workshops .bw-caption{font-size:12px;color:var(--bw-muted);margin-top:8px}
+#sn-b2b-workshops .bw-outputs{padding:0;list-style:none;margin:24px 0 0}
+#sn-b2b-workshops .bw-outputs li{padding:12px 0 12px 27px;border-bottom:1px solid var(--bw-line);position:relative}
+#sn-b2b-workshops .bw-outputs li:before{content:'✓';position:absolute;left:0;color:var(--bw-blue);font-weight:700}
+#sn-b2b-workshops .bw-format-switch{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
+#sn-b2b-workshops .bw-format-switch button{padding:13px 18px;border:1px solid var(--bw-line);border-radius:5px;background:var(--bw-white);color:var(--bw-ink);cursor:inherit}
+#sn-b2b-workshops .bw-format-switch button[aria-pressed=true]{background:var(--bw-ink);color:var(--bw-white);border-color:var(--bw-ink)}
+#sn-b2b-workshops .bw-format-switch button[aria-pressed=true] :is(b,span){color:var(--bw-white)}
+#sn-b2b-workshops .bw-agenda{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+#sn-b2b-workshops .bw-day{border:1px solid var(--bw-line);background:var(--bw-white);border-radius:8px;padding:28px}
+#sn-b2b-workshops .bw-day h3{margin-bottom:21px}
+#sn-b2b-workshops .bw-day li{display:grid;grid-template-columns:55px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--bw-line);font-size:14px}
+#sn-b2b-workshops .bw-day ul{list-style:none;margin:0;padding:0}
+#sn-b2b-workshops .bw-day time{color:var(--bw-blue);font-weight:700}
+#sn-b2b-workshops .bw-format-note{margin-top:20px;max-width:77ch;color:var(--bw-muted)}
+#sn-b2b-workshops .bw-one-day{border-left:3px solid var(--bw-blue);padding:10px 0 10px 24px;max-width:760px}
+#sn-b2b-workshops .bw-one-day p{margin:16px 0}
+#sn-b2b-workshops .bw-follow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:28px}
+#sn-b2b-workshops .bw-follow article{border-top:1px solid var(--bw-line);padding-top:20px}
+#sn-b2b-workshops .bw-follow h3{font-size:25px;margin-bottom:12px}
+#sn-b2b-workshops .bw-follow p{color:var(--bw-muted);font-size:15px}
+#sn-b2b-workshops .bw-navy{background:var(--bw-ink);color:var(--bw-white)}
+#sn-b2b-workshops .bw-navy :is(h1,h2,h3,h4,strong,b){color:var(--bw-white)!important}
+#sn-b2b-workshops .bw-navy .bw-eyebrow{color:var(--bw-cyan)}
+#sn-b2b-workshops .bw-navy p{color:#d1dff1}
+#sn-b2b-workshops .bw-navy a{color:var(--bw-cyan)}
+#sn-b2b-workshops .bw-follow-dark article{border-color:#526780}
+#sn-b2b-workshops .bw-facilitator{display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:start;max-width:920px}
+#sn-b2b-workshops .bw-portrait{width:180px;aspect-ratio:4/5;object-fit:cover;border-radius:7px}
+#sn-b2b-workshops .bw-bio h2{margin-bottom:18px}
+#sn-b2b-workshops .bw-bio p{margin-bottom:15px;color:var(--bw-muted)}
+#sn-b2b-workshops .bw-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+#sn-b2b-workshops .bw-logo{height:74px;background:var(--bw-white);border:1px solid var(--bw-line);border-radius:5px;padding:16px;display:flex;align-items:center;justify-content:center}
+#sn-b2b-workshops .bw-logo img{display:block;max-width:100%;max-height:39px;width:auto;height:auto}
+#sn-b2b-workshops .bw-inquiry{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+#sn-b2b-workshops .bw-inquiry h2{margin-bottom:20px}
+#sn-b2b-workshops .bw-inquiry-copy>p{color:var(--bw-muted);margin-bottom:22px}
+#sn-b2b-workshops .bw-inquiry-note{border-top:1px solid var(--bw-line);padding-top:20px;margin-top:26px}
+#sn-b2b-workshops .bw-form{padding:30px;background:var(--bw-white);border:1px solid var(--bw-line);border-radius:8px}
+#sn-b2b-workshops .bw-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#sn-b2b-workshops .bw-fields label{display:block;font-size:14px;font-weight:700;min-width:0}
+#sn-b2b-workshops .bw-fields :is(input,select,textarea){display:block;width:100%;margin-top:7px;padding:11px 12px;border:1px solid #a6b6cf;border-radius:4px;background:var(--bw-white);color:var(--bw-ink);font-size:16px;font-weight:400;min-width:0}
+#sn-b2b-workshops .bw-fields textarea{min-height:115px;resize:vertical}
+#sn-b2b-workshops .bw-fields :is(input,textarea)::placeholder{color:#64748b;opacity:1}
+#sn-b2b-workshops .bw-wide{grid-column:1/-1}
+#sn-b2b-workshops .bw-form .bw-action{width:100%;margin-top:24px}
+#sn-b2b-workshops .bw-form-note{font-size:12px;color:var(--bw-muted);margin-top:12px}
+#sn-b2b-workshops .bw-form-status{padding:18px;background:var(--bw-pale);border-radius:5px;margin-top:18px}
+#sn-b2b-workshops .bw-faq{max-width:850px;margin:0 auto}
+#sn-b2b-workshops .bw-faq h2{margin-bottom:28px}
+#sn-b2b-workshops .bw-faq details{border-bottom:1px solid var(--bw-line);padding:19px 0}
+#sn-b2b-workshops .bw-faq summary{font-size:17px;font-weight:700;cursor:inherit}
+#sn-b2b-workshops .bw-faq details p{margin-top:14px;color:var(--bw-muted)}
+#sn-b2b-workshops .bw-footer{padding:32px 0;border-top:1px solid var(--bw-line)}
+#sn-b2b-workshops .bw-footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+#sn-b2b-workshops .bw-footer p{font-family:Georgia,serif;font-size:21px}
+#sn-b2b-workshops .bw-footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:13px}
+@media(max-width:800px){
+ #sn-b2b-workshops .bw-wrap{width:calc(100% - 44px)}
+ #sn-b2b-workshops .bw-hero-grid,#sn-b2b-workshops .bw-photo-row,#sn-b2b-workshops .bw-inquiry{grid-template-columns:1fr;gap:30px}
+ #sn-b2b-workshops .bw-hero-grid{align-items:start}
+ #sn-b2b-workshops .bw-hero h1{max-width:650px}
+ #sn-b2b-workshops .bw-scene img{aspect-ratio:16/9}
+ #sn-b2b-workshops .bw-section-head{display:block}
+ #sn-b2b-workshops .bw-section-head>p{max-width:650px;margin-top:18px}
+ #sn-b2b-workshops .bw-skill-panel{grid-template-columns:1fr;gap:24px;padding:26px}
+ #sn-b2b-workshops .bw-takeaway{grid-column:auto}
+ #sn-b2b-workshops .bw-nav-links{gap:16px}
+ #sn-b2b-workshops .bw-nav-links>a:not(.bw-action),#sn-b2b-workshops .bw-nav-links details{display:none}
+ #sn-b2b-workshops .bw-method{grid-template-columns:repeat(3,minmax(0,1fr))}
+ #sn-b2b-workshops .bw-section{padding:52px 0}
+ #sn-b2b-workshops .bw-form{padding:26px}
+}
+@media(max-width:520px){
+ #sn-b2b-workshops .bw-wrap{width:calc(100% - 36px)}
+ #sn-b2b-workshops .bw-brand{font-size:21px}
+ #sn-b2b-workshops .bw-nav{gap:12px}
+ #sn-b2b-workshops .bw-nav .bw-action{font-size:12px;padding:11px 12px;gap:5px;min-height:44px}
+ #sn-b2b-workshops .bw-hero{padding-top:32px}
+ #sn-b2b-workshops .bw-facts,#sn-b2b-workshops .bw-questions,#sn-b2b-workshops .bw-agenda,#sn-b2b-workshops .bw-follow,#sn-b2b-workshops .bw-fields{grid-template-columns:1fr}
+ #sn-b2b-workshops .bw-facts{grid-template-columns:1fr 1fr;gap:20px}
+ #sn-b2b-workshops .bw-tabs{gap:5px}
+ #sn-b2b-workshops .bw-skill{padding:15px 3px;text-align:center}
+ #sn-b2b-workshops .bw-skill b{font-size:30px}
+ #sn-b2b-workshops .bw-skill span{font-size:11px;letter-spacing:0}
+ #sn-b2b-workshops .bw-method{grid-template-columns:1fr 1fr;gap:18px}
+ #sn-b2b-workshops .bw-day{padding:24px}
+ #sn-b2b-workshops .bw-facilitator{grid-template-columns:1fr;gap:22px}
+ #sn-b2b-workshops .bw-portrait{width:140px}
+ #sn-b2b-workshops .bw-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #sn-b2b-workshops .bw-form{padding:22px}
+ #sn-b2b-workshops .bw-wide{grid-column:auto}
+}
+
+#sn-b2b-workshops .bw-capture{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}#sn-b2b-workshops .bw-consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;margin:20px 0}#sn-b2b-workshops .bw-consent input{width:18px;min-width:18px;height:18px;margin:2px 0 0}#sn-b2b-workshops .bw-saved{padding:24px;border:1px solid var(--bw-line);background:white}#sn-b2b-workshops .bw-saved p{margin:20px 0}#sn-b2b-workshops button{cursor:pointer}

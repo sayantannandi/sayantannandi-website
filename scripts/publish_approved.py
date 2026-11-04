@@ -72,10 +72,10 @@ def publish_approved(write):
         rel=str(p.relative_to(ROOT))
         if rel in promoted or rel.startswith(('review/','scripts/','public/','node_modules/','.')):continue
         s=p.read_text()
-        if '<header class="site-header">' not in s:continue
-        s=re.sub(r'<header class="site-header">.*?</header>',live_header,s,count=1,flags=re.S)
-        s=re.sub(r'<footer class="site-footer">.*?</footer>',live_footer,s,count=1,flags=re.S)
-        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=12"><script type="module" src="/assets/lib/site-live.js?v=4"></script></head>')
+        if '<header class="site-header">' not in s and '<header class="d-header">' not in s:continue
+        s=re.sub(r'<header class="(?:site-header|d-header)">.*?</header>',live_header,s,count=1,flags=re.S)
+        s=re.sub(r'<footer class="(?:site-footer|d-footer)">.*?</footer>',live_footer,s,count=1,flags=re.S)
+        if 'site-live.js' not in s:s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/site-demo.css?v=12"><script type="module" src="/assets/lib/site-live.js?v=4"></script></head>')
         write(rel,s)
     # Keep existing acquisition links pointing to the single approved book gate.
     extra=[]
