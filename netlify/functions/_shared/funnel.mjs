@@ -7,7 +7,7 @@ import {reviewTests,evaluateReview,reviewReport} from '../../../assets/lib/site-
 import {GROUP_IDS,STAGED_SOURCES,requestGroup} from './delivery-config.mjs';
 
 export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility','sn-free-chapter':'free_chapter','sn-worksheets':'worksheets','sn-starting-point':'starting_point','sn-next-cohort':'next_cohort'};
-Object.assign(FORMS, {'sn-review-quiz-judgment':'judgment','sn-review-quiz-visibility':'visibility','sn-review-quiz-exit':'exit','sn-review-quiz-leadership':'leadership','sn-review-book-interest':'book_interest','sn-book-interest':'book_interest','sn-review-coaching':'coaching','sn-review-call':'call','sn-cohort-intake':'cohort_intake'});
+Object.assign(FORMS, {'sn-review-quiz-judgment':'judgment','sn-review-quiz-visibility':'visibility','sn-review-quiz-exit':'exit','sn-review-quiz-leadership':'leadership','sn-review-book-interest':'book_interest','sn-book-interest':'book_interest','sn-b2b-inquiry':'b2b','sn-review-coaching':'coaching','sn-review-call':'call','sn-cohort-intake':'cohort_intake'});
 export const GUIDE_IDS = ['the-update-your-vp-can-act-on','be-more-strategic','months-of-choice','passed-over-what-to-ask','say-no-without-losing-trust','capture-your-review-evidence'];
 for(const id of GUIDE_IDS) FORMS['sn-guide-'+id]='free_guide';
 export const PRODUCTS = ['course','cohort','kit_pcb','kit_rrk','kit_eh','kit_bundle','cohort_jan2027'];
