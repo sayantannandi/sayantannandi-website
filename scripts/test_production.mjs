@@ -8,7 +8,7 @@ for(const path of pages){
  assert.equal(d.querySelector('a[href^="/review/"]'),null,path);
  assert.equal(d.querySelector('meta[name=robots]'),null,path);
  assert.ok(d.querySelector('link[rel=canonical]'),path);
- assert.equal(d.querySelectorAll('.d-nav').length,1,path);
+ assert.equal(d.querySelectorAll('nav[aria-label="Main navigation"]').length,1,path);
  for(const el of d.querySelectorAll('[src^="/assets/"]'))assert.ok(fs.existsSync(el.getAttribute('src').split('?')[0].slice(1)),el.getAttribute('src'));
 }
 const {document:book}=parseHTML(fs.readFileSync('philosophy.html','utf8'));

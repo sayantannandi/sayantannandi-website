@@ -183,3 +183,7 @@ brand_classroom(write)
 
 from b2b_workshops import build_b2b_workshops
 build_b2b_workshops(write)
+
+# Approved full-site conversion refresh, 8 November 2026.
+from full_site_refresh import build_full_site_refresh
+build_full_site_refresh(write)

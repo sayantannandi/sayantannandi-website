@@ -76,7 +76,7 @@
   function banner() {
     var css = document.createElement('style');
     css.textContent = '.sn-consent{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9999;max-width:560px;margin:0 auto;background:#102c50;color:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.25);font:15px/1.5 inherit}' +
-      '.sn-consent p{margin:0 0 12px}.sn-consent a{color:#a7edf5}.sn-consent div{display:flex;gap:10px;flex-wrap:wrap}' +
+      '.sn-consent p{margin:0 0 12px;color:#fff}.sn-consent a{color:#a7edf5}.sn-consent div{display:flex;gap:10px;flex-wrap:wrap}' +
       '.sn-consent button{font:inherit;font-weight:600;border-radius:8px;padding:9px 16px;cursor:pointer;border:1px solid #a7edf5}' +
       '.sn-consent .yes{background:#a7edf5;color:#102c50}.sn-consent .no{background:transparent;color:#fff}' +
       '.sn-consent button:focus-visible{outline:3px solid #fff;outline-offset:2px}';

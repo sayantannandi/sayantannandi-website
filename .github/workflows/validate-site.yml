@@ -33,9 +33,17 @@ jobs:
         run: node scripts/test_lead_magnets.mjs
       - name: Test existing practice resources and newsletter
         run: node scripts/test_interactions.mjs
+      - name: Verify production resources, capture gates and refreshed requests
+        run: |
+          node scripts/test_production.mjs
+          node scripts/test_free_guides.mjs
+          node --test scripts/test_capture_gates.mjs
+          node scripts/test_refresh.mjs
       - name: Check interactive JavaScript syntax
         run: |
           node --input-type=module --check < assets/skills-check.js
           node --input-type=module --check < assets/step-up.js
           node --input-type=module --check < assets/book.js
           node --input-type=module --check < assets/lead-magnets.js
+          node --check assets/lib/refresh-home.js
+          node --check assets/lib/refresh-pages.js

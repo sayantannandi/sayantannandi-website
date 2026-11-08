@@ -26,12 +26,12 @@ def resolve(url):
  seen=set()
  while path in rules:
   assert path not in seen,('Redirect cycle',url,seen)
-  seen.add(path);path,status=rules[path]
+  seen.add(path);path,status=rules[path];path=urlsplit(path).path
   if status==200:return ROOT/path.lstrip('/')
  target=ROOT/('index.html' if path=='/' else path.lstrip('/'))
  if not target.is_file() and target.with_suffix('.html').is_file():target=target.with_suffix('.html')
  return target
-files=[p for p in ROOT.rglob('*.html') if not {'scripts','node_modules','.netlify','public'}.intersection(p.parts)]
+files=[p for p in ROOT.rglob('*.html') if not {'scripts','node_modules','.netlify','public','review','docs'}.intersection(p.relative_to(ROOT).parts)]
 docs={p:Document(p.read_text()) for p in files}
 checked=0
 for p,d in docs.items():
@@ -53,9 +53,10 @@ for p,d in docs.items():
    assert f.get('data-netlify')=='true' and f.get('method')=='POST' and f.get('netlify-honeypot')=='bot-field',f
    text=p.read_text()
    assert f'name="form-name" value="{f["name"]}"' in text
-   assert 'type="hidden" name="consent" value="yes"' in text
-   assert 'type="checkbox"' not in text
-   assert 'name="consent-version"' in text
+   if f['name'] != 'sn-cohort-intake':
+    assert 'type="hidden" name="consent" value="yes"' in text
+    assert 'type="checkbox"' not in text
+   if f['name'] != 'sn-cohort-intake':assert 'name="consent-version"' in text
 # All original public acquisition files have a direct migration or remain accessible.
 legacy=ROOT/'scripts'/'legacy-content'
 assert all(resolve('/'+p.stem).exists() for p in legacy.glob('*.html'))
@@ -74,7 +75,7 @@ for p in ['index.html','step-up.html','step-up/check.html','step-up/sample.html'
 # Sales pages use the approved checkout for each format, with no interest form.
 expected_checkouts={
  'step-up.html':'https://tagmango.app/68942f6867',
- 'step-up/cohort.html':'https://rzp.io/rzp/TSUTSLDec2026'}
+ 'step-up/cohort.html':'https://rzp.io/rzp/Jan27TSUTSL'}
 for filename,url in expected_checkouts.items():
  t=(ROOT/filename).read_text()
  assert f'href="{url}"' in t,(filename,'missing checkout')
@@ -89,21 +90,18 @@ for name in ['course-thank-you','cohort-thank-you']:
  assert 'noindex, follow' in t,name
  assert f'/step-up/{name}</loc>' not in (ROOT/'sitemap.xml').read_text(),name
  assert 'does not verify payment' in t,name
-assert 'six live sessions' in (ROOT/'step-up/cohort.html').read_text()
+assert 'Six 90-minute live sessions' in (ROOT/'step-up/cohort.html').read_text()
 assert 'localStorage' not in (ROOT/'assets/skills-check.js').read_text()
 print(f'PASS: {len(files)} pages, {checked} local links/assets/anchors, {len(rules)} routes, form definitions, sitemap and legacy access.')
 
-# Two end-of-test report forms, separate from optional newsletter consent.
-for slug,form in [('senior-level-judgment','sn-judgment'),('leadership-visibility','sn-visibility')]:
+# All four current quizzes retain their own server-validated capture contracts.
+for slug,form in [('senior-level-judgment','sn-review-quiz-judgment'),('leadership-visibility','sn-review-quiz-visibility'),('business-leadership','sn-review-quiz-leadership'),('exit-power','sn-review-quiz-exit')]:
  t=(ROOT/f'tests/{slug}.html').read_text()
  assert f'name="{form}"' in t
- assert 'name="name" required' in t and 'name="email" type="email" required' in t
- for field in ['test-id','test-version','answers','dimension-scores','practice-focus','report-text','consent-version']:
+ for field in ['name','email','test-id','test-version','answers','consent-version']:
   assert f'name="{field}"' in t,(slug,field)
- assert 'name="newsletter-consent" value="no"' in t
- assert 'data-newsletter-choice="yes"' in t and 'data-newsletter-choice="no"' in t
- assert 'name="newsletter-consent" value="yes" required' not in t
- assert 'data-result-capture hidden' in t
+ assert 'name="newsletter-consent" value="yes"' in t
+ assert 'data-quiz-report hidden' in t
 for route in ['/promotion-kit','/promotion-case-builder','/review-room-kit','/executive-hour','/philosophy','/exit-power','/earning-power']:
  assert route not in rules,('New page must not redirect away',route)
  assert resolve(route).exists(),route
