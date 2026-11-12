@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape
 import re, json
+from learner_quotes import learner_quotes, SLOT
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATES=ROOT/'scripts/content/full-site'
 # Keep the existing public portrait until the new image is approved for the public repository.
@@ -51,6 +52,8 @@ def build_full_site_refresh(write):
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         s=s.replace(' | Sayantan Nandi Preview',' | Sayantan Nandi').replace('Sayantan Nandi | Website Preview','Sayantan Nandi | Leadership Coaching & Workshops')
         s=s.replace('<link rel="stylesheet" href="/style.css">','<link rel="stylesheet" href="/assets/lib/refresh-base.css?v=1">').replace('<link rel="stylesheet" href="/pages.css">','<link rel="stylesheet" href="/assets/lib/refresh-pages.css?v=1">')
+        s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/flow-fixes.css?v=1"></head>',1)
+        s=s.replace(SLOT,learner_quotes(template))
         s=s.replace('/app.js','/assets/lib/refresh-home.js?v=1').replace('/pages.js','/assets/lib/refresh-pages.js?v=1')
         for old,new in URLS.items():s=s.replace(old,new)
         for old,new in ASSETS.items():s=s.replace('/assets/'+old,'/assets/images/'+new)
@@ -66,7 +69,9 @@ def build_full_site_refresh(write):
             s=re.sub(r'<button class="route-secondary" data-open-inquiry>.*?</button>','<a class="route-secondary" href="/b2b-queries#brief">Or share a short workshop brief ↗</a>',s,flags=re.S)
             s=re.sub(r'<dialog id="inquiry-dialog".*?</dialog>','',s,flags=re.S)
             # Keep the homepage free check route and all five free tools discoverable.
-            s=s.replace('</main>','<section class="section wrap" id="ladder"><p class="eyebrow">Find your starting point</p><h2>Choose a free check.</h2><div class="free-check-links"><a href="/tests/senior-level-judgment">Senior-Level Judgment Check ↗</a><a href="/tests/leadership-visibility">Leadership Visibility Check ↗</a><a href="/tests/business-leadership">Business Leadership Check ↗</a><a href="/tests/exit-power">Exit Power Check ↗</a><a href="/check">Starting Point Check ↗</a></div></section></main>')
+            s=s.replace('</main>','<section class="section wrap" id="ladder"><p class="eyebrow">Find your starting point</p><h2>Start with one free check.</h2><div class="lead-check"><div class="lead-check-card"><p class="eyebrow">Six work situations · 5 to 7 minutes</p><h3>Senior-Level Judgment Check</h3><p>When everyone wants an update, can you bring a decision? Choose your response in six situations and get a short report with one thing to practise.</p><a class="button" href="/tests/senior-level-judgment">Start the free check ↗</a></div><div class="more-checks"><h3>Or pick a narrower one</h3><a href="/tests/leadership-visibility">Leadership Visibility Check ↗</a><a href="/tests/business-leadership">Business Leadership Check ↗</a><a href="/tests/exit-power">Exit Power Check ↗</a><a href="/check">Starting Point Check ↗</a></div></div></section></main>')
+            # The newsletter can be joined on the homepage itself.
+            s=s.replace('<!--home-newsletter-form-->',forms['newsletter']).replace('</head>','<script type="module" src="/assets/step-up.js?v=5"></script></head>')
         if template in ['coaching.html','workshops.html','newsletter.html']:
             kind={'coaching.html':'coaching','workshops.html':'workshop','newsletter.html':'newsletter'}[template]
             s=re.sub(r'<form class="preview-form".*?</form>',lambda _:forms[kind],s,count=1,flags=re.S)
@@ -115,8 +120,10 @@ def build_full_site_refresh(write):
         s=s.replace('₹17,499<span>','<span data-live-price>₹17,499</span><span data-early-price>')
         s=s.replace('<strong>₹17,499 early-bird</strong>','<strong data-live-price>₹17,499 early-bird</strong>')
         # Every primary page links to policy and support pages, with the same footer.
-        s=s.replace('<a href="/refunds">Refunds</a>','<a href="/refunds">Refunds</a><a href="/help">Help & contact</a><a href="/essays">Essays</a><a href="/earning-power">Earning Power</a><a href="/exit-power">Exit Power</a>')
+        s=s.replace('<a href="/refunds">Refunds</a>','<a href="/refunds">Refunds</a><a href="/help">Help & contact</a><a href="/essays">Essays</a><a href="/earning-power">Earning Power</a><a href="/exit-power">Exit Power</a><a href="/runway">Runway calculator</a><a href="/step-up/sample">Free sample lesson</a>')
         s=s.replace('<h2>Experience from the other<br>side','<h2>Experience from the other <br>side')
+        # Some line breaks are hidden on small screens; keep a space so the words do not run together.
+        s=re.sub(r'(?<=[^\s>])<br>',' <br>',s)
         route='/' if path=='index.html' else '/'+path.removesuffix('.html')
         s=re.sub(r'<meta name="description"[^>]*>','',s)
         meta=f'<meta name="description" content="{escape(DESCRIPTIONS[template],quote=True)}"><link rel="canonical" href="https://sayantannandi.com{route}"><meta property="og:type" content="website"><meta property="og:url" content="https://sayantannandi.com{route}"><meta property="og:image" content="https://sayantannandi.com{ABOUT_PORTRAIT}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico">'

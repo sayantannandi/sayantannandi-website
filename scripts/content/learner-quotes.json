@@ -1,0 +1,17 @@
+{
+  "how_to_use": [
+    "Add real learner words here. Nothing shows on the site while this list is empty.",
+    "Each entry needs: quote (their own words, unedited), name, role (title and kind of company, no employer name unless they agreed), permission (how and when they said yes), show_on.",
+    "show_on takes any of: home, course, classroom, coaching, workshops.",
+    "An entry without a permission note is skipped by the build.",
+    "After editing, run: python3 scripts/build_site.py"
+  ],
+  "example_entry_not_shown": {
+    "quote": "Paste the learner's own sentence here.",
+    "name": "First name and initial, or full name if they agreed",
+    "role": "Senior Manager, Engineering · global capability centre",
+    "permission": "Email, 14 Feb 2027",
+    "show_on": ["home", "classroom"]
+  },
+  "quotes": []
+}
