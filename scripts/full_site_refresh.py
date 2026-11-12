@@ -23,6 +23,22 @@ DESCRIPTIONS={
 'newsletter.html':'The Optional Career, a weekly letter from Sayantan Nandi on leadership, money and the choices they make possible.',
 'workshop-overview.html':'A printable overview of STAMP, an in-person leadership workshop with Sayantan Nandi for managers and experienced professionals.'}
 
+def _icon(paths):return '<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths+'</svg>'
+ICONS={'judgment':'<path d="M7 30h12V16h13V5M19 16 8 5M19 16l12 14"/><circle cx="7" cy="30" r="3"/><circle cx="32" cy="5" r="3"/><circle cx="32" cy="31" r="3"/>',
+'visibility':'<path d="M4 20s7-11 16-11 16 11 16 11-7 11-16 11S4 20 4 20Z"/><circle cx="20" cy="20" r="5"/>',
+'business':'<path d="M5 33h30M8 27V17h7v10m5 0V10h7v17m-20-16 8-6 8 1 9-4"/>',
+'exit':'<path d="M8 34V6h20v28M14 34h22M23 20h12m-4-4 4 4-4 4"/><path d="M13 9v25"/>',
+'start':'<path d="M20 35V20m0 0L7 7m13 13L33 7M4 15V4h11M25 4h11v11"/>'}
+CHECK_ROWS=[('judgment','Earning Power','“I keep getting told to be more strategic.”','Senior-Level Judgment Check','When everyone wants an update, can you bring a decision?','/tests/senior-level-judgment'),
+('visibility','Earning Power','“My work is good. It just doesn’t get seen.”','Leadership Visibility Check','Does the impact of your work come through in the room?','/tests/leadership-visibility'),
+('business','Earning Power','“I deliver the work. I’m not asked about the business.”','Business Leadership Check','Do you own the outcome, or only the work?','/tests/business-leadership'),
+('exit','Exit Power','“I can’t afford to take a risk right now.”','Exit Power Check','If your plans changed, how much room would you have?','/tests/exit-power')]
+CHECKS='<div class="section-head"><div><p class="eyebrow">Find your starting point</p><h2>Which one sounds like you?</h2></div><p>Pick the sentence closest to your week. Each check has six questions, takes 5 to 7 minutes and ends with one thing to practise.</p></div><div class="say-grid">'+''.join(f'<a class="say-card" href="{url}"><span class="say-icon">{_icon(ICONS[key])}</span><span class="say-body"><span class="eyebrow">{power}</span><span class="say-quote">{quote}</span><span class="say-name">{name}</span><span class="say-line">{line}</span><span class="say-meta">6 questions · 5 to 7 minutes</span><span class="text-link">Take the check ↗</span></span></a>' for key,power,quote,name,line,url in CHECK_ROWS)+'</div><a class="say-strip" href="/check"><span class="say-icon">'+_icon(ICONS['start'])+'</span><span><strong>Not sure which one?</strong> The Starting Point Check looks at both sides: how your work reads at the next level and how much room you have to move. Twelve questions, about 6 minutes.</span><span class="text-link">Start there ↗</span></a></section>'
+WORKBOOK_ROWS=[('The Promotion Case Builder','10-page workbook + 3-sheet Excel','Turn the evidence from your year into a promotion case your manager can explain.','/promotion-case-builder'),
+('The Review Room Kit','8-page workbook + one-page Word template','Explain your contribution clearly before your appraisal is summarised by someone else.','/review-room-kit'),
+('The Executive Hour','6-page workbook + scripts and templates','Use an executive conversation to demonstrate your judgment.','/executive-hour')]
+WORKBOOKS='<section class="section pale" id="workbooks"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Included with the course and the Classroom</p><h2>Three workbooks for the conversations that decide things.</h2></div><p>These come with the self-paced course and the Live Leadership Classroom. Open one to see what is inside.</p></div><div class="kit-grid">'+''.join(f'<a class="kit-card" href="{url}"><span class="eyebrow">{meta}</span><h3>{name}</h3><p>{line}</p><span class="text-link">See what’s inside ↗</span></a>' for name,meta,line,url in WORKBOOK_ROWS)+'</div><p class="meta"><a href="/promotion-kit">Compare all three workbooks ↗</a></p></div></section>'
+
 def form_from(path):return re.search(r'<form\b.*?</form>',(ROOT/path).read_text(),re.S).group()
 def prepared_form(markup,kind):
     markup=re.sub(r'\sdata-demo-form="[^"]*"','',markup)
@@ -54,7 +70,9 @@ def build_full_site_refresh(write):
         s=s.replace('<link rel="stylesheet" href="/style.css">','<link rel="stylesheet" href="/assets/lib/refresh-base.css?v=1">').replace('<link rel="stylesheet" href="/pages.css">','<link rel="stylesheet" href="/assets/lib/refresh-pages.css?v=1">')
         s=s.replace('</head>','<link rel="stylesheet" href="/assets/lib/flow-fixes.css?v=1"></head>',1)
         s=s.replace(SLOT,learner_quotes(template))
-        s=s.replace('/app.js','/assets/lib/refresh-home.js?v=1').replace('/pages.js','/assets/lib/refresh-pages.js?v=1')
+        s=s.replace('<small>THE OPTIONAL CAREER</small>','<small>CAREERS · MONEY · CHOICES</small>')
+        s=s.replace('<a href="/philosophy.html">Philosophy</a><a class="button small"','<a href="/philosophy.html">Philosophy</a><a href="/newsletter.html"'+(' class="current" aria-current="page"' if template=='newsletter.html' else '')+'>Newsletter</a><a class="button small"')
+        s=s.replace('/app.js','/assets/lib/refresh-home.js?v=1').replace('/pages.js','/assets/lib/refresh-pages.js?v=2')
         for old,new in URLS.items():s=s.replace(old,new)
         for old,new in ASSETS.items():s=s.replace('/assets/'+old,'/assets/images/'+new)
         s=s.replace('https://sayantannandi.com/','/')
@@ -77,6 +95,8 @@ def build_full_site_refresh(write):
             s=re.sub(r'<form class="preview-form".*?</form>',lambda _:forms[kind],s,count=1,flags=re.S)
             if kind=='newsletter':s=s.replace('</head>','<script type="module" src="/assets/step-up.js?v=5"></script></head>')
         if template=='resources.html':
+            s=re.sub(r'<div class="section-head"><div><p class="eyebrow">Find your starting point</p>.*?<div class="check-grid">.*?</div></section>',lambda _:CHECKS,s,count=1,flags=re.S)
+            s=s.replace('</main>',WORKBOOKS+'</main>')
             # A real cover for every guide; the original gated landing pages own capture and delivery.
             cards=re.findall(r'<article data-category="[^"]+">.*?</article>',s,re.S)
             for card,g in zip(cards,guides):
@@ -117,10 +137,8 @@ def build_full_site_refresh(write):
             s=s.replace('Continue to the live enrollment page.','Secure checkout on Razorpay.').replace('Saturday live session','Saturday live session')
         if template=='workshop-overview.html':
             s=re.sub(r'<p class="demo-notice no-print">.*?</p>','',s,flags=re.S)
-        s=s.replace('₹17,499<span>','<span data-live-price>₹17,499</span><span data-early-price>')
-        s=s.replace('<strong>₹17,499 early-bird</strong>','<strong data-live-price>₹17,499 early-bird</strong>')
         # Every primary page links to policy and support pages, with the same footer.
-        s=s.replace('<a href="/refunds">Refunds</a>','<a href="/refunds">Refunds</a><a href="/help">Help & contact</a><a href="/essays">Essays</a><a href="/earning-power">Earning Power</a><a href="/exit-power">Exit Power</a><a href="/runway">Runway calculator</a><a href="/step-up/sample">Free sample lesson</a>')
+        s=s.replace('<a href="/refunds">Refunds</a>','<a href="/refunds">Refunds</a><a href="/help">Help & contact</a><a href="/essays">Essays</a><a href="/earning-power">Earning Power</a><a href="/exit-power">Exit Power</a><a href="/runway">Runway calculator</a><a href="/step-up/sample">Free sample lesson</a><a href="/promotion-kit">Workbooks</a>')
         s=s.replace('<h2>Experience from the other<br>side','<h2>Experience from the other <br>side')
         # Some line breaks are hidden on small screens; keep a space so the words do not run together.
         s=re.sub(r'(?<=[^\s>])<br>',' <br>',s)
