@@ -1,0 +1,55 @@
+/* Homepage newsletter form on the navy band */
+.newsletter-section .refresh-form{margin-top:26px;max-width:520px;padding:24px}
+.newsletter-section .refresh-form label{margin:0 0 14px}
+.newsletter-section .refresh-form p:not(.eyebrow){color:var(--muted);font-size:11px;line-height:1.6;margin-top:12px;max-width:none}
+.newsletter-section .refresh-form .button{margin-top:4px}
+.newsletter-section .refresh-form .form-status:empty{display:none}
+/* One lead check, the others as smaller links */
+.lead-check{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start;margin-top:28px}
+.lead-check-card{background:var(--pale);border:1px solid var(--line);border-radius:9px;padding:30px}
+.lead-check-card h3{margin-bottom:14px}
+.lead-check-card p:not(.eyebrow){font-size:15px;margin-bottom:22px}
+.more-checks h3{font-size:22px;margin-bottom:14px}
+.more-checks a{display:block;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--blue);text-decoration:none}
+.more-checks a:hover{text-decoration:underline}
+.philosophy-actions{justify-content:center}
+.offer .route-secondary{margin-top:14px;text-align:center}
+.talk-first{margin-top:16px;font-size:14px}
+/* Learner quotes, shown only when real quotes exist */
+.learner-quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:30px 0 18px}
+.learner-quote{border:1px solid var(--line);border-radius:8px;padding:26px;background:white;display:flex;flex-direction:column}
+.learner-quote blockquote{margin:0 0 22px;font:20px/1.5 Georgia,serif;color:var(--ink)}
+.learner-quote figcaption{margin-top:auto;font-size:12px;color:var(--muted)}
+.learner-quote figcaption strong{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
+@media (max-width:860px){.lead-check,.learner-quote-grid{grid-template-columns:1fr}}
+/* Newsletter opt-in: a normal checkbox beside its text */
+.refresh-form label.d-check,.refresh-form label.bw-consent{display:flex;flex-direction:row;align-items:flex-start;gap:10px;font-weight:400;font-size:12px;line-height:1.6}
+.refresh-form label.d-check input[type=checkbox],.refresh-form label.bw-consent input[type=checkbox]{width:18px;height:18px;min-height:0;flex:0 0 18px;margin:2px 0 0;padding:0}
+.refresh-form .optional-fields .form-row{margin-top:8px}
+/* Free resources: checks framed by what people say */
+.say-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.say-card{display:flex;gap:22px;align-items:flex-start;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:28px;background:white;transition:border-color .18s,background .18s,transform .18s}
+.say-card:hover{border-color:var(--blue);background:var(--pale);transform:translateY(-2px)}
+.say-icon{flex:0 0 56px;width:56px;height:56px;border-radius:50%;background:var(--pale);border:1px solid #c6d5ed;display:grid;place-items:center;color:var(--blue)}
+.say-card:hover .say-icon{background:white}
+.say-icon svg{width:30px;height:30px}
+.say-body{display:flex;flex-direction:column;min-width:0}
+.say-body .eyebrow{font-size:9px;margin-bottom:10px}
+.say-quote{font:25px/1.25 Georgia,serif;letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.say-name{font-size:14px;font-weight:700;color:var(--ink)}
+.say-line{font-size:14px;color:var(--muted);margin-top:4px}
+.say-meta{font-size:11px;color:var(--muted);margin:14px 0 16px}
+.say-strip{display:flex;gap:22px;align-items:center;margin-top:20px;padding:22px 28px;border:1px solid #bfd0f5;border-radius:9px;background:var(--pale);text-decoration:none;font-size:14px;color:var(--muted)}
+.say-strip strong{color:var(--ink)}
+.say-strip .say-icon{background:white}
+.say-strip .text-link{margin-left:auto;white-space:nowrap}
+.kit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:22px}
+.kit-card{display:flex;flex-direction:column;text-decoration:none;background:white;border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:7px;padding:26px}
+.kit-card:hover{border-color:var(--blue)}
+.kit-card .eyebrow{font-size:9px;margin-bottom:14px}
+.kit-card h3{font-size:26px;margin-bottom:14px}
+.kit-card p{font-size:14px;margin-bottom:22px}
+.kit-card .text-link{margin-top:auto}
+.material-grid p a{color:var(--blue)}
+.equation-symbol svg{display:block}
+@media (max-width:860px){.say-grid,.kit-grid{grid-template-columns:1fr}.say-strip{flex-wrap:wrap}.say-strip .text-link{margin-left:0}.say-card{padding:22px;gap:16px}.say-quote{font-size:22px}}

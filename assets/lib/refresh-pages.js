@@ -14,7 +14,7 @@ $$('[data-situation]').forEach(b=>b.addEventListener('click',()=>{const s=$('sel
 const zoom=document.createElement('dialog');zoom.className='zoom-dialog';zoom.innerHTML='<button aria-label="Close enlarged workbook">Close ×</button><img alt="Enlarged actual workbook page">';document.body.append(zoom);zoom.querySelector('button').addEventListener('click',()=>zoom.close());$$('[data-enlarge]').forEach(b=>b.addEventListener('click',()=>{zoom.querySelector('img').src=b.dataset.enlarge;zoom.showModal()}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.dropdown[open]').forEach(d=>d.open=false);$('#navigation')?.classList.remove('is-open');$('.mobile-menu')?.setAttribute('aria-expanded','false')}});
 const enrollmentCloses=Date.parse('2027-01-06T23:59:00+05:30');
-if(Date.now()>=Date.parse('2026-11-29T00:00:00+05:30')){$$('[data-live-price]').forEach(e=>e.textContent='₹19,999');$$('[data-early-price]').forEach(e=>e.textContent='Standard enrollment fee');}
+
 if(Date.now()>=enrollmentCloses){$$('[data-classroom-checkout]').forEach(a=>{a.href='/conversation';a.textContent='Ask about the next Classroom ↗'});}
 for(const form of $$('[data-refresh-form]')){
  let sending=false;

@@ -71,3 +71,15 @@ The philosophy page uses the existing, visually verified assets/images/home-fram
 ## Book page
 
 `/book` introduces Earning Power x Exit Power = Optionality and uses the supplied front cover. Purchase settings live in `scripts/content/book-order.json`. The default state collects book-announcement requests, not paid orders. See `docs/BOOK_PREORDER_SETUP.md` for checkout activation, delivery terms and the separate Netlify form.
+
+## Flow fixes, 12 November 2026
+
+- The homepage carries the newsletter form, leads with one free check, links the free first module and shows the before/after example ahead of the two routes.
+- The older pages use the same menu names as the refreshed pages. Their footer also links the runway calculator and the free sample lesson.
+- The call form needs only a name and email; the three questions are optional. The coaching brief and the workshop brief are shorter. The workshop page links a one-page PDF (`assets/downloads/STAMP_Workshop_Overview.pdf`), printed from `/workshop-overview`. Print it again if that page changes.
+- Learner quotes live in `scripts/content/learner-quotes.json`. The list is empty, so nothing shows. Add real words with a permission note, then run `python3 scripts/build_site.py`. An entry without a permission note is skipped.
+- Shared styles for these changes are in `assets/lib/flow-fixes.css`.
+- The Live Leadership Classroom has one price, ₹17,499. The early-bird wording and the date-based price switch in `assets/lib/refresh-pages.js` are gone.
+- The line under the site name reads "Careers · Money · Choices" on every page. To change or blank it, edit `TAG`-style text in `scripts/site_demo.py` (older pages) and the brand replacement in `scripts/full_site_refresh.py` (refreshed pages).
+- Newsletter is in the top menu on every page. The three workbooks are linked from the course, the Classroom, the Free resources page and the footers.
+- The Free resources page frames each check by the sentence a reader would say, with an icon.

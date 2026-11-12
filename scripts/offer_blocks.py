@@ -73,7 +73,7 @@ def compare_table(current=None, cohort_href='/step-up/cohort'):
         'coaching': f'<a class="{"d-btn" if current == "coaching" else "d-text-link"}" href="{"#fit" if current == "coaching" else "/get-coached"}">Find out if we’re a fit ↗</a>',
     }
     head = (f'<th scope="col"{cls("course")}>{badge["course"]}<small class="ox-prog">The Step Up</small><b>Self-paced</b><span>₹8,999 · the lessons, at your own pace</span></th>'
-            f'<th scope="col"{cls("cohort")}>{badge["cohort"]}<small class="ox-prog">The Step Up</small><b>Live Classroom</b><span>₹17,499 early-bird · 6 live Saturdays</span></th>'
+            f'<th scope="col"{cls("cohort")}>{badge["cohort"]}<small class="ox-prog">The Step Up</small><b>Live Classroom</b><span>₹17,499 · 6 live Saturdays</span></th>'
             f'<th scope="col"{cls("coaching")}>{badge["coaching"]}<small class="ox-prog">The Step Up</small><b>1:1 Coaching</b><span>₹49,999 · six 1:1 sessions, plus the Live Classroom</span></th>')
     foot = '<tr class="ox-cta-row"><th scope="row"></th>' + ''.join(f'<td{cls(c)}>{cta[c]}</td>' for c in cols) + '</tr>'
     return (f'<div class="ox-table-wrap"><table class="ox-compare"><thead><tr><th scope="col"><span class="ox-kicker">Three ways to work with me</span></th>{head}</tr></thead>'
