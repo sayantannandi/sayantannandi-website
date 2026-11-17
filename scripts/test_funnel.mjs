@@ -22,7 +22,7 @@ function apiFixture(status='active'){
     return person;
   };return {api,calls,person:()=>person};
 }
-const ids=Object.fromEntries(['letter','judgment','visibility','customer','course','cohort'].map(x=>[x,x]));
+const ids=Object.fromEntries(['letter','judgment','visibility','customer','course','cohort','downloads','oc_check'].map(x=>[x,x]));
 const env={SN_FUNNEL_MODE:'live',SN_DELIVERY_RELEASED:'false',SN_GROUP_IDS:JSON.stringify(ids),SN_COURSE_ACCESS_URL:'https://example.com/access'};
 function form(source='judgment',consent='no') {return {'form-name':'sn-'+source,name:'Asha',email:'asha@example.com','newsletter-consent':consent,consent:'yes','test-id':source,'test-version':tests[source]?.version,answers:JSON.stringify(tests[source]?.questions.map(q=>q.options[0].id))};}
 test('server rejects forged test data and ignores client scores',()=>{
@@ -88,18 +88,31 @@ test('report HTML escapes submitted content and API errors never leak provider b
   assert.equal(escapeHTML('<img src=x onerror="bad">'),'&lt;img src=x onerror=&quot;bad&quot;&gt;');
   const api=mailerClient('test',async()=>new Response('sensitive response',{status:401}));await assert.rejects(api('subscribers'),/^Error: mailerlite_401$/);
 });
-test('guide requests sync to their own group, with newsletters only on explicit opt-in',async()=>{
+test('guide requests join the one downloads group, with newsletters only on explicit opt-in',async()=>{
  const d={'form-name':'sn-guide-the-update-your-vp-can-act-on','guide-id':'the-update-your-vp-can-act-on',name:'Asha',email:'asha@example.com','newsletter-consent':'no'};
  for(const consent of ['no','yes']){
   const job=formJob({...d,'newsletter-consent':consent});
   assert.equal(job.consent,consent==='yes');
   const s=new Store(),a=apiFixture();await enqueue(s,job);
-  assert.equal(await processJob(s,job,env,a.api),'paused');
+  assert.equal(await processJob(s,job,env,a.api),'complete');
   assert.equal(a.person().groups.some(g=>g.id==='letter'),consent==='yes');
+  assert(a.person().groups.some(g=>g.id==='downloads'));
   assert.equal(a.person().groups.length,consent==='yes'?2:1);
-  assert(await s.get('pending/'+job.id));
  }
  assert.throws(()=>formJob({...d,'guide-id':'forged'}),/invalid_guide/);
+});
+
+test('the Optional Career Check stores scores and box, and rejects bad numbers',async()=>{
+ const d={'form-name':'sn-oc-check',name:'Asha',email:'asha@example.com','newsletter-consent':'no',ep:'28',habits:'7',months:'5'};
+ const job=formJob(d);
+ const s=new Store(),a=apiFixture();await enqueue(s,job);
+ assert.equal(await processJob(s,job,env,a.api),'complete');
+ const f=a.person().fields;
+ assert.equal(f.sn_oc_box,'Trapped Earner');assert.equal(f.sn_oc_ep,'28 of 36');assert.equal(f.sn_oc_xp,'8 of 24');
+ assert(a.person().groups.some(g=>g.id==='oc_check'));
+ assert(!a.person().groups.some(g=>g.id==='letter'));
+ assert.equal(formJob({...d,months:''}).scores.months,null);
+ for(const bad of [{ep:'37'},{ep:'2.5'},{habits:'19'},{months:'-1'},{months:'abc'}]) assert.throws(()=>formJob({...d,...bad}));
 });
 
 test('every current quiz form computes the matching server report without newsletter enrollment',async()=>{

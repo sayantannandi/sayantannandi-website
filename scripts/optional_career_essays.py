@@ -207,4 +207,22 @@ ESSAYS = [{'body': '<p>Most people in their 30s who stall did nothing wrong. The
  'shelf': 'Depend less',
  'slug': 'how-much-rides-on-one-company',
  'title': 'How much of your life rides on one company',
- 'turn': 'If your company had a bad year, how many of your money streams would fall at the same time?'}]
+ 'turn': 'If your company had a bad year, how many of your money streams would fall at the same time?'},
+{'body': '<p>I rarely had to ask for more pay. For most of my career I was promoted most cycles, and each promotion came with a raise. It felt like moving forward. On paper, it was.</p>\n'
+         '<p>Then, at 33, after the best year of my career so far, I divided what we had by what our household cost each month. The answer was eight. Eight months of runway, after three years in '
+         'which my income had nearly doubled.</p>\n'
+         '<p>Nobody had taken the money. We had spent it, a little at a time, in ways that each made sense. A bigger flat, because the old one felt small for the new title. A better car. Holidays '
+         'that matched the people we now worked with. Every raise found a home within a few months.</p>\n'
+         '<p>That is why a raise is worth less than it looks. It is a number on your salary slip. What it buys you depends on where it goes next.</p>\n'
+         '<p>Take a made-up manager on ₹2,00,000 a month, with ₹16 lakh saved and costs of ₹2,00,000 a month. That is 8 months. She is promoted, and her pay rises by ₹40,000 a month. If her costs '
+         'rise by ₹40,000 too, her runway falls to 6.7 months. She earns more and could last a shorter time.</p>\n'
+         '<p>If she moves ₹20,000 of the raise out on salary day and lets her costs rise by the other ₹20,000, a year later she has ₹18.4 lakh against costs of ₹2,20,000. That is 8.4 months, and '
+         'climbing.</p>\n'
+         '<p>So the promotion is half the work. The other half is deciding, before the first new salary lands, how much of the raise is allowed to become a new cost. That decision does not need a '
+         'meeting with anyone.</p>',
+ 'dek': 'I was promoted most cycles. My income nearly doubled in three years. My runway was eight months.',
+ 'id': 'e10',
+ 'shelf': 'Earn more',
+ 'slug': 'a-raise-is-worth-less-than-it-looks',
+ 'title': 'A raise is worth less than it looks',
+ 'turn': 'Think of your last raise. How much of it is still yours today, and how much became a new cost?'}]

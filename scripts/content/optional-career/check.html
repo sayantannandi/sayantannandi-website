@@ -98,6 +98,11 @@
     .area { grid-template-columns: minmax(0, 1fr) 70px 30px; }
     .score b { font-size: 46px; }
   }
+  #send-result .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  #send-result label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; color: var(--navy); font-size: 15px; }
+  #send-result label.small { flex-direction: row; gap: 8px; font-weight: 400; color: var(--muted); }
+  #send-result input[name=name], #send-result input[name=email] { font: inherit; font-weight: 400; padding: 11px 12px; border: 1px solid #D9E0EB; border-radius: 6px; width: 100%; max-width: none; flex: none; height: auto; }
+  @media (max-width: 560px) { #send-result .frow { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -474,8 +479,33 @@ function renderResult() {
     head.push(el("p", { class: "small muted", text: "Top row: Earning Power of " + LEVEL_CUT + " or more. Right column: Exit Power of " + (has ? EXIT_CUT : EXIT_CUT_NO_RUNWAY) + " or more. Runway adds up to 6 points." }));
     if (!has) head.push(el("button", { class: "linkbtn", type: "button", text: "Add my runway amounts", onclick: function () { state.screen = "runway"; render(); } }));
   }
+  var sendBox = el("form", { class: "box stack", id: "send-result", name: "sn-oc-check", method: "POST", action: "/registration-received" }, [
+    el("h3", { text: "Email me my result" }),
+    el("p", { text: "Get your two scores, your box and what to work on first in your inbox, so you can come back to them." }),
+    el("div", { class: "frow" }, [
+      el("label", {}, [document.createTextNode("First name"), el("input", { name: "name", required: "required", maxlength: "100", autocomplete: "given-name", placeholder: "Your first name" })]),
+      el("label", {}, [document.createTextNode("Email address"), el("input", { name: "email", type: "email", required: "required", maxlength: "254", autocomplete: "email", placeholder: "you@example.com" })])
+    ]),
+    el("label", { class: "small muted" }, [el("input", { type: "checkbox", name: "newsletter-consent", value: "yes" }), document.createTextNode(" Also send me The Optional Career, the weekly letter. I can unsubscribe anytime.")]),
+    el("button", { class: "btn", type: "submit", text: "Email my result" }),
+    el("p", { class: "small muted", id: "send-status", role: "status", "aria-live": "polite" }),
+    el("p", { class: "small muted" }, [document.createTextNode("Only your two totals, your runway and your email are saved. "), el("a", { href: "/privacy", text: "Privacy" })])
+  ]);
+  sendBox.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = sendBox, st = document.getElementById("send-status"), btn = f.querySelector("button");
+    if (!f.reportValidity()) return;
+    var body = new URLSearchParams({ "form-name": "sn-oc-check", "sn-form": "sn-oc-check", "consent-version": "oc-check-2026-11-17",
+      name: f.name.value.trim(), email: f.email.value.trim(), "newsletter-consent": f["newsletter-consent"].checked ? "yes" : "no",
+      ep: String(total), habits: String(xsum), months: has ? String(Math.round(state.months * 10) / 10) : "" });
+    btn.disabled = true; st.textContent = "Sending...";
+    fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() })
+      .then(function (r) { if (!r.ok) throw new Error(); f.replaceChildren(el("h3", { text: "Sent. Check your inbox in a few minutes." }), el("p", { class: "small muted", text: "If it is not there, look in the promotions or spam folder." })); })
+      .catch(function () { btn.disabled = false; st.textContent = "That did not go through. Please try again."; });
+  });
   var nodes = [
     el("div", { class: "stack" }, head),
+    sendBox,
     el("div", { class: "stack" }, [
       el("h3", { text: "Your level: " + band.name }),
       el("p", { text: band.text })
@@ -564,5 +594,6 @@ function render() {
 reset();
 render();
 </script>
+<form name="sn-oc-check" data-netlify="true" netlify-honeypot="bot-field" hidden><input type="hidden" name="form-name" value="sn-oc-check"><input name="sn-form"><input name="consent-version"><input name="name"><input name="email"><input name="newsletter-consent"><input name="ep"><input name="habits"><input name="months"><input name="bot-field"></form>
 </body>
 </html>
