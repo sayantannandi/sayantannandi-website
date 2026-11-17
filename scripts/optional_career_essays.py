@@ -151,4 +151,60 @@ ESSAYS = [{'body': '<p>Most people in their 30s who stall did nothing wrong. The
   'shelf': 'Choose',
   'slug': 'staying-is-a-choice-too',
   'title': 'Staying is a choice too',
-  'turn': 'If you had two years of runway and one good offer in hand, would you still be in your current job on Monday? What would you do differently there?'}]
+  'turn': 'If you had two years of runway and one good offer in hand, would you still be in your current job on Monday? What would you do differently there?'},
+{'body': '<p>The first time a boss told me to be more strategic, I nodded as if I understood. I did not. I walked out, decided it meant something about the bigger picture, and used the word '
+         '"holistic" about sixteen times the next week. Nothing changed, except that I was now vague as well.</p>\n'
+         '<p>The feedback is fair. It is just hard to act on, because it sounds like an adjective instead of an instruction. Here is the instruction. "Be more strategic" means: I am paying you for '
+         'the steps below, and I want to see evidence of the next one. That evidence comes in a few simple moves. Three matter most.</p>\n'
+         '<p><b>Say what you will not do.</b> I once walked into a review with nine initiatives, color-coded, with a chart that took most of a weekend. The senior leader looked at it for a while and '
+         'asked, "What did you take off this list?" Nothing. Then she said, "A plan that contains everything is just a wish list with dates." Cut to three. Under each thing you cut, write one line '
+         'on what you accept will not happen.</p>\n'
+         '<p><b>Price it in money, not activity.</b> "The platform has technical debt" is true, and nobody can act on it. "We lose about 25 engineer-weeks a quarter to rework, roughly ₹76 lakh a '
+         'year" is the same fact in the currency the room thinks in.</p>\n'
+         '<p><b>Hand over a decision, not a situation.</b> "We are three weeks behind, and working through it" is a weather report. "We will miss March. Three options. I would take the second, and I '
+         'need a decision by Friday" is a recommendation the room can say yes or no to.</p>\n'
+         '<p>None of this needs a new title. It needs a different thing leaving your desk. The full set of moves is in chapter seven of the book.</p>',
+ 'dek': 'The most common feedback good managers get, and the least explained. Three moves you can test this week.',
+ 'id': 'e4',
+ 'shelf': 'Earn more',
+ 'slug': 'be-more-strategic-in-plain-words',
+ 'title': 'Be more strategic, in plain words',
+ 'turn': 'Take the plan you are working on now. What would you cut, and what are you accepting by cutting it?'},
+{'body': '<p>Most big purchases pass one test: can I afford the EMI on my salary? It is the wrong test, because it assumes the salary never stops.</p>\n'
+         '<p>The months test asks something else. If I buy this, how many months of runway do I give up? Runway is what you can reach, divided by what your household must pay each month.</p>\n'
+         '<p>A few years ago I needed a car. The obvious choice was a brand new SUV, the "safer" one, in line with what my peers drove. About ₹20 lakh. On my numbers then, that was almost 14 months '
+         'of runway.</p>\n'
+         '<p>A second-hand car of the same build cost about half. Same size, same safety. That one decision kept roughly 7 months of runway in my account. I have not missed the new-car smell '
+         'once.</p>\n'
+         '<p>Then I ran the same sum on buying a house. Down payment, stamp duty, the EMI added to our monthly costs. It came to more than 200 months of runway.</p>\n'
+         '<p>So I never bought one. We still live on rent, and the money a house would have taken stays invested and keeps compounding. That is my choice for my family, not a rule. A house can be '
+         'worth it. Many people have reasons that go beyond the sum, and those reasons are real.</p>\n'
+         '<p>The point is to see the price before you pay it. An EMI tells you whether you can pay this month. The months test tells you what the purchase does to your freedom to say no at work for '
+         'years.</p>',
+ 'dek': 'A safer new SUV would have cost me 14 months of runway. A house, more than 200.',
+ 'id': 'e7',
+ 'shelf': 'Depend less',
+ 'slug': 'price-a-purchase-in-months',
+ 'title': 'Price a purchase in months, not EMIs',
+ 'turn': 'Pick the next big thing you plan to buy. How many months of runway does it cost you?'},
+{'body': '<p>Most of us would never put all our savings into one company. Many of us have done it anyway, because the company is our employer.</p>\n'
+         '<p>When I worked at Flipkart, most people around me held stock options. I had some too. What struck me was how many colleagues had placed their whole future on those options. The house, '
+         "the children's education, the plan to stop working one day: all of it waited on one company's shares paying out.</p>\n"
+         '<p>My runway was low at the time. I could not afford that bet, and I did not want to make it. So I worked on depending less on two things at once: the salary, and the options. I counted '
+         'the options as a bonus if they came, not as the plan.</p>\n'
+         '<p>Later, at another large company, I held ESOPs again. I saw the same pattern one level up. Senior leaders spending most of their salary, and counting on the ESOPs to fund their '
+         'retirement.</p>\n'
+         '<p>Here is why it worries me. If the company has a bad year, everything moves together. The bonus shrinks. The stock falls. The job feels less safe. And that is the year you would most '
+         'need each of them to hold. This has nothing to do with whether the company is good. Good companies have bad years.</p>\n'
+         '<p>I am not telling you what to hold or sell. That depends on your taxes and your plans, and it is a question for a registered adviser. I am telling you what to count:</p>\n'
+         '<ol class="list">\n'
+         '<li>The share of your household income that comes from one employer.</li>\n'
+         "<li>The share of what you own, outside your home, that sits in that employer's stock.</li>\n"
+         '<li>The number of people outside the company who might pay for your work.</li>\n'
+         '</ol>',
+ 'dek': 'At Flipkart, many colleagues bet their whole future on stock options. I decided not to.',
+ 'id': 'e8',
+ 'shelf': 'Depend less',
+ 'slug': 'how-much-rides-on-one-company',
+ 'title': 'How much of your life rides on one company',
+ 'turn': 'If your company had a bad year, how many of your money streams would fall at the same time?'}]

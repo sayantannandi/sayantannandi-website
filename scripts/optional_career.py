@@ -7,7 +7,8 @@ Forms keep the existing sn-letter contract. Every other page is left as it was.
 from pathlib import Path
 from html import escape
 import re
-from optional_career_essays import ESSAYS
+from optional_career_essays import ESSAYS as _ESSAYS
+ESSAYS = sorted(_ESSAYS, key=lambda e: int(e['id'][1:]))
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
