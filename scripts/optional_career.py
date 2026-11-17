@@ -32,7 +32,7 @@ def shell(route, title, desc, body, image='/assets/oc/portrait.webp'):
     <span><b style="color:var(--navy)">The Optional Career</b>: one short letter every Thursday on what the market pays you, and how many months you could last without it. <a href="/newsletter">Subscribe</a></span>
     <span style="flex-basis:100%">{SEBI}</span>
     <span>More: <a href="/earning-power">Earning Power</a> · <a href="/exit-power">Exit Power</a> · <a href="/philosophy">Philosophy</a> · <a href="/tests/senior-level-judgment">Senior-Level Judgment Check</a> · <a href="/worksheets">Free worksheets</a></span>
-    <span><a href="/for-companies">For companies</a> · <a href="/conversation">Talk</a> · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> · <a href="/refunds">Refunds</a></span>
+    <span><a href="/conversation">Talk</a> · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a> · <a href="/refunds">Refunds</a></span>
   </div></footer>
 </div></body></html>'''
 
@@ -86,7 +86,6 @@ def fix_redirects(write):
         if parts and parts[0] in drop:
             continue
         lines.append(line)
-    lines += ['/companies /for-companies 301!']
     write('_redirects', '\n'.join(lines) + '\n')
 
 
@@ -97,10 +96,9 @@ def build_optional_career(write):
     write('about.html', shell('/about', 'About Sayantan Nandi', 'Former IT Director at Schneider Electric. Sat in promotion reviews for more than 100 leaders. Took his own runway from 8 months to more than 250.', read('about.html')))
     write('optional-career-check.html', read('check.html'))
     write('book.html', shell('/book', 'Earning Power × Exit Power = Optionality: the book', 'First make your time valuable, then make it yours. The book on the two numbers that decide how many choices you have at work. Read the prologue and first chapter free.', read('book.html'), image='/assets/oc/book-cover.webp') + '')
-    write('for-companies.html', shell('/for-companies', 'For companies: stronger middle managers', 'Two programs for your people: Leaders of tomorrow, for managers stuck at one level, and Money clarity for leaders. Online, at your office, or at a camp in the hills.', read('companies.html')))
     fix_redirects(write)
     write('learn.html', shell('/learn', 'Learn: short essays on earning more and depending less', 'Free essays on getting past the middle-management ceiling, turning raises into runway, and choosing what comes next.', learn_hub()))
-    routes = ['/course', '/learn', '/optional-career-check', '/book', '/for-companies']
+    routes = ['/course', '/learn', '/optional-career-check', '/book']
     for i, e in enumerate(ESSAYS):
         write(f'learn/{e["slug"]}.html', shell(f'/learn/{e["slug"]}', e['title'], e['dek'], essay_page(i, e), image=f'/assets/oc/essays/{e["id"]}.svg'))
         routes.append(f'/learn/{e["slug"]}')
