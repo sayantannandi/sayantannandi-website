@@ -435,3 +435,9 @@
   .agechart .agemob { display: none; }
   @media (max-width: 640px) { .agechart .agedesk { display: none; } .agechart .agemob { display: block; } }
   .trapfig svg { max-width: 760px; margin: 0 auto; }
+  .proof { font-size: 14.5px; color: var(--muted); margin-top: -6px; }
+  .trapfig svg { max-width: 900px; }
+  .trapfig .evlist { display: none; list-style: none; padding: 0; margin: 10px 0 0; font-size: 15px; color: var(--ink); }
+  .trapfig .evlist li { padding: 4px 0; border-bottom: 1px solid var(--line); }
+  .trapfig .evlist b { display: inline-block; width: 32px; color: var(--navy); }
+  @media (max-width: 640px) { .trapfig .ev { display: none; } .trapfig .evlist { display: block; } }

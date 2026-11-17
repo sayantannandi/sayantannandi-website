@@ -24,11 +24,11 @@ def shell(route, title, desc, body, image='/assets/oc/portrait.webp'):
     nav = ''.join(f'<a href="{u}"' + (' aria-current="page"' if route == u or route.startswith(u + '/') else '') + f'>{l}</a>' for u, l in NAV)
     cur = ' aria-current="page"' if route == '/' else ''
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=3"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=4"></head>
 <body><a href="#main" class="skip">Skip to content</a>
 <div id="site">
   <header class="sitehead"><div class="in"><a class="brand" href="/"{cur}>Sayantan Nandi</a><nav class="nav" aria-label="Main navigation">{nav}<a class="cta" href="/optional-career-check">Take the check</a></nav></div></header>
-  <main id="main">{body}</main>
+  <main id="main">{body}</main><script src="/assets/oc/track.js?v=1" defer></script>
   <footer class="foot"><div class="in">
     <span><b style="color:var(--navy)">The Optional Career</b>: one short letter every Thursday on what the market pays you, and how many months you could last without it. <a href="/newsletter">Subscribe</a></span>
     <span style="flex-basis:100%">{SEBI}</span>
@@ -93,7 +93,7 @@ def fix_redirects(write):
 def build_optional_career(write):
     read = lambda n: (CONTENT / n).read_text(encoding='utf-8')
     write('index.html', shell('/', 'Earn more. Depend less. Choose what comes next', 'For managers who are good at their job and stuck at one level, with every raise already spent. The skills that take you past the ceiling, and the arithmetic that makes work a choice.', read('home.html')))
-    write('course.html', shell('/course', 'The Optional Career: the course', 'One path in eight weeks: five on earning more, two on depending less, one on what the choice is for.', read('course.html')))
+    write('course.html', shell('/course', 'The Optional Career: the course', 'One path in twelve sessions: eight on earning more, four on depending less, ending in your own choice.', read('course.html')))
     write('about.html', shell('/about', 'About Sayantan Nandi', 'Former IT Director at Schneider Electric. Sat in promotion reviews for more than 100 leaders. Took his own runway from 8 months to more than 250.', read('about.html')))
     write('optional-career-check.html', read('check.html'))
     write('book.html', shell('/book', 'Earning Power × Exit Power = Optionality: the book', 'First make your time valuable, then make it yours. The book on the two numbers that decide how many choices you have at work. Read the prologue and first chapter free.', read('book.html'), image='/assets/oc/book-cover.webp') + '')

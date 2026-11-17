@@ -314,6 +314,7 @@ function renderIntro() {
     el("div", { class: "stack" }, [
       el("h2", { style: "font-size:clamp(30px,5vw,40px)", text: "The Optional Career Check" }),
       el("p", { text: "Two scores in about eight minutes. For managers who want to get past the ceiling, and to turn their raises into choices." }),
+      el("p", { class: "lead", text: "Twelve questions on how you work, six on your money." }),
       el("p", { text: "Part one is twelve questions about how you work. It gives your Earning Power score. Part two is six questions about your money habits and two amounts. It gives your Exit Power score and your runway in months." }),
       el("p", { class: "muted", text: "Six questions ask what you did last time. Answer for what happened, not what you would like to have done. Six are short cases. Pick what you would send or say." })
     ]),
@@ -324,8 +325,8 @@ function renderIntro() {
 
 var DEMO = "";
 var EDITIONS = {
-  "new": { tag: "The course", name: "The Optional Career course", text: "One path in eight weeks. The first four, on the skills that help you earn more, are open now.", offer: true },
-  "exp": { tag: "The course", name: "The Optional Career course", text: "One path in eight weeks. With 12 or more years behind you, the weeks on depending less will matter most.", offer: true },
+  "new": { tag: "The course", name: "The Optional Career course", text: "One path in twelve sessions: eight on earning more, four on depending less.", offer: true },
+  "exp": { tag: "The course", name: "The Optional Career course", text: "One path in twelve sessions. With 12 or more years behind you, the four sessions on depending less will matter most.", offer: true },
   "under": { tag: "About the course", name: "Start with the free lessons", text: "The course is written for people with about 5 to 20 years of work experience, and its examples assume you already run a team or a workstream. Your result is still yours to use. For now, the free videos are the better place to start.", link: ["See the free lessons", "/learn"] },
   "over": { tag: "About the course", name: "The course is set below your stage", text: "The course is written for people with about 5 to 20 years of work experience. With more than 22, you are past the level its examples are set at. Your result may still be useful, and the book deals with the questions that matter more where you are.", link: ["Read about the book", "/book"] }
 };
