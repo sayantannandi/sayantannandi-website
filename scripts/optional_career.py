@@ -24,7 +24,7 @@ def shell(route, title, desc, body, image='/assets/oc/portrait.webp'):
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=1"></head>
 <body><a href="#main" class="skip">Skip to content</a>
 <div id="site">
-  <header class="sitehead"><div class="in"><a class="brand" href="/"{cur}>Sayantan Nandi</a><nav class="nav" aria-label="Site">{nav}<a class="cta" href="/check">Take the check</a></nav></div></header>
+  <header class="sitehead"><div class="in"><a class="brand" href="/"{cur}>Sayantan Nandi</a><nav class="nav" aria-label="Main navigation">{nav}<a class="cta" href="/optional-career-check">Take the check</a></nav></div></header>
   <main id="main">{body}</main>
   <footer class="foot"><div class="in">
     <span><b style="color:var(--navy)">The Optional Career</b>, the weekly letter on careers, money and the decisions that create more choices. <a href="/newsletter">Subscribe</a></span>
@@ -56,7 +56,7 @@ def essay_page(i, e):
             f'<span class="tag">{e["shelf"]} &middot; essay {i + 1} of {len(ESSAYS)}</span><h1>{e["title"]}</h1><p class="lead">{e["dek"]}</p>'
             f'<img src="/assets/oc/essays/{e["id"]}.svg" alt="" width="1200" height="675">{body}'
             f'<div class="turn"><b>Your turn</b><p>{e["turn"]}</p></div>'
-            f'<div class="row"><a class="btn" href="/check">Find your two scores</a>{after}</div></article></div>')
+            f'<div class="row"><a class="btn" href="/optional-career-check">Find your two scores</a>{after}</div></article></div>')
 
 
 def build_optional_career(write):
@@ -64,9 +64,9 @@ def build_optional_career(write):
     write('index.html', shell('/', 'Earn more. Depend less. Choose what comes next', 'For managers who are good at their job and stuck at one level, with every raise already spent. The skills that take you past the ceiling, and the arithmetic that makes work a choice.', read('home.html')))
     write('course.html', shell('/course', 'The Optional Career: the course', 'One path in eight steps. The first four, on the skills that help you earn more, are open now as The Step Up.', read('course.html')))
     write('about.html', shell('/about', 'About Sayantan Nandi', 'Former IT Director at Schneider Electric. Sat in promotion reviews for more than 100 leaders. Took his own runway from 8 months to more than 250.', read('about.html')))
-    write('check.html', read('check.html'))
+    write('optional-career-check.html', read('check.html'))
     write('learn.html', shell('/learn', 'Learn: short essays on earning more and depending less', 'Free essays on getting past the middle-management ceiling, turning raises into runway, and choosing what comes next.', learn_hub()))
-    routes = ['/course', '/learn']
+    routes = ['/course', '/learn', '/optional-career-check']
     for i, e in enumerate(ESSAYS):
         write(f'learn/{e["slug"]}.html', shell(f'/learn/{e["slug"]}', e['title'], e['dek'], essay_page(i, e), image=f'/assets/oc/essays/{e["id"]}.svg'))
         routes.append(f'/learn/{e["slug"]}')
