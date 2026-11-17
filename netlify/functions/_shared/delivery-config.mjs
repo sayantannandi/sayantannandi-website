@@ -33,9 +33,12 @@ export const GROUP_IDS = {
   "guide_passed-over-what-to-ask": "202806946700461218",
   "guide_say-no-without-losing-trust": "202806956687099623",
   "guide_capture-your-review-evidence": "202806965875770724",
-  "qa_delivery_20261031": "202806974751966642"
+  "qa_delivery_20261031": "202806974751966642",
+  "downloads": "204374577622550265",
+  "oc_check": "204374578254841327"
 };
 // New copy is staged for the author's review. Existing approved newsletter and report flows stay live.
 export const DELIVERY_RELEASED = false;
-export const STAGED_SOURCES = new Set(['exit','leadership','starting_point','book_interest','free_chapter','worksheets','coaching','call','cohort_intake','next_cohort','free_guide']);
-export const requestGroup = job => job.source === 'free_guide' ? 'guide_'+job.guide : job.source;
+export const STAGED_SOURCES = new Set(['exit','leadership','starting_point','free_chapter','worksheets','coaching','call','cohort_intake','next_cohort']);
+// The Optional Career site: every guide and the book sample go to one downloads email.
+export const requestGroup = job => ['free_guide','book_interest'].includes(job.source) ? 'downloads' : job.source;

@@ -5,9 +5,10 @@ import {tests} from '../../../assets/lead-magnet-data.mjs';
 import {evaluate, reportText} from '../../../assets/lead-magnet-engine.mjs';
 import {reviewTests,evaluateReview,reviewReport} from '../../../assets/lib/site-demo-quiz.mjs';
 import {GROUP_IDS,STAGED_SOURCES,requestGroup} from './delivery-config.mjs';
+import {ocResult} from '../../../assets/oc/check-result.mjs';
 
 export const FORMS = {'sn-letter':'letter','sn-judgment':'judgment','sn-visibility':'visibility','sn-free-chapter':'free_chapter','sn-worksheets':'worksheets','sn-starting-point':'starting_point','sn-next-cohort':'next_cohort'};
-Object.assign(FORMS, {'sn-review-quiz-judgment':'judgment','sn-review-quiz-visibility':'visibility','sn-review-quiz-exit':'exit','sn-review-quiz-leadership':'leadership','sn-review-book-interest':'book_interest','sn-book-interest':'book_interest','sn-b2b-inquiry':'b2b','sn-review-coaching':'coaching','sn-review-call':'call','sn-cohort-intake':'cohort_intake'});
+Object.assign(FORMS, {'sn-review-quiz-judgment':'judgment','sn-review-quiz-visibility':'visibility','sn-review-quiz-exit':'exit','sn-review-quiz-leadership':'leadership','sn-review-book-interest':'book_interest','sn-book-interest':'book_interest','sn-b2b-inquiry':'b2b','sn-review-coaching':'coaching','sn-review-call':'call','sn-cohort-intake':'cohort_intake','sn-oc-check':'oc_check'});
 export const GUIDE_IDS = ['the-update-your-vp-can-act-on','be-more-strategic','months-of-choice','passed-over-what-to-ask','say-no-without-losing-trust','capture-your-review-evidence'];
 for(const id of GUIDE_IDS) FORMS['sn-guide-'+id]='free_guide';
 export const PRODUCTS = ['course','cohort','kit_pcb','kit_rrk','kit_eh','kit_bundle','cohort_jan2027'];
@@ -38,6 +39,14 @@ export function formJob(data, now = Date.now()) {
     // Requested delivery is separate from permission to send newsletters.
     job.guide = guide;
     job.consentVersion = 'free-guides-2026-10-30';
+  }
+  if(source === 'oc_check') {
+    // The page sends its two totals and runway; the server checks the ranges and works out the box.
+    const ep=Number(data.ep), habits=Number(data.habits), raw=String(data.months ?? '').trim();
+    const months=raw==='' ? null : Number(raw);
+    if(!Number.isInteger(ep) || ep<0 || ep>36 || !Number.isInteger(habits) || habits<0 || habits>18) throw new Error('invalid_scores');
+    if(months!==null && !(Number.isFinite(months) && months>=0 && months<=100000)) throw new Error('invalid_runway');
+    job.scores={ep,habits,months};
   }
   if(source === 'starting_point') {
     if(data['test-version']!==STARTING_VERSION) throw new Error('invalid_test_version');
@@ -161,6 +170,10 @@ export async function processJob(store,job,env,api,now=Date.now()) {
         sn_starting_point_box:result.box.label,sn_starting_point_skill:result.skill.title,
         sn_starting_point_runway:result.band.label,sn_starting_point_decision:result.decision,
         sn_starting_point_cta:'https://sayantannandi.com'+result.action.url});
+    }
+    if(job.kind==='form' && job.source==='oc_check') {
+      const r=ocResult(job.scores.ep,job.scores.habits,job.scores.months);
+      Object.assign(fields,{sn_oc_ep:r.ep,sn_oc_xp:r.xp,sn_oc_runway:r.runway,sn_oc_box:r.box,sn_oc_box_note:r.note,sn_oc_first_move:r.first});
     }
     if(job.source==='free_chapter') fields.sn_resource_url='https://sayantannandi.com/assets/downloads/Earning_Power_Exit_Power_First_Chapter.pdf';
     if(job.source==='worksheets') fields.sn_resource_url='https://sayantannandi.com/assets/downloads/Earning_Power_Exit_Power_Worksheets.pdf';

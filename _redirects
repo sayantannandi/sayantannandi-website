@@ -1,6 +1,3 @@
-/book /philosophy#preorder 301!
-/book/ /philosophy#preorder 301!
-/book.html /philosophy#preorder 301!
 /book/first-chapter /philosophy#preorder 301!
 /book/first-chapter/ /philosophy#preorder 301!
 /book/first-chapter.html /philosophy#preorder 301!
@@ -88,8 +85,6 @@
 /free-guides /worksheets 301!
 /free-guides/ /worksheets 301!
 /free-guides.html /worksheets 301!
-/course /step-up 301!
-/course.html /step-up 301!
 /classroom /step-up/cohort 301!
 /classroom.html /step-up/cohort 301!
 /coaching /get-coached 301!
