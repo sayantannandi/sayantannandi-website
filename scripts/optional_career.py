@@ -93,7 +93,7 @@ def fix_redirects(write):
 def build_optional_career(write):
     read = lambda n: (CONTENT / n).read_text(encoding='utf-8')
     write('index.html', shell('/', 'Earn more. Depend less. Choose what comes next', 'For managers who are good at their job and stuck at one level, with every raise already spent. The skills that take you past the ceiling, and the arithmetic that makes work a choice.', read('home.html')))
-    write('course.html', shell('/course', 'The Optional Career: the course', 'One path in eight steps. The first four, on the skills that help you earn more, are open now as The Step Up.', read('course.html')))
+    write('course.html', shell('/course', 'The Optional Career: the course', 'One path in eight weeks: five on earning more, two on depending less, one on what the choice is for.', read('course.html')))
     write('about.html', shell('/about', 'About Sayantan Nandi', 'Former IT Director at Schneider Electric. Sat in promotion reviews for more than 100 leaders. Took his own runway from 8 months to more than 250.', read('about.html')))
     write('optional-career-check.html', read('check.html'))
     write('book.html', shell('/book', 'Earning Power × Exit Power = Optionality: the book', 'First make your time valuable, then make it yours. The book on the two numbers that decide how many choices you have at work. Read the prologue and first chapter free.', read('book.html'), image='/assets/oc/book-cover.webp') + '')
