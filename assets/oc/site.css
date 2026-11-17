@@ -430,3 +430,7 @@
   table.weeks td.part { white-space: nowrap; font-weight: 700; }
   table.weeks tr.dl td.part { color: #1F7A4D; } table.weeks tr.op td.part { color: var(--blue); } table.weeks tr.em td.part { color: var(--navy); }
   table.weeks .soon { display: inline-block; font-size: 12px; background: var(--panel); border-radius: 4px; padding: 1px 6px; color: var(--muted); margin-left: 4px; }
+  .agechart svg { max-height: 460px; }
+  @media (max-width: 640px) { .agechart .tl { display: none; } }
+  .agechart .agemob { display: none; }
+  @media (max-width: 640px) { .agechart .agedesk { display: none; } .agechart .agemob { display: block; } }
