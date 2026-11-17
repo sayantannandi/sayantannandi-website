@@ -24,11 +24,11 @@ def shell(route, title, desc, body, image='/assets/oc/portrait.webp'):
     nav = ''.join(f'<a href="{u}"' + (' aria-current="page"' if route == u or route.startswith(u + '/') else '') + f'>{l}</a>' for u, l in NAV)
     cur = ' aria-current="page"' if route == '/' else ''
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=3"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=4"></head>
 <body><a href="#main" class="skip">Skip to content</a>
 <div id="site">
   <header class="sitehead"><div class="in"><a class="brand" href="/"{cur}>Sayantan Nandi</a><nav class="nav" aria-label="Main navigation">{nav}<a class="cta" href="/optional-career-check">Take the check</a></nav></div></header>
-  <main id="main">{body}</main>
+  <main id="main">{body}</main><script src="/assets/oc/track.js?v=1" defer></script>
   <footer class="foot"><div class="in">
     <span><b style="color:var(--navy)">The Optional Career</b>: one short letter every Thursday on what the market pays you, and how many months you could last without it. <a href="/newsletter">Subscribe</a></span>
     <span style="flex-basis:100%">{SEBI}</span>
