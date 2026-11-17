@@ -187,3 +187,7 @@ build_b2b_workshops(write)
 # Approved full-site conversion refresh, 8 November 2026.
 from full_site_refresh import build_full_site_refresh
 build_full_site_refresh(write)
+
+# The Optional Career: one idea, one check, one course. Preview branch, 17 November 2026.
+from optional_career import build_optional_career
+build_optional_career(write)
