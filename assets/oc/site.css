@@ -434,3 +434,4 @@
   @media (max-width: 640px) { .agechart .tl { display: none; } }
   .agechart .agemob { display: none; }
   @media (max-width: 640px) { .agechart .agedesk { display: none; } .agechart .agemob { display: block; } }
+  .trapfig svg { max-width: 760px; margin: 0 auto; }
