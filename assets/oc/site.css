@@ -435,3 +435,15 @@
   .agechart .agemob { display: none; }
   @media (max-width: 640px) { .agechart .agedesk { display: none; } .agechart .agemob { display: block; } }
   .trapfig svg { max-width: 760px; margin: 0 auto; }
+
+/* Videos on Learn and home */
+.vgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 900px) { .vgrid { grid-template-columns: minmax(0, 1fr); } }
+.vcard { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #fff; }
+.vcard h3 { font-size: 19px; }
+.vplay { position: relative; display: block; border-radius: 6px; overflow: hidden; }
+.vplay img { width: 100%; height: auto; display: block; }
+.vbtn { position: absolute; right: 10px; bottom: 10px; width: 52px; height: 36px; border-radius: 10px; background: rgba(16, 44, 80, .9); }
+.vbtn::after { content: ""; position: absolute; left: 20px; top: 10px; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent #fff; }
+.vplay:hover .vbtn, .vplay:focus-visible .vbtn { background: #d9922e; }
+.vframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 6px; display: block; }

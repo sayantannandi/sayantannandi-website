@@ -1,6 +1,6 @@
 """The Optional Career site layer, November 2026.
 
-Writes the home page, the check, the course page, the about page and the Learn section.
+Writes the home page, the check, the about page and the Learn section (videos, essays, guides). The course page is archived.
 Runs last in build_site.py, so it replaces earlier versions of those routes.
 Forms keep the existing sn-letter contract. Every other page is left as it was.
 """
@@ -14,8 +14,9 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / 'scripts' / 'content' / 'optional-career'
 SITE = 'https://sayantannandi.com'
-NAV = [('/course', 'Course'), ('/book', 'Book'), ('/learn', 'Learn'), ('/about', 'About')]
+NAV = [('/learn', 'Learn'), ('/book', 'Book'), ('/about', 'About')]
 SEBI = 'I am not a SEBI registered investment adviser, and I do not give investment advice on any particular asset. Everything here is education.'
+VIDEOS = json.loads((ROOT / 'scripts' / 'content' / 'videos.json').read_text(encoding='utf-8'))
 GUIDES = json.loads((ROOT / 'scripts' / 'content' / 'free-guides.json').read_text(encoding='utf-8'))
 SHELVES = [('Earn more', 'The skills that take you past the ceiling.'), ('Depend less', 'Turn raises into runway.'), ('Choose', 'What the two numbers are for.')]
 
@@ -24,7 +25,7 @@ def shell(route, title, desc, body, image='/assets/oc/portrait.webp'):
     nav = ''.join(f'<a href="{u}"' + (' aria-current="page"' if route == u or route.startswith(u + '/') else '') + f'>{l}</a>' for u, l in NAV)
     cur = ' aria-current="page"' if route == '/' else ''
     return f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=3"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | Sayantan Nandi</title><meta name="description" content="{escape(desc, quote=True)}"><link rel="canonical" href="{SITE + route}"><meta name="theme-color" content="#102c50"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title, quote=True)}"><meta property="og:description" content="{escape(desc, quote=True)}"><meta property="og:url" content="{SITE + route}"><meta property="og:image" content="{SITE + image}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/oc/site.css?v=4"></head>
 <body><a href="#main" class="skip">Skip to content</a>
 <div id="site">
   <header class="sitehead"><div class="in"><a class="brand" href="/"{cur}>Sayantan Nandi</a><nav class="nav" aria-label="Main navigation">{nav}<a class="cta" href="/optional-career-check">Take the check</a></nav></div></header>
@@ -43,6 +44,20 @@ def card(e):
             f'<span class="tag">{e["shelf"]}</span><h3>{e["title"]}</h3><p class="muted">{e["dek"]}</p><span class="small muted">2 minute read</span></a>')
 
 
+def video_card(v):
+    vid, title = escape(v['id'], quote=True), escape(v['title'])
+    return (f'<article class="vcard"><a class="vplay" href="https://www.youtube.com/watch?v={vid}" data-yt="{vid}" data-title="{escape(v["title"], quote=True)}" target="_blank" rel="noopener">'
+            f'<img src="/assets/oc/videos/{vid}.webp" alt="Play the video: {escape(v["title"], quote=True)}" width="1280" height="720" loading="lazy"><span class="vbtn" aria-hidden="true"></span></a>'
+            f'<span class="tag">{escape(v["shelf"])}</span><h3>{title}</h3><p class="muted">{escape(v["dek"])}</p></article>')
+
+
+def videos_section(eyebrow, heading, line):
+    cards = ''.join(video_card(v) for v in VIDEOS)
+    return (f'<section class="stack-lg" id="videos"><div class="shead"><div><div class="eyebrow">{eyebrow}</div><h2>{heading}</h2></div>'
+            f'<p>{line} <a href="https://www.youtube.com/@sayantannandi" target="_blank" rel="noopener">More on YouTube &rarr;</a></p></div><div class="vgrid">{cards}</div></section>'
+            '<script src="/assets/oc/videos.js?v=1" defer></script>')
+
+
 def guide_card(g):
     slug = escape(g['slug'], quote=True)
     return (f'<article class="gcard" data-guide="{slug}"><div class="gimg"><img src="/assets/images/guides/{slug}.webp" alt="First page of {escape(g["title"], quote=True)}" width="596" height="842" loading="lazy"></div>'
@@ -58,7 +73,8 @@ def guide_unlock():
 
 
 def learn_hub():
-    out = '<div class="page wide"><section class="hero"><div class="eyebrow">Learn</div><h1>Short essays, one path</h1><p class="lead">Everything here is free. Read the essays in order, or start with the half you are thinking about today. The guides are printable worksheets for one real situation at work.</p></section>'
+    out = '<div class="page wide"><section class="hero"><div class="eyebrow">Learn</div><h1>Videos, essays and guides</h1><p class="lead">Everything here is free. Start with a video, read the essays in order, or begin with the half you are thinking about today. The guides are printable worksheets for one real situation at work.</p></section>'
+    out += videos_section('Watch', 'Start with a video', 'Each one takes a single idea and works through it with numbers.')
     for name, line in SHELVES:
         cards = ''.join(card(e) for e in ESSAYS if e['shelf'] == name)
         out += f'<section class="stack-lg"><div class="shead"><h2>{name}</h2><p>{line}</p></div><div class="egrid">{cards}</div></section>'
@@ -69,7 +85,7 @@ def learn_hub():
 
 def essay_page(i, e):
     nxt = ESSAYS[i + 1] if i + 1 < len(ESSAYS) else None
-    after = f'<a href="/learn/{nxt["slug"]}">Next: {nxt["title"]}</a>' if nxt else '<a href="/course">See the course</a>'
+    after = f'<a href="/learn/{nxt["slug"]}">Next: {nxt["title"]}</a>' if nxt else '<a href="/learn">Back to all essays</a>'
     body = e['body'].replace('src="assets/', 'src="/assets/oc/')
     return (f'<div class="page"><article class="essay"><a class="small" href="/learn">&larr; All essays</a>'
             f'<span class="tag">{e["shelf"]} &middot; essay {i + 1} of {len(ESSAYS)}</span><h1>{e["title"]}</h1><p class="lead">{e["dek"]}</p>'
@@ -79,7 +95,8 @@ def essay_page(i, e):
 
 
 def fix_redirects(write):
-    """Let /course and /book open the new pages. Older first-chapter links still go to the live sample form."""
+    """Let /book open the new page. /course is archived for now and sends people to Learn.
+    The course text is kept in scripts/content/optional-career/archive/course.html."""
     drop = {'/course', '/course.html', '/book', '/book/', '/book.html'}
     lines = []
     for line in (ROOT / '_redirects').read_text(encoding='utf-8').splitlines():
@@ -87,19 +104,20 @@ def fix_redirects(write):
         if parts and parts[0] in drop:
             continue
         lines.append(line)
+    lines = ['/course /learn 302!', '/course.html /learn 302!'] + lines
     write('_redirects', '\n'.join(lines) + '\n')
 
 
 def build_optional_career(write):
     read = lambda n: (CONTENT / n).read_text(encoding='utf-8')
-    write('index.html', shell('/', 'Earn more. Depend less. Choose what comes next', 'For managers who are good at their job and stuck at one level, with every raise already spent. The skills that take you past the ceiling, and the arithmetic that makes work a choice.', read('home.html')))
-    write('course.html', shell('/course', 'The Optional Career: the course', 'One path in eight weeks: five on earning more, two on depending less, one on what the choice is for.', read('course.html')))
+    home = read('home.html').replace('<!--VIDEOS-->', '<div class="wrap sec">' + videos_section('Free to watch', 'Start watching', 'Short videos on the two numbers, in plain words.') + '</div>')
+    write('index.html', shell('/', 'Earn more. Depend less. Choose what comes next', 'For managers who are good at their job and stuck at one level, with every raise already spent. The skills that take you past the ceiling, and the arithmetic that makes work a choice.', home))
     write('about.html', shell('/about', 'About Sayantan Nandi', 'Former IT Director at Schneider Electric. Sat in promotion reviews for more than 100 leaders. Took his own runway from 8 months to more than 250.', read('about.html')))
     write('optional-career-check.html', read('check.html'))
     write('book.html', shell('/book', 'Earning Power × Exit Power = Optionality: the book', 'First make your time valuable, then make it yours. The book on the two numbers that decide how many choices you have at work. Read the prologue and first chapter free.', read('book.html'), image='/assets/oc/book-cover.webp') + '')
     fix_redirects(write)
-    write('learn.html', shell('/learn', 'Learn: short essays on earning more and depending less', 'Free essays on getting past the middle-management ceiling, turning raises into runway, and choosing what comes next.', learn_hub()))
-    routes = ['/course', '/learn', '/optional-career-check', '/book']
+    write('learn.html', shell('/learn', 'Learn: videos and essays on earning more and depending less', 'Free videos, essays and guides on getting past the middle-management ceiling, turning raises into runway, and choosing what comes next.', learn_hub()))
+    routes = ['/learn', '/optional-career-check', '/book']
     for i, e in enumerate(ESSAYS):
         write(f'learn/{e["slug"]}.html', shell(f'/learn/{e["slug"]}', e['title'], e['dek'], essay_page(i, e), image=f'/assets/oc/essays/{e["id"]}.svg'))
         routes.append(f'/learn/{e["slug"]}')
@@ -108,4 +126,4 @@ def build_optional_career(write):
     xml = sm.read_text(encoding='utf-8')
     extra = ''.join(f'  <url><loc>{SITE + r}</loc><lastmod>2026-11-17</lastmod></url>\n' for r in routes if SITE + r + '<' not in xml)
     sm.write_text(xml.replace('</urlset>', extra + '</urlset>'), encoding='utf-8')
-    print(f'Optional Career layer: home, check, course, about and {len(ESSAYS)} essays.')
+    print(f'Optional Career layer: home, check, about, {len(VIDEOS)} videos and {len(ESSAYS)} essays. /course archived.')

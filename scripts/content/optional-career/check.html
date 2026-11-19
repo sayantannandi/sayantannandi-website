@@ -324,10 +324,10 @@ function renderIntro() {
 
 var DEMO = "";
 var EDITIONS = {
-  "new": { tag: "The course", name: "The Optional Career course", text: "One path in eight weeks. The first four, on the skills that help you earn more, are open now.", offer: true },
-  "exp": { tag: "The course", name: "The Optional Career course", text: "One path in eight weeks. With 12 or more years behind you, the weeks on depending less will matter most.", offer: true },
-  "under": { tag: "About the course", name: "Start with the free lessons", text: "The course is written for people with about 5 to 20 years of work experience, and its examples assume you already run a team or a workstream. Your result is still yours to use. For now, the free videos are the better place to start.", link: ["See the free lessons", "/learn"] },
-  "over": { tag: "About the course", name: "The course is set below your stage", text: "The course is written for people with about 5 to 20 years of work experience. With more than 22, you are past the level its examples are set at. Your result may still be useful, and the book deals with the questions that matter more where you are.", link: ["Read about the book", "/book"] }
+  "new": { tag: "Next step", name: "Start with the free lessons", text: "Short videos and essays on both numbers, in the order of the path. Start with the half your result points to.", link: ["See the videos and essays", "/learn"] },
+  "exp": { tag: "Next step", name: "Start with the free lessons", text: "Short videos and essays on both numbers. With 12 or more years behind you, the lessons on depending less will matter most.", link: ["See the videos and essays", "/learn"] },
+  "under": { tag: "Next step", name: "Start with the free lessons", text: "The lessons are written for people with about 5 to 20 years of work experience, and the examples assume you already run a team or a workstream. Your result is still yours to use.", link: ["See the free lessons", "/learn"] },
+  "over": { tag: "Next step", name: "The book may suit you better", text: "The lessons are written for people with about 5 to 20 years of work experience. With more than 22, you are past the level their examples are set at. Your result may still be useful, and the book deals with the questions that matter more where you are.", link: ["Read about the book", "/book"] }
 };
 function renderTenure() {
   var pick = function (ed) { state.edition = ed; state.screen = "q"; render(); };
@@ -546,7 +546,6 @@ function renderResult() {
         el("h3", { text: a.name }),
         el("p", { text: a.low }),
         el("div", { class: "try" }, [el("p", {}, [el("b", { text: "Try this week. " }), document.createTextNode(a.tryIt)])]),
-        el("p", { class: "small muted", text: "Covered in the first half of the course." })
       ]);
     })));
     nodes.push(el("p", {}, [document.createTextNode("If you want to talk through your result, you can book a free 20-minute call. "), el("a", { href: "/conversation", text: "Book a call" })]));
@@ -557,8 +556,7 @@ function renderResult() {
     el("div", { class: "tag", text: ed.tag }),
     el("h3", { text: ed.name }),
     el("p", { text: ed.text }),
-    ed.offer ? el("p", { text: "Start by self-study, in the live class, or one to one." }) : null,
-    el("a", { href: (ed.offer ? "/course" : ed.link[1]), text: ed.offer ? "See the three ways to start" : ed.link[0] })
+    el("a", { href: ed.link[1], text: ed.link[0] })
   ]));
   nodes.push(el("button", { class: "btn ghost", type: "button", text: "Start again", onclick: function () { reset(); render(); } }));
   show(nodes);
